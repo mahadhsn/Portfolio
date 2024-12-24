@@ -11,15 +11,16 @@ export const cornerOptions = [
     "patch of cyberspace",
   ];
 
+
 export const greetings = [
-    "Hey",
-    "Hola",
-    "Bonjour",
-    "Hallo",
-    "Ciao",
-    "Olá",
-    "नमस्ते",
-    "سلام",
-    "こんにちは", 
-    "안녕하세요", 
+    { text: "Hey", flag: null },  
+    { text: "Hola", flag: "🇪🇸" }, 
+    { text: "Bonjour", flag: "🇫🇷" },
+    { text: "Hallo", flag: "🇩🇪" }, 
+    { text: "Ciao", flag: "🇮🇹" }, 
+    { text: "Olá", flag: "🇧🇷" }, 
+    { text: "नमस्ते", flag: "🇮🇳" }, 
+    { text: "سلام", flag: "🇵🇰" },
+    { text: "こんにちは", flag: "🇯🇵" }, 
+    { text: "안녕하세요", flag: "🇰🇷" },
   ];
