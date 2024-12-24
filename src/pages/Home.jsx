@@ -28,17 +28,32 @@ const Home = () => {
   return (
 
     <div className='text-white flex flex-col opacity-0 animate-fade-in'>
-        <h1 className=' text-4xl text-center mb-6'>
+        <h1 className=' text-4xl text-center mb-6 md:-mt-10 -mt-5'>
           <span className='cursor-pointer' onClick={handleGreetingClick}>
             {currentGreeting.flag && <span className="mr-2 select-none">{currentGreeting.flag}</span>}
             <span className='underline font-bold select-none'>{currentGreeting.text}</span>
           </span>, I'm Mahad!</h1>
         <span>
-          <p className='text-xl mb-6'>
+          <p className='text-lg mb-6'>
             Welcome to my <span className='underline cursor-pointer font-bold select-none' onClick={handleCornerClick}>{currentCorner}</span>
             , where the code is clean and the coffee is strong.
              </p>
-          <p className='text-xl'>I'm an Honours Software Engineering student studying at McMaster University 🦅 based in 
+          <p className='text-lg'>I'm an Honours Software Engineering student studying at McMaster University 🦅 based in 
+            Hamilton, Ontario 🍁. Outside the coding world, I'm probably listening to music, learning a new skill, 
+            or <span className='underline cursor-pointer font-bold select-none' onClick={handleHobbyClick}>{currentHobby}</span>.
+          </p>
+
+          <p className='text-lg'>I'm an Honours Software Engineering student studying at McMaster University 🦅 based in 
+            Hamilton, Ontario 🍁. Outside the coding world, I'm probably listening to music, learning a new skill, 
+            or <span className='underline cursor-pointer font-bold select-none' onClick={handleHobbyClick}>{currentHobby}</span>.
+          </p>
+
+          <p className='text-lg'>I'm an Honours Software Engineering student studying at McMaster University 🦅 based in 
+            Hamilton, Ontario 🍁. Outside the coding world, I'm probably listening to music, learning a new skill, 
+            or <span className='underline cursor-pointer font-bold select-none' onClick={handleHobbyClick}>{currentHobby}</span>.
+          </p>
+
+          <p className='text-lg'>I'm an Honours Software Engineering student studying at McMaster University 🦅 based in 
             Hamilton, Ontario 🍁. Outside the coding world, I'm probably listening to music, learning a new skill, 
             or <span className='underline cursor-pointer font-bold select-none' onClick={handleHobbyClick}>{currentHobby}</span>.
           </p>
