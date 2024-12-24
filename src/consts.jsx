@@ -24,3 +24,19 @@ export const greetings = [
     { text: "こんにちは", flag: "🇯🇵" }, 
     { text: "안녕하세요", flag: "🇰🇷" },
   ];
+
+export const hobbies = [
+    "learning a new song on the guitar",
+    "figuring out how not to fall off a snowboard",
+    "totally not coding anyway - I swear",
+    "trying not to get lost while camping",
+    "getting stuck halfway up a climbing wall but loving it anyway",
+    "attempting to cook something edible",
+    "dreaming of coding from/for space someday",
+    "definitely not getting lost hiking",
+    "creating another Spotify playlist",
+    "learning a new hobby just to forget it a week later",
+    "staring at the stars through a telescope",
+    "finding new ways to chase the stars - literally and metaphorically",
+    "totally not procrastinating by adding to this list"
+]

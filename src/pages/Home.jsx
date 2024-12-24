@@ -1,11 +1,14 @@
 import React from 'react'
 import { cornerOptions } from '../consts'
 import { greetings } from '../consts'
+import { hobbies } from '../consts'
 
 const Home = () => {
 
   const [currentCorner, setCurrentCorner] = React.useState(cornerOptions[0]);
   const [currentGreeting, setCurrentGreeting] = React.useState(greetings[0]);
+  const [currentHobby, setCurrentHobby] = React.useState(hobbies[0]);
+
 
   const handleCornerClick = () => {
     const nextIndex = (cornerOptions.indexOf(currentCorner) + 1) % cornerOptions.length;
@@ -15,6 +18,11 @@ const Home = () => {
   const handleGreetingClick = () => {
     const nextIndex = (greetings.indexOf(currentGreeting) + 1) % greetings.length;
     setCurrentGreeting(greetings[nextIndex]);
+  }
+
+  const handleHobbyClick = () => {
+    const nextIndex = (hobbies.indexOf(currentHobby) + 1) % hobbies.length;
+    setCurrentHobby(hobbies[nextIndex]);
   }
 
   return (
@@ -31,7 +39,8 @@ const Home = () => {
             , where the code is clean and the coffee is strong.
              </p>
           <p className='text-xl'>I'm an Honours Software Engineering student studying at McMaster University 🦅 based in 
-            Hamilton, Ontario 🍁. Outside the coding world, I'm
+            Hamilton, Ontario 🍁. Outside the coding world, I'm probably listening to music, learning a new skill, 
+            or <span className='underline cursor-pointer font-bold select-none' onClick={handleHobbyClick}>{currentHobby}</span>.
           </p>
         </span>
     </div>

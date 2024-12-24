@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 
 const Layout = () => {
   return (
-    <div className="mt-40 max-h-[80vh] max-w-6xl mx-auto">
+    <div className="mt-40 max-h-[80vh] max-w-6xl min-w-screen mx-auto">
       <div className="flex items-center">
         <nav className="w-1/4 -ml-8">
           <Navbar />
