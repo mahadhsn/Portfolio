@@ -31,7 +31,7 @@ const Home = () => {
             , where the code is clean and the coffee is strong.
              </p>
           <p className='text-xl'>I'm an Honours Software Engineering student studying at McMaster University 🦅 based in 
-            Hamilton, Ontario 🍁. I'm passionate about software development,
+            Hamilton, Ontario 🍁. Outside the coding world, I'm
           </p>
         </span>
     </div>

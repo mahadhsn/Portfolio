@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Resume = () => {
-  return (
+const Resources = () => {
+return (
     <div>
       
     </div>
   )
 }
 
-export default Resume
+export default Resources
