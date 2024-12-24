@@ -1,19 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
+
+
 const Navbar = () => {
+  const [activePage, setActivePage] = React.useState('Home')
+
+  const navItems = []
+
   return (
-    <nav className="bg-blue-900 flex flex-col text-right justify-end space-y-4 p-4 text-white">
-        <Link to="/" className="bg-black">
-            <button>Home</button>
+    <nav className=" flex flex-col text-right justify-end space-y-4 p-4 text-white ">
+        <Link to="/" className="transition-all duration-300 ease-in-out hover:text-cyan-500">
+            <button>home</button>
         </Link>
 
-        <Link to="/about" className="bg-cyan-900">
-            <button>About</button>
+        <Link to="/about" className="transition-all duration-300 ease-in-out hover:text-cyan-500">
+            <button>about</button>
         </Link>
 
-        <Link to="/projects" className="bg-green-900">
-            <button>Projects</button>
+        <Link to="/projects" className="transition-all duration-300 ease-in-out hover:text-cyan-500">
+            <button>projects</button>
         </Link>
     </nav>
   )
