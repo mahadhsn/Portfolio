@@ -30,6 +30,7 @@ export const hobbies = [
     "figuring out how not to fall off a snowboard",
     "totally not coding anyway - I swear",
     "trying not to get lost while camping",
+    "befriending a stray cat",
     "getting stuck halfway up a climbing wall but loving it anyway",
     "attempting to cook something edible",
     "dreaming of coding from/for space someday",
