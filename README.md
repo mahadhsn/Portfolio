@@ -3,7 +3,7 @@
 ### Using React + TailwindCSS
 
 ### To Do:
-- [ ] random quote generator on home page
+- [x] random quote generator on home page
 - [ ] about page
 - [ ] projects page
 - [ ] decided whether to keep resources page or do a logbook
