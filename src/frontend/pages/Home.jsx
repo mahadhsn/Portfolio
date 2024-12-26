@@ -33,28 +33,30 @@ const Home = () => {
 
   return (
 
-    <div className='text-white flex flex-col opacity-0 animate-fade-in'>
+    <div className='text-white flex flex-col opacity-0 animate-fade-in md:mt-40'>
 
-
-        <h1 className=' text-4xl text-center mb-6'>
+        <h1 className='text-3xl md:text-5xl text-center mb-6'>
           <span className='cursor-pointer' onClick={handleGreetingClick}>
             {currentGreeting.flag && <span className="mr-2 select-none">{currentGreeting.flag}</span>}
             <span className='underline font-bold select-none'>{currentGreeting.text}</span>
           </span>, I'm Mahad!</h1>
 
-
-          <p className='text-lg mb-6'>
+        <span className='text-lg md:text-xl'>
+          <p className='mb-6'>
             Welcome to my <span className='underline cursor-pointer font-bold select-none' onClick={handleCornerClick}>{currentCorner}</span>
             , where the code is clean and the coffee is strong.
              </p>
-          <p className='text-lg mb-6'>I'm an Honours Software Engineering student studying at McMaster University 🦅 based in 
+          <p className='mb-6'>I'm an 
+            Honours <a href='https://www.eng.mcmaster.ca/cas/degree-options/software-engineering/' target="_blank" rel="noopener noreferrer" className='underline'>Software Engineering</a> student studying 
+            at <a href='https://www.mcmaster.ca' target="_blank" rel="noopener noreferrer" className='underline'>McMaster University</a> 🦅 
+            based in 
             Hamilton, Ontario 🍁. Outside the coding world, I'm probably singing (checkout my TikTok!), learning a new skill, 
             or <span className='underline cursor-pointer font-bold select-none' onClick={handleHobbyClick}>{currentHobby}</span>.
           </p>
 
-          <p className='text-lg'>I love chatting with new people so please contact me using the contact page. I'm always open to new opportunities and collaborations! 🚀
+          <p className=''>I love chatting with new people so please contact me using the contact page. I'm always open to new opportunities and collaborations! 🚀
           </p>
-
+          </span>
           <Quotes />
 
     </div>
