@@ -1,6 +1,9 @@
 import React from 'react'
+import ChangeWord from '../components/ChangeWord'
 import { useEffect } from 'react'
+import { currently, previously, achievements } from '../consts'
 import HoverImage from '../components/ImageHoverCard'
+
 const About = () => {
 
   useEffect(() => {
@@ -45,8 +48,9 @@ const About = () => {
 
         <p className='mt-8'>
 
-          <h2 className='font-bold text-2xl'>Currently</h2>
-
+          <span className='text-2xl'>
+            <ChangeWord list={currently} />
+          </span>
           <ul className='list-disc list-inside mb-8'>
             <li> I am in my  2<span className='text-sm'>nd</span> year of my Bachelor's of Software Engineering degree 🖥️</li>
             <li> VP of Events 
@@ -64,19 +68,23 @@ const About = () => {
             </li>
           </ul>
           
-          <h2 className='font-bold text-2xl'>Previously</h2>
+          <span className='text-2xl'>
+            <ChangeWord list={previously} />
+          </span>
           
           <ul className='list-disc list-inside mb-8'>
-            <li> combatted threats 
+            <li> Combatted threats 
               at <a href='https://www.qewc.com/qewc/en/subsidiaries/rlpc/' target="_blank" rel="noopener noreferrer" className='underline'>RLPC</a> as
               a Cybersecurity Intern 🦠
             </li> 
             <li>
-              president and founder of the Chess♟️ and Guitar 🎸 clubs at my high school
+              President and founder of the Chess♟️ and Guitar 🎸 clubs at my high school
             </li>
           </ul>
 
-          <h2 className='font-bold text-2xl'>Achievements 🥇</h2>
+          <span className='text-2xl'>
+            <ChangeWord list={achievements} /> 🥇
+          </span>
           <ul className='list-disc list-inside mb-8'>
             <li>Straight A student - Dean's list at McMaster 💯</li>
             <li>Winner at MacEngComp 24' 🏆</li>

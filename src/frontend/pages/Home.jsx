@@ -1,4 +1,5 @@
 import React from 'react'
+import ChangeWord from '../components/ChangeWord'
 import { useEffect } from 'react'
 import { cornerOptions } from '../consts'
 import { greetings } from '../consts'
@@ -11,24 +12,11 @@ const Home = () => {
     document.title = "Mahad's Home"
   }, [])
 
-  const [currentCorner, setCurrentCorner] = React.useState(cornerOptions[0]);
   const [currentGreeting, setCurrentGreeting] = React.useState(greetings[0]);
-  const [currentHobby, setCurrentHobby] = React.useState(hobbies[0]);
-
-
-  const handleCornerClick = () => {
-    const nextIndex = (cornerOptions.indexOf(currentCorner) + 1) % cornerOptions.length;
-    setCurrentCorner(cornerOptions[nextIndex]);
-  };
 
   const handleGreetingClick = () => {
     const nextIndex = (greetings.indexOf(currentGreeting) + 1) % greetings.length;
     setCurrentGreeting(greetings[nextIndex]);
-  }
-
-  const handleHobbyClick = () => {
-    const nextIndex = (hobbies.indexOf(currentHobby) + 1) % hobbies.length;
-    setCurrentHobby(hobbies[nextIndex]);
   }
 
   return (
@@ -43,7 +31,7 @@ const Home = () => {
 
         <span className='text-lg md:text-xl'>
           <p className='mb-6'>
-            Welcome to my <span className='underline cursor-pointer font-bold select-none' onClick={handleCornerClick}>{currentCorner}</span>
+            Welcome to my <span className=''><ChangeWord list={cornerOptions}/> </span>
             , where the code is clean and the coffee is strong.
              </p>
           <p className='mb-6'>I'm an 
@@ -51,7 +39,7 @@ const Home = () => {
             at <a href='https://www.mcmaster.ca' target="_blank" rel="noopener noreferrer" className='underline'>McMaster University</a> 🦅 
             based in 
             Hamilton, Ontario 🍁. Outside the coding world, I'm probably singing (checkout my TikTok!), learning a new skill, 
-            or <span className='underline cursor-pointer font-bold select-none' onClick={handleHobbyClick}>{currentHobby}</span>.
+            or <span className='underline cursor-pointer font-bold select-none' ><ChangeWord list={hobbies}/></span>.
           </p>
 
           <p className=''>I love chatting with new people so please contact me using the contact page. I'm always open to new opportunities and collaborations! 🚀
