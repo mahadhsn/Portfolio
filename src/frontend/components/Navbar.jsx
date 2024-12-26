@@ -37,11 +37,11 @@ const Navbar = () => {
       <span className="md:hidden"> | </span>
 
       <Link
-        to="/resources"
+        to="/resume"
         className={`transition-all duration-300 ease-in-out ${
-          location.pathname === '/resources' ? 'text-cyan-500' : 'hover:text-cyan-700'
+          location.pathname === '/resume' ? 'text-cyan-500' : 'hover:text-cyan-700'
         }`}>
-        <button>resources</button>
+        <button>resume</button>
       </Link>
       
       <span className="md:hidden"> | </span>

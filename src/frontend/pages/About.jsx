@@ -1,8 +1,8 @@
 import React from 'react'
 import ChangeWord from '../components/ChangeWord'
 import { useEffect } from 'react'
-import { currently, previously, achievements } from '../consts'
-import HoverImage from '../components/ImageHoverCard'
+import { currently, previously, achievements, shortGoals, longGoals } from '../consts'
+//import HoverImage from '../components/ImageHoverCard'
 
 const About = () => {
 
@@ -27,8 +27,7 @@ const About = () => {
           <span className='font-bold'>Hello!</span> I am someone who is always looking to try out new things. This may sound cliché
           but I truly mean it! Learning new things, meeting new people, and experiencing new cultures are things that 
           keep me going in life. I love all things 
-          tech,        
-          space,
+          tech, space,
           music, 
           video games, 
           movies, 
@@ -37,30 +36,32 @@ const About = () => {
           and much more. The sky's the limit for me and I am always looking to reach for the stars 🌟.
         </p>
 
-        <p className='mt-8'>
-          A few short time goals of mine include learning how to play the piano, getting past 1600 ELO in chess, 
-          and learning how to cook a new dish every week. Towards the long term, I am looking to get a job in the tech industry
-          and maybe even start my own company one day. 
+        <p className='mt-8 mb-8'>
+          A few short time goals of mine include <ChangeWord list={shortGoals} /> Towards the long term, I am looking 
+          to <ChangeWord list={longGoals} />.
           I am also looking to get more involved in the tech community
           by attending hackathons, coding competitions, and networking events. I am always looking to learn new things
           and meet new people so if you have any opportunities or just want to chat, feel free to reach out to me!
         </p>
 
-        <p className='mt-8'>
+        <span className=''>
 
-          <span className='text-2xl'>
-            <ChangeWord list={currently} />
+          <span className='text-2xl md:text-3xl'>
+           📌 <ChangeWord list={currently} />
           </span>
           <ul className='list-disc list-inside mb-8'>
-            <li> I am in my  2<span className='text-sm'>nd</span> year of my Bachelor's of Software Engineering degree 🖥️</li>
+            <li> In my  2<span className='text-sm'>nd</span> year of my Bachelor's of Software Engineering degree 🖥️</li>
             <li> VP of Events 
-              for <a href='https://www.instagram.com/mcmasterpsa/' target="_blank" rel="noopener noreferrer" className='underline'>McMaster PSA</a> 🇵🇰
+              for <a href='https://www.instagram.com/mcmasterpsa/' target="_blank" rel="noopener noreferrer" className='underline'>McMaster PSA</a> planning
+               & managing events with 300+ attendees 🇵🇰 
             </li>
             <li> VP of Operations 
-              for <a href='https://www.instagram.com/voicesatmac/' target="_blank" rel="noopener noreferrer" className='underline'>VoicesatMac</a> 🎤
+              for <a href='https://www.instagram.com/voicesatmac/' target="_blank" rel="noopener noreferrer" className='underline'>VoicesatMac</a> helping
+              initialize the club and host interviews with various people of all backgrounds 🎤
             </li>
-            <li> Attendee Relations Executive 
-              for <a href='https://www.deltahacks.com' target="_blank" rel="noopener noreferrer" className='underline'>DeltaHacks</a> 💻
+            <li> Aided in the admissions process for <a href='https://www.deltahacks.com' target="_blank" rel="noopener noreferrer" className='underline'>DeltaHacks</a> as
+             an Attendee Relations Executive 💻
+              
             </li>
             <li> Working part-time as 
               a <a href='https://housing.mcmaster.ca/housing-conference-services/careers/gra-esa/' target="_blank" rel="noopener noreferrer" className='underline'>GRA & ESA</a> for 
@@ -68,8 +69,8 @@ const About = () => {
             </li>
           </ul>
           
-          <span className='text-2xl'>
-            <ChangeWord list={previously} />
+          <span className='text-2xl md:text-3xl'>
+          📬 <ChangeWord list={previously} />
           </span>
           
           <ul className='list-disc list-inside mb-8'>
@@ -82,22 +83,21 @@ const About = () => {
             </li>
           </ul>
 
-          <span className='text-2xl'>
-            <ChangeWord list={achievements} /> 🥇
+          <span className='text-2xl md:text-3xl'>
+          🥇 <ChangeWord list={achievements} />
           </span>
           <ul className='list-disc list-inside mb-8'>
             <li>Straight A student - Dean's list at McMaster 💯</li>
             <li>Winner at MacEngComp 24' 🏆</li>
-            <li>Finalists at MacEngComp 23'</li>
-            <li>Raised nearly $6,000 for charity with McMasterPSA</li>
+            <li>Finalists at MacEngComp 23' 🏆</li>
+            <li>Raised nearly $6,000 for charity with McMasterPSA 🎗️</li>
             <li>Accomodated the Move-In/Move-out of up to 4700 first year students as an ESA</li>
           </ul>
-        </p>
+        </span>
       </div>
 
       <div>
 
-        <h2 className='font-bold text-2xl'>Technical Skills</h2>
 
       </div>
       

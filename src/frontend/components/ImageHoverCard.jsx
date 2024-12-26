@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import './HoverImage.css';
 
 const HoverImage = ({ imageSrc, Text }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -17,21 +18,13 @@ const HoverImage = ({ imageSrc, Text }) => {
 
       {/* The hover image */}
       {isHovered && (
+        <span className='p-500 '>
         <img
           src={imageSrc}
           alt="Hovered example"
-          style={{
-            width: '400px', // Set a fixed width directly
-            height: 'auto', // Maintain aspect ratio
-            position: 'absolute',
-            top: '100%', // Place it just below the text
-            left: '50%',
-            transform: 'translateX(-50%)',
-            borderRadius: '8px',
-            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
-            zIndex: 50,
-          }}
+          className="hover-image z-500"
         />
+        </span>
       )}
     </span>
   );
