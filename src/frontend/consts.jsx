@@ -43,6 +43,26 @@ export const hobbies = [
     "totally not procrastinating by adding to this list"
 ]
 
+export const shortGoals = [
+  "learning how to play the piano 🎹",
+  "getting past 1600 ELO in chess ♟️",
+  "attending more hackathons 💻",
+  "learning how to surf 🏄",
+  "learning how to cook a new dish every week 😋",
+  "getting an internship in the tech industry 🤖",
+  "mastering snowboarding 🏂",
+]
+
+export const longGoals = [
+  "start my own company 🧑‍💻",
+  "visit every continent 🌎",
+  "learn more languages ㊗️",
+  "go scuba diving 🤿",
+  "help advance the human civilization 📡",
+  "eradicate world hunger 💪",
+  "learn how to fly a plane ✈️",
+]
+
 export const currently = [
   "Currently",
   "Presently",
