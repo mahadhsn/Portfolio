@@ -2,6 +2,7 @@ import React from 'react'
 import { cornerOptions } from '../consts'
 import { greetings } from '../consts'
 import { hobbies } from '../consts'
+import Quotes from '../components/Quotes'
 
 const Home = () => {
 
@@ -46,6 +47,7 @@ const Home = () => {
           <p className='text-lg'>I love chatting with new people so please contact me using the contact page. I'm always open to new opportunities and collaborations! 🚀
           </p>
 
+          <Quotes />
 
         </span>
     </div>
