@@ -11,7 +11,7 @@ const About = () => {
   })
 
   return (
-    <div className='text-white mt-10 md:mt-[20%]'>
+    <div className='text-white mt-10 md:mt-[20%] animate-fade-in'>
 
       <div className='flex flex-col items-center justify-center align-middle mb-4'>
         <div className='image-wrapper'>
@@ -86,7 +86,7 @@ const About = () => {
           <span className='text-2xl md:text-3xl'>
           🥇 <ChangeWord list={achievements} />
           </span>
-          <ul className='list-disc list-inside mb-8'>
+          <ul className='list-disc list-inside'>
             <li>Straight A student - Dean's list at McMaster 💯</li>
             <li>Winner at MacEngComp 24' 🏆</li>
             <li>Finalists at MacEngComp 23' 🏆</li>
