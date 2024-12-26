@@ -35,6 +35,7 @@ export const hobbies = [
     "attempting to cook something edible",
     "dreaming of coding from/for space someday",
     "definitely not getting lost hiking",
+    "attempting to hit GC in Rocket League",
     "creating another Spotify playlist",
     "learning a new hobby just to forget it a week later",
     "staring at the stars through a telescope",

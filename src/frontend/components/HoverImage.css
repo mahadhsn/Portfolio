@@ -1,0 +1,5 @@
+.hover-image {
+    width: 400px; /* Set a fixed width */
+    height: auto; /* Maintain aspect ratio */
+    transition: visibility 0s, opacity 0.3s linear; /* Transition effect */
+  }

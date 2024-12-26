@@ -5,7 +5,7 @@ const Navbar = () => {
   const location = useLocation();
 
   return (
-    <nav className="text-white border-r-5 flex flex-row md:flex-col items-center justify-center mobile:space-x-2 md:items-end md:space-y-4 md:py-4">
+    <nav className="md:text-xl text-lg text-white border-r-5 flex flex-row md:flex-col items-center justify-center mobile:space-x-2 md:items-end md:space-y-4 md:py-4">
       <Link
         to="/"
         className={`transition-all duration-300 ease-in-out ${
