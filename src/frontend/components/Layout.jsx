@@ -6,7 +6,7 @@ const Layout = () => {
   return (
     <div className="flex flex-col">
       {/* Navbar */}
-      <nav className="md:fixed md:top-1/4 md:w-1/4 mt-[20%] md:mt-5 mb-[5%]">
+      <nav className="md:fixed md:top-1/4 md:w-1/4 mt-[15%] md:mt-5 mb-[5%]">
         <Navbar />
       </nav>
 

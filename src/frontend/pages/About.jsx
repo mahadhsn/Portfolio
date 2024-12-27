@@ -7,11 +7,11 @@ import { currently, previously, achievements, shortGoals, longGoals } from '../c
 const About = () => {
 
   useEffect(() => {
-    document.title = "Yours Truly"
+    document.title = "About Mahad"
   })
 
   return (
-    <div className='text-white mt-10 md:mt-[20%] animate-fade-in'>
+    <div className='text-white animate-fade-in mt-10 md:mt-[20%]'>
 
       <div className='flex flex-col items-center justify-center align-middle mb-4'>
         <div className='image-wrapper'>
