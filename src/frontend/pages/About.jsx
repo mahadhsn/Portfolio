@@ -96,6 +96,7 @@ const About = () => {
             <li>Finalists at MacEngComp 23' 🏆</li>
             <li>Raised nearly $6,000 for charity with McMasterPSA 🎗️</li>
             <li>Accomodated the Move-In/Move-out of up to 4700 first year students as an ESA</li>
+            <li>Scored 1480 on the SAT 🎓</li>
           </ul>
         </span>
       </div>
