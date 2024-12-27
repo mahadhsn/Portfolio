@@ -1,8 +1,8 @@
-# CURRENTLY IN PROGRESS
-## Portfolio Website
-### Using React + TailwindCSS
+# Portfolio Website
+## Uses React + TailwindCSS
 
-### To Do:
+
+To Do:
 - [x] random quote generator on home page
 - [x] about page
     - [ ] hover image function
