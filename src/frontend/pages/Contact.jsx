@@ -21,7 +21,7 @@ const Contact = () => {
     const formData = { firstName, lastName, email, subject };
 
     try {
-      const response = await fetch('/.netlify/functions/quote', {
+      const response = await fetch('/.netlify/functions/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

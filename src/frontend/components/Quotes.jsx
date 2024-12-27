@@ -6,7 +6,7 @@ const Quotes = () => {
 
   const fetchRandomQuote = async () => {
     try {
-      const response = await fetch('/.netlify/functions/contact');
+      const response = await fetch('/.netlify/functions/quote');
       const data = await response.json();
       setQuote(data.quote || 'No quote available');
       setAuthor(data.author || 'Unknown');
