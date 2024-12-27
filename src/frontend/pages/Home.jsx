@@ -43,7 +43,7 @@ const Home = () => {
           </p>
 
           <p className=''>I love chatting with new people so please contact me using the contact page or 
-            at <a href='mailto:mahadhassan.hello@gmail.com'></a>
+            at <a href='mailto:mahadhassan.hello@gmail.com' target="_blank" rel="noopener noreferrer" className='underline'>mahadhassan.hello@gmail.com</a>
              . I'm always open to new opportunities and collaborations! 🚀
           </p>
           </span>
