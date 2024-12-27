@@ -12,7 +12,7 @@ const Layout = () => {
 
       {/* Content Section */}
       <div className="flex-1 flex flex-col">
-        <main className="w-full flex-1 flex md:max-w-[40%] justify-items-center mobile:max-w-[80%] mx-auto">
+        <main className="w-full flex-1 flex md:max-w-[40%] justify-items-center mobile:max-w-[80%] mx-auto mb-4">
           <Outlet />
         </main>
         

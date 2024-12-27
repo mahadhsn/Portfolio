@@ -27,7 +27,7 @@ const Home = () => {
           <span className='cursor-pointer' onClick={handleGreetingClick}>
             {currentGreeting.flag && <span className="mr-2 select-none">{currentGreeting.flag}</span>}
             <span className='underline font-bold select-none'>{currentGreeting.text}</span>
-          </span>, I'm Mahad!</h1>
+          </span>! I'm Mahad</h1>
 
         <span className='text-lg md:text-xl'>
           <p className='mb-6'>
@@ -35,7 +35,7 @@ const Home = () => {
             , where the code is clean and the coffee is strong.
              </p>
           <p className='mb-6'>I'm an 
-            Honours <a href='https://www.eng.mcmaster.ca/cas/degree-options/software-engineering/' target="_blank" rel="noopener noreferrer" className='underline'>Software Engineering</a> student studying 
+            Honours <a href='https://www.eng.mcmaster.ca/cas/degree-options/software-engineering/' target="_blank" rel="noopener noreferrer" className='underline'>Software Engineering</a> student 
             at <a href='https://www.mcmaster.ca' target="_blank" rel="noopener noreferrer" className='underline'>McMaster University</a> 🦅 
             based in 
             Hamilton, Ontario 🍁. Outside the coding world, I'm probably singing (checkout my TikTok!), learning a new skill, 

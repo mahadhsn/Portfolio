@@ -48,8 +48,9 @@ export const shortGoals = [
   "getting past 1600 ELO in chess ♟️",
   "attending more hackathons 💻",
   "learning how to surf 🏄",
-  "learning how to cook a new dish every week 😋",
+  "cooking a new dish every week 😋",
   "getting an internship in the tech industry 🤖",
+  "go scuba diving 🤿",
   "mastering snowboarding 🏂",
 ]
 
@@ -57,7 +58,6 @@ export const longGoals = [
   "start my own company 🧑‍💻",
   "visit every continent 🌎",
   "learn more languages ㊗️",
-  "go scuba diving 🤿",
   "help advance the human civilization 📡",
   "eradicate world hunger 💪",
   "learn how to fly a plane ✈️",

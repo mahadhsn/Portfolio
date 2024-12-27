@@ -4,8 +4,10 @@
 
 ### To Do:
 - [x] random quote generator on home page
-- [ ] about page
+- [x] about page
     - [ ] hover image function
-- [ ] projects page
-- [ ] decided whether to keep resources page or do a logbook
+- [x] projects page
+- [x] decided whether to keep resources page or do a logbook
+    - do logbook later
+- [ ] resume page
 - [ ] contact page

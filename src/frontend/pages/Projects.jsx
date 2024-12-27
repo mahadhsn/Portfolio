@@ -20,7 +20,7 @@ const Projects = () => {
 
         <h2 className='text-2xl md:text-3xl text-left underline mt-8'>
           <a href='https://github.com/mahadhsn/C-View' target="_blank" rel="noopener noreferrer">
-            [ C-View ]
+             C-View 
           </a>
         </h2>
         <p className='mb-6'>
@@ -29,7 +29,7 @@ const Projects = () => {
 
         <h2 className='text-2xl md:text-3xl text-left underline'>
           <a href='https://github.com/mahadhsn/Convert-Number-Systems' target="_blank" rel="noopener noreferrer">
-            [ Convert-Number-Systems ]
+             Convert-Number-Systems 
           </a>
         </h2>
         <p className='mb-6'>
@@ -38,7 +38,7 @@ const Projects = () => {
 
         <h2 className='text-2xl md:text-3xl text-left underline'>
           <a href='https://github.com/mahadhsn/Digit-Recognizer' target="_blank" rel="noopener noreferrer">
-            [ Digit-Recognizer ]
+             Digit-Recognizer 
           </a>
         </h2>
         <p className='mb-6'>
@@ -47,7 +47,7 @@ const Projects = () => {
 
         <h2 className='text-2xl md:text-3xl text-left underline'>
           <a href='https://github.com/mahadhsn/Java-Tic-Tac-Toe-AI' target="_blank" rel="noopener noreferrer">
-            [ Java-Tic-Tac-Toe-AI ]
+             Java-Tic-Tac-Toe-AI 
           </a>
         </h2>
 
@@ -57,7 +57,7 @@ const Projects = () => {
 
         <h2 className='text-2xl md:text-3xl text-left underline'>
           <a href='https://github.com/mahadhsn/Portfolio' target="_blank" rel="noopener noreferrer">
-            [ Portfolio ]
+             Portfolio 
           </a>
         </h2>
         <p className='mb-6'>
@@ -66,10 +66,11 @@ const Projects = () => {
 
         <h2 className='text-2xl md:text-3xl text-left'>
           <a href='https://github.com/mahadhsn/MacEngComp24' target="_blank" rel="noopener noreferrer" className=''>
-            <span className='underline'>[ Cybersecurity System ]</span> 
-            <span className='text-lg invisible md:visible mobile:fixed md:absolute md:translate-y-2'>(winners at MacEngComp 24') 🏆</span>
+            <span className='underline'>Cybersecurity System</span>
+            <span className='text-neutral-900'>p</span>
           </a> 
-        </h2> <span className='text-base visible md:hidden'>(winners at MacEngComp 24') 🏆</span>
+          <span className='text-lg invisible md:visible mobile:fixed md:absolute md:translate-y-2'> (winners at MacEngComp 24') 🏆</span>
+        </h2> <span className='text-base visible md:hidden'> (winners at MacEngComp 24') 🏆</span>
 
         <p className='mb-6'>
           Cybersecurity system - face recognition, file encryption, and more
@@ -77,16 +78,12 @@ const Projects = () => {
 
         <h2 className='text-2xl md:text-3xl text-left underline'>
           <a href='https://github.com/mahadhsn/US-Baby-Names' target="_blank" rel="noopener noreferrer">
-            [ US-Baby-Names ]
+             US-Baby-Names 
           </a>
         </h2>
         <p className='mb-6'>
           Bash script to list the rankings of baby names in the US
         </p>
-
-        
-
-
 
       </span>
     

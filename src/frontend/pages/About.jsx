@@ -37,11 +37,15 @@ const About = () => {
         </p>
 
         <p className='mt-8 mb-8'>
-          A few short time goals of mine include <ChangeWord list={shortGoals} /> Towards the long term, I am looking 
-          to <ChangeWord list={longGoals} />.
-          I am also looking to get more involved in the tech community
-          by attending hackathons, coding competitions, and networking events. I am always looking to learn new things
-          and meet new people so if you have any opportunities or just want to chat, feel free to reach out to me!
+          I put huge emphasis on bettering myself whether that be mentally, physically, or even emotionally.
+          I truly believe in the 'small steps lead to big changes' philosophy and I try to implement that in my life as much as possible.
+          Always remember: <span className='font-bold'>you are your biggest competition</span> and the only person you should strive to be better than 
+          is <span className='font-bold'>who you were yesterday</span>.
+          I tackle this by setting both:
+          <ul className='list-disc list-inside'>
+            <li>short term: <ChangeWord list={shortGoals} /></li>
+            <li>and long term goals: <ChangeWord list={longGoals} /></li>
+          </ul>
         </p>
 
         <span className=''>
