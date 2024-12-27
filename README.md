@@ -9,5 +9,5 @@
 - [x] projects page
 - [x] decided whether to keep resources page or do a logbook
     - do logbook later
-- [ ] resume page
+- [x] resume page
 - [ ] contact page
