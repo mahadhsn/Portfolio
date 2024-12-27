@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 
-// some very random animations included pls ingore lol
 export default {
   content: [
     "./src/index.html",
@@ -12,25 +11,15 @@ export default {
   theme: {
     screens: {
       'mobile': '200px',
-      // => @media (min-width: 640px) { ... }
-
       'sm': '500px',
-      // => @media (min-width: 640px) { ... }
-
       'md': '768px',
-      // => @media (min-width: 768px) { ... }
-
       'lg': '1024px',
-      // => @media (min-width: 1024px) { ... }
-
       'xl': '1280px',
-      // => @media (min-width: 1280px) { ... }
-
       '2xl': '1536px',
-      // => @media (min-width: 1536px) { ... }
     },
     extend: {
       animation: {
+        bop: "bop 2s ease-in-out infinite",
         gradient: "gradient 3s ease infinite",
         glitch: "glitch 1s infinite",
         "fade-in": "fade-in 1.5s ease-out forwards",
@@ -39,6 +28,10 @@ export default {
         gradient: {
           "0%, 100%": { backgroundPosition: "0% 50%" },
           "50%": { backgroundPosition: "100% 50%" },
+        },
+        bop: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-5px)" },
         },
         glitch: {
           "0%": { transform: "translate(0)" },
@@ -61,4 +54,4 @@ export default {
     },
   },
   plugins: [],
-}
+};

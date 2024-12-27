@@ -4,6 +4,14 @@ import { FaLinkedin, FaGithub, FaEnvelope, FaInstagram, FaTiktok } from 'react-i
 const Footer = () => {
   return (
     <footer className="flex justify-center items-center space-x-6 py-4 text-white">
+      
+      <a 
+        href="mailto:mahadhassan.hello@gmail.com" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="hover:text-cyan-500 transition-all duration-300">
+        <FaEnvelope size={24} />
+      </a>
 
       <a 
         href="https://www.linkedin.com/in/mahad-hassan/" 
