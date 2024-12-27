@@ -56,7 +56,7 @@ const Home = () => {
             or <span className='underline cursor-pointer font-bold select-none' ><ChangeWord list={hobbies}/></span>.
           </p>
 
-          <p className=''>I love chatting with new people so please contact me using the contact page or 
+          <p className=''>I love chatting with new people so please reach out to me using the contact page or 
             at <a href='mailto:mahadhassan.hello@gmail.com' target="_blank" rel="noopener noreferrer" className='underline'>mahadhassan.hello@gmail.com</a>
              . I'm always open to new opportunities and collaborations! 🚀
           </p>
