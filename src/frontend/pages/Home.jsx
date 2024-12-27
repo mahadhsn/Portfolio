@@ -21,7 +21,7 @@ const Home = () => {
 
   return (
 
-    <div className='text-white flex flex-col opacity-0 animate-fade-in md:mt-40'>
+    <div className='text-white flex flex-col opacity-0 animate-fade-in mt-[5%] md:mt-[25%]'>
 
         <h1 className='text-3xl md:text-5xl text-center mb-6'>
           <span className='cursor-pointer' onClick={handleGreetingClick}>

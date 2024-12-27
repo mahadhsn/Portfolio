@@ -10,4 +10,5 @@
 - [x] decided whether to keep resources page or do a logbook
     - do logbook later
 - [x] resume page
-- [ ] contact page
+- [x] contact page 
+    - [ ] add email limit

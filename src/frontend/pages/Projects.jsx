@@ -3,12 +3,12 @@ import { useEffect } from 'react'
 
 const Projects = () => {
   useEffect(() => {
-    document.title = "My Masterpieces"
+    document.title = "Mahad's Projects"
   } )
 
 
   return (
-    <div className='text-white mt-10 md:mt-[20%] animate-fade-in'>
+    <div className='text-white animate-fade-in mt-[10%] md:mt-[20%]'>
       <span className='md:text-xl text-lg'>
         
         <h2 className='text-lg md:text-xl mb-4'>
