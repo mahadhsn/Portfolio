@@ -3,9 +3,11 @@
 // some very random animations included pls ingore lol
 export default {
   content: [
-    "./index.html",
+    "./src/index.html",
     "./src/frontend/*.{js,ts,jsx,tsx}",
-    "./src/frontend/**/*.{js,ts,jsx,tsx}",
+    "./src/frontend/components/*.{js,ts,jsx,tsx}",
+    "./src/frontend/data/*.{js,ts,jsx,tsx}",
+    "./src/frontend/pages/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     screens: {
