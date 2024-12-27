@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const axios = require('axios');
 const dotenv = require('dotenv');
+const path = require('path');
 
 dotenv.config();
 
@@ -13,6 +14,10 @@ const port = 5001;
 app.use(cors());
 app.use(bodyParser.json());
 
+// Serve static files from the root folder (two levels up from backend folder)
+app.use(express.static(path.join(__dirname, '../../'))); // This should point to the root directory
+
+// Catch-all route to serve the index.html from the root directory
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -33,14 +38,13 @@ app.post('/api/contact', (req, res) => {
   `;
 
   console.log('Received form data:', req.body);  // Log the incoming form data
-
   console.log('Email User:', process.env.EMAIL_USER);  // Log the email user for debugging
 
   const mailoptions = {
     from: email,
     to: process.env.EMAIL_USER,
-    subject: formattedSubject, // Predefined subject
-    text: formattedBody, // Structured body
+    subject: formattedSubject,
+    text: formattedBody,
   };
 
   transporter.sendMail(mailoptions, (error, info) => {
@@ -75,4 +79,10 @@ app.get('/api/quote', async (req, res) => {
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
+});
+
+app.get('*', (req, res) => {
+  const indexPath = path.join(__dirname, '../../index.html');  // Correct path to the root index.html
+  console.log('Serving index.html from:', indexPath); // Optional: log the path for debugging
+  res.sendFile(indexPath);
 });
