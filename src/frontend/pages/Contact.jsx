@@ -30,7 +30,7 @@ const Contact = () => {
       });
 
       if (response.ok) {
-        setStatus('Your message has been sent successfully! I will get back to you soon.');
+        setStatus('Your message has been sent successfully! I will get back to you soon :)');
         setFirstName('');
         setLastName('');
         setEmail('');
