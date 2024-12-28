@@ -87,7 +87,7 @@ const About = () => {
             </li>
             <li>
               Volunteered 
-              for <a href='https://www.campquality.org' target="_blank" rel="noopener noreferrer" className='underline'></a>CampQuality and spent a week at camp 🏕️
+              for <a href='https://www.campquality.org' target="_blank" rel="noopener noreferrer" className='underline'>CampQuality</a> and spent a week at camp 🏕️
             </li>
           </ul>
 
