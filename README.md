@@ -1,6 +1,6 @@
-# Portfolio Website
-## Uses React + TailwindCSS
-
+![landing](https://github.com/mahadhsn/Portfolio/blob/main/public/landing.png)
+Welcome to my portfolio :)
+created using React, TailwindCSS, and Node.js
 
 To Do:
 - [x] random quote generator on home page

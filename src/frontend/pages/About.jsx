@@ -54,7 +54,7 @@ const About = () => {
            📌 <ChangeWord list={currently} />
           </span>
           <ul className='list-disc list-inside mb-8'>
-            <li> In my  2<span className='text-sm'>nd</span> year of my Bachelor's of Software Engineering degree 🖥️</li>
+            <li> 2<span className='text-sm'>nd</span> year Software Engineering degree 🖥️</li>
             <li> VP of Events 
               for <a href='https://www.instagram.com/mcmasterpsa/' target="_blank" rel="noopener noreferrer" className='underline'>McMaster PSA</a> planning
                & managing events with 300+ attendees 🇵🇰 
@@ -97,6 +97,7 @@ const About = () => {
             <li>Raised nearly $6,000 for charity with McMasterPSA 🎗️</li>
             <li>Accomodated the Move-In/Move-out of up to 4700 first year students as an ESA</li>
             <li>Scored 1480 on the SAT 🎓</li>
+            <li>Received the AP Scholar Award 🏅</li>
           </ul>
         </span>
       </div>
