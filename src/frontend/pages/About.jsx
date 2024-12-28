@@ -85,6 +85,10 @@ const About = () => {
             <li>
               President and founder of the Chess♟️ and Guitar 🎸 clubs at my high school
             </li>
+            <li>
+              Volunteered 
+              for <a href='https://www.campquality.org' target="_blank" rel="noopener noreferrer" className='underline'></a>CampQuality and spent a week at camp 🏕️
+            </li>
           </ul>
 
           <span className='text-2xl md:text-3xl'>
