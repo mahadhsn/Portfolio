@@ -12,4 +12,4 @@ To Do:
     - [ ] do logbook later
 - [x] resume page
 - [x] contact page 
-    - [ ] add email limit
+    - [ ] add daily email limit
