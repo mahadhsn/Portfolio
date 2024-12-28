@@ -2,6 +2,8 @@
 Welcome to my portfolio :)
 created using React, TailwindCSS, and Node.js
 
+Inspired by [Quinn Ha](https://x.com/qvinnh)
+
 To Do:
 - [x] random quote generator on home page
 - [x] about page
