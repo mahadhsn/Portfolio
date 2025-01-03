@@ -1,20 +1,23 @@
-const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
+const csv = require('csv-parser');
+
+const quotesFilePath = path.join(__dirname, '../../data/quotes.csv');
 
 exports.handler = async (event, context) => {
   try {
-    const options = {
-      headers: {
-        'X-Api-Key': process.env.API_KEY, // Set API_KEY in Netlify's environment variables
-      },
-    };
-    const response = await axios.get(
-      'https://api.api-ninjas.com/v1/quotes',
-      options
-    );
-    const quote = response.data[0] || { quote: 'No quote available', author: 'Unknown' };
+    const quotes = await loadQuotesFromCSV();
+    if (quotes.length === 0) {
+      throw new Error('No quotes available in the CSV file');
+    }
+
+    // Select a random quote
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    const selectedQuote = quotes[randomIndex];
+
     return {
       statusCode: 200,
-      body: JSON.stringify(quote),
+      body: JSON.stringify(selectedQuote),
     };
   } catch (error) {
     console.error('Error fetching quote:', error);
@@ -23,4 +26,21 @@ exports.handler = async (event, context) => {
       body: JSON.stringify({ message: 'Error fetching quote' }),
     };
   }
+};
+
+const loadQuotesFromCSV = () => {
+  return new Promise((resolve, reject) => {
+    const quotes = [];
+    fs.createReadStream(quotesFilePath)
+      .pipe(csv(['author', 'quote']))
+      .on('data', (row) => {
+        quotes.push(row);
+      })
+      .on('end', () => {
+        resolve(quotes);
+      })
+      .on('error', (error) => {
+        reject(error);
+      });
+  });
 };

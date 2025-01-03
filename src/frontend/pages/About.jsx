@@ -1,7 +1,7 @@
 import React from 'react'
 import ChangeWord from '../components/ChangeWord'
 import { useEffect } from 'react'
-import { currently, previously, achievements, shortGoals, longGoals } from '../consts'
+import { currently, previously, achievements, shortGoals, longGoals } from '../../data/consts'
 //import HoverImage from '../components/ImageHoverCard'
 
 const About = () => {
