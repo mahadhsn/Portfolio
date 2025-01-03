@@ -1,9 +1,7 @@
 import React from 'react'
 import ChangeWord from '../components/ChangeWord'
 import { useEffect } from 'react'
-import { cornerOptions } from '../consts'
-import { greetings } from '../consts'
-import { hobbies } from '../consts'
+import { hobbies, cornerOptions, greetings } from '../../data/consts'
 import Quotes from '../components/Quotes'
 
 const Home = () => {

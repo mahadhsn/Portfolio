@@ -5,6 +5,11 @@ const cors = require('cors');
 const axios = require('axios');
 const dotenv = require('dotenv');
 const path = require('path');
+const fs = require('fs');
+const path = require('path');
+const csv = require('csv-parser');
+
+const quotesFilePath = path.join(__dirname, 'quotes.csv');
 
 dotenv.config();
 
@@ -58,31 +63,43 @@ app.post('/api/contact', (req, res) => {
   });
 });
 
-app.get('/api/quote', async (req, res) => {
+exports.handler = async (event, context) => {
   try {
-    const options = {
-      headers: {
-        'X-Api-Key': process.env.API_KEY,
-      },
+    const quotes = await loadQuotesFromCSV();
+    if (quotes.length === 0) {
+      throw new Error('No quotes available in the CSV file');
+    }
+
+    // Select a random quote
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    const selectedQuote = quotes[randomIndex];
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify(selectedQuote),
     };
-    const response = await axios.get(
-      'https://api.api-ninjas.com/v1/quotes',
-      options
-    );
-    const quote = response.data[0] || { quote: 'No quote available', author: 'Unknown' };
-    res.json(quote);
   } catch (error) {
     console.error('Error fetching quote:', error);
-    res.status(500).json({ message: 'Error fetching the quote' });
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ message: 'Error fetching quote' }),
+    };
   }
-});
+};
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
-
-app.get('*', (req, res) => {
-  const indexPath = path.join(__dirname, '../../index.html');  // Correct path to the root index.html
-  console.log('Serving index.html from:', indexPath); // Optional: log the path for debugging
-  res.sendFile(indexPath);
-});
+const loadQuotesFromCSV = () => {
+  return new Promise((resolve, reject) => {
+    const quotes = [];
+    fs.createReadStream(quotesFilePath)
+      .pipe(csv(['author', 'quote']))
+      .on('data', (row) => {
+        quotes.push(row);
+      })
+      .on('end', () => {
+        resolve(quotes);
+      })
+      .on('error', (error) => {
+        reject(error);
+      });
+  });
+};
