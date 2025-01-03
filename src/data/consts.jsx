@@ -26,7 +26,7 @@ export const greetings = [
   ];
 
 export const hobbies = [
-    "learning a new song on the guitar",
+    "jamming on the guitar",
     "figuring out how not to fall off a snowboard",
     "totally not coding anyway - I swear",
     "trying not to get lost while camping",

@@ -9,7 +9,7 @@ const ChangeWord = ({list}) => {
     }
 
   return (
-    <span className='underline cursor-pointer font-bold select-none' onClick={handleWordClick}>
+    <span className='underline cursor-pointer font-semibold select-none' onClick={handleWordClick}>
         {currentWord}
     </span>
   )
