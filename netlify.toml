@@ -4,4 +4,4 @@
   functions = "src/netlify/functions"
 
 [functions]
-included_files = ["src/data/quotes.csv"]
+  included_files = ["src/netlify/data/quotes.csv"]
