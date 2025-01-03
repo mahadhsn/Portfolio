@@ -66,7 +66,7 @@ app.get('/api/quote', async (req, res) => {
       },
     };
     const response = await axios.get(
-      'https://api.api-ninjas.com/v1/quotes?category=inspirational',
+      'https://api.api-ninjas.com/v1/quotes',
       options
     );
     const quote = response.data[0] || { quote: 'No quote available', author: 'Unknown' };
