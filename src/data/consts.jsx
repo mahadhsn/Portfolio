@@ -21,13 +21,13 @@ export const greetings = [
     { text: "Olá", flag: "🇧🇷" }, 
     { text: "नमस्ते", flag: "🇮🇳" }, 
     { text: "سلام", flag: "🇵🇰" },
-    { text: "안녕하세요", flag: "🇰🇷" }
+    { text: "こんにちは", flag: "🇯🇵" }, 
+    { text: "안녕하세요", flag: "🇰🇷" },
   ];
 
 export const hobbies = [
     "learning a new song on the guitar",
     "figuring out how not to fall off a snowboard",
-    "finding new ways to chase the stars - literally and metaphorically",
     "totally not coding anyway - I swear",
     "trying not to get lost while camping",
     "befriending a stray cat",
@@ -35,9 +35,11 @@ export const hobbies = [
     "attempting to cook something edible",
     "dreaming of coding from/for space someday",
     "definitely not getting lost hiking",
+    "attempting to hit Grand Champ in Rocket League",
     "creating another Spotify playlist",
     "learning a new hobby just to forget it a week later",
     "staring at the stars through a telescope",
+    "finding new ways to chase the stars - literally and metaphorically",
     "totally not procrastinating by adding to this list"
 ]
 
@@ -46,17 +48,41 @@ export const shortGoals = [
   "getting past 1600 ELO in chess ♟️",
   "attending more hackathons 💻",
   "learning how to surf 🏄",
-  "cooking a new dish every week 🍲",
-  "getting an internship in the tech industry 🖥️",
-  "go scuba diving 🐠",
+  "cooking a new dish every week 😋",
+  "getting an internship in the tech industry 🤖",
+  "go scuba diving 🤿",
   "mastering snowboarding 🏂",
 ]
 
 export const longGoals = [
-  "start my own company 🚀",
-  "visit every continent 🌍",
-  "learn more languages 🗣️",
-  "help advance the human civilization 🌌",
-  "eradicate world hunger 🍲",
+  "start my own company 🧑‍💻",
+  "visit every continent 🌎",
+  "learn more languages ㊗️",
+  "help advance the human civilization 📡",
+  "eradicate world hunger 💪",
   "learn how to fly a plane ✈️",
+]
+
+export const currently = [
+  "Currently",
+  "Presently",
+  "At the moment",
+  "As of now",
+  "Lately",
+]
+
+export const previously = [
+  "Previously",
+  "Before",
+  "In the past",
+  "Earlier",
+  "Formerly",
+]
+
+export const achievements = [
+  "Achievements",
+  "Accomplishments",
+  "Awards",
+  "Successes",
+  "Triumphs",
 ]
