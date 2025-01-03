@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const csv = require('csv-parser');
 
-const quotesFilePath = path.join(__dirname, '../data/quotes.csv');
+const quotesFilePath = path.join(__dirname, '../quotes.csv');
 
 exports.handler = async (event, context) => {
   try {
