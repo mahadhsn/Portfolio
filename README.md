@@ -5,13 +5,11 @@ created using React, TailwindCSS, and Node.js
 Inspired by [Quinn Ha](https://x.com/qvinnh)
 
 To Do:
-- [x] random quote generator on home page
 - [x] about page
     - [ ] hover image function
     - [ ] skills section
-- [x] projects page
-- [x] decided whether to keep resources page or do a logbook
-    - [ ] do logbook later
-- [x] resume page
 - [x] contact page 
     - [ ] add daily email limit
+- [ ] add logbook page
+    - [ ] add a comment + reactions section
+- [ ] dark/light mode switch?
