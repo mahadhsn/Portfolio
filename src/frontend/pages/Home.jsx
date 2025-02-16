@@ -55,8 +55,8 @@ const Home = () => {
 
         <p className='mb-6'>
           At the heart of it all, I believe in constant self-improvement. As <span className='font-light'>Boonaa Mohammed</span> once 
-          said, <span className='italic font-semibold'> "If the whole world was blind, how many people you impress?"</span>. This
-          quote has always helped me focus growth and impact over vanity and 
+          said, <span className='italic font-semibold'> "If the whole world was blind, how many people would you impress?"</span>. This
+          quote has always helped me focus on growth and impact over vanity and 
           ego. <span className='font-light'>(check out more below!)</span>
         </p>
 
