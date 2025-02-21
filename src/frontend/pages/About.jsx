@@ -71,6 +71,11 @@ const About = () => {
               a <a href='https://housing.mcmaster.ca/housing-conference-services/careers/gra-esa/' target="_blank" rel="noopener noreferrer" className='underline'>GRA & ESA</a> for 
               student life under McMaster HCS 🏢
             </li>
+            <li>
+              Developing an app 
+              for <a href="https://www.scleroderma.ca" target="_blank" rel="noopener noreferrer" className='underline'>Scleroderma Canada</a> partnered with
+              Tech4Good and the McMaster iBioSociety to help patients 📱
+            </li>
           </ul>
           
           <span className='text-2xl md:text-3xl'>
