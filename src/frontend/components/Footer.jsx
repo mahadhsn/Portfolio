@@ -49,7 +49,7 @@ const Footer = () => {
 
       <div className='text-center text-white py-4'>
         <p></p>
-        <p>mahadhssn &copy; 2025 | Updated: 16/2/2025</p>
+        <p>mahadhssn &copy; 2025 | Updated: 20/2/2025</p>
       </div>
 
     </footer>
