@@ -3,6 +3,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Layout from './components/Layout';
 import Projects from './pages/Projects';
+import Logbook from './pages/Logbook';
 import Resume from './pages/Resume';
 import Contact from './pages/Contact';
 
@@ -16,6 +17,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/logbook" element={<Logbook />} />
             <Route path="/resume" element={<Resume />} />
             <Route path="/contact" element={<Contact />} />
           </Route>

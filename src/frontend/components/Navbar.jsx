@@ -33,6 +33,16 @@ const Navbar = () => {
         }`}>
         <button>projects</button>
       </Link>
+
+      <span className="md:hidden"> | </span>
+
+      <Link
+        to="/logbook"
+        className={`transition-all duration-300 ease-in-out ${
+          location.pathname === '/logbook' ? 'text-cyan-500' : 'hover:text-cyan-700'
+        }`}>
+        <button>logbook</button>
+      </Link>
       
       <span className="md:hidden"> | </span>
 
