@@ -63,8 +63,8 @@ const About = () => {
               for <a href='https://www.instagram.com/voicesatmac/' target="_blank" rel="noopener noreferrer" className='underline'>VoicesatMac</a> helping
               initialize the club and host interviews with various people of all backgrounds 🎤
             </li>
-            <li> Aided in the admissions process for <a href='https://www.deltahacks.com' target="_blank" rel="noopener noreferrer" className='underline'>DeltaHacks</a> as
-             an Attendee Relations Executive 💻
+            <li> Attendee Relations Executive for <a href='https://www.deltahacks.com' target="_blank" rel="noopener noreferrer" className='underline'>DeltaHacks</a> aiding in the admissions for the 
+            hackathon 💻
               
             </li>
             <li> Working part-time as 
