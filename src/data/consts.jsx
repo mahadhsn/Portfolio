@@ -16,6 +16,7 @@ export const greetings = [
     { text: "Hey", flag: null },  
     { text: "Hola", flag: "🇪🇸" }, 
     { text: "Bonjour", flag: "🇫🇷" },
+    { text: "Merhaba", flag: "🇹🇷" },
     { text: "Hallo", flag: "🇩🇪" }, 
     { text: "Ciao", flag: "🇮🇹" }, 
     { text: "Olá", flag: "🇧🇷" }, 
@@ -23,6 +24,7 @@ export const greetings = [
     { text: "سلام", flag: "🇵🇰" },
     { text: "こんにちは", flag: "🇯🇵" }, 
     { text: "안녕하세요", flag: "🇰🇷" },
+
   ];
 
 export const hobbies = [
