@@ -11,5 +11,4 @@ To Do:
 - [x] contact page 
     - [ ] add daily email limit
 - [ ] add logbook page
-    - [ ] add a comment + reactions section
 - [ ] dark/light mode switch?
