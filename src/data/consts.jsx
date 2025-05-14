@@ -51,7 +51,6 @@ export const shortGoals = [
   "attending more hackathons 💻",
   "learning how to surf 🏄",
   "cooking a new dish every week 😋",
-  "getting an internship in the tech industry 🤖",
   "go scuba diving 🤿",
   "mastering snowboarding 🏂",
 ]
