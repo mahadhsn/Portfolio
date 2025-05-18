@@ -19,6 +19,15 @@ const Projects = () => {
         <hr></hr>
 
         <h2 className='text-2xl md:text-3xl text-left underline mt-8'>
+          <a href='https://github.com/mahadhsn/A2-Recue-Mission-T11' target="_blank" rel="noopener noreferrer">
+             Drone Rescue Mission
+          </a>
+        </h2>
+        <p className='mb-6'>
+          Drone controller uses states and strategies to rescue a drone in Java
+        </p>
+
+        <h2 className='text-2xl md:text-3xl text-left underline'>
           <a href='https://github.com/mahadhsn/C-View' target="_blank" rel="noopener noreferrer">
              C-View 
           </a>

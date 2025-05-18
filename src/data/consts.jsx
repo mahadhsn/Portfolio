@@ -16,6 +16,7 @@ export const greetings = [
     { text: "Hey", flag: null },  
     { text: "Hola", flag: "🇪🇸" }, 
     { text: "Bonjour", flag: "🇫🇷" },
+    { text: "Merhaba", flag: "🇹🇷" },
     { text: "Hallo", flag: "🇩🇪" }, 
     { text: "Ciao", flag: "🇮🇹" }, 
     { text: "Olá", flag: "🇧🇷" }, 
@@ -23,6 +24,7 @@ export const greetings = [
     { text: "سلام", flag: "🇵🇰" },
     { text: "こんにちは", flag: "🇯🇵" }, 
     { text: "안녕하세요", flag: "🇰🇷" },
+
   ];
 
 export const hobbies = [
@@ -49,7 +51,6 @@ export const shortGoals = [
   "attending more hackathons 💻",
   "learning how to surf 🏄",
   "cooking a new dish every week 😋",
-  "getting an internship in the tech industry 🤖",
   "go scuba diving 🤿",
   "mastering snowboarding 🏂",
 ]
