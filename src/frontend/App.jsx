@@ -6,6 +6,7 @@ import Projects from './pages/Projects';
 import Logbook from './pages/Logbook';
 import Resume from './pages/Resume';
 import Contact from './pages/Contact';
+import Who from './pages/Whos_This_Guy_Anyway'
 
 export default function App() {
   return (
@@ -17,7 +18,10 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects />} />
+
             <Route path="/logbook" element={<Logbook />} />
+            <Route path="/whos this guy anyway" element={<Who />} />
+
             <Route path="/resume" element={<Resume />} />
             <Route path="/contact" element={<Contact />} />
           </Route>
