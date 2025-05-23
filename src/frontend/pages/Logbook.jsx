@@ -38,9 +38,6 @@ const Logbook = () => {
         <button>about</button>
       </Link>
       </li>
-      
-
-
 
     </div>
   )
