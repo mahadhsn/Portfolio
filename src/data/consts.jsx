@@ -1,3 +1,17 @@
+export const theme = {
+  dark: {
+    background: "#1a1a1a",
+    text: "#f0f0f0",
+    accent: "#ffcc00",
+    accentHover: "#e6b800",
+  },
+  light: {
+    background: "#f0f0f0",
+    text: "#1a1a1a",
+    accent: "#ffcc00",
+    accentHover: "#e6b800",
+  },
+}
 
 export const cornerOptions = [
     "corner of the internet",
