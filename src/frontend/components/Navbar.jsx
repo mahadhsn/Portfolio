@@ -6,11 +6,14 @@ const Navbar = () => {
   const location = useLocation();
 
   return (
-    <nav className="md:text-xl text-lg text-white border-r-5 flex flex-row md:flex-col items-center justify-center mobile:space-x-2 md:items-end md:space-y-4 md:py-4">
+    <nav className="md:text-xl text-lg text-text_color border-r-5 flex flex-row md:flex-col items-center justify-center mobile:space-x-2 md:items-end md:space-y-4 md:py-4">
+
+      <ThemeToggle />
+
       <Link
         to="/"
         className={`transition-all duration-300 ease-in-out ${
-          location.pathname === '/' ? 'text-cyan-500' : 'hover:text-cyan-700'
+          location.pathname === '/' ? 'text-accent' : 'hover:text-hover'
         }`}>
         <button>home</button>
       </Link>
@@ -55,7 +58,6 @@ const Navbar = () => {
         <button>contact</button>
       </Link>
 
-      <ThemeToggle />
     </nav>
   );
 };

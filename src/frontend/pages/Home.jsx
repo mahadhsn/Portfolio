@@ -19,9 +19,9 @@ const Home = () => {
 
   return (
 
-    <div className='text-white flex flex-col opacity-0 animate-fade-in mt-[5%] md:mt-[18%]'>
+    <div className='flex flex-col opacity-0 animate-fade-in mt-[5%] md:mt-[18%]'>
 
-    <h1 className='text-3xl md:text-5xl text-center mb-7 flex items-center justify-center'>
+    <h1 className='text-3xl md:text-5xl text-center mb-7 flex items-center justify-center text-text_color'>
       <span className='cursor-pointer relative flex items-center -mb-5' onClick={handleGreetingClick}>
         {currentGreeting.flag && (
           <span className="mr-2 select-none flex items-center">
@@ -38,7 +38,7 @@ const Home = () => {
       <span className='ml-2'>I'm Mahad</span>
     </h1>
 
-      <span className='text-lg md:text-xl'>
+      <span className='text-lg md:text-xl text-text_color'>
         <p className='mb-6'>
           Welcome to my <span className=''><ChangeWord list={cornerOptions}/></span>
           , where the code is clean and the coffee is strong.
@@ -65,7 +65,8 @@ const Home = () => {
           at <a href='mailto:mahadhassan.hello@gmail.com' target="_blank" rel="noopener noreferrer" className='underline'>mahadhassan.hello@gmail.com</a>
             . I'm always open to new opportunities and collaborations! 🚀
         </p>
-        </span>
+      </span>
+      
         <Quotes />
 
     </div>

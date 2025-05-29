@@ -26,7 +26,7 @@ const Quotes = () => {
   }, []);
 
   return (
-    <div className="quote-container text-center p-6 mx-auto max-w-2xl bg-neutral-900-50 text-white rounded-lg shadow-lg">
+    <div className="quote-container text-center p-6 mx-auto max-w-2xl bg-background-50 text-text_color rounded-lg shadow-lg">
       {isLoading ? (
         <p className="text-lg font-light">Loading...</p>
       ) : (

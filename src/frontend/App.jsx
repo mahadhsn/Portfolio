@@ -8,7 +8,7 @@ import Contact from './pages/Contact';
 
 export default function App() {
   return (
-    <div className='bg-neutral-900'>
+    <div className='light'>
       <Router>
         <Routes>
           

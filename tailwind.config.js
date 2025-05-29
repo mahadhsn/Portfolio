@@ -18,6 +18,16 @@ export default {
       '2xl': '1536px',
     },
     extend: {
+      colors: {
+        background: "rgba(var(--background)",
+        text_color: "rgba(var(--text)",
+        primary: "rgba(var(--primary)",
+        secondary: "rgba(var(--secondary)",
+        accent: "rgba(var(--accent)",
+        hover: "rgba(var(--hover)",
+        border: "rgba(var(--border)",
+        error: "rgba(var(--error)",
+      },
       animation: {
         bop: "bop 2s ease-in-out infinite",
         gradient: "gradient 3s ease infinite",

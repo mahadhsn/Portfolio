@@ -5,10 +5,40 @@
 
 :root {
   font-family: 'Alegreya Sans', sans-serif;
+  @apply bg-neutral-900;
+}
+
+.light{
+  --background: 200, 200, 200;
+  --text_color: 51, 51, 51;
+
+  --primary: 0, 123, 255;
+  --secondary: 108, 117, 125;
+  
+  --accent: 239,68,68;
+  --hover: 252,165,165;
+  --border: 115,115,115;
+  --error: 207, 102, 121;
+
+  background: rgba(var(--background));
+}
+
+.dark{
+  --background: 23, 23, 23;
+  --text_color: 255,255,255;
+
+  --primary: 187, 134, 252;
+  --secondary: 3, 218, 198;
+  
+  --accent: 239,68,68;
+  --hover: 252,165,165;
+  --border: 115,115,115;
+  --error: 207, 102, 121;
+
+  background: rgba(var(--background));
 }
 
 html, body {
-  @apply bg-neutral-900;
   scrollbar-width: none;
 }
 
