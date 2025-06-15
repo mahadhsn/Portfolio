@@ -20,7 +20,7 @@ export default {
     extend: {
       colors: {
         background: "rgba(var(--background)",
-        text_color: "rgba(var(--text)",
+        textcolor: "rgba(var(--text)",
         primary: "rgba(var(--primary)",
         secondary: "rgba(var(--secondary)",
         accent: "rgba(var(--accent)",
