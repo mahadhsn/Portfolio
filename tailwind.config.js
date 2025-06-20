@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 export default {
+  darkMode: 'class',
   content: [
     "./src/index.html",
     "./src/frontend/*.{js,ts,jsx,tsx}",
@@ -18,6 +19,31 @@ export default {
       '2xl': '1536px',
     },
     extend: {
+      colors: {
+        bglight: "rgb(var(--bglight) / <alpha-value>)",
+        bgdark: "rgb(var(--bgdark) / <alpha-value>)",
+
+        textlight: "rgb(var(--textlight) / <alpha-value>)",
+        textdark: "rgb(var(--textdark) / <alpha-value>)",
+
+        primarylight: "rgb(var(--primarylight) / <alpha-value>)",
+        primarydark: "rgb(var(--primarydark) / <alpha-value>)",
+
+        secondarylight: "rgb(var(--secondarylight) / <alpha-value>)",
+        secondarydark: "rgb(var(--secondarydark) / <alpha-value>)",
+
+        accentlight: "rgb(var(--accentlight) / <alpha-value>)",
+        accentdark: "rgb(var(--accentdark) / <alpha-value>)",
+
+        accenthoverlight: "rgb(var(--accenthoverlight) / <alpha-value>)",
+        accenthoverdark: "rgb(var(--accenthoverdark) / <alpha-value>)",
+
+        borderlight: "rgb(var(--borderlight) / <alpha-value>)",
+        borderdark: "rgb(var(--borderdark) / <alpha-value>)",
+        
+        errorlight: "rgb(var(--errorlight) / <alpha-value>)",
+        errordark: "rgb(var(--errordark) / <alpha-value>)",
+      },
       animation: {
         bop: "bop 2s ease-in-out infinite",
         gradient: "gradient 3s ease infinite",

@@ -5,11 +5,33 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
+  --bglight: 228 228 231;
+  --textlight: 51 51 51;
+  --primarylight: 0 123 255;
+  --secondarylight: 108 117 125;
+  --accentlight: 239 68 68;
+  --accenthoverlight: 252 165 165;
+  --borderlight: 115 115 115;
+  --errorlight: 207 102 121;
+  
+  font-family: 'Alegreya Sans', sans-serif;
+}
+
+.dark{
+  --bgdark: 23 23 23;
+  --textdark: 255 255 255;
+  --primarydark: 187 134 252;
+  --secondarydark: 3 218 198;
+  --accentdark: 239 68 68;
+  --accenthoverdark: 252 165 165;
+  --borderdark: 115 115 115;
+  --errordark: 207 102 121;
+
   font-family: 'Alegreya Sans', sans-serif;
 }
 
 html, body {
-  @apply bg-neutral-900;
+  @apply bg-[rgb(var(--bglight))] dark:bg-[rgb(var(--bgdark))];
   scrollbar-width: none;
 }
 
