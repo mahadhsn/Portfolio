@@ -6,11 +6,11 @@ import Projects from './pages/Projects';
 import Logbook from './pages/Logbook';
 import Resume from './pages/Resume';
 import Contact from './pages/Contact';
-import Who from './pages/logs/Whos_This_Guy_Anyway'
+import Intro from './pages/logs/Intro'
 
 export default function App() {
   return (
-    <div className=''>
+    <div className='bg-bglight dark:bg-bgdark'>
       <Router>
         <Routes>
           
@@ -20,7 +20,7 @@ export default function App() {
             <Route path="/projects" element={<Projects />} />
 
             <Route path="/logbook" element={<Logbook />} />
-            <Route path="/logbook/whos-this-guy-anyway" element={<Who />} />
+            <Route path="/logbook/intro" element={<Intro />} />
 
             <Route path="/resume" element={<Resume />} />
             <Route path="/contact" element={<Contact />} />
