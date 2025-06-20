@@ -7,8 +7,8 @@ Inspired by [Quinn Ha](https://x.com/qvinnh)
 To Do:
 - [x] about page
     - [ ] hover image function
-    - [ ] skills section
+    - ~~[ ] skills section~~
 - [x] contact page 
-    - [ ] add daily email limit
+    - [ ] add daily email limit (no need)
+- [x] dark/light mode switch?
 - [ ] add logbook page
-- [ ] dark/light mode switch?
