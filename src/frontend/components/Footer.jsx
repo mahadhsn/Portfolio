@@ -3,9 +3,9 @@ import { FaLinkedin, FaGithub, FaEnvelope, FaInstagram, FaTiktok } from 'react-i
 
 const Footer = () => {
   return (
-    <footer className="">
+    <footer className="text-textlight dark:text-textdark">
       
-      <div className='flex justify-center items-center space-x-6 py-3 text-white'>
+      <div className='flex justify-center items-center space-x-6 py-3'>
         <a 
           href="mailto:mahadhassan.hello@gmail.com" 
           target="_blank" 
@@ -47,9 +47,9 @@ const Footer = () => {
         </a>
       </div>
 
-      <div className='text-center text-white py-4'>
+      <div className='text-center py-4'>
         <p></p>
-        <p>mahadhssn &copy; 2025 | Updated: 14/5/2025</p>
+        <p>mahadhssn &copy; 2025 | Updated: 20/6/2025</p>
       </div>
 
     </footer>

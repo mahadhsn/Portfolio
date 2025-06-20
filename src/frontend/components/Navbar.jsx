@@ -6,7 +6,7 @@ const Navbar = () => {
   const location = useLocation();
 
   return (
-    <nav className="md:text-xl text-lg text-white border-r-5 flex flex-row md:flex-col items-center justify-center mobile:space-x-2 md:items-end md:space-y-4 md:py-4">
+    <nav className="md:text-xl text-lg text-textlight dark:text-textdark border-r-5 flex flex-row md:flex-col items-center justify-center mobile:space-x-2 md:items-end md:space-y-4 md:py-4">
       
       <ThemeToggle />
 
@@ -15,8 +15,11 @@ const Navbar = () => {
       <Link
         to="/"
         className={`transition-all duration-300 ease-in-out ${
-          location.pathname === '/' ? 'text-cyan-500' : 'hover:text-cyan-700'
-        }`}>
+          location.pathname === '/'
+            ? 'text-accentlight dark:text-accentdark'
+            : 'hover:text-accenthoverlight dark:hover:text-accenthoverdark'
+        }`}
+      >
         <button>home</button>
       </Link>
 
@@ -25,8 +28,11 @@ const Navbar = () => {
       <Link
         to="/about"
         className={`transition-all duration-300 ease-in-out ${
-          location.pathname === '/about' ? 'text-cyan-500' : 'hover:text-cyan-700'
-        }`}>
+          location.pathname === '/about' 
+          ? 'text-accentlight dark:text-accentdark'
+            : 'hover:text-accenthoverlight dark:hover:text-accenthoverdark'
+        }`}
+      >
         <button>about</button>
       </Link>
 
@@ -35,8 +41,11 @@ const Navbar = () => {
       <Link
         to="/projects"
         className={`transition-all duration-300 ease-in-out ${
-          location.pathname === '/projects' ? 'text-cyan-500' : 'hover:text-cyan-700'
-        }`}>
+          location.pathname === '/projects' 
+          ? 'text-accentlight dark:text-accentdark'
+            : 'hover:text-accenthoverlight dark:hover:text-accenthoverdark'
+        }`}
+      >
         <button>projects</button>
       </Link>
       
@@ -45,8 +54,11 @@ const Navbar = () => {
       <Link
         to="/resume"
         className={`transition-all duration-300 ease-in-out ${
-          location.pathname === '/resume' ? 'text-cyan-500' : 'hover:text-cyan-700'
-        }`}>
+          location.pathname === '/resume' 
+          ? 'text-accentlight dark:text-accentdark'
+            : 'hover:text-accenthoverlight dark:hover:text-accenthoverdark'
+        }`}
+      >
         <button>resume</button>
       </Link>
       
@@ -55,8 +67,11 @@ const Navbar = () => {
       <Link
         to="/contact"
         className={`transition-all duration-300 ease-in-out ${
-          location.pathname === '/contact' ? 'text-cyan-500' : 'hover:text-cyan-700'
-        }`}>
+          location.pathname === '/contact' 
+          ? 'text-accentlight dark:text-accentdark'
+            : 'hover:text-accenthoverlight dark:hover:text-accenthoverdark'
+        }`}
+      >
         <button>contact</button>
       </Link>
     </nav>

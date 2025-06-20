@@ -24,7 +24,10 @@ const PDFViewer = () => {
           <a
             href="/mahadresume.pdf"
             download="mahadresume.pdf"
-            className="mt-4 px-6 py-2 bg-cyan-500 text-white rounded-lg hover:bg-cyan-700 transition duration-300"
+            className="mt-4 px-6 py-2 rounded-lg transition duration-300
+            bg-accentlight dark:bg-accentdark
+            text-textlight dark:text-textdark 
+            hover:bg-accenthoverlight dark:hover:bg-accenthoverdark "
           >
             Download Resume
           </a>
@@ -36,7 +39,10 @@ const PDFViewer = () => {
           <a
             href="/mahadresume.pdf"
             download="mahadresume.pdf"
-            className="mt-4 px-6 py-2 bg-cyan-500 text-white rounded-lg hover:bg-cyan-700 transition duration-300"
+            className="mt-4 px-6 py-2 transition duration-300 rounded-lg 
+            bg-[rgb(var(--primarylight))] dark:bg-[rgb(var(--primarydark))] 
+            text-[rgb(var(--textlight))] dark:text-[rgb(var(--textdark))] 
+            hover:bg-[rgb(var(--accenthoverlight))] dark:hover:bg-[rgb(var(--accenthoverdark))] "
           >
             Download Resume
           </a>

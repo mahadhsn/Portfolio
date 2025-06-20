@@ -7,7 +7,7 @@ const ThemeToggle = () => {
   return (
     <button
         onClick={toggleTheme}
-        className="text-textlight dark:text-textdark"
+        className="text-textlight dark:text-textdark transition-all duration-300 ease-in-out"
     >
         {isDark ? 'moon' : 'sun'}
     </button>

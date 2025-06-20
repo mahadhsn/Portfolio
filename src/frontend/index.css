@@ -5,12 +5,12 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --bglight: 228 228 231;
+  --bglight: 212 212 216;
   --textlight: 51 51 51;
   --primarylight: 0 123 255;
   --secondarylight: 108 117 125;
-  --accentlight: 239 68 68;
-  --accenthoverlight: 252 165 165;
+  --accentlight: 20 184 166;          /* teal-500 */
+  --accenthoverlight: 15 118 110;     /* teal-700 */
   --borderlight: 115 115 115;
   --errorlight: 207 102 121;
   
@@ -23,7 +23,7 @@
   --primarydark: 187 134 252;
   --secondarydark: 3 218 198;
   --accentdark: 239 68 68;
-  --accenthoverdark: 252 165 165;
+  --accenthoverdark: 185 28 28;
   --borderdark: 115 115 115;
   --errordark: 207 102 121;
 
