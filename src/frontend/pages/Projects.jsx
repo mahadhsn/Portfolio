@@ -8,7 +8,7 @@ const Projects = () => {
 
 
   return (
-    <div className='text-white animate-fade-in mt-[10%] md:mt-[20%]'>
+    <div className='text-textlight dark:text-textdark animate-fade-in mt-[10%] md:mt-[20%]'>
       <span className='md:text-xl text-lg'>
         
         <h2 className='text-lg md:text-xl mb-4'>
