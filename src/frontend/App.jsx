@@ -10,7 +10,7 @@ import Who from './pages/Whos_This_Guy_Anyway'
 
 export default function App() {
   return (
-    <div className='bg-neutral-900'>
+    <div className=''>
       <Router>
         <Routes>
           
