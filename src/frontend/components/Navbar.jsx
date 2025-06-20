@@ -6,7 +6,7 @@ const Navbar = () => {
   const location = useLocation();
 
   return (
-    <nav className="md:text-xl text-lg text-textlight dark:text-textdark border-r-5 flex flex-row md:flex-col items-center justify-center mobile:space-x-2 md:items-end md:space-y-4 md:py-4">
+    <nav className="md:text-xl text-lg text-textlight dark:text-textdark flex flex-row md:flex-col items-center justify-center mobile:space-x-2 md:items-end md:space-y-4 md:py-4">
       
       <ThemeToggle />
 
@@ -54,7 +54,7 @@ const Navbar = () => {
       <Link
         to="/logbook"
         className={`transition-all duration-300 ease-in-out ${
-          location.pathname === '/logbook' 
+          location.pathname.startsWith('/logbook') 
           ? 'text-accentlight dark:text-accentdark'
             : 'hover:text-accenthoverlight dark:hover:text-accenthoverdark'
         }`}>
