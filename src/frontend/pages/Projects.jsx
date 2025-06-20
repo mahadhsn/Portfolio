@@ -8,7 +8,7 @@ const Projects = () => {
 
 
   return (
-    <div className='text-white animate-fade-in mt-[10%] md:mt-[20%]'>
+    <div className='text-textlight dark:text-textdark animate-fade-in mt-[10%] md:mt-[20%] transition-all duration-300 ease-in-out'>
       <span className='md:text-xl text-lg'>
         
         <h2 className='text-lg md:text-xl mb-4'>
@@ -16,7 +16,7 @@ const Projects = () => {
           my <a href='https://github.com/mahadhsn' target='_blank' rel='noopener noreferrer' className='underline'>Github!</a> 🚀
         </h2>
 
-        <hr></hr>
+        <hr className='border-textlight dark:border-textdark'></hr>
 
         <h2 className='text-2xl md:text-3xl text-left underline mt-8'>
           <a href='https://github.com/mahadhsn/A2-Recue-Mission-T11' target="_blank" rel="noopener noreferrer">

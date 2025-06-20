@@ -50,12 +50,12 @@ const Contact = () => {
   };
 
   return (
-    <div className='text-white animate-fade-in flex flex-col items-center w-full -mt-2 md:mt-[10%]'>
+    <div className='text-textlight dark:text-textdark animate-fade-in flex flex-col items-center w-full -mt-2 md:mt-[10%]'>
       <h2 className='text-2xl md:text-3xl font-bold mb-4 text-left'>Contact Me</h2>
 
       <hr className=''></hr>
 
-      <form className='w-full max-w-md bg-neutral-800 p-6 rounded-lg shadow-lg' onSubmit={handleSubmit}>
+      <form className='w-full max-w-md bg-secondarybglight dark:bg-secondarybgdark p-6 rounded-lg shadow-lg' onSubmit={handleSubmit}>
         <div className="mb-4">
             <label htmlFor="firstName" className="block text-lg font-semibold">First Name</label>
             <input
@@ -75,7 +75,7 @@ const Contact = () => {
             id="lastName"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
-            className="w-full p-2 border-2 border-gray-300 rounded-md text-black"
+            className="w-full p-2 border-2 rounded-md text-black"
             placeholder="Enter your last name"
             required
           />
@@ -87,7 +87,7 @@ const Contact = () => {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-2 border-2 border-gray-300 rounded-md text-black"
+            className="w-full p-2 border-2 rounded-md text-black"
             placeholder="Enter your email"
             required
           />
@@ -98,7 +98,7 @@ const Contact = () => {
             id="subject"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
-            className="w-full p-2 border-2 border-gray-300 rounded-md text-black"
+            className="w-full p-2 border-2 rounded-md text-black"
             placeholder="Enter the subject"
             rows="8"
             required
@@ -110,7 +110,7 @@ const Contact = () => {
           className={`w-full p-2 rounded-md transition-all duration-300 ease-in-out ${
             isSubmitting
               ? 'bg-gray-400 cursor-not-allowed'
-              : 'bg-cyan-500 text-white hover:bg-cyan-700'
+              : 'bg-accentlight dark:bg-accentdark hover:bg-accenthoverlight dark:hover:bg-accenthoverdark'
           }`}
         >
           {isSubmitting ? 'Sending...' : 'Send Message'}
