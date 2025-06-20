@@ -19,7 +19,7 @@ const Home = () => {
 
   return (
 
-    <div className='text-textlight dark:text-textdark flex flex-col opacity-0 animate-fade-in mt-[5%] md:mt-[18%]'>
+    <div className='text-textlight dark:text-textdark flex flex-col opacity-0 animate-fade-in mt-[5%] md:mt-[18%] transition-all duration-300 ease-in-out'>
 
     <h1 className='text-3xl md:text-5xl text-center mb-7 flex items-center justify-center'>
       <span className='cursor-pointer relative flex items-center -mb-5' onClick={handleGreetingClick}>

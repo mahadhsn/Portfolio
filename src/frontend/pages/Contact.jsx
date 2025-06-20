@@ -75,7 +75,7 @@ const Contact = () => {
             id="lastName"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
-            className="w-full p-2 border-2 border-gray-300 rounded-md text-black"
+            className="w-full p-2 border-2 rounded-md text-black"
             placeholder="Enter your last name"
             required
           />
@@ -87,7 +87,7 @@ const Contact = () => {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-2 border-2 border-gray-300 rounded-md text-black"
+            className="w-full p-2 border-2 rounded-md text-black"
             placeholder="Enter your email"
             required
           />
@@ -98,7 +98,7 @@ const Contact = () => {
             id="subject"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
-            className="w-full p-2 border-2 border-gray-300 rounded-md text-black"
+            className="w-full p-2 border-2 rounded-md text-black"
             placeholder="Enter the subject"
             rows="8"
             required
@@ -110,7 +110,7 @@ const Contact = () => {
           className={`w-full p-2 rounded-md transition-all duration-300 ease-in-out ${
             isSubmitting
               ? 'bg-gray-400 cursor-not-allowed'
-              : 'bg-cyan-500 text-white hover:bg-cyan-700'
+              : 'bg-accentlight dark:bg-accentdark hover:bg-accenthoverlight dark:hover:bg-accenthoverdark'
           }`}
         >
           {isSubmitting ? 'Sending...' : 'Send Message'}

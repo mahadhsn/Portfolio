@@ -11,7 +11,7 @@ const About = () => {
   })
 
   return (
-    <div className='text-textlight dark:text-textdark animate-fade-in mt-10 md:mt-[20%]'>
+    <div className='text-textlight dark:text-textdark animate-fade-in mt-10 md:mt-[20%] transition-all duration-300 ease-in-out'>
 
       <div className='flex flex-col items-center justify-center align-middle mb-4'>
         <div className='image-wrapper'>
@@ -20,7 +20,7 @@ const About = () => {
           <p className='text-center text-gray-500 text-m md:text-lg mt-2'>Me at a Daniel Caeser concert!</p>
       </div>
       
-      <hr className='text-textlight dark:t-textdark'></hr>
+      <hr className='border-textlight dark:border-textdark'></hr>
 
       <div className='text-lg md:text-xl'>
         <p className='mt-8'>
