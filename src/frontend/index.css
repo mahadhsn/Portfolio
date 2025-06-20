@@ -32,9 +32,10 @@
   font-family: 'Alegreya Sans', sans-serif;
 }
 
-html, body {
+html, body, #root {
   @apply bg-[rgb(var(--bglight))] dark:bg-[rgb(var(--bgdark))];
   scrollbar-width: none;
+  height: 100%;
 }
 
 body::-webkit-scrollbar {
