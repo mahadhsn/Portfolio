@@ -50,12 +50,12 @@ const Contact = () => {
   };
 
   return (
-    <div className='text-white animate-fade-in flex flex-col items-center w-full -mt-2 md:mt-[10%]'>
+    <div className='text-textlight dark:text-textdark animate-fade-in flex flex-col items-center w-full -mt-2 md:mt-[10%]'>
       <h2 className='text-2xl md:text-3xl font-bold mb-4 text-left'>Contact Me</h2>
 
       <hr className=''></hr>
 
-      <form className='w-full max-w-md bg-neutral-800 p-6 rounded-lg shadow-lg' onSubmit={handleSubmit}>
+      <form className='w-full max-w-md bg-secondarybglight dark:bg-secondarybgdark p-6 rounded-lg shadow-lg' onSubmit={handleSubmit}>
         <div className="mb-4">
             <label htmlFor="firstName" className="block text-lg font-semibold">First Name</label>
             <input

@@ -23,6 +23,9 @@ export default {
         bglight: "rgb(var(--bglight) / <alpha-value>)",
         bgdark: "rgb(var(--bgdark) / <alpha-value>)",
 
+        secondarybglight: "rgb(var(--seconadrybglight) / <alpha-value>)",
+        secondarybgdark: "rgb(var(--seconadrybgdark) / <alpha-value>)",
+
         textlight: "rgb(var(--textlight) / <alpha-value>)",
         textdark: "rgb(var(--textdark) / <alpha-value>)",
 
