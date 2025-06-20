@@ -1,11 +1,17 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   const location = useLocation();
 
   return (
     <nav className="md:text-xl text-lg text-white border-r-5 flex flex-row md:flex-col items-center justify-center mobile:space-x-2 md:items-end md:space-y-4 md:py-4">
+      
+      <ThemeToggle />
+
+      <span className="md:hidden"> | </span>
+
       <Link
         to="/"
         className={`transition-all duration-300 ease-in-out ${
