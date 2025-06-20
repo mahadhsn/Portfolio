@@ -54,7 +54,9 @@ const Navbar = () => {
       <Link
         to="/logbook"
         className={`transition-all duration-300 ease-in-out ${
-          location.pathname === '/logbook' ? 'text-cyan-500' : 'hover:text-cyan-700'
+          location.pathname === '/logbook' 
+          ? 'text-accentlight dark:text-accentdark'
+            : 'hover:text-accenthoverlight dark:hover:text-accenthoverdark'
         }`}>
         <button>logbook</button>
       </Link>
