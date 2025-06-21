@@ -18,7 +18,7 @@ const Logbook = () => {
   };
 
   const logs = [
-    { title: "Intro", path: "/logbook/intro", categories: ['life', 'career', 'school'], date: '2024-03-25', written_date: 'March 3rd, 2025' },
+    { title: "Intro", path: "/logbook/intro", categories: ['life'], date: '2024-06-21', written_date: 'June 21st, 2025' },
   ];
 
   return (
@@ -50,7 +50,7 @@ const Logbook = () => {
         {logs
           .filter((log) =>
             selectedCategories.length === 0 ||
-            log.categories.some((cat) => selectedCategories.includes(cat))
+            selectedCategories.every((cat) => log.categories.includes(cat))
           )
           .sort((a, b) => new Date(b.date) - new Date(a.date))
           .map((log) => (
