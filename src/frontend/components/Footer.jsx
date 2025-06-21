@@ -10,7 +10,7 @@ const Footer = () => {
           href="mailto:mahadhassan.hello@gmail.com" 
           target="_blank" 
           rel="noopener noreferrer" 
-          className="hover:text-cyan-500 transition-all duration-300">
+          className="hover:text-accenthoverlight hover:dark:text-accenthoverdark transition-all duration-300">
           <FaEnvelope size={24} />
         </a>
 
@@ -18,7 +18,7 @@ const Footer = () => {
           href="https://www.linkedin.com/in/mahad-hassan/" 
           target="_blank" 
           rel="noopener noreferrer" 
-          className="hover:text-cyan-500 transition-all duration-300">
+          className="hover:text-accenthoverlight hover:dark:text-accenthoverdark transition-all duration-300">
           <FaLinkedin size={24} />
         </a>
 
@@ -26,7 +26,7 @@ const Footer = () => {
           href="https://github.com/mahadhsn" 
           target="_blank" 
           rel="noopener noreferrer" 
-          className="hover:text-cyan-500 transition-all duration-300">
+          className="hover:text-accenthoverlight hover:dark:text-accenthoverdark transition-all duration-300">
           <FaGithub size={24} />
         </a>
 
@@ -34,7 +34,7 @@ const Footer = () => {
           href="https://www.instagram.com/mahadhssn/" 
           target="_blank" 
           rel="noopener noreferrer" 
-          className="hover:text-cyan-500 transition-all duration-300">
+          className="hover:text-accenthoverlight hover:dark:text-accenthoverdark transition-all duration-300">
           <FaInstagram size={24} />
         </a>
 
@@ -42,13 +42,12 @@ const Footer = () => {
           href="https://www.tiktok.com/@aguitarer" 
           target="_blank" 
           rel="noopener noreferrer" 
-          className="hover:text-cyan-500 transition-all duration-300">
+          className="hover:text-accenthoverlight hover:dark:text-accenthoverdark transition-all duration-300">
           <FaTiktok size={24} />
         </a>
       </div>
 
-      <div className='text-center py-4'>
-        <p></p>
+      <div className='text-center py-4 text-accentlight dark:text-accentdark'>
         <p>mahadhssn &copy; 2025 | Updated: 20/6/2025</p>
       </div>
 
