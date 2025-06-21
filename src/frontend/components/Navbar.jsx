@@ -6,7 +6,7 @@ const Navbar = () => {
   const location = useLocation();
 
   return (
-    <nav className="text-sm sm:text-sm md:text-lg text-textlight dark:text-textdark flex flex-row md:flex-col flex-wrap items-center justify-center gap-1 sm:gap-2 md:space-y-4 px-2 md:px-4 py-2 md:py-4 overflow-x-auto whitespace-nowrap">
+    <nav className="text-sm md:text-xl text-textlight dark:text-textdark flex flex-row md:flex-col items-center justify-center mobile:space-x-2 md:items-end md:space-y-4 md:py-4">
       
       <ThemeToggle />
 
