@@ -14,8 +14,8 @@ const About = () => {
     <div className='text-textlight dark:text-textdark animate-fade-in mt-10 md:mt-[20%] transition-all duration-300 ease-in-out'>
 
       <div className='flex flex-col items-center justify-center align-middle mb-4'>
-        <div className='image-wrapper'>
-          <img src='../../../images/about/me.jpg' alt='me' className='mb-1 size-1/2 rounded-lg'/>
+        <div style={styles.imageWrapper}>
+          <img style={styles.img} src='../../../images/about/me.jpg' alt='me' className='mb-1 size-1/2 rounded-lg'/>
         </div>
           <p className='text-center text-gray-500 text-m md:text-lg mt-2'>Me at a Daniel Caeser concert!</p>
       </div>
@@ -121,5 +121,23 @@ const About = () => {
     </div>
   )
 }
+
+const styles = {
+  imageWrapper: {
+    display: 'inline-block',
+    width: '50%',
+    padding: '4px',
+    paddingBottom: '0',
+    borderRadius: '12px',
+    background: 'linear-gradient(0deg, rgb(103, 0, 0), rgb(0, 192, 192))',
+    backgroundSize: '200% 200%',
+    animation: 'rotate-gradient 4s linear infinite',
+  },
+  img: {
+    display: 'block',
+    borderRadius: '8px',
+    width: '100%',
+  }
+};
 
 export default About
