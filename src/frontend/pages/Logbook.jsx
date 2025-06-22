@@ -66,6 +66,9 @@ const Logbook = () => {
           ))}
       </ul>
 
+      <p className="mt-20 -mb-20 text-sm text-center px-4 text-gray-500">
+        All opinions expressed here are my own and do not reflect the views of any affiliated organizations. All images used are my own unless otherwise stated.
+      </p>
     </div>
   )
 }
