@@ -1,6 +1,4 @@
-import React from 'react'
 import { useEffect } from 'react'
-import { Link } from 'react-router-dom';
 
 const Intro = () => {
     useEffect(() => {
@@ -16,11 +14,11 @@ const Intro = () => {
       <hr className='border-textlight dark:textdark mb-2'></hr>
 
       <div className='flex items-center justify-center font-semibold text-lg text-gray-500 mb-6'>
-        <p className=''> ~3 min read   |   June 21th, 2025</p> 
+        <p className=''> ~3 min read   |   June 21st, 2025</p> 
       </div>
 
       <div>
-        <img style={styles.img} src='../../../images/about/norway18.jpg'/>
+        <img style={styles.img} src='../../../images/logs/intro/norway18.jpg'/>
         <p style={styles.caption} className='mb-4'>Norway's Fjords, August 2018</p>
       </div>
       
