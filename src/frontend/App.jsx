@@ -7,6 +7,7 @@ import Logbook from './pages/Logbook';
 import Resume from './pages/Resume';
 import Contact from './pages/Contact';
 import Intro from './pages/logs/Intro'
+import Internship from './pages/logs/Internship';
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
 
             <Route path="/logbook" element={<Logbook />} />
             <Route path="/logbook/intro" element={<Intro />} />
+            <Route path='/logbook/internship' element={<Internship />} />
 
             <Route path="/resume" element={<Resume />} />
             <Route path="/contact" element={<Contact />} />
