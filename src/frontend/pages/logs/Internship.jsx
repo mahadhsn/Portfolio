@@ -29,19 +29,21 @@ const Internship = () => {
 
         <ol className='list-disc list-outside mb-4 text-lg space-y-2'>
         <li>
-          <span className='font-bold'>I am not some internship wizard</span> — You'll see people on LinkedIn with 7 FAANG internships who started coding out of birth
-          but that is not me. Think of this blog as a checklist for when you are looking to get employed. Checking off these things will likely increase your chances but can never
+          <span className='font-bold'>I am not some internship wizard</span> — You'll see people on LinkedIn with 7 FAANG internships who started coding out of the womb
+          but that's not me. The first time I ever touched code was actually somewhere in January of 2023. Think of this blog as a checklist for when you are looking to get employed. Checking these off will likely increase your chances but can never
           guarantee that you'll land one. These are just tips which I feel helped me land my first ever internship at TD. Hope for the best, but always prepare for the worst.
         </li>
         <li>
           <span className='font-bold'>A lot of it comes down to luck</span> — Even if you LeetCode in your sleep, nothing stops the hiring manager from picking a better qualified individual.
           Or even their old highschool buddy who's never touched code but has a great sense of humor. Focus on what is in your hands and leave the rest for fate to decide.
         </li>
+        </ol>
 
         <p className='text-lg mb-4'>
-        
+            Now that the disclaimers are out of the way, here are 5 key ways you can increase your chances of landing an internship (in no particular order):
         </p>
-      </ol>
+
+        <h1 className='text-2xl font-bold mb-2 underline'>Skillset</h1>
       
     </div>
   )
