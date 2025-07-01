@@ -16,7 +16,7 @@ const Intro = () => {
       <hr className='border-textlight dark:textdark mb-2'></hr>
 
       <div className='flex items-center justify-center font-semibold text-lg text-gray-500 mb-6'>
-        <p className=''> ~3 min read   |   June 21th, 2025</p> 
+        <p className=''> ~3 min read   |   June 21st, 2025</p> 
       </div>
 
       <div>
