@@ -47,7 +47,7 @@ const Intro = () => {
       </ol>
 
       <div className='mb-4'>
-        <h1 className='text-xl font-bold mb-2 underline'>Why?</h1>
+        <h1 className='text-2xl font-bold mb-2 underline'>Why?</h1>
         <p className='text-lg mb-2'>
           Frankly, idk. Also, the underlined words won't change every time you click them like they do on the main pages. It unfortunately
           takes too long (2 mins) to implement so that luxury is reserved for the main pages XD.
@@ -75,7 +75,7 @@ const Intro = () => {
       </div>
 
       <div className='mb-4'>
-        <h1 className='text-xl font-bold mb-2 underline'>Plans</h1>
+        <h1 className='text-2xl font-bold mb-2 underline'>Plans</h1>
         <p className='text-lg mb-4'>
           At this point, I wanna write about a lot but you know how that usually goes.
           I'll try to hold myself accountable and meet those standards but you never know.
@@ -106,7 +106,7 @@ const Intro = () => {
       </div>
       
       <div className='mb-4'>
-       <h1 className='text-xl font-bold mb-2 underline'>Reflection</h1>
+       <h1 className='text-2xl font-bold mb-2 underline'>Reflection</h1>
 
        <p className='text-lg mb-2'>
         I'm excited to see how this goes. I've seen countless portfolios on the internet with logbooks/blogs and they're always interesting to skim through.
