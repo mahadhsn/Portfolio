@@ -19,7 +19,7 @@ const Logbook = () => {
 
   const logs = [
     { title: "Intro", path: "/logbook/intro", categories: ['life'], date: '2025-06-21', written_date: 'June 21st, 2025' },
-    { title: "How to land an internship 101", path: "/logbook/internship", categories: ['career'], date: '2025-07-01', written_date: 'July 1st, 2025'}
+    { title: "How to land an internship 101", path: "/logbook/internship", categories: ['career'], date: '2025-07-07', written_date: 'July 7th, 2025'}
   ];
 
   return (
