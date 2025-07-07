@@ -1,6 +1,4 @@
-import React from 'react'
 import { useEffect } from 'react'
-import { Link } from 'react-router-dom';
 
 const Intro = () => {
     useEffect(() => {
@@ -20,7 +18,7 @@ const Intro = () => {
       </div>
 
       <div>
-        <img style={styles.img} src='../../../images/about/norway18.jpg'/>
+        <img style={styles.img} src='../../../images/logs/intro/norway18.jpg'/>
         <p style={styles.caption} className='mb-4'>Norway's Fjords, August 2018</p>
       </div>
       
@@ -118,7 +116,7 @@ const Intro = () => {
         If you made it this far, I appreciate you for doing so. I used to make YouTube videos back in 2018. 
         It was mainly a Fortnite gaming channel and I think I made around 5-10 videos with a few hundred subscribers before I quit.
         This just feels like a YouTube outro atp but thank you! If you have any feedback, suggestions, or just wanna chat,
-        feel free to reach out through the <a href='https://www.mahadhssn.com/#/contact' target="_blank" rel="noopener noreferrer" className='underline'>contact page :)</a>
+        feel free to reach out through the <a href='https://www.mahadhssn.com/#/contact' className='underline'>contact page :)</a>
        </p>
       </div>
 
