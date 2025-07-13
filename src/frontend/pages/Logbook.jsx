@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 
 const Logbook = () => {
@@ -19,7 +19,8 @@ const Logbook = () => {
 
   const logs = [
     { title: "Intro", path: "/logbook/intro", categories: ['life'], date: '2025-06-21', written_date: 'June 21st, 2025' },
-    { title: "How to land an internship 101", path: "/logbook/internship", categories: ['career'], date: '2025-07-07', written_date: 'July 7th, 2025'}
+    { title: "How to land an internship 101", path: "/logbook/internship", categories: ['career'], date: '2025-07-07', written_date: 'July 7th, 2025'},
+    { title: "Stress", path: "/logbook/stress", categories: ['life', 'school', 'career'], date: '2025-07-13', written_date: 'July 13th, 2025'}
   ];
 
   return (
