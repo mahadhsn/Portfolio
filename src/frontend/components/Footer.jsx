@@ -1,4 +1,3 @@
-import React from 'react';
 import { FaLinkedin, FaGithub, FaEnvelope, FaInstagram, FaTiktok } from 'react-icons/fa'; // Import the specific icons you need
 
 const Footer = () => {
@@ -48,7 +47,7 @@ const Footer = () => {
       </div>
 
       <div className='text-center py-4 text-accentlight dark:text-accentdark'>
-        <p>mahadhssn &copy; 2025 | Updated: 7/7/2025</p>
+        <p>mahadhssn &copy; 2025 | Updated: 13/7/2025</p>
       </div>
 
     </footer>
