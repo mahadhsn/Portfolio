@@ -1,12 +1,8 @@
 import fs from 'fs';
-import path from 'path';
 import csv from 'csv-parser';
-import { fileURLToPath } from 'url';
+import path from 'path';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const quotesFilePath = path.join(__dirname, '../data/quotes.csv');
+const quotesFilePath = path.join(process.cwd(), 'src/netlify/data/quotes.csv');
 
 export const handler = async (event, context) => {
   try {
