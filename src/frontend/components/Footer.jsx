@@ -47,7 +47,7 @@ const Footer = () => {
       </div>
 
       <div className='text-center py-4 text-accentlight dark:text-accentdark'>
-        <p>mahadhssn &copy; 2025 | Updated: 13/7/2025</p>
+        <p>mahadhssn &copy; 2025 | Updated: 16/7/2025</p>
       </div>
 
     </footer>
