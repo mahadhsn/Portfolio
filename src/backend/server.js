@@ -8,10 +8,7 @@ import fs from 'fs';
 import csv from 'csv-parser';
 import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const quotesFilePath = path.join(__dirname, 'quotes.csv');
+const quotesFilePath = path.join(path.dirname(fileURLToPath(import.meta.url)), 'quotes.csv');
 
 dotenv.config();
 
@@ -21,7 +18,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Serve static files from the root folder (two levels up from backend folder)
-app.use(express.static(path.join(__dirname, '../../'))); // This should point to the root directory
+app.use(express.static(path.join(path.dirname(fileURLToPath(import.meta.url)), '../../'))); // This should point to the root directory
 
 // Catch-all route to serve the index.html from the root directory
 
