@@ -1,20 +1,21 @@
-const express = require('express');
-const nodemailer = require('nodemailer');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const axios = require('axios');
-const dotenv = require('dotenv');
-const path = require('path');
-const fs = require('fs');
-const path = require('path');
-const csv = require('csv-parser');
+import express from 'express';
+import nodemailer from 'nodemailer';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import path from 'path';
+import fs from 'fs';
+import csv from 'csv-parser';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const quotesFilePath = path.join(__dirname, 'quotes.csv');
 
 dotenv.config();
 
 const app = express();
-const port = 5001;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -63,7 +64,7 @@ app.post('/api/contact', (req, res) => {
   });
 });
 
-exports.handler = async (event, context) => {
+export const handler = async (event, context) => {
   try {
     const quotes = await loadQuotesFromCSV();
     if (quotes.length === 0) {

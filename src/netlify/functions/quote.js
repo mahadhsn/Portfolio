@@ -1,10 +1,14 @@
-const fs = require('fs');
-const path = require('path');
-const csv = require('csv-parser');
+import fs from 'fs';
+import path from 'path';
+import csv from 'csv-parser';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const quotesFilePath = path.join(__dirname, '../data/quotes.csv');
 
-exports.handler = async (event, context) => {
+export const handler = async (event, context) => {
   try {
     const quotes = await loadQuotesFromCSV();
     if (quotes.length === 0) {
