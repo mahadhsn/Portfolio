@@ -15,7 +15,7 @@ const Layout = () => {
         <main className="w-full flex-1 flex md:max-w-[43%] justify-items-center mobile:max-w-[80%] mx-auto mb-4">
           <Outlet />
         </main>
-        
+
         {/* Footer */}
         <div className="">
           <Footer />
