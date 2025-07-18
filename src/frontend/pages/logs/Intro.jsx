@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";
+import Image from "../../components/Image";
 
 const Intro = () => {
   useEffect(() => {
@@ -8,7 +9,7 @@ const Intro = () => {
   return (
     <div className="text-textlight dark:text-textdark animate-fade-in mt-[5%] md:mt-[18%] w-full ml-5">
       <Helmet>
-        <title>Intro | Mahad Hassan</title>
+        <title>Intro Log</title>
         <meta name="description" content="Mahad Hassan's Intro Log." />
       </Helmet>
 
@@ -22,12 +23,12 @@ const Intro = () => {
         <p className=""> ~3 min read | June 21st, 2025</p>
       </div>
 
-      <div>
-        <img style={styles.img} src="../../../images/logs/intro/norway18.jpg" />
-        <p style={styles.caption} className="mb-4">
-          Norway's Fjords, August 2018
-        </p>
-      </div>
+      {/* Norway Picture */}
+      <Image
+        src="../../../images/logs/intro/norway18.jpg"
+        imgStyle={styles.img}
+        captionText="Norway's Fjords, August 2018"
+      />
 
       <p className="text-lg mb-4">
         Hello again :) Not sure how many people will even read this but I

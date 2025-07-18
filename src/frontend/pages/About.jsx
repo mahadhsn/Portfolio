@@ -1,4 +1,5 @@
 import ChangeWord from "../components/ChangeWord";
+import Image from "../components/Image";
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import {
@@ -17,26 +18,19 @@ const About = () => {
   return (
     <div className="text-textlight dark:text-textdark animate-fade-in mt-10 md:mt-[20%] transition-all duration-300 ease-in-out">
       <Helmet>
-        <title>About | Mahad Hassan</title>
+        <title>About Mahad</title>
         <meta
           name="description"
           content="About page of Mahad Hassan's software engineering portfolio."
         />
       </Helmet>
 
-      <div className="flex flex-col items-center justify-center align-middle mb-4">
-        <div style={styles.imageWrapper}>
-          <img
-            style={styles.img}
-            src="../../../images/about/me.jpg"
-            alt="me"
-            className="mb-1 size-1/2 rounded-lg"
-          />
-        </div>
-        <p className="text-center text-gray-500 text-m md:text-lg mt-2">
-          Me at a Daniel Caeser concert!
-        </p>
-      </div>
+      <Image
+        divStyle={styles.imageWrapper}
+        imgStyle={styles.img}
+        src="../../../images/about/me.jpg"
+        captionText="Me at a Daniel Caeser concert!"
+      />
 
       <hr className="border-textlight dark:border-textdark"></hr>
 

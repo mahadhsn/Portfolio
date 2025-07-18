@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-
 import { Helmet } from "react-helmet";
+import Image from "../../components/Image";
 
 const Internship = () => {
   useEffect(() => {
@@ -10,7 +10,7 @@ const Internship = () => {
   return (
     <div className="text-textlight dark:text-textdark animate-fade-in mt-[5%] md:mt-[18%] w-full text-lg">
       <Helmet>
-        <title>How to land an internship | Mahad Hassan</title>
+        <title>Internship Log</title>
         <meta
           name="description"
           content="Mahad Hassan's How to Land an Internship 101 Log"
@@ -31,15 +31,11 @@ const Internship = () => {
       </div>
 
       {/* TD Picture */}
-      <div className="mb-6">
-        <img
-          style={styles.img_portrait}
-          src="../../../images/logs/internship/TD_View.jpg"
-        />
-        <p style={styles.caption}>
-          The view from the 46th floor of TD Terrace, May 2025
-        </p>
-      </div>
+      <Image
+        src="../../../images/logs/internship/TD_View.jpg"
+        imgStyle={styles.img_portrait}
+        captionText="The view from the 46th floor of TD Terrace, May 2025"
+      />
 
       {/* Intro */}
       <div className="mb-6 space-y-2">
@@ -157,15 +153,11 @@ const Internship = () => {
         </div>
 
         {/* Facial Rec Pic */}
-        <div className="mb-6">
-          <img
-            style={styles.img_landscape}
-            src="../../../images/logs/internship/tech.PNG"
-          />
-          <p style={styles.caption}>
-            2nd place winning MacEngComp project, Nov 2024
-          </p>
-        </div>
+        <Image
+          src="../../../images/logs/internship/tech.PNG"
+          imgStyle={styles.img_landscape}
+          captionText="2nd place winning MacEngComp project, Nov 2024"
+        />
 
         <div className="space-y-2">
           <p className="mb-4">
@@ -273,42 +265,40 @@ const Internship = () => {
 
         {/* Resume Examples */}
         <div className="mb-6 flex flex-col gap-4">
-          <div className="flex flex-col items-center">
-            <img
-              style={styles.img_portrait}
-              src="../../../images/logs/internship/bad_resume.png"
-              alt="Bad Resume Example"
-            />
-            <p style={styles.caption}>
-              Bad resume example |{" "}
-              <a
-                href="https://enhancv.com/resume-examples/engineering/"
-                className="underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Enhancv.com
-              </a>
-            </p>
-          </div>
-          <div className="flex flex-col items-center">
-            <img
-              style={styles.img_portrait}
-              src="../../../images/logs/internship/good_resume.jpg"
-              alt="Good Resume Example"
-            />
-            <p style={styles.caption}>
-              Good resume example |{" "}
-              <a
-                href="https://medium.com/free-code-camp/writing-a-killer-software-engineering-resume-b11c91ef699d"
-                className="underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Medium.com
-              </a>
-            </p>
-          </div>
+          <Image
+            src="../../../images/logs/internship/bad_resume.png"
+            imgStyle={styles.img_portrait}
+            captionText={
+              <p style={styles.caption}>
+                Bad resume example |{" "}
+                <a
+                  href="https://enhancv.com/resume-examples/engineering/"
+                  className="underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Enhancv.com
+                </a>
+              </p>
+            }
+          />
+          <Image
+            src="../../../images/logs/internship/good_resume.jpg"
+            imgStyle={styles.img_portrait}
+            captionText={
+              <p style={styles.caption}>
+                Good resume example |{" "}
+                <a
+                  href="https://medium.com/free-code-camp/writing-a-killer-software-engineering-resume-b11c91ef699d"
+                  className="underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Medium.com
+                </a>
+              </p>
+            }
+          />
         </div>
 
         <div className="space-y-2">
@@ -571,23 +561,23 @@ const Internship = () => {
           </p>
         </div>
 
-        {/* Facial Rec Pic */}
-        <div className="mb-6">
-          <img
-            style={styles.img_landscape}
-            src="../../../images/logs/internship/star.png"
-          />
-          <p style={styles.caption}>
-            Star Method |{" "}
-            <a
-              href="https://www.free-power-point-templates.com/articles/star-interview-method/"
-              target="_blank"
-              className="underline"
-            >
-              free-power-point-templates.com
-            </a>
-          </p>
-        </div>
+        {/* Star Method Pic */}
+        <Image
+          src="../../../images/logs/internship/star.png"
+          imgStyle={styles.img_landscape}
+          captionText={
+            <p style={styles.caption}>
+              Star Method |{" "}
+              <a
+                href="https://www.free-power-point-templates.com/articles/star-interview-method/"
+                target="_blank"
+                className="underline"
+              >
+                free-power-point-templates.com
+              </a>
+            </p>
+          }
+        />
 
         {/* Behavioural */}
         <div className="mb-6 space-y-2">

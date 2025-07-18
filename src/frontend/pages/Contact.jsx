@@ -56,7 +56,7 @@ const Contact = () => {
   return (
     <div className="text-textlight dark:text-textdark animate-fade-in flex flex-col items-center w-full -mt-2 md:mt-[10%]">
       <Helmet>
-        <title>Contact | Mahad Hassan</title>
+        <title>Contact Mahad</title>
         <meta
           name="description"
           content="Contact page of Mahad Hassan's software engineering portfolio."
