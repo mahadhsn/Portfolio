@@ -32,6 +32,13 @@ const Logbook = () => {
       date: "2025-07-07",
       written_date: "July 7th, 2025",
     },
+    {
+      title: "Why Stress?",
+      path: "/logbook/stress",
+      categories: ["life","career","school"],
+      date: "2025-07-10",
+      written_date: "July 10th, 2025"
+    }
   ];
 
   return (
