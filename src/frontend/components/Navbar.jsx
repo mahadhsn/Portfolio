@@ -1,13 +1,11 @@
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import ThemeToggle from './ThemeToggle';
+import { Link, useLocation } from "react-router-dom";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const location = useLocation();
 
   return (
     <nav className="text-sm md:text-xl text-textlight dark:text-textdark flex flex-row md:flex-col items-center justify-center mobile:space-x-2 md:items-end md:space-y-4 md:py-4">
-      
       <ThemeToggle />
 
       <span className="md:hidden"> | </span>
@@ -15,9 +13,9 @@ const Navbar = () => {
       <Link
         to="/"
         className={`transition-all duration-300 ease-in-out ${
-          location.pathname === '/'
-            ? 'text-accentlight dark:text-accentdark'
-            : 'hover:text-accenthoverlight dark:hover:text-accenthoverdark'
+          location.pathname === "/"
+            ? "text-accentlight dark:text-accentdark"
+            : "hover:text-accenthoverlight dark:hover:text-accenthoverdark"
         }`}
       >
         <button>home</button>
@@ -28,9 +26,9 @@ const Navbar = () => {
       <Link
         to="/about"
         className={`transition-all duration-300 ease-in-out ${
-          location.pathname === '/about' 
-          ? 'text-accentlight dark:text-accentdark'
-            : 'hover:text-accenthoverlight dark:hover:text-accenthoverdark'
+          location.pathname === "/about"
+            ? "text-accentlight dark:text-accentdark"
+            : "hover:text-accenthoverlight dark:hover:text-accenthoverdark"
         }`}
       >
         <button>about</button>
@@ -41,9 +39,9 @@ const Navbar = () => {
       <Link
         to="/projects"
         className={`transition-all duration-300 ease-in-out ${
-          location.pathname === '/projects' 
-          ? 'text-accentlight dark:text-accentdark'
-            : 'hover:text-accenthoverlight dark:hover:text-accenthoverdark'
+          location.pathname === "/projects"
+            ? "text-accentlight dark:text-accentdark"
+            : "hover:text-accenthoverlight dark:hover:text-accenthoverdark"
         }`}
       >
         <button>projects</button>
@@ -54,34 +52,35 @@ const Navbar = () => {
       <Link
         to="/logbook"
         className={`transition-all duration-300 ease-in-out ${
-          location.pathname.startsWith('/logbook') 
-          ? 'text-accentlight dark:text-accentdark'
-            : 'hover:text-accenthoverlight dark:hover:text-accenthoverdark'
-        }`}>
+          location.pathname.startsWith("/logbook")
+            ? "text-accentlight dark:text-accentdark"
+            : "hover:text-accenthoverlight dark:hover:text-accenthoverdark"
+        }`}
+      >
         <button>logbook</button>
       </Link>
-      
+
       <span className="md:hidden"> | </span>
 
       <Link
         to="/resume"
         className={`transition-all duration-300 ease-in-out ${
-          location.pathname === '/resume' 
-          ? 'text-accentlight dark:text-accentdark'
-            : 'hover:text-accenthoverlight dark:hover:text-accenthoverdark'
+          location.pathname === "/resume"
+            ? "text-accentlight dark:text-accentdark"
+            : "hover:text-accenthoverlight dark:hover:text-accenthoverdark"
         }`}
       >
         <button>resume</button>
       </Link>
-      
+
       <span className="md:hidden"> | </span>
 
       <Link
         to="/contact"
         className={`transition-all duration-300 ease-in-out ${
-          location.pathname === '/contact' 
-          ? 'text-accentlight dark:text-accentdark'
-            : 'hover:text-accenthoverlight dark:hover:text-accenthoverdark'
+          location.pathname === "/contact"
+            ? "text-accentlight dark:text-accentdark"
+            : "hover:text-accenthoverlight dark:hover:text-accenthoverdark"
         }`}
       >
         <button>contact</button>

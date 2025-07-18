@@ -12,10 +12,9 @@ import Stress from './pages/logs/Stress'
 
 export default function App() {
   return (
-    <div className='bg-bglight dark:bg-bgdark'>
+    <div className="bg-bglight dark:bg-bgdark">
       <Router>
         <Routes>
-          
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
@@ -29,9 +28,8 @@ export default function App() {
             <Route path="/resume" element={<Resume />} />
             <Route path="/contact" element={<Contact />} />
           </Route>
-          
         </Routes>
-      </Router>  
+      </Router>
     </div>
-  )
+  );
 }
