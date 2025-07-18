@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Parkinsans:wght@300..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Parkinsans:wght@300..800&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,15 +10,15 @@
   --textlight: 51 51 51;
   --primarylight: 0 123 255;
   --secondarylight: 108 117 125;
-  --accentlight: 20 184 166;          /* teal-500 */
-  --accenthoverlight: 15 118 110;     /* teal-700 */
+  --accentlight: 20 184 166; /* teal-500 */
+  --accenthoverlight: 15 118 110; /* teal-700 */
   --borderlight: 115 115 115;
   --errorlight: 207 102 121;
-  
-  font-family: 'Alegreya Sans', sans-serif;
+
+  font-family: "Alegreya Sans", sans-serif;
 }
 
-.dark{
+.dark {
   --bgdark: 23 23 23;
   --secondarybgdark: 38 38 38;
   --textdark: 255 255 255;
@@ -29,10 +29,12 @@
   --borderdark: 115 115 115;
   --errordark: 207 102 121;
 
-  font-family: 'Alegreya Sans', sans-serif;
+  font-family: "Alegreya Sans", sans-serif;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   @apply bg-[rgb(var(--bglight))] dark:bg-[rgb(var(--bgdark))];
   scrollbar-width: none;
   height: 100%;

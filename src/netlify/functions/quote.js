@@ -1,14 +1,14 @@
-import fs from 'fs';
-import csv from 'csv-parser';
-import path from 'path';
+import fs from "fs";
+import csv from "csv-parser";
+import path from "path";
 
-const quotesFilePath = path.join(process.cwd(), 'src/netlify/data/quotes.csv');
+const quotesFilePath = path.join(process.cwd(), "src/netlify/data/quotes.csv");
 
 export const handler = async (event, context) => {
   try {
     const quotes = await loadQuotesFromCSV();
     if (quotes.length === 0) {
-      throw new Error('No quotes available in the CSV file');
+      throw new Error("No quotes available in the CSV file");
     }
 
     // Select a random quote
@@ -20,10 +20,10 @@ export const handler = async (event, context) => {
       body: JSON.stringify(selectedQuote),
     };
   } catch (error) {
-    console.error('Error fetching quote:', error);
+    console.error("Error fetching quote:", error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ message: 'Error fetching quote' }),
+      body: JSON.stringify({ message: "Error fetching quote" }),
     };
   }
 };
@@ -32,14 +32,14 @@ const loadQuotesFromCSV = () => {
   return new Promise((resolve, reject) => {
     const quotes = [];
     fs.createReadStream(quotesFilePath)
-      .pipe(csv(['author', 'quote']))
-      .on('data', (row) => {
+      .pipe(csv(["author", "quote"]))
+      .on("data", (row) => {
         quotes.push(row);
       })
-      .on('end', () => {
+      .on("end", () => {
         resolve(quotes);
       })
-      .on('error', (error) => {
+      .on("error", (error) => {
         reject(error);
       });
   });
