@@ -21,7 +21,7 @@ const Home = () => {
   return (
     <div className="text-textlight dark:text-textdark flex flex-col opacity-0 animate-fade-in mt-[5%] md:mt-[18%] transition-all duration-300 ease-in-out">
       <Helmet>
-        <title>Home | Mahad Hassan</title>
+        <title>Mahad's Home</title>
         <meta
           name="description"
           content="Home page of Mahad Hassan's software engineering portfolio."

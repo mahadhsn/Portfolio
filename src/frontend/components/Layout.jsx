@@ -17,7 +17,7 @@ const Layout = () => {
         </main>
 
         {/* Footer */}
-        <div className="">
+        <div className="mt-2">
           <Footer />
         </div>
       </div>

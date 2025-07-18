@@ -8,10 +8,9 @@ import {
 import FooterText from "./FooterText";
 
 const Footer = () => {
-
   return (
-    <footer className="text-textlight dark:text-textdark pb-8">
-      <div className="flex justify-center items-center space-x-6 py-3">
+    <footer className="text-textlight dark:text-textdark pb-8 space-y-4">
+      <div className="flex justify-center items-center space-x-6">
         <a
           href="mailto:mahadhassan.hello@gmail.com"
           target="_blank"

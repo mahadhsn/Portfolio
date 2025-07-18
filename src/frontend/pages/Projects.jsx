@@ -9,7 +9,7 @@ const Projects = () => {
   return (
     <div className="text-textlight dark:text-textdark animate-fade-in mt-[10%] md:mt-[20%] transition-all duration-300 ease-in-out">
       <Helmet>
-        <title>Projects | Mahad Hassan</title>
+        <title>Mahad's Projects</title>
         <meta
           name="description"
           content="Projects page of Mahad Hassan's software engineering portfolio."

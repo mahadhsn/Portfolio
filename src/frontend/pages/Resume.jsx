@@ -10,7 +10,7 @@ const Resume = () => {
   return (
     <div className="flex flex-col animate-fade-in mt-[10%] md:mt-[20%]">
       <Helmet>
-        <title>Resume | Mahad Hassan</title>
+        <title>Mahad's Resume</title>
         <meta
           name="description"
           content="Resume page of Mahad Hassan's software engineering portfolio."

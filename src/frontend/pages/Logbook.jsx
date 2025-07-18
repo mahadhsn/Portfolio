@@ -37,7 +37,7 @@ const Logbook = () => {
   return (
     <div className="text-textlight dark:text-textdark flex flex-col opacity-0 animate-fade-in mt-[5%] md:mt-[18%] w-full h-full mb-20">
       <Helmet>
-        <title>Logbook | Mahad Hassan</title>
+        <title>Mahad's Life</title>
         <meta
           name="description"
           content="Logbook page of Mahad Hassan's software engineering portfolio."
