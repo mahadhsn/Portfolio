@@ -5,10 +5,12 @@ import {
   FaInstagram,
   FaTiktok,
 } from "react-icons/fa"; // Import the specific icons you need
+import FooterText from "./FooterText";
 
 const Footer = () => {
+
   return (
-    <footer className="text-textlight dark:text-textdark">
+    <footer className="text-textlight dark:text-textdark pb-8">
       <div className="flex justify-center items-center space-x-6 py-3">
         <a
           href="mailto:mahadhassan.hello@gmail.com"
@@ -56,9 +58,7 @@ const Footer = () => {
         </a>
       </div>
 
-      <div className="text-center py-4 text-accentlight dark:text-accentdark">
-        <p>mahadhssn &copy; 2025 | Updated: 18/7/2025</p>
-      </div>
+      <FooterText />
     </footer>
   );
 };
