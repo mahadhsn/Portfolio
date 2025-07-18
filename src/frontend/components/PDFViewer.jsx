@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 const PDFViewer = () => {
   const [iframeSupported, setIframeSupported] = useState(true);
 
   useEffect(() => {
     // Check if the browser supports iframes
-    if (!document.createElement('iframe').constructor) {
+    if (!document.createElement("iframe").constructor) {
       setIframeSupported(false);
     }
   }, []);
@@ -34,7 +34,10 @@ const PDFViewer = () => {
         </>
       ) : (
         <div className="text-center text-errorlight dark:text-errordark">
-          <p>Your browser does not support iframes :\ Please download the resume below:</p>
+          <p>
+            Your browser does not support iframes :\ Please download the resume
+            below:
+          </p>
           {/* Fallback download button */}
           <a
             href="/mahadresume.pdf"

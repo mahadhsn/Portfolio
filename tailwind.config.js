@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 export default {
-  darkMode: 'class',
+  darkMode: "class",
   content: [
     "./src/index.html",
     "./src/frontend/*.{js,ts,jsx,tsx}",
@@ -11,12 +11,12 @@ export default {
   ],
   theme: {
     screens: {
-      'mobile': '200px',
-      'sm': '500px',
-      'md': '900px',
-      'lg': '1024px',
-      'xl': '1280px',
-      '2xl': '1536px',
+      mobile: "200px",
+      sm: "500px",
+      md: "900px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
     },
     extend: {
       colors: {
@@ -43,7 +43,7 @@ export default {
 
         borderlight: "rgb(var(--borderlight) / <alpha-value>)",
         borderdark: "rgb(var(--borderdark) / <alpha-value>)",
-        
+
         errorlight: "rgb(var(--errorlight) / <alpha-value>)",
         errordark: "rgb(var(--errordark) / <alpha-value>)",
       },
