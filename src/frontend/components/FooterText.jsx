@@ -17,18 +17,16 @@ const FooterText = () => {
     }
 
     fetch('/last-updated.json')
-      .then((res) => res.json())
-      .then((data) => {
-        if (data?.lastUpdated) {
-          setLastUpdated(data.lastUpdated);
-        }
-      })
-      .catch(() => {
-        if (cached) {
-          const { date } = JSON.parse(cached);
-          setLastUpdated(date);
-        }
-      });
+    .then((res) => res.json())
+    .then((data) => {
+      if (data?.lastUpdated) {
+        setLastUpdated(data.lastUpdated);
+        localStorage.setItem(
+          "lastUpdatedCache",
+          JSON.stringify({ date: data.lastUpdated, timestamp: Date.now() })
+        );
+      }
+    })
   }, []);
 
   return (
