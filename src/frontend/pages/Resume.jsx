@@ -16,11 +16,9 @@ const Resume = () => {
           content="Resume page of Mahad Hassan's software engineering portfolio."
         />
       </Helmet>
-
       <h1 className="text-3xl font-bold text-textlight dark:text-textdark text-center">
         View my resume below!
       </h1>
-
       <PDFViewer /> {/***/}
     </div>
   );

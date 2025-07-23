@@ -18,7 +18,7 @@ jobs:
         run: |
           DATE=$(date +'%d/%m/%Y')
           echo "{\"lastUpdated\": \"$DATE\"}" > public/last-updated.json
-      
+
       - name: Debug - Show last-updated.json contents
         run: cat public/last-updated.json
 

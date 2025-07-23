@@ -4,29 +4,18 @@ const FooterText = () => {
   const [lastUpdated, setLastUpdated] = useState("");
 
   useEffect(() => {
-    const cached = localStorage.getItem("lastUpdatedCache");
-
-    if (cached) {
-      const { date, timestamp } = JSON.parse(cached);
-      const oneDay = 24 * 60 * 60 * 1000;
-
-      if (Date.now() - timestamp < oneDay) {
-        setLastUpdated(date);
-        return;
-      }
-    }
-
-    fetch('/last-updated.json')
-    .then((res) => res.json())
-    .then((data) => {
-      if (data?.lastUpdated) {
-        setLastUpdated(data.lastUpdated);
-        localStorage.setItem(
-          "lastUpdatedCache",
-          JSON.stringify({ date: data.lastUpdated, timestamp: Date.now() })
-        );
-      }
-    })
+    fetch(`/last-updated.json?ts=${Date.now()}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.lastUpdated) {
+          setLastUpdated(data.lastUpdated);
+          console.log("Fetched lastUpdated:", data.lastUpdated);
+          // localStorage.setItem(
+          //   "lastUpdatedCache",
+          //   JSON.stringify({ date: data.lastUpdated, timestamp: Date.now() })
+          // );
+        }
+      });
   }, []);
 
   return (
