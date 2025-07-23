@@ -20,7 +20,7 @@ const PDFViewer = () => {
             src="/mahadresume.pdf"
             title="My Resume"
           />
-          {/* Download Button */}
+          {/* Download Button */} 
           <a
             href="/mahadresume.pdf"
             download="mahadresume.pdf"
