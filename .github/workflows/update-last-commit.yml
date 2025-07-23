@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          persist-credentials: false
 
       - name: Update last commit date
         run: |
@@ -21,7 +23,7 @@ jobs:
         env:
           TOKEN: ${{ secrets.PERSONAL_TOKEN }}
         run: |
-          git config --global user.name "Mahad Hassan"
+          git config --global user.name "mahadhsn"
           git config --global user.email "hassam87@mcmaster.ca"
           git remote set-url origin https://x-access-token:${TOKEN}@github.com/mahadhsn/Portfolio.git
           git add public/last-updated.json
