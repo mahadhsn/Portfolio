@@ -1,0 +1,26 @@
+name: Update Last Commit Date
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  update-date:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Update last commit date
+        run: |
+          DATE=$(date +'%d/%m/%Y')
+          echo "{\"lastUpdated\": \"$DATE\"}" > public/last-updated.json
+
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/last-updated.json
+          git diff --quiet && echo "No changes" || git commit -m "chore: update last updated date [skip ci]"
+          git push
