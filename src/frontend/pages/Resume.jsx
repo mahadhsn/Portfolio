@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import PDFViewer from "../components/PDFViewer";
-import { Helmet } from "react-helmet"; //
+import { Helmet } from "react-helmet";
 
 const Resume = () => {
   useEffect(() => {
