@@ -4,7 +4,7 @@ import {
   FaEnvelope,
   FaInstagram,
   FaTiktok,
-} from "react-icons/fa"; // Import the specific icons you need
+} from "react-icons/fa"; // Import the specific icons you need 
 import FooterText from "./FooterText";
 
 const Footer = () => {
