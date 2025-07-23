@@ -18,6 +18,9 @@ jobs:
         run: |
           DATE=$(date +'%d/%m/%Y')
           echo "{\"lastUpdated\": \"$DATE\"}" > public/last-updated.json
+      
+      - name: Debug: Show last-updated.json contents
+        run: cat public/last-updated.json
 
       - name: Commit and push if changed
         env:
@@ -27,5 +30,5 @@ jobs:
           git config --global user.email "hassam87@mcmaster.ca"
           git remote set-url origin https://x-access-token:${TOKEN}@github.com/mahadhsn/Portfolio.git
           git add public/last-updated.json
-          git diff --quiet && echo "No changes" || git commit -m "chore: update last updated date [skip ci]"
+          git commit -am "chore: update last updated date [skip ci]" || echo "Nothing to commit"
           git push

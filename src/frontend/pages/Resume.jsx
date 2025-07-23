@@ -21,7 +21,7 @@ const Resume = () => {
         View my resume below!
       </h1>
 
-      <PDFViewer />
+      <PDFViewer /> {/***/}
     </div>
   );
 };
