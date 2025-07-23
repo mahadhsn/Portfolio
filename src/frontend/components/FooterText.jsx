@@ -16,21 +16,11 @@ const FooterText = () => {
       }
     }
 
-    fetch("https://api.github.com/repos/mahadhsn/Portfolio/commits?per_page=1")
+    fetch('/last-updated.json')
       .then((res) => res.json())
       .then((data) => {
-        if (data && data.length > 0) {
-          const date = new Date(
-            data[0].commit.committer.date,
-          ).toLocaleDateString("en-GB");
-          setLastUpdated(date);
-          localStorage.setItem(
-            "lastUpdatedCache",
-            JSON.stringify({
-              date,
-              timestamp: Date.now(),
-            }),
-          );
+        if (data?.lastUpdated) {
+          setLastUpdated(data.lastUpdated);
         }
       })
       .catch(() => {
