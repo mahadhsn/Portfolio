@@ -19,11 +19,11 @@ jobs:
 
       - name: Commit and push if changed
         env:
-            TOKEN: ${{ secrets.GH_PAT }}
+          TOKEN: ${{ secrets.PERSONAL_TOKEN }}
         run: |
-            git config --global user.name "github-actions[bot]"
-            git config --global user.email "github-actions[bot]@users.noreply.github.com"
-            git remote set-url origin https://x-access-token:${TOKEN}@github.com/${{ github.repository }}
-            git add public/last-updated.json
-            git diff --quiet && echo "No changes" || git commit -m "chore: update last updated date [skip ci]"
-            git push
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin https://x-access-token:${TOKEN}@github.com/mahadhsn/Portfolio.git
+          git add public/last-updated.json
+          git diff --quiet && echo "No changes" || git commit -m "chore: update last updated date [skip ci]"
+          git push
