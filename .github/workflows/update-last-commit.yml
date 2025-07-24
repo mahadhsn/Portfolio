@@ -1,0 +1,34 @@
+name: Update Last Commit Date
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  update-date:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+
+      - name: Update last commit date
+        run: |
+          DATE=$(date +'%d/%m/%Y')
+          echo "{\"lastUpdated\": \"$DATE\"}" > public/last-updated.json
+
+      - name: Debug - Show last-updated.json contents
+        run: cat public/last-updated.json
+
+      - name: Commit and push if changed
+        env:
+          TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+        run: |
+          git config --global user.name "mahadhsn"
+          git config --global user.email "hassam87@mcmaster.ca"
+          git remote set-url origin https://x-access-token:${TOKEN}@github.com/mahadhsn/Portfolio.git
+          git add public/last-updated.json
+          git commit -am "chore: update last updated date [skip ci]" || echo "Nothing to commit"
+          git push
