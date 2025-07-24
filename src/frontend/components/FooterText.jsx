@@ -4,39 +4,16 @@ const FooterText = () => {
   const [lastUpdated, setLastUpdated] = useState("");
 
   useEffect(() => {
-    const cached = localStorage.getItem("lastUpdatedCache");
-
-    if (cached) {
-      const { date, timestamp } = JSON.parse(cached);
-      const oneDay = 24 * 60 * 60 * 1000;
-
-      if (Date.now() - timestamp < oneDay) {
-        setLastUpdated(date);
-        return;
-      }
-    }
-
-    fetch("https://api.github.com/repos/mahadhsn/Portfolio/commits?per_page=1")
+    fetch(`/last-updated.json?ts=${Date.now()}`)
       .then((res) => res.json())
       .then((data) => {
-        if (data && data.length > 0) {
-          const date = new Date(
-            data[0].commit.committer.date,
-          ).toLocaleDateString("en-GB");
-          setLastUpdated(date);
-          localStorage.setItem(
-            "lastUpdatedCache",
-            JSON.stringify({
-              date,
-              timestamp: Date.now(),
-            }),
-          );
-        }
-      })
-      .catch(() => {
-        if (cached) {
-          const { date } = JSON.parse(cached);
-          setLastUpdated(date);
+        if (data?.lastUpdated) {
+          setLastUpdated(data.lastUpdated);
+          console.log("Fetched lastUpdated:", data.lastUpdated);
+          // localStorage.setItem(
+          //   "lastUpdatedCache",
+          //   JSON.stringify({ date: data.lastUpdated, timestamp: Date.now() })
+          // );
         }
       });
   }, []);
