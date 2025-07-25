@@ -1,5 +1,5 @@
 import ChangeWord from "../components/ChangeWord";
-import Image from "../components/Image";
+import Image from "../components/logs/Image";
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import {
@@ -208,8 +208,6 @@ const About = () => {
           </ul>
         </span>
       </div>
-
-      <div></div>
     </div>
   );
 };

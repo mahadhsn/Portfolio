@@ -9,8 +9,8 @@ import FooterText from "./FooterText";
 
 const Footer = () => {
   return (
-    <footer className="text-textlight dark:text-textdark pb-8 space-y-4">
-      <div className="flex justify-center items-center space-x-6">
+    <footer className="flex flex-col justify-center text-textlight dark:text-textdark pb-8 space-y-2">
+      <div className="flex flex-row justify-center items-center space-x-4">
         <a
           href="mailto:mahadhassan.hello@gmail.com"
           target="_blank"

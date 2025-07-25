@@ -32,6 +32,13 @@ const Logbook = () => {
       date: "2025-07-07",
       written_date: "July 7th, 2025",
     },
+    {
+      title: "SceloCare: An App for Patients",
+      path: "/logbook/sclerocare",
+      categories: ["career"],
+      date: "2025-07-24",
+      written_date: "July 24th, 2025",
+    },
   ];
 
   return (
