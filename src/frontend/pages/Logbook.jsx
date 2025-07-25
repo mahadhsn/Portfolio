@@ -37,8 +37,8 @@ const Logbook = () => {
       path: "/logbook/sclerocare",
       categories: ["career"],
       date: "2025-07-24",
-      written_date: "July 24th, 2025"
-    }
+      written_date: "July 24th, 2025",
+    },
   ];
 
   return (
