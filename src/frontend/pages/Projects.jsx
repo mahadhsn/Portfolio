@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";
-import Project from "../components/projects/Project"
+import Project from "../components/projects/Project";
 
 const Projects = () => {
   useEffect(() => {
@@ -31,41 +31,49 @@ const Projects = () => {
           🚀
         </h2>
         <hr className="border-textlight dark:border-textdark"></hr>
-
-
-        <Project 
+        <Project
           Title={"ScleroCare"}
-          Description={"An app for patients, partnering with Tech4Good & Scleroderma Canada, soon to be on the App Store!"}
+          Description={
+            "An app for patients, partnering with Tech4Good & Scleroderma Canada, soon to be on the App Store!"
+          }
           href={"/logbook/sclerocare"}
         />
-        <Project 
+        <Project
           Title={"Drone Rescue Mission"}
-          Description={"Drone controller uses states and strategies to rescue a drone in Java"}
+          Description={
+            "Drone controller uses states and strategies to rescue a drone in Java"
+          }
           href={"https://github.com/mahadhsn/A2-Recue-Mission-T11"}
         />
-        <Project 
+        <Project
           Title={"C-View"}
           Description={"Lightweight, command-line image processor written in C"}
           href={"https://github.com/mahadhsn/C-View"}
         />
-        <Project 
+        <Project
           Title={"Convert-Number-Systems"}
           Description={"Convert numbers between number systems in C"}
           href={"https://github.com/mahadhsn/Convert-Number-Systems"}
         />
-        <Project 
+        <Project
           Title={"Digit-Recognizer"}
-          Description={"Python program to recognize handwritten digits with 99.3% accuracy"}
+          Description={
+            "Python program to recognize handwritten digits with 99.3% accuracy"
+          }
           href={"https://github.com/mahadhsn/Digit-Recognizer"}
         />
-        <Project 
+        <Project
           Title={"Java-Tic-Tac-Toe-AI"}
-          Description={"Play Tic-Tac-Toe against an AI that uses the minimax algorithm"}
+          Description={
+            "Play Tic-Tac-Toe against an AI that uses the minimax algorithm"
+          }
           href={"https://github.com/mahadhsn/Java-Tic-Tac-Toe-AI"}
         />
-        <Project 
+        <Project
           Title={"Portfolio"}
-          Description={"This portfolio! Created using React and Tailwind CSS and contains information about me."}
+          Description={
+            "This portfolio! Created using React and Tailwind CSS and contains information about me."
+          }
           href={"https://github.com/mahadhsn/Portfolio"}
         />
         <h2 className="text-2xl md:text-3xl text-left">
@@ -76,7 +84,7 @@ const Projects = () => {
             className=""
           >
             <span className="underline">Cybersecurity System</span>
-            <span>{" "}</span>
+            <span> </span>
           </a>
           <span className="text-lg invisible md:visible mobile:fixed md:absolute md:translate-y-2">
             {" "}
@@ -90,9 +98,11 @@ const Projects = () => {
         <p className="mb-6">
           Cybersecurity system - face recognition, file encryption, and more
         </p>
-        <Project 
+        <Project
           Title={"US-Baby-Names"}
-          Description={"Bash script to list the rankings of baby names in the US"}
+          Description={
+            "Bash script to list the rankings of baby names in the US"
+          }
           href={"https://github.com/mahadhsn/US-Baby-Names"}
         />
       </span>

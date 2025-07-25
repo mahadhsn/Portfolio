@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import Image from "../../components/logs/Image";
-import Header from "../../components/logs/Header"
+import Header from "../../components/logs/Header";
 
 const Internship = () => {
   useEffect(() => {
@@ -19,10 +19,10 @@ const Internship = () => {
       </Helmet>
 
       {/* Header */}
-      <Header 
-      Title={"How to land an internship 101"}
-      Mins={"12"}
-      Date={"July 7th, 2025"}
+      <Header
+        Title={"How to land an internship 101"}
+        Mins={"12"}
+        Date={"July 7th, 2025"}
       />
 
       {/* TD Picture */}
