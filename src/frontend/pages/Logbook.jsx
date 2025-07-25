@@ -33,11 +33,11 @@ const Logbook = () => {
       written_date: "July 7th, 2025",
     },
     {
-      title: "Why Stress?",
-      path: "/logbook/stress",
-      categories: ["life","career","school"],
-      date: "2025-07-10",
-      written_date: "July 10th, 2025"
+      title: "SceloCare: An App for Patients",
+      path: "/logbook/sclerocare",
+      categories: ["career"],
+      date: "2025-07-24",
+      written_date: "July 24th, 2025"
     }
   ];
 
