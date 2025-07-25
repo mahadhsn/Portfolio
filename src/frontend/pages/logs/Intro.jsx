@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";
-import Image from "../../components/Image";
+import Image from "../../components/logs/Image";
+import Header from "../../components/logs/Header"
 
 const Intro = () => {
   useEffect(() => {
@@ -13,15 +14,12 @@ const Intro = () => {
         <meta name="description" content="Mahad Hassan's Intro Log." />
       </Helmet>
 
-      <h1 className="text-3xl font-bold text-center items-center justify-center align-middle mb-1">
-        Intro Log :)
-      </h1>
-
-      <hr className="border-textlight dark:textdark mb-2"></hr>
-
-      <div className="flex items-center justify-center font-semibold text-lg text-gray-500 mb-6">
-        <p className=""> ~3 min read | June 21st, 2025</p>
-      </div>
+      {/* Header */}
+      <Header 
+      Title={"Intro log :)"}
+      Mins={"3"}
+      Date={"June 21st, 2025"}
+      />
 
       {/* Norway Picture */}
       <Image

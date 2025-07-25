@@ -1,4 +1,4 @@
-import Footer from "./Footer";
+import Footer from "./footer/Footer";
 import Navbar from "./Navbar";
 import { Outlet } from "react-router-dom";
 
@@ -12,12 +12,12 @@ const Layout = () => {
 
       {/* Content Section */}
       <div className="flex-1 flex flex-col">
-        <main className="w-full flex-1 flex md:max-w-[43%] justify-items-center mobile:max-w-[80%] mx-auto mb-4">
+        <main className="w-full flex-1 flex md:max-w-[43%] justify-items-center mobile:max-w-[80%] mx-auto mb-10">
           <Outlet />
         </main>
 
         {/* Footer */}
-        <div className="mt-2">
+        <div className="mt-2 pb-10">
           <Footer />
         </div>
       </div>

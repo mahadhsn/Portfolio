@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";
-import Image from "../../components/Image";
+import Image from "../../components/logs/Image";
+import Header from "../../components/logs/Header"
 
 const Internship = () => {
   useEffect(() => {
@@ -18,17 +19,11 @@ const Internship = () => {
       </Helmet>
 
       {/* Header */}
-      <div className="mb-6">
-        <h1 className="text-3xl font-bold text-center items-center justify-center align-middle mb-1">
-          How to land an internship 101
-        </h1>
-
-        <hr className="border-textlight dark:textdark mb-1"></hr>
-
-        <div className="flex items-center justify-center font-semibold text-gray-500">
-          <p className=""> ~12 min read | July 7th, 2025</p>
-        </div>
-      </div>
+      <Header 
+      Title={"How to land an internship 101"}
+      Mins={"12"}
+      Date={"July 7th, 2025"}
+      />
 
       {/* TD Picture */}
       <Image
@@ -264,7 +259,7 @@ const Internship = () => {
         <h1 className="text-2xl font-bold mb-4 underline">Resume</h1>
 
         {/* Resume Examples */}
-        <div className="mb-6 flex flex-col gap-4">
+        <div className="mb-6 flex flex-row gap-4">
           <Image
             src="../../../images/logs/internship/bad_resume.png"
             imgStyle={styles.img_portrait}
@@ -725,13 +720,6 @@ const styles = {
     width: "75%",
     height: "auto",
     borderRadius: "1rem",
-  },
-  img_sideBySide: {
-    display: "block",
-    width: "100%",
-    height: "auto",
-    borderRadius: "0.75rem",
-    objectFit: "cover",
   },
   caption: {
     textAlign: "center",

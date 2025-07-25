@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";
+import Project from "../components/projects/Project"
 
 const Projects = () => {
   useEffect(() => {
@@ -30,77 +31,43 @@ const Projects = () => {
           🚀
         </h2>
         <hr className="border-textlight dark:border-textdark"></hr>
-        <h2 className="text-2xl md:text-3xl text-left underline mt-8">
-          <a
-            href="https://github.com/mahadhsn/A2-Recue-Mission-T11"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Drone Rescue Mission
-          </a>
-        </h2>
-        <p className="mb-6">
-          Drone controller uses states and strategies to rescue a drone in Java
-        </p>
-        <h2 className="text-2xl md:text-3xl text-left underline">
-          <a
-            href="https://github.com/mahadhsn/C-View"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            C-View
-          </a>
-        </h2>
-        <p className="mb-6">
-          Lightweight, command-line image processor written in C
-        </p>
-        <h2 className="text-2xl md:text-3xl text-left underline">
-          <a
-            href="https://github.com/mahadhsn/Convert-Number-Systems"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Convert-Number-Systems
-          </a>
-        </h2>
-        <p className="mb-6">Convert numbers between number systems in C</p>
-        <h2 className="text-2xl md:text-3xl text-left underline">
-          <a
-            href="https://github.com/mahadhsn/Digit-Recognizer"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Digit-Recognizer
-          </a>
-        </h2>
-        <p className="mb-6">
-          Python program to recognize handwritten digits with 99.3% accuracy
-        </p>
-        <h2 className="text-2xl md:text-3xl text-left underline">
-          <a
-            href="https://github.com/mahadhsn/Java-Tic-Tac-Toe-AI"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Java-Tic-Tac-Toe-AI
-          </a>
-        </h2>
-        <p className="mb-6">
-          Play Tic-Tac-Toe against an AI that uses the minimax algorithm
-        </p>
-        <h2 className="text-2xl md:text-3xl text-left underline">
-          <a
-            href="https://github.com/mahadhsn/Portfolio"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Portfolio
-          </a>
-        </h2>
-        <p className="mb-6">
-          This portfolio! Created using React and Tailwind CSS and contains
-          information about me.
-        </p>
+
+
+        <Project 
+          Title={"ScleroCare"}
+          Description={"An app for patients, partnering with Tech4Good & Scleroderma Canada, soon to be on the App Store!"}
+          href={"/logbook/sclerocare"}
+        />
+        <Project 
+          Title={"Drone Rescue Mission"}
+          Description={"Drone controller uses states and strategies to rescue a drone in Java"}
+          href={"https://github.com/mahadhsn/A2-Recue-Mission-T11"}
+        />
+        <Project 
+          Title={"C-View"}
+          Description={"Lightweight, command-line image processor written in C"}
+          href={"https://github.com/mahadhsn/C-View"}
+        />
+        <Project 
+          Title={"Convert-Number-Systems"}
+          Description={"Convert numbers between number systems in C"}
+          href={"https://github.com/mahadhsn/Convert-Number-Systems"}
+        />
+        <Project 
+          Title={"Digit-Recognizer"}
+          Description={"Python program to recognize handwritten digits with 99.3% accuracy"}
+          href={"https://github.com/mahadhsn/Digit-Recognizer"}
+        />
+        <Project 
+          Title={"Java-Tic-Tac-Toe-AI"}
+          Description={"Play Tic-Tac-Toe against an AI that uses the minimax algorithm"}
+          href={"https://github.com/mahadhsn/Java-Tic-Tac-Toe-AI"}
+        />
+        <Project 
+          Title={"Portfolio"}
+          Description={"This portfolio! Created using React and Tailwind CSS and contains information about me."}
+          href={"https://github.com/mahadhsn/Portfolio"}
+        />
         <h2 className="text-2xl md:text-3xl text-left">
           <a
             href="https://github.com/mahadhsn/MacEngComp24"
@@ -109,7 +76,7 @@ const Projects = () => {
             className=""
           >
             <span className="underline">Cybersecurity System</span>
-            <span className="text-neutral-900">p</span>
+            <span>{" "}</span>
           </a>
           <span className="text-lg invisible md:visible mobile:fixed md:absolute md:translate-y-2">
             {" "}
@@ -123,18 +90,11 @@ const Projects = () => {
         <p className="mb-6">
           Cybersecurity system - face recognition, file encryption, and more
         </p>
-        <h2 className="text-2xl md:text-3xl text-left underline">
-          <a
-            href="https://github.com/mahadhsn/US-Baby-Names"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            US-Baby-Names
-          </a>
-        </h2>
-        <p className="mb-6">
-          Bash script to list the rankings of baby names in the US
-        </p>
+        <Project 
+          Title={"US-Baby-Names"}
+          Description={"Bash script to list the rankings of baby names in the US"}
+          href={"https://github.com/mahadhsn/US-Baby-Names"}
+        />
       </span>
     </div>
   );
