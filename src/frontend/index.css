@@ -10,8 +10,8 @@
   --textlight: 51 51 51;
   --primarylight: 0 123 255;
   --secondarylight: 108 117 125;
-  --accentlight: 20 184 166; /* teal-500 */
-  --accenthoverlight: 15 118 110; /* teal-700 */
+  --accentlight: 15 118 110; /* teal-500 20 184 166*/
+  --accenthoverlight: 20 184 166; /* teal-700 */
   --borderlight: 115 115 115;
   --errorlight: 207 102 121;
 
@@ -24,8 +24,8 @@
   --textdark: 255 255 255;
   --primarydark: 187 134 252;
   --secondarydark: 3 218 198;
-  --accentdark: 239 68 68;
-  --accenthoverdark: 185 28 28;
+  --accentdark: 185 28 28;
+  --accenthoverdark: 239 68 68;
   --borderdark: 115 115 115;
   --errordark: 207 102 121;
 

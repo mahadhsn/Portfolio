@@ -6,10 +6,12 @@ import {
   FaTiktok,
 } from "react-icons/fa"; // Import the specific icons you need
 import FooterText from "./FooterText";
+import Song from "../Song";
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col justify-center text-textlight dark:text-textdark pb-8 space-y-2">
+    <footer className="flex flex-col items-center text-textlight dark:text-textdark pb-8 space-y-2">
+      <Song />
       <div className="flex flex-row justify-center items-center space-x-4">
         <a
           href="mailto:mahadhassan.hello@gmail.com"
@@ -56,7 +58,6 @@ const Footer = () => {
           <FaTiktok size={24} />
         </a>
       </div>
-
       <FooterText />
     </footer>
   );
