@@ -8,7 +8,7 @@ import {
   achievements,
   shortGoals,
   longGoals,
-} from "../../data/consts";//
+} from "../../data/consts"; //
 
 const About = () => {
   useEffect(() => {
