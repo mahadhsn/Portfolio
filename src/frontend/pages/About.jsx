@@ -8,7 +8,7 @@ import {
   achievements,
   shortGoals,
   longGoals,
-} from "../../data/consts";
+} from "../../data/consts"; //
 
 const About = () => {
   useEffect(() => {
@@ -115,7 +115,14 @@ const About = () => {
               aiding in the admissions for the hackathon 💻
             </li>
             <li>
-              Developing an app for{" "}
+              Developing{" "}
+              <a
+                href="https://www.mahadhssn.com/logbook/sclerocare"
+                className="underline"
+              >
+                an app
+              </a>{" "}
+              for{" "}
               <a
                 href="https://www.scleroderma.ca"
                 target="_blank"
@@ -126,6 +133,17 @@ const About = () => {
               </a>{" "}
               partnered with Tech4Good and the McMaster iBioSociety to help
               patients 📱
+            </li>
+            <li>
+              Website volunteer for the{" "}
+              <a
+                href="https://ses.eng.mcmaster.ca"
+                target="_blank"
+                className="underline"
+              >
+                Software Eng Society
+              </a>{" "}
+              at McMaster 💻
             </li>
           </ul>
 
