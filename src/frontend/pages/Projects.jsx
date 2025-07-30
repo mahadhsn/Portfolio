@@ -80,11 +80,9 @@ const Projects = () => {
           <a
             href="https://github.com/mahadhsn/MacEngComp24"
             target="_blank"
-            rel="noopener noreferrer"
-            className=""
+            className="underline"
           >
-            <span className="underline">Cybersecurity System</span>
-            <span> </span>
+            Cybersecurity System
           </a>
           <span className="text-lg invisible md:visible mobile:fixed md:absolute md:translate-y-2">
             {" "}

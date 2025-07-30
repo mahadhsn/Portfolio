@@ -2,6 +2,7 @@ import ChangeWord from "../components/ChangeWord";
 import Image from "../components/logs/Image";
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";
+import Song from "../components/Song";
 import {
   currently,
   previously,
@@ -225,6 +226,9 @@ const About = () => {
             <li>Received the AP Scholar Award 🏅</li>
           </ul>
         </span>
+      </div>
+      <div className="flex items-center justify-center mt-6 -mb-8">
+        <Song />
       </div>
     </div>
   );
