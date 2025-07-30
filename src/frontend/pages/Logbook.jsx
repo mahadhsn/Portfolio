@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import Song from "../components/Song";
 
 const Logbook = () => {
   useEffect(() => {
@@ -94,11 +95,14 @@ const Logbook = () => {
           ))}
       </ul>
 
-      <p className="mt-20 -mb-20 text-sm text-center px-4 text-gray-500">
+      <p className="mt-20 text-sm text-center px-4 text-gray-500">
         All opinions expressed here are my own and do not reflect the views of
         any affiliated organizations. All images used are my own unless
         otherwise stated.
       </p>
+      <div className="flex items-center justify-center mt-20 -mb-28">
+        <Song />
+      </div>
     </div>
   );
 };

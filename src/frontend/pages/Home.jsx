@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import ChangeWord from "../components/ChangeWord";
 import { hobbies, cornerOptions, greetings } from "../../data/consts";
 import Quotes from "../components/Quotes";
+import Song from "../components/Song";
 
 const Home = () => {
   useEffect(() => {
@@ -19,7 +20,7 @@ const Home = () => {
   };
 
   return (
-    <div className="text-textlight dark:text-textdark flex flex-col opacity-0 animate-fade-in mt-[5%] md:mt-[18%] transition-all duration-300 ease-in-out">
+    <div className="text-textlight dark:text-textdark flex flex-col opacity-0 animate-fade-in mt-[5%] md:mt-[10%] transition-all duration-300 ease-in-out">
       <Helmet>
         <title>Mahad's Home</title>
         <meta
@@ -50,15 +51,15 @@ const Home = () => {
         <span className="ml-2">I'm Mahad</span>
       </h1>
 
-      <span className="text-lg md:text-xl">
-        <p className="mb-6">
+      <span className="text-lg md:text-xl space-y-6">
+        <p>
           Welcome to my{" "}
           <span className="">
             <ChangeWord list={cornerOptions} />
           </span>
           , where the code is clean and the coffee is strong.
         </p>
-        <p className="mb-6">
+        <p>
           I'm an Honours{" "}
           <a
             href="https://www.eng.mcmaster.ca/cas/degree-options/software-engineering/"
@@ -87,7 +88,7 @@ const Home = () => {
           .
         </p>
 
-        <p className="mb-6">
+        <p>
           At the heart of it all, I believe in constant self-improvement. As{" "}
           <span className="font-light">Boonaa Mohammed</span> once said,{" "}
           <span className="italic font-semibold">
@@ -99,7 +100,7 @@ const Home = () => {
           <span className="font-light">(check out more below!)</span>
         </p>
 
-        <p className="">
+        <p>
           I’d love to connect with you! Feel free to reach out through my
           contact page or drop me an email at{" "}
           <a
@@ -113,7 +114,10 @@ const Home = () => {
           . I'm always open to new opportunities and collaborations! 🚀
         </p>
       </span>
-      <Quotes />
+      <div className="flex flex-col justify-center items-center space-y-2 -mb-8">
+        <Quotes />
+        <Song />
+      </div>
     </div>
   );
 };

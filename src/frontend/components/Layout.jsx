@@ -11,8 +11,8 @@ const Layout = () => {
       </nav>
 
       {/* Content Section */}
-      <div className="flex-1 flex flex-col">
-        <main className="w-full flex-1 flex md:max-w-[43%] justify-items-center mobile:max-w-[80%] mx-auto mb-10">
+      <div className="flex flex-col">
+        <main className="w-full flex md:max-w-[43%] justify-items-center mobile:max-w-[80%] mx-auto mb-10">
           <Outlet />
         </main>
 
