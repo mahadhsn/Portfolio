@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import Image from "../../components/logs/Image";
 import Header from "../../components/logs/Header";
+import Song from "../../components/Song";
 
 const Intro = () => {
   useEffect(() => {
@@ -155,6 +156,9 @@ const Intro = () => {
             contact page :)
           </a>
         </p>
+      </div>
+      <div className="flex flex-col justify-center items-center space-y-2 -mb-8">
+        <Song />
       </div>
     </div>
   );
