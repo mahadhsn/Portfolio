@@ -136,7 +136,7 @@ const About = () => {
               patients 📱
             </li>
             <li>
-              Website volunteer for the{" "}
+              Website Developer for the{" "}
               <a
                 href="https://ses.eng.mcmaster.ca"
                 target="_blank"
@@ -223,7 +223,7 @@ const About = () => {
               as an ESA
             </li>
             <li>Scored 1480 on the SAT 🎓</li>
-            <li>Received the AP Scholar Award 🏅</li>
+            <li>Received the AP Scholar with Honor Award 🏅</li>
           </ul>
         </span>
       </div>
