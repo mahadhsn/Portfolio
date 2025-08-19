@@ -60,7 +60,7 @@ const Projects = () => {
           Description={
             "Python program to recognize handwritten digits with 99.3% accuracy"
           }
-          href={"https://github.com/mahadhsn/Digit-Recognizer"}
+          href={"https://digit-recognizer-web.vercel.app"}
         />
         <Project
           Title={"Java-Tic-Tac-Toe-AI"}
