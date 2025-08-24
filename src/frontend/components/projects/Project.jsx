@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 const Project = ({ Title, Description, href }) => {
-
-  const isDeployed = href && !href.includes('github')
+  const isDeployed = href && !href.includes("github");
 
   return (
     <div>
@@ -21,7 +20,7 @@ const Project = ({ Title, Description, href }) => {
 Project.propTypes = {
   Title: PropTypes.string.isRequired,
   Description: PropTypes.string.isRequired,
-  href: PropTypes.string
+  href: PropTypes.string,
 };
 
 export default Project;
