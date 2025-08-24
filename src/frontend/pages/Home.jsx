@@ -88,7 +88,8 @@ const Home = () => {
           >
             {" "}
             my TikTok!
-          </a>
+          </a>{" "}
+          {/**/}
           ), learning a new skill, or{" "}
           <span>
             <ChangeWord list={hobbies} />
