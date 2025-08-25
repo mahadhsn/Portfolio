@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 
 const Quotes = () => {
-  const API_BASE = (typeof window !== "undefined" ? window.location.origin : (import.meta?.env?.VITE_API_BASE_URL || "")); // auto-detect preview origin, fallback to explicit base
+  const API_BASE =
+    typeof window !== "undefined"
+      ? window.location.origin
+      : import.meta?.env?.VITE_API_BASE_URL || ""; // auto-detect preview origin, fallback to explicit base
 
   const normalizeQuote = (data) => {
     if (!data || typeof data !== "object") return { quote: "", author: "" };
