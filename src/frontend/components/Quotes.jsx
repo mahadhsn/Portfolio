@@ -7,7 +7,7 @@ const Quotes = () => {
   const fetchRandomQuote = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch("/.netlify/functions/quote");
+      const response = await fetch("/api/quote");
       const data = await response.json();
       setQuoteData({
         quote: data.quote || "No quote available",
