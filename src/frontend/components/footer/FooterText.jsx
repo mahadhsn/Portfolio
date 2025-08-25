@@ -9,11 +9,6 @@ const FooterText = () => {
       .then((data) => {
         if (data?.lastUpdated) {
           setLastUpdated(data.lastUpdated);
-          console.log("Fetched lastUpdated:", data.lastUpdated);
-          // localStorage.setItem(
-          //   "lastUpdatedCache",
-          //   JSON.stringify({ date: data.lastUpdated, timestamp: Date.now() })
-          // );
         }
       });
   }, []);
