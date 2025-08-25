@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const Quotes = () => {
-  const API_BASE = import.meta?.env?.VITE_API_BASE_URL || ""; // e.g., https://your-app.vercel.app
+  const API_BASE = (typeof window !== "undefined" ? window.location.origin : (import.meta?.env?.VITE_API_BASE_URL || "")); // auto-detect preview origin, fallback to explicit base
 
   const normalizeQuote = (data) => {
     if (!data || typeof data !== "object") return { quote: "", author: "" };
@@ -44,7 +44,7 @@ const Quotes = () => {
   }, []);
 
   return (
-    <div className="quote-container text-center p-6 mx-auto bg-neutral-900 text-textlight dark:text-textdark rounded-lg shadow-lg">
+    <div className="quote-container text-center p-6 mx-auto bg-bglight dark:bg-bgdark text-textlight dark:text-textdark rounded-lg shadow-lg">
       {isLoading ? (
         <p className="text-lg font-light">Loading...</p>
       ) : (
