@@ -79,9 +79,18 @@ const Home = () => {
             McMaster University
           </a>{" "}
           🦅 based in Hamilton, Ontario 🍁. Outside the coding world, I'm
-          probably singing{" "}
-          <span className="font-light">(checkout my TikTok!)</span>, learning a
-          new skill, or{" "}
+          probably singing (checkout
+          <a
+            href="https://www.tiktok.com/@aguitarer"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline"
+          >
+            {" "}
+            my TikTok!
+          </a>{" "}
+          {/**/}
+          ), learning a new skill, or{" "}
           <span>
             <ChangeWord list={hobbies} />
           </span>
