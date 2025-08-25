@@ -25,6 +25,11 @@ const Quotes = () => {
 
       const raw = await res.json();
       const { quote, author } = normalizeQuote(raw);
+      if (import.meta && import.meta.env && import.meta.env.DEV) {
+        // eslint-disable-next-line no-console
+        console.log("/api/quote payload:", raw, "=>", { quote, author });
+      }
+
       setQuoteData({
         quote: quote && String(quote).trim() ? quote : "No quote available",
         author: author && String(author).trim() ? author : "Unknown",
