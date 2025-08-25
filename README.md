@@ -2,7 +2,7 @@
 Welcome to my portfolio :)
 created using React, TailwindCSS, and Node.js
 
-Inspired by [Quinn Ha](https://x.com/qvinnh) 
+Inspired by [Quinn Ha](https://x.com/qvinnh)
 
 To Do:
 
