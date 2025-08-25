@@ -1,69 +1,83 @@
+import { useState, useEffect } from "react";
 import { useMemo } from "react";
 
 const PDFViewer = () => {
-  // Always serve from the public root. Make sure `/public/mahadresume.pdf` exists.
-  const pdfUrl = useMemo(() => "/mahadresume.pdf#view=FitH", []);
+  const [iframeSupported, setIframeSupported] = useState(true);
+
+  const pdfHref = useMemo(() => "/mahadresume.pdf", []);
+
+  useEffect(() => {
+    // Check if the browser supports iframes
+    if (!document.createElement("iframe").constructor) {
+      setIframeSupported(false);
+    }
+  }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center w-full min-h-screen mt-5">
-      {/* Primary inline PDF using <object> */}
-      <object
-        data={pdfUrl}
-        type="application/pdf"
-        className="w-[80vw] md:w-[40vw] h-[90vh] border-4 border-neutral-500 rounded-lg shadow-lg"
-        aria-label="Embedded PDF resume"
-      >
-        {/* Fallback #1: <embed> */}
-        <embed
-          src={pdfUrl}
-          type="application/pdf"
-          className="w-[80vw] md:w-[40vw] h-[90vh] border-4 border-neutral-500 rounded-lg shadow-lg"
-        />
+    <div className="flex flex-col items-center justify-center min-h-screen gap-4 pt-5">
+      {/* Check if iframe is supported */}
+      {iframeSupported ? (
+        <>
+          <iframe
+            className="w-[80vw] md:w-[40vw] h-[90vh] border-4 border-neutral-500 rounded-lg shadow-lg"
+            src="/mahadresume.pdf"
+            title="My Resume"
+          />
 
-        {/* Fallback #2: final graceful fallback */}
-        <div className="text-center p-6">
-          <p className="mb-3 text-sm opacity-80">
-            Your browser can’t display PDFs inline. You can still open or
-            download it below.
-          </p>
-          <div className="flex gap-3 justify-center">
+          <div className="flex flex-col items-center text-center text-textlight dark:text-textdark gap-2">
+            <p className="mb-1 text-m text-neutral-600 dark:text-neutral-300">
+              If the resume is not visible, please open it in a new tab :)
+            </p>
+
             <a
-              href={pdfUrl.replace(/#.*/, "")}
+              href={pdfHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 rounded-lg transition duration-300 bg-accentlight dark:bg-accentdark text-textlight dark:text-textdark hover:bg-accenthoverlight dark:hover:bg-accenthoverdark"
+              className="inline-flex w-auto max-w-fit whitespace-nowrap px-4 py-2 text-base rounded-lg transition duration-300 bg-accentlight dark:bg-accentdark text-textlight dark:text-textdark hover:bg-accenthoverlight dark:hover:bg-accenthoverdark"
             >
               Open in new tab
             </a>
+
             <a
-              href={pdfUrl.replace(/#.*/, "")}
+              href="/mahadresume.pdf"
               download="mahadresume.pdf"
-              className="px-4 py-2 rounded-lg transition duration-300 bg-accentlight dark:bg-accentdark text-textlight dark:text-textdark hover:bg-accenthoverlight dark:hover:bg-accenthoverdark"
+              className="inline-flex w-auto max-w-fit whitespace-nowrap px-4 py-2 text-base rounded-lg transition duration-300 bg-accentlight dark:bg-accentdark text-textlight dark:text-textdark hover:bg-accenthoverlight dark:hover:bg-accenthoverdark"
+            >
+              Download
+            </a>
+          </div>
+        </>
+      ) : (
+        <div className="text-center text-errorlight dark:text-errordark">
+          <p>
+            Your browser does not support iframes :\ Please download the resume
+            below:
+          </p>
+          {/* Fallback download button */}
+          <div className="flex flex-col items-center text-center text-textlight dark:text-textdark gap-2">
+            <p className="mb-1 text-m text-neutral-600 dark:text-neutral-300">
+              If the resume is not visible, please open it in a new tab :)
+            </p>
+
+            <a
+              href={pdfHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-auto max-w-fit whitespace-nowrap px-4 py-2 text-base rounded-lg transition duration-300 bg-accentlight dark:bg-accentdark text-textlight dark:text-textdark hover:bg-accenthoverlight dark:hover:bg-accenthoverdark"
+            >
+              Open in new tab
+            </a>
+
+            <a
+              href="/mahadresume.pdf"
+              download="mahadresume.pdf"
+              className="inline-flex w-auto max-w-fit whitespace-nowrap px-4 py-2 text-base rounded-lg transition duration-300 bg-accentlight dark:bg-accentdark text-textlight dark:text-textdark hover:bg-accenthoverlight dark:hover:bg-accenthoverdark"
             >
               Download
             </a>
           </div>
         </div>
-      </object>
-
-      {/* Visible action buttons */}
-      <div className="mt-4 flex flex-col gap-3 text-center">
-        <a
-          href={pdfUrl.replace(/#.*/, "")}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="px-6 py-2 rounded-lg transition duration-300 bg-accentlight dark:bg-accentdark text-textlight dark:text-textdark hover:bg-accenthoverlight dark:hover:bg-accenthoverdark"
-        >
-          Open in new tab
-        </a>
-        <a
-          href={pdfUrl.replace(/#.*/, "")}
-          download="mahadresume.pdf"
-          className="px-6 py-2 rounded-lg transition duration-300 bg-accentlight dark:bg-accentdark text-textlight dark:text-textdark hover:bg-accenthoverlight dark:hover:bg-accenthoverdark"
-        >
-          Download
-        </a>
-      </div>
+      )}
     </div>
   );
 };
