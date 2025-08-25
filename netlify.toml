@@ -1,7 +1,0 @@
-[build]
-  command = "npm run build"
-  publish = "dist"
-  functions = "src/netlify/functions"
-
-[functions]
-  included_files = ["src/netlify/data/quotes.csv"]

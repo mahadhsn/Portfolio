@@ -1,0 +1,7 @@
+{
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }],
+  "framework": "vite",
+  "devCommand": "vite",
+  "buildCommand": "vite build",
+  "outputDirectory": "dist"
+}
