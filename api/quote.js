@@ -16,7 +16,9 @@ export default async function handler(req, res) {
     const quotes = JSON.parse(fileContents);
 
     if (!Array.isArray(quotes) || quotes.length === 0) {
-      return res.status(500).json({ message: "No quotes available in the JSON file" });
+      return res
+        .status(500)
+        .json({ message: "No quotes available in the JSON file" });
     }
 
     // Select a random quote
