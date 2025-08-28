@@ -8,7 +8,7 @@ const Projects = () => {
   });
 
   return (
-    <div className="text-textlight dark:text-textdark animate-fade-in mt-[10%] md:mt-[20%] transition-all duration-300 ease-in-out">
+    <div>
       <Helmet>
         <title>Mahad's Projects</title>
         <meta
