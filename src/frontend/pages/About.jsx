@@ -2,7 +2,6 @@ import ChangeWord from "../components/ChangeWord";
 import Image from "../components/logs/Image";
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";
-import Song from "../components/Song";
 import {
   currently,
   previously,
@@ -17,7 +16,7 @@ const About = () => {
   });
 
   return (
-    <div className="text-textlight dark:text-textdark animate-fade-in mt-10 md:mt-[20%] transition-all duration-300 ease-in-out">
+    <div>
       <Helmet>
         <title>About Mahad</title>
         <meta
@@ -226,9 +225,6 @@ const About = () => {
             <li>Received the AP Scholar with Honor Award 🏅</li>
           </ul>
         </span>
-      </div>
-      <div className="flex items-center justify-center mt-6 -mb-8">
-        <Song />
       </div>
     </div>
   );

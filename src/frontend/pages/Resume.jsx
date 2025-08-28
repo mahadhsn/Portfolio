@@ -8,7 +8,7 @@ const Resume = () => {
   });
 
   return (
-    <div className="flex flex-col animate-fade-in mt-[10%] md:mt-[20%] md:ml-5">
+    <div className="md:ml-5">
       <Helmet>
         <title>Mahad's Resume</title>
         <meta
