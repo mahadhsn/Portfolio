@@ -21,13 +21,13 @@ for folder in "$RAW"/*/; do
 
   echo "Processing folder: $foldername → $outdir"
 
-  for f in "$folder"/*.{jpg,jpeg,png,JPG,JPEG,PNG}; do
+  for f in "$folder"/*.{jpg,jpeg,png,heic,heif,JPG,JPEG,PNG,HEIC,HEIF}; do
     [ -e "$f" ] || continue
     base=$(basename "$f")
     name="${base%.*}"
 
-    # Desktop (1600px) → WebP
-    sharp -i "$f" -o "$outdir/${name}-1600.webp" -f webp -q 75 \
+    # Desktop (1600px) → WebP (respect EXIF orientation)
+    sharp -i "$f" --autoOrient -o "$outdir/${name}-1600.webp" -f webp -q 75 \
       resize 1600 --withoutEnlargement
 
   done
