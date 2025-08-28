@@ -2,9 +2,9 @@
 set -euo pipefail
 
 RAW="raw/canon"
-DEST="src/assets"
+DEST="src/assets/canon"
 
-# Ensure sharp-cli is installed
+
 if ! command -v sharp >/dev/null 2>&1; then
   echo "sharp-cli not found. Install it globally with: npm install -g sharp-cli"
   echo "npm install -g sharp-cli"
@@ -33,4 +33,4 @@ for folder in "$RAW"/*/; do
   done
 done
 
-echo "✅ Done. Optimized files placed under $DEST/<folder>/optimized"
+echo "Optimized files placed under $DEST/<folder>/optimized"
