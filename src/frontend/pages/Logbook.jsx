@@ -134,7 +134,7 @@ const Logbook = () => {
             >
               <button>{pic.title}</button>
             </Link>
-            <h2 className="mt-1">{pic.written_date}</h2>
+            <h2>{pic.written_date}</h2>
           </li>
         ))}
       </ul>
