@@ -5,7 +5,6 @@ import { Helmet } from "react-helmet";
 import { FaReact } from "react-icons/fa";
 import { IoLogoFirebase } from "react-icons/io5";
 import { SiTypescript } from "react-icons/si";
-import Song from "../../components/Song";
 
 const SceloCare = () => {
   useEffect(() => {
@@ -13,7 +12,7 @@ const SceloCare = () => {
   });
 
   return (
-    <div className="text-textlight dark:text-textdark animate-fade-in mt-[5%] md:mt-[18%] w-full text-lg">
+    <div>
       <Helmet>
         <title>About ScleroCare</title>
         <meta
@@ -271,9 +270,6 @@ const SceloCare = () => {
           I'm grateful to have been chosen to contribute to this project and am
           quite excited to see how it turns out!
         </p>
-      </div>
-      <div className="flex flex-col justify-center items-center space-y-2 -mb-8">
-        <Song />
       </div>
     </div>
   );

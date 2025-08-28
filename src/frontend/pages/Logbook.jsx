@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import Song from "../components/Song";
 
 const Logbook = () => {
   useEffect(() => {
@@ -43,7 +42,7 @@ const Logbook = () => {
   ];
 
   return (
-    <div className="text-textlight dark:text-textdark flex flex-col opacity-0 animate-fade-in mt-[5%] md:mt-[18%] w-full h-full mb-20">
+    <div>
       <Helmet>
         <title>Mahad's Life</title>
         <meta
@@ -90,7 +89,7 @@ const Logbook = () => {
               >
                 <button>{log.title}</button>
               </Link>
-              <h2 className="mt-1">{log.written_date}</h2>
+              <h2>{log.written_date}</h2>
             </li>
           ))}
       </ul>
@@ -100,9 +99,6 @@ const Logbook = () => {
         any affiliated organizations. All images used are my own unless
         otherwise stated.
       </p>
-      <div className="flex items-center justify-center mt-20 -mb-28">
-        <Song />
-      </div>
     </div>
   );
 };
