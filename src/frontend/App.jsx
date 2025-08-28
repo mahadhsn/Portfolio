@@ -10,7 +10,7 @@ import Contact from "./pages/Contact";
 import Intro from "./pages/logs/Intro";
 import Internship from "./pages/logs/Internship";
 import SceloCare from "./pages/logs/sclerocare";
-import Belfountain30625 from "./pages/pics/Belfountain30625"
+import Belfountain30625 from "./pages/pics/Belfountain30625";
 import KillBear3825 from "./pages/pics/KillBear3825";
 import Toronto27825 from "./pages/pics/Toronto27825";
 
@@ -34,9 +34,15 @@ export default function App() {
             <Route path="/logbook/intro" element={<Intro />} />
             <Route path="/logbook/internship" element={<Internship />} />
             <Route path="/logbook/sclerocare" element={<SceloCare />} />
-            <Route path="/logbook/belfountain-30-6-25" element={<Belfountain30625/>} />
-            <Route path="/logbook/killbear-3-8-25" element={<KillBear3825/>} />
-            <Route path={"/logbook/toronto-27-8-25"} element={<Toronto27825 />} />
+            <Route
+              path="/logbook/belfountain-30-6-25"
+              element={<Belfountain30625 />}
+            />
+            <Route path="/logbook/killbear-3-8-25" element={<KillBear3825 />} />
+            <Route
+              path={"/logbook/toronto-27-8-25"}
+              element={<Toronto27825 />}
+            />
 
             <Route path="/resume" element={<Resume />} />
             <Route path="/contact" element={<Contact />} />

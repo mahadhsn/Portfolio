@@ -7,19 +7,16 @@ const Header = ({ Title, Mins, Date }) => {
 
       <hr className="border-textlight dark:textdark mb-1"></hr>
 
-      { Mins ? (
+      {Mins ? (
         <div className="flex items-center justify-center font-semibold text-gray-500">
-            <p>
-              {" "}
-              ~{Mins} min read | {Date}
-            </p>
-          </div>
+          <p>
+            {" "}
+            ~{Mins} min read | {Date}
+          </p>
+        </div>
       ) : (
         <div className="flex items-center justify-center font-semibold text-gray-500">
-            <p>
-              {" "}
-              {Date}
-            </p>
+          <p> {Date}</p>
         </div>
       )}
     </div>

@@ -1,27 +1,31 @@
-import Header from "../../components/logs/Header"
+import Header from "../../components/logs/Header";
 
 const Belfountain30625 = () => {
-
   const images = import.meta.glob(
-    '../../../assets/canon/belfountain-30-6-25/*.{png,jpg,jpeg,webp,avif,JPG}',
-    { eager: true, as: 'url' }
+    "../../../assets/canon/belfountain-30-6-25/*.{png,jpg,jpeg,webp,avif,JPG}",
+    { eager: true, as: "url" },
   );
   const imageUrls = Object.values(images)
-    .filter((v) => typeof v === 'string')
+    .filter((v) => typeof v === "string")
     .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
 
   return (
     <div>
-      <Header Title={"Belfountain"} Date={"June 30th, 2025"}/>
+      <Header Title={"Belfountain"} Date={"June 30th, 2025"} />
 
       <div className="grid w-full grid-cols-1 gap-10">
         {imageUrls.map((src, idx) => (
-          <img key={idx} src={src} alt={`Belfountain ${idx}`} style={styles.img_landscape} />
+          <img
+            key={idx}
+            src={src}
+            alt={`Belfountain ${idx}`}
+            style={styles.img_landscape}
+          />
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
 const styles = {
   img_landscape: {
@@ -34,4 +38,4 @@ const styles = {
   },
 };
 
-export default Belfountain30625
+export default Belfountain30625;

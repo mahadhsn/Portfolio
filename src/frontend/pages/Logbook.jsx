@@ -46,23 +46,23 @@ const Logbook = () => {
       title: "Belfountain",
       path: "/logbook/belfountain-30-6-25",
       date: "2025-06-30",
-      written_date: "June 30th, 2025"
+      written_date: "June 30th, 2025",
     },
 
     {
       title: "KillBear",
       path: "/logbook/killbear-3-8-25",
       date: "2025-08-03",
-      written_date: "August 3rd, 2025"
+      written_date: "August 3rd, 2025",
     },
 
     {
       title: "Toronto",
       path: "/logbook/toronto-27-8-25",
       date: "2025-08-27",
-      written_date: "August 27th, 2025"
+      written_date: "August 27th, 2025",
     },
-  ]
+  ];
 
   return (
     <div>
@@ -73,7 +73,7 @@ const Logbook = () => {
           content="Logbook page of Mahad Hassan's software engineering portfolio."
         />
       </Helmet>
-    
+
       <h1 className="text-3xl text-center items-center justify-center align-middle mb-2">
         Get to know me :)
       </h1>
@@ -124,19 +124,19 @@ const Logbook = () => {
       <h1 className="text-2xl font-bold mt-4"> pics: </h1>
 
       <ul className="mt-2 space-y-2 list-disc list-inside">
-        {pics.
-        sort((a, b) => new Date(b.date) - new Date(a.date))
-        .map((pic) => (
-          <li key={pic.title} className="flex flex-row">
-            <Link
-            to={pic.path}
-            className="text-lg mr-3 hover:text-accentlight dark:hover:text-accentdark transition-all duration-300 ease-in-out"
-            >
-              <button>{pic.title}</button>
-            </Link>
-            <h2>{pic.written_date}</h2>
-          </li>
-        ))}
+        {pics
+          .sort((a, b) => new Date(b.date) - new Date(a.date))
+          .map((pic) => (
+            <li key={pic.title} className="flex flex-row">
+              <Link
+                to={pic.path}
+                className="text-lg mr-3 hover:text-accentlight dark:hover:text-accentdark transition-all duration-300 ease-in-out"
+              >
+                <button>{pic.title}</button>
+              </Link>
+              <h2>{pic.written_date}</h2>
+            </li>
+          ))}
       </ul>
 
       <p className="mt-20 text-sm text-center px-4 text-gray-500">
