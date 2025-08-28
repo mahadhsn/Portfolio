@@ -2,14 +2,13 @@ import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import Image from "../../components/logs/Image";
 import Header from "../../components/logs/Header";
-import Song from "../../components/Song";
 
 const Intro = () => {
   useEffect(() => {
     document.title = "Intro Log";
   });
   return (
-    <div className="text-textlight dark:text-textdark animate-fade-in mt-[5%] md:mt-[18%] w-full ml-5">
+    <div>
       <Helmet>
         <title>Intro Log</title>
         <meta name="description" content="Mahad Hassan's Intro Log." />
@@ -156,9 +155,6 @@ const Intro = () => {
             contact page :)
           </a>
         </p>
-      </div>
-      <div className="flex flex-col justify-center items-center space-y-2 -mb-8">
-        <Song />
       </div>
     </div>
   );

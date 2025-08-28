@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import ChangeWord from "../components/ChangeWord";
 import { hobbies, cornerOptions, greetings } from "../../data/consts";
 import Quotes from "../components/Quotes";
-import Song from "../components/Song";
 
 const Home = () => {
   useEffect(() => {
@@ -20,7 +19,7 @@ const Home = () => {
   };
 
   return (
-    <div className="text-textlight dark:text-textdark flex flex-col opacity-0 animate-fade-in mt-[5%] md:mt-[10%] transition-all duration-300 ease-in-out">
+    <div>
       <Helmet>
         <title>Mahad's Home</title>
         <meta
@@ -125,7 +124,6 @@ const Home = () => {
       </span>
       <div className="flex flex-col justify-center items-center space-y-2 -mb-8">
         <Quotes />
-        <Song />
       </div>
     </div>
   );
