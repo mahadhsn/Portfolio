@@ -2,7 +2,7 @@ import Header from "../../components/logs/Header";
 
 const Toronto27825 = () => {
   const images = import.meta.glob(
-    "../../../assets/canon/toronto-27-8-25/*.{png,jpg,jpeg,webp,avif,JPG}",
+    "../../../assets/canon/toronto-27-8-25/optimized/*-1600.webp",
     { eager: true, as: "url" },
   );
   const imageUrls = Object.values(images)
