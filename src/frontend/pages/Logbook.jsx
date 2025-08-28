@@ -41,6 +41,29 @@ const Logbook = () => {
     },
   ];
 
+  const pics = [
+    {
+      title: "Belfountain",
+      path: "/logbook/belfountain-30-6-25",
+      date: "2025-06-30",
+      written_date: "June 30th, 2025",
+    },
+
+    {
+      title: "KillBear",
+      path: "/logbook/killbear-3-8-25",
+      date: "2025-08-03",
+      written_date: "August 3rd, 2025",
+    },
+
+    {
+      title: "Toronto",
+      path: "/logbook/toronto-27-8-25",
+      date: "2025-08-27",
+      written_date: "August 27th, 2025",
+    },
+  ];
+
   return (
     <div>
       <Helmet>
@@ -73,7 +96,9 @@ const Logbook = () => {
 
       <hr className="mb-2 mt-2 border-textlight dark:border-textdark"></hr>
 
-      <ul className="mt-6 space-y-2 list-disc list-inside">
+      <h1 className="text-2xl font-bold mt-4"> logs: </h1>
+
+      <ul className="mt-2 mb-2 space-y-2 list-disc list-inside">
         {logs
           .filter(
             (log) =>
@@ -85,11 +110,31 @@ const Logbook = () => {
             <li key={log.title} className="flex flex-row">
               <Link
                 to={log.path}
-                className="text-lg font-semibold mr-3 hover:text-accentlight dark:hover:text-accentdark transition-all duration-300 ease-in-out"
+                className="text-lg mr-3 hover:text-accentlight dark:hover:text-accentdark transition-all duration-300 ease-in-out"
               >
                 <button>{log.title}</button>
               </Link>
               <h2>{log.written_date}</h2>
+            </li>
+          ))}
+      </ul>
+
+      <hr className="mb-2 mt-2 border-textlight dark:border-textdark"></hr>
+
+      <h1 className="text-2xl font-bold mt-4"> pics: </h1>
+
+      <ul className="mt-2 space-y-2 list-disc list-inside">
+        {pics
+          .sort((a, b) => new Date(b.date) - new Date(a.date))
+          .map((pic) => (
+            <li key={pic.title} className="flex flex-row">
+              <Link
+                to={pic.path}
+                className="text-lg mr-3 hover:text-accentlight dark:hover:text-accentdark transition-all duration-300 ease-in-out"
+              >
+                <button>{pic.title}</button>
+              </Link>
+              <h2>{pic.written_date}</h2>
             </li>
           ))}
       </ul>
