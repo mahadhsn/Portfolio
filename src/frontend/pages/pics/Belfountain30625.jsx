@@ -1,9 +1,10 @@
 import Header from "../../components/logs/Header";
 
 const Belfountain30625 = () => {
+
   const images = import.meta.glob(
-    "../../../assets/canon/belfountain-30-6-25/*.{png,jpg,jpeg,webp,avif,JPG}",
-    { eager: true, as: "url" },
+    '../../../assets/canon/belfountain-30-6-25/optimized/*-1600.webp',
+    { eager: true, as: 'url' }
   );
   const imageUrls = Object.values(images)
     .filter((v) => typeof v === "string")

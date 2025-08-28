@@ -2,7 +2,7 @@ import Header from "../../components/logs/Header";
 
 const KillBear3825 = () => {
   const images = import.meta.glob(
-    "../../../assets/canon/killbear-3-8-25/*.{png,jpg,jpeg,webp,avif,JPG}",
+    "../../../assets/canon/killbear-3-8-25/optimized/*-1600.webp",
     { eager: true, as: "url" },
   );
   const imageUrls = Object.values(images)
