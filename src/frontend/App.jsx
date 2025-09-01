@@ -44,10 +44,7 @@ export default function App() {
               path={"/logbook/toronto-27-8-25"}
               element={<Toronto27825 />}
             />
-            <Route 
-            path={"/logbook/bronte-31-8-25"}
-            element={<Bronte31825 />}
-            />
+            <Route path={"/logbook/bronte-31-8-25"} element={<Bronte31825 />} />
 
             <Route path="/resume" element={<Resume />} />
             <Route path="/contact" element={<Contact />} />

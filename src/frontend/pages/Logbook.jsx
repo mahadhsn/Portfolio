@@ -67,8 +67,8 @@ const Logbook = () => {
       title: "Bronte Creek",
       path: "/logbook/bronte-31-8-25",
       date: "2025-08-31",
-      written_date: "August 31st, 2025"
-    }
+      written_date: "August 31st, 2025",
+    },
   ];
 
   return (

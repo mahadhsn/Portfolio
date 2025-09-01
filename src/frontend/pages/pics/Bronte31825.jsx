@@ -38,4 +38,4 @@ const styles = {
   },
 };
 
-export default Bronte31825
+export default Bronte31825;
