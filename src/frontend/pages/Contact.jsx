@@ -54,7 +54,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="text-textlight dark:text-textdark animate-fade-in flex flex-col items-center w-full -mt-2 md:mt-[10%]">
+    <div className="flex flex-col items-center w-full">
       <Helmet>
         <title>Contact Mahad</title>
         <meta
