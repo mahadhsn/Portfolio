@@ -13,6 +13,7 @@ import SceloCare from "./pages/logs/sclerocare";
 import Belfountain30625 from "./pages/pics/Belfountain30625";
 import KillBear3825 from "./pages/pics/KillBear3825";
 import Toronto27825 from "./pages/pics/Toronto27825";
+import Bronte31825 from "./pages/pics/Bronte31825";
 
 export default function App() {
   if (window.location.hash.startsWith("#/")) {
@@ -43,6 +44,7 @@ export default function App() {
               path={"/logbook/toronto-27-8-25"}
               element={<Toronto27825 />}
             />
+            <Route path={"/logbook/bronte-31-8-25"} element={<Bronte31825 />} />
 
             <Route path="/resume" element={<Resume />} />
             <Route path="/contact" element={<Contact />} />
