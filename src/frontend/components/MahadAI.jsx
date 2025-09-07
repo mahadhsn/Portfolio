@@ -24,11 +24,16 @@ export default function MahadAI() {
     }
   }
 
-    return (
-    <form onSubmit={e => { e.preventDefault(); send(); }}>
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        send();
+      }}
+    >
       <input
         value={input}
-        onChange={e => setInput(e.target.value)}
+        onChange={(e) => setInput(e.target.value)}
         disabled={loading}
       />
       <button type="submit" disabled={loading || !input.trim()}>
