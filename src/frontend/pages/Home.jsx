@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import ChangeWord from "../components/ChangeWord";
 import { hobbies, cornerOptions, greetings } from "../../data/consts";
 import Quotes from "../components/Quotes";
+import MahadAI from "../components/MahadAI";
 
 const Home = () => {
   useEffect(() => {
