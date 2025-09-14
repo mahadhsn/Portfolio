@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
 const Quotes = () => {
-
   const normalizeQuote = (data) => {
     if (!data || typeof data !== "object") return { quote: "", author: "" };
     const quote = data.Quote || data.quote || "";
