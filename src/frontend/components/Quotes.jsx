@@ -1,10 +1,6 @@
 import { useState, useEffect } from "react";
 
 const Quotes = () => {
-  const API_BASE =
-    typeof window !== "undefined"
-      ? window.location.origin
-      : import.meta?.env?.VITE_API_BASE_URL || ""; // auto-detect preview origin, fallback to explicit base
 
   const normalizeQuote = (data) => {
     if (!data || typeof data !== "object") return { quote: "", author: "" };
@@ -18,7 +14,7 @@ const Quotes = () => {
   const fetchRandomQuote = async () => {
     setIsLoading(true);
     try {
-      const res = await fetch(`${API_BASE}/api/quote`, { cache: "no-store" });
+      const res = await fetch("/api/quote", { cache: "no-store" });
 
       if (!res.ok) {
         console.error("/api/quote returned status:", res.status);
