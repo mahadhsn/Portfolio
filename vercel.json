@@ -1,7 +1,6 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }],
-  "framework": "vite",
-  "devCommand": "vite",
+  "devCommand": "vite --port $PORT",
   "buildCommand": "vite build",
+  "framework": "vite",
   "outputDirectory": "dist"
 }
