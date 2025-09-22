@@ -7,7 +7,7 @@ import Quotes from "../components/Quotes";
 
 const Home = () => {
   useEffect(() => {
-    document.title = "Mahad's Home";
+    document.title = "Mahad Hassan";
   }, []);
 
   const [currentGreeting, setCurrentGreeting] = React.useState(greetings[0]);
@@ -21,7 +21,7 @@ const Home = () => {
   return (
     <div>
       <Helmet>
-        <title>Mahad's Home</title>
+        <title>Mahad Hassan</title>
         <meta
           name="description"
           content="Home page of Mahad Hassan's software engineering portfolio."

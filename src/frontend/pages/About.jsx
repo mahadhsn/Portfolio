@@ -8,7 +8,7 @@ import {
   achievements,
   shortGoals,
   longGoals,
-} from "../../data/consts"; //
+} from "../../data/consts";
 
 const About = () => {
   useEffect(() => {
@@ -76,16 +76,16 @@ const About = () => {
             </li>
             <li>
               {" "}
-              Software Engineering Intern at{" "}
+              Member of the Controls-Subteam at {" "}
               <a
-                href="https://www.td.com/ca/en/personal-banking"
+                href="https://www.macrocketry.ca"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline"
               >
-                TD
+                McMaster Rocketry
               </a>{" "}
-              🟩{" "}
+               🚀
             </li>
             <li>
               {" "}
@@ -152,6 +152,19 @@ const About = () => {
           </span>
 
           <ul className="list-disc list-inside mb-8">
+            <li>
+              {" "}
+              Software Engineering Intern at{" "}
+              <a
+                href="https://www.td.com/ca/en/personal-banking"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline"
+              >
+                TD
+              </a>{" "}
+              , saving $1,000,000 anually 🟩{" "}
+            </li>
             <li>
               {" "}
               Combatted threats at{" "}
