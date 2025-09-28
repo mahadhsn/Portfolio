@@ -5,7 +5,13 @@
   "outputDirectory": "dist",
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/(@vite|@react-refresh|node_modules/.vite|src/.*|assets/.*)", "destination": "/$1" },
-    { "source": "/((?!api|@vite|@react-refresh|node_modules/.vite|assets|.*\\..*).*)", "destination": "/" }
+    {
+      "source": "/(@vite|@react-refresh|node_modules/.vite|src/.*|assets/.*)",
+      "destination": "/$1"
+    },
+    {
+      "source": "/((?!api|@vite|@react-refresh|node_modules/.vite|assets|.*\\..*).*)",
+      "destination": "/"
+    }
   ]
 }

@@ -76,7 +76,7 @@ const About = () => {
             </li>
             <li>
               {" "}
-              Member of the Controls-Subteam at {" "}
+              Member of the Controls-Subteam at{" "}
               <a
                 href="https://www.macrocketry.ca"
                 target="_blank"
@@ -85,7 +85,7 @@ const About = () => {
               >
                 McMaster Rocketry
               </a>{" "}
-               🚀
+              🚀
             </li>
             <li>
               {" "}
