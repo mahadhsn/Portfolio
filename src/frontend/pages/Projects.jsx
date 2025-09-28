@@ -82,7 +82,7 @@ const Projects = () => {
             target="_blank"
             className="underline"
           >
-            Cybersecurity System
+            SecureVault
           </a>
           <span className="text-lg invisible md:visible mobile:fixed md:absolute md:translate-y-2">
             {" "}
