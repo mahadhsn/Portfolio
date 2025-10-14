@@ -69,6 +69,13 @@ const Logbook = () => {
       date: "2025-08-31",
       written_date: "August 31st, 2025",
     },
+
+    {
+      title: "Stirling",
+      path: "/logbook/stirling-11-10-25",
+      date: "2025-10-11",
+      written_date: "October 11th, 2025"
+    }
   ];
 
   return (
