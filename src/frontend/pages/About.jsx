@@ -88,18 +88,12 @@ const About = () => {
               🚀
             </li>
             <li>
-              {" "}
-              VP of Operations for{" "}
-              <a
-                href="https://www.instagram.com/voicesatmac/"
+              Machine learning Engineer at {" "}
+              <a href="https://www.macdrones.ca"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline"
-              >
-                VoicesatMac
-              </a>{" "}
-              helping initialize the club and host interviews with various
-              people of all backgrounds 🎤
+                className="underline">McMaster Drone Club,</a> {" "}
+              aiding in winning the annual drone & aerial robotics challenge ✈
             </li>
             <li>
               {" "}
@@ -190,6 +184,20 @@ const About = () => {
                 McMaster PSA
               </a>{" "}
               planning & managing events with 300+ attendees 🇵🇰
+            </li>
+             <li>
+              {" "}
+              VP of Operations for{" "}
+              <a
+                href="https://www.instagram.com/voicesatmac/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline"
+              >
+                VoicesatMac, 
+              </a>{" "}
+              helped initialize the club and host interviews with various
+              people of all backgrounds 🎤
             </li>
             <li>
               {" "}
