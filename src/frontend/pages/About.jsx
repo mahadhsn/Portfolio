@@ -234,7 +234,7 @@ const About = () => {
             🥇 <ChangeWord list={achievements} />
           </span>
           <ul className="list-disc list-inside">
-            <li>Dean's list at McMaster 💯</li>
+            <li>Consistent Dean's List at McMaster 💯</li>
             <li>Winner at MacEngComp 24' 🏆</li>
             <li>Finalists at MacEngComp 23' 🏆</li>
             <li>Raised nearly $6,000 for charity with McMasterPSA 🎗️</li>
