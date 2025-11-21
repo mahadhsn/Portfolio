@@ -6,5 +6,7 @@ node_modules
 dist
 .netlify
 .vercel
+.vercel/output
+public/last-updated.json
 .env*.local
 raw/

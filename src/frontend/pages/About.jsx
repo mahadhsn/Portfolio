@@ -88,11 +88,15 @@ const About = () => {
               🚀
             </li>
             <li>
-              Machine learning Engineer at {" "}
-              <a href="https://www.macdrones.ca"
+              Machine learning Engineer at{" "}
+              <a
+                href="https://www.macdrones.ca"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline">McMaster Drone Club,</a> {" "}
+                className="underline"
+              >
+                McMaster Drone Club,
+              </a>{" "}
               aiding in winning the annual drone & aerial robotics challenge ✈
             </li>
             <li>
@@ -185,7 +189,7 @@ const About = () => {
               </a>{" "}
               planning & managing events with 300+ attendees 🇵🇰
             </li>
-             <li>
+            <li>
               {" "}
               VP of Operations for{" "}
               <a
@@ -194,10 +198,10 @@ const About = () => {
                 rel="noopener noreferrer"
                 className="underline"
               >
-                VoicesatMac, 
+                VoicesatMac,
               </a>{" "}
-              helped initialize the club and host interviews with various
-              people of all backgrounds 🎤
+              helped initialize the club and host interviews with various people
+              of all backgrounds 🎤
             </li>
             <li>
               {" "}
