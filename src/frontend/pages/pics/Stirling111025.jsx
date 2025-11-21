@@ -38,4 +38,4 @@ const styles = {
   },
 };
 
-export default Stirling111025
+export default Stirling111025;

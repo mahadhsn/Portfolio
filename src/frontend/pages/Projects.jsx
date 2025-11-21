@@ -13,9 +13,11 @@ import {
   SiFlask,
   SiGnubash,
 } from "react-icons/si";
-import { RiTailwindCssFill } from "react-icons/ri";
+import { RiTailwindCssFill, RiNextjsFill } from "react-icons/ri";
 import { TbCircleLetterCFilled } from "react-icons/tb";
 import { PiFileSqlFill } from "react-icons/pi";
+import { SiGooglecloud } from "react-icons/si";
+import { AiFillOpenAI } from "react-icons/ai";
 
 const Projects = () => {
   useEffect(() => {
@@ -41,11 +43,26 @@ const Projects = () => {
             rel="noopener noreferrer"
             className="underline"
           >
-            Github!
+            GitHub!
           </a>{" "}
           🚀
         </h2>
         <hr className="border-textlight dark:border-textdark"></hr>
+        <Project
+          Title={"PrepPal"}
+          Description={
+            "Disaster awareness and emergency-support web application that helps individuals make informed decisions before and during natural disasters | (winners at MacEngComp 25') 🏆"
+          }
+          href={"https://natural-disaster-map.vercel.app"}
+          Icons={[
+            RiNextjsFill,
+            FaReact,
+            RiTailwindCssFill,
+            SiGooglecloud,
+            AiFillOpenAI,
+          ]}
+        />
+
         <Project
           Title={"ScleroCare"}
           Description={

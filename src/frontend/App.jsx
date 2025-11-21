@@ -14,7 +14,7 @@ import Belfountain30625 from "./pages/pics/Belfountain30625";
 import KillBear3825 from "./pages/pics/KillBear3825";
 import Toronto27825 from "./pages/pics/Toronto27825";
 import Bronte31825 from "./pages/pics/Bronte31825";
-import Stirling111025 from "./pages/pics/Stirling111025"
+import Stirling111025 from "./pages/pics/Stirling111025";
 
 export default function App() {
   if (window.location.hash.startsWith("#/")) {
@@ -46,7 +46,10 @@ export default function App() {
               element={<Toronto27825 />}
             />
             <Route path={"/logbook/bronte-31-8-25"} element={<Bronte31825 />} />
-            <Route path="/logbook/stirling-11-10-25" element={<Stirling111025 />} />
+            <Route
+              path="/logbook/stirling-11-10-25"
+              element={<Stirling111025 />}
+            />
 
             <Route path="/resume" element={<Resume />} />
             <Route path="/contact" element={<Contact />} />
