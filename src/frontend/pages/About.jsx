@@ -28,7 +28,7 @@ const About = () => {
       <Image
         divStyle={styles.imageWrapper}
         imgStyle={styles.img}
-        src="../../../images/about/me.jpg"
+        src="/images/about/me.jpg"
         captionText="Me at a Daniel Caeser concert!"
       />
 
