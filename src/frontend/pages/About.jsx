@@ -37,8 +37,25 @@ const About = () => {
     clickLockMs: 550,
   });
 
+  // Keep page container open (no mobile padding). Fix “mini tables” by making
+  // the *TimelineBlock* larger on mobile via wrapper classes.
+  const sectionCard =
+    "rounded-3xl border border-borderlight dark:border-borderdark " +
+    "p-7 md:p-8"; // keep your section padding basically as-is
+
+  // This is the important part: make the TimelineBlocks (School/Teams/etc)
+  // feel bigger + less cramped on mobile.
+  const blockWrap = "-mx-2 sm:mx-0"; // lets the block breathe wider than the section padding on tiny screens
+
+  const blockCardClassName =
+    "rounded-3xl border border-borderlight dark:border-borderdark " +
+    "px-7 py-7 md:px-6 md:py-6"; // BIGGER on mobile, normal on md+
+
+  // Also give the NOW/BEORE/WINS blocks a bit more spacing on mobile
+  const blocksStack = "mt-7 space-y-6 md:space-y-4";
+
   return (
-    <div className="max-w-6xl mx-auto px-4 md:px-8">
+    <div className="max-w-6xl mx-auto md:px-8">
       <Helmet>
         <title>About Mahad</title>
         <meta
@@ -67,7 +84,7 @@ const About = () => {
           <section
             id="intro"
             ref={(el) => (refs.current.intro = el)}
-            className="rounded-3xl border p-8 border-borderlight dark:border-borderdark"
+            className={sectionCard}
           >
             <SectionHeader title="Intro" />
 
@@ -109,13 +126,12 @@ const About = () => {
           <section
             id="now"
             ref={(el) => (refs.current.now = el)}
-            className="rounded-3xl border p-8 border-borderlight dark:border-borderdark"
+            className={sectionCard}
           >
             <SectionHeader
               title={
                 <span className="flex items-center gap-3">
                   <span>Now</span>
-
                   <span className="relative flex h-3 w-3">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75" />
                     <span className="relative inline-flex h-3 w-3 rounded-full bg-green-500" />
@@ -124,117 +140,124 @@ const About = () => {
               }
               subtitle={<ChangeWord list={currently} />}
             />
-            <div className="mt-6 space-y-4">
-              <TimelineBlock
-                title="School"
-                items={[
-                  {
-                    date: "2022",
-                    content: (
-                      <>
-                        3<span className="text-sm">rd</span> year Software
-                        Engineering student 🖥️
-                      </>
-                    ),
-                  },
-                ]}
-              />
 
-              <TimelineBlock
-                title="Teams + clubs"
-                items={[
-                  {
-                    date: "Oct 2025",
-                    content: (
-                      <>
-                        Machine learning Engineer at{" "}
-                        <a
-                          href="https://www.macdrones.ca"
-                          className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
-                        >
-                          McMaster Drone Club
-                        </a>{" "}
-                        ✈
-                      </>
-                    ),
-                  },
-                  {
-                    date: "Sept 2025",
-                    content: (
-                      <>
-                        Controls-Subteam at{" "}
-                        <a
-                          href="https://www.macrocketry.ca"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
-                        >
-                          McMaster Rocketry
-                        </a>{" "}
-                        🚀
-                      </>
-                    ),
-                  },
-                  {
-                    date: "July 2025",
-                    content: (
-                      <>
-                        Website Developer for{" "}
-                        <a
-                          href="https://ses.eng.mcmaster.ca"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
-                        >
-                          Software Eng Society
-                        </a>{" "}
-                        💻
-                      </>
-                    ),
-                  },
-                  {
-                    date: "Jan 2025",
-                    content: (
-                      <>
-                        Developing{" "}
-                        <a
-                          href="https://www.mahadhssn.com/logbook/sclerocare"
-                          className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
-                        >
-                          an app
-                        </a>{" "}
-                        for{" "}
-                        <a
-                          href="https://www.scleroderma.ca"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
-                        >
-                          Scleroderma Canada
-                        </a>{" "}
-                        📱
-                      </>
-                    ),
-                  },
-                  {
-                    date: "Aug 2024",
-                    content: (
-                      <>
-                        Attendee Relations Executive for{" "}
-                        <a
-                          href="https://www.deltahacks.com"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
-                        >
-                          DeltaHacks
-                        </a>{" "}
-                        💻
-                      </>
-                    ),
-                  },
-                ]}
-              />
+            <div className={blocksStack}>
+              <div className={blockWrap}>
+                <TimelineBlock
+                  className={blockCardClassName}
+                  title="School"
+                  items={[
+                    {
+                      date: "2022",
+                      content: (
+                        <>
+                          3<span className="text-sm">rd</span> year Software
+                          Engineering student 🖥️
+                        </>
+                      ),
+                    },
+                  ]}
+                />
+              </div>
+
+              <div className={blockWrap}>
+                <TimelineBlock
+                  className={blockCardClassName}
+                  title="Teams + clubs"
+                  items={[
+                    {
+                      date: "Oct 2025",
+                      content: (
+                        <>
+                          Machine learning Engineer at{" "}
+                          <a
+                            href="https://www.macdrones.ca"
+                            className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
+                          >
+                            McMaster Drone Club
+                          </a>{" "}
+                          ✈
+                        </>
+                      ),
+                    },
+                    {
+                      date: "Sept 2025",
+                      content: (
+                        <>
+                          Controls-Subteam at{" "}
+                          <a
+                            href="https://www.macrocketry.ca"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
+                          >
+                            McMaster Rocketry
+                          </a>{" "}
+                          🚀
+                        </>
+                      ),
+                    },
+                    {
+                      date: "July 2025",
+                      content: (
+                        <>
+                          Website Developer for{" "}
+                          <a
+                            href="https://ses.eng.mcmaster.ca"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
+                          >
+                            Software Eng Society
+                          </a>{" "}
+                          💻
+                        </>
+                      ),
+                    },
+                    {
+                      date: "Jan 2025",
+                      content: (
+                        <>
+                          Developing{" "}
+                          <a
+                            href="https://www.mahadhssn.com/logbook/sclerocare"
+                            className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
+                          >
+                            an app
+                          </a>{" "}
+                          for{" "}
+                          <a
+                            href="https://www.scleroderma.ca"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
+                          >
+                            Scleroderma Canada
+                          </a>{" "}
+                          📱
+                        </>
+                      ),
+                    },
+                    {
+                      date: "Aug 2024",
+                      content: (
+                        <>
+                          Attendee Relations Executive for{" "}
+                          <a
+                            href="https://www.deltahacks.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
+                          >
+                            DeltaHacks
+                          </a>{" "}
+                          💻
+                        </>
+                      ),
+                    },
+                  ]}
+                />
+              </div>
             </div>
           </section>
 
@@ -242,127 +265,133 @@ const About = () => {
           <section
             id="before"
             ref={(el) => (refs.current.before = el)}
-            className="rounded-3xl border p-8 border-borderlight dark:border-borderdark"
+            className={sectionCard}
           >
             <SectionHeader
               title="Before"
               subtitle={<ChangeWord list={previously} />}
             />
 
-            <div className="mt-6 space-y-4">
-              <TimelineBlock
-                title="Work"
-                items={[
-                  {
-                    date: "May - Aug 2025",
-                    content: (
-                      <>
-                        Software Engineering Intern @{" "}
-                        <a
-                          href="https://www.td.com/ca/en/personal-banking"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
-                        >
-                          TD
-                        </a>{" "}
-                        🟩
-                      </>
-                    ),
-                  },
-                  {
-                    date: "June - Aug 2024",
-                    content: (
-                      <>
-                        Cybersecurity Intern @{" "}
-                        <a
-                          href="https://www.qewc.com/qewc/en/subsidiaries/rlpc/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
-                        >
-                          RLPC
-                        </a>{" "}
-                        🦠
-                      </>
-                    ),
-                  },
-                ]}
-              />
+            <div className={blocksStack}>
+              <div className={blockWrap}>
+                <TimelineBlock
+                  className={blockCardClassName}
+                  title="Work"
+                  items={[
+                    {
+                      date: "May - Aug 2025",
+                      content: (
+                        <>
+                          Software Engineering Intern @{" "}
+                          <a
+                            href="https://www.td.com/ca/en/personal-banking"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
+                          >
+                            TD
+                          </a>{" "}
+                          🟩
+                        </>
+                      ),
+                    },
+                    {
+                      date: "June - Aug 2024",
+                      content: (
+                        <>
+                          Cybersecurity Intern @{" "}
+                          <a
+                            href="https://www.qewc.com/qewc/en/subsidiaries/rlpc/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
+                          >
+                            RLPC
+                          </a>{" "}
+                          🦠
+                        </>
+                      ),
+                    },
+                  ]}
+                />
+              </div>
 
-              <TimelineBlock
-                title="Leadership + community"
-                items={[
-                  {
-                    date: "Oct 2024 - Sept 2025",
-                    content: (
-                      <>
-                        VP of Operations @{" "}
-                        <a
-                          href="https://www.instagram.com/voicesatmac/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
-                        >
-                          VoicesatMac
-                        </a>{" "}
-                        🎤
-                      </>
-                    ),
-                  },
-                  {
-                    date: "@ Sept 2024",
-                    content: (
-                      <>
-                        Volunteered for{" "}
-                        <a
-                          href="https://www.hammerhacks.ca"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
-                        >
-                          HammerHacks
-                        </a>{" "}
-                        💻
-                      </>
-                    ),
-                  },
-                  {
-                    date: "June 2024 - April 2025",
-                    content: (
-                      <>
-                        VP of Events @{" "}
-                        <a
-                          href="https://www.instagram.com/mcmasterpsa/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
-                        >
-                          McMaster PSA
-                        </a>{" "}
-                        🇵🇰
-                      </>
-                    ),
-                  },
-                  {
-                    date: "@ Aug 2024",
-                    content: (
-                      <>
-                        Volunteered for{" "}
-                        <a
-                          href="https://www.campquality.org"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
-                        >
-                          CampQuality
-                        </a>{" "}
-                        🏕️
-                      </>
-                    ),
-                  },
-                ]}
-              />
+              <div className={blockWrap}>
+                <TimelineBlock
+                  className={blockCardClassName}
+                  title="Leadership + community"
+                  items={[
+                    {
+                      date: "Oct 2024 - Sept 2025",
+                      content: (
+                        <>
+                          VP of Operations @{" "}
+                          <a
+                            href="https://www.instagram.com/voicesatmac/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
+                          >
+                            VoicesatMac
+                          </a>{" "}
+                          🎤
+                        </>
+                      ),
+                    },
+                    {
+                      date: "@ Sept 2024",
+                      content: (
+                        <>
+                          Volunteered for{" "}
+                          <a
+                            href="https://www.hammerhacks.ca"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
+                          >
+                            HammerHacks
+                          </a>{" "}
+                          💻
+                        </>
+                      ),
+                    },
+                    {
+                      date: "June 2024 - April 2025",
+                      content: (
+                        <>
+                          VP of Events @{" "}
+                          <a
+                            href="https://www.instagram.com/mcmasterpsa/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
+                          >
+                            McMaster PSA
+                          </a>{" "}
+                          🇵🇰
+                        </>
+                      ),
+                    },
+                    {
+                      date: "@ Aug 2024",
+                      content: (
+                        <>
+                          Volunteered for{" "}
+                          <a
+                            href="https://www.campquality.org"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
+                          >
+                            CampQuality
+                          </a>{" "}
+                          🏕️
+                        </>
+                      ),
+                    },
+                  ]}
+                />
+              </div>
             </div>
           </section>
 
@@ -370,47 +399,56 @@ const About = () => {
           <section
             id="wins"
             ref={(el) => (refs.current.wins = el)}
-            className="rounded-3xl border p-8 border-borderlight dark:border-borderdark"
+            className={sectionCard}
           >
             <SectionHeader
               title="Wins"
               subtitle={<ChangeWord list={achievements} />}
             />
 
-            <div className="mt-6 space-y-4">
-              <TimelineBlock
-                title="Academics"
-                items={[
-                  { content: "Consistent Dean's List at McMaster 💯" },
-                  { content: "Scored 1480 on the SAT 🎓" },
-                  { content: "Received the AP Scholar with Honor Award 🏅" },
-                ]}
-              />
+            <div className={blocksStack}>
+              <div className={blockWrap}>
+                <TimelineBlock
+                  className={blockCardClassName}
+                  title="Academics"
+                  items={[
+                    { content: "Consistent Dean's List at McMaster 💯" },
+                    { content: "Scored 1480 on the SAT 🎓" },
+                    { content: "Received the AP Scholar with Honor Award 🏅" },
+                  ]}
+                />
+              </div>
 
-              <TimelineBlock
-                title="Competitions"
-                items={[
-                  { content: "Winner at MacEngComp 25' 🏆" },
-                  { content: "Winner at MacEngComp 24' 🏆" },
-                  { content: "Finalists at MacEngComp 23' 🏆" },
-                ]}
-              />
+              <div className={blockWrap}>
+                <TimelineBlock
+                  className={blockCardClassName}
+                  title="Competitions"
+                  items={[
+                    { content: "Winner at MacEngComp 25' 🏆" },
+                    { content: "Winner at MacEngComp 24' 🏆" },
+                    { content: "Finalists at MacEngComp 23' 🏆" },
+                  ]}
+                />
+              </div>
 
-              <TimelineBlock
-                title="Leadership & Impact"
-                items={[
-                  {
-                    date: "June 2024 - Apr 2025",
-                    content:
-                      "Raised nearly $6,000 for charity with McMasterPSA 🎗️",
-                  },
-                  {
-                    date: "Nov 2023 - Apr 2025",
-                    content:
-                      "Accomodated Move-In/Move-out of up to 4700 first year students as an ESA",
-                  },
-                ]}
-              />
+              <div className={blockWrap}>
+                <TimelineBlock
+                  className={blockCardClassName}
+                  title="Leadership & Impact"
+                  items={[
+                    {
+                      date: "June 2024 - Apr 2025",
+                      content:
+                        "Raised nearly $6,000 for charity with McMasterPSA 🎗️",
+                    },
+                    {
+                      date: "Nov 2023 - Apr 2025",
+                      content:
+                        "Accomodated Move-In/Move-out of up to 4700 first year students as an ESA",
+                    },
+                  ]}
+                />
+              </div>
             </div>
           </section>
         </main>
