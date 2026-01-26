@@ -1,7 +1,12 @@
+import { useEffect, useMemo, useRef } from "react";
+import { Helmet } from "react-helmet";
 import ChangeWord from "../components/ChangeWord";
 import Image from "../components/logs/Image";
-import { useEffect } from "react";
-import { Helmet } from "react-helmet";
+import AboutRail from "../components/about/AboutRail";
+import SectionHeader from "../components/about/SectionHeader";
+import MiniPanel from "../components/about/MiniPanel";
+import TimelineBlock from "../components/about/TimelineBlock";
+import useActiveSection from "../components/about/useActiveSection";
 import {
   currently,
   previously,
@@ -13,10 +18,27 @@ import {
 const About = () => {
   useEffect(() => {
     document.title = "About Mahad";
+  }, []);
+
+  const sections = useMemo(
+    () => [
+      { id: "intro", label: "Intro" },
+      { id: "now", label: "Now" },
+      { id: "before", label: "Before" },
+      { id: "wins", label: "Wins" },
+    ],
+    [],
+  );
+
+  const refs = useRef({});
+  const { active, scrollTo } = useActiveSection(sections, refs, {
+    activationRatio: 0.32,
+    yOffset: -12,
+    clickLockMs: 550,
   });
 
   return (
-    <div>
+    <div className="max-w-6xl mx-auto px-4 md:px-8">
       <Helmet>
         <title>About Mahad</title>
         <meta
@@ -25,231 +47,373 @@ const About = () => {
         />
       </Helmet>
 
-      <Image
-        divStyle={styles.imageWrapper}
-        imgStyle={styles.img}
-        src="../../../images/about/me.jpg"
-        captionText="Me at a Daniel Caeser concert!"
-      />
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-10">
+        <AboutRail
+          sections={sections}
+          active={active}
+          onSelect={scrollTo}
+          image={
+            <Image
+              divStyle={styles.imageWrapper}
+              imgStyle={styles.img}
+              src="/images/about/me.jpg"
+              captionText="Me at a Daniel Caeser concert - Oct 2023"
+            />
+          }
+        />
 
-      <hr className="border-textlight dark:border-textdark"></hr>
+        <main className="lg:col-span-8 space-y-8 md:space-y-10">
+          {/* INTRO */}
+          <section
+            id="intro"
+            ref={(el) => (refs.current.intro = el)}
+            className="rounded-3xl border p-8 border-borderlight dark:border-borderdark"
+          >
+            <SectionHeader title="Intro" />
 
-      <div className="text-lg md:text-xl">
-        <p className="mt-8">
-          <span className="font-bold">Hello!</span> I am someone who is always
-          looking to try out new things. I sound like every other person on the
-          internet but I truly mean it! Learning new things, meeting new people,
-          and experiencing new cultures are things that keep me going in life. I
-          love all things tech, space, music, video games, movies, nature,
-          animals, and much more. The sky's the limit for me and I am always
-          looking to reach for the stars 🌟.
-        </p>
+            <div className="text-lg md:text-xl leading-relaxed space-y-6">
+              <p>
+                <span className="font-bold">Hello!</span> I’m someone who’s
+                always looking to try new things. Learning new things, meeting
+                new people, and experiencing new cultures keeps me going. I love
+                tech, space, music, video games, movies, nature, animals, and
+                more. If you want the real story, my{" "}
+                <a
+                  href="/logbook"
+                  className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
+                >
+                  logbook
+                </a>{" "}
+                is where I write things as I learn and build.
+              </p>
 
-        <p className="mt-8 mb-8">
-          I put huge emphasis on bettering myself whether that be mentally,
-          physically, and even emotionally. I truly believe in the 'small steps
-          lead to big changes' philosophy and I try to implement that in my life
-          as much as possible. Always remember:{" "}
-          <span className="font-bold">you are your biggest competition</span>{" "}
-          and the only person you should strive to be better than is{" "}
-          <span className="font-bold">who you were yesterday</span>. I tackle
-          this by setting both:
-          <ul className="list-disc list-inside">
-            <li>
-              short term: <ChangeWord list={shortGoals} />
-            </li>
-            <li>
-              and long term goals: <ChangeWord list={longGoals} />
-            </li>
-          </ul>
-        </p>
+              <p>
+                I put huge emphasis on bettering myself mentally, physically,
+                and emotionally. I believe small steps lead to big changes. You
+                are your biggest competition, and the only person you should be
+                better than is who you were yesterday.
+              </p>
+            </div>
 
-        <span className="">
-          <span className="text-2xl md:text-3xl">
-            📌 <ChangeWord list={currently} />
-          </span>
-          <ul className="list-disc list-inside mb-8">
-            <li>
-              {" "}
-              3<span className="text-sm">rd</span> year Software Engineering
-              student 🖥️
-            </li>
-            <li>
-              {" "}
-              Member of the Controls-Subteam at{" "}
-              <a
-                href="https://www.macrocketry.ca"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline"
-              >
-                McMaster Rocketry
-              </a>{" "}
-              🚀
-            </li>
-            <li>
-              Machine learning Engineer at{" "}
-              <a
-                href="https://www.macdrones.ca"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline"
-              >
-                McMaster Drone Club,
-              </a>{" "}
-              aiding in winning the annual drone & aerial robotics challenge ✈
-            </li>
-            <li>
-              {" "}
-              Attendee Relations Executive for{" "}
-              <a
-                href="https://www.deltahacks.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline"
-              >
-                DeltaHacks
-              </a>{" "}
-              aiding in the admissions for the hackathon 💻
-            </li>
-            <li>
-              Developing{" "}
-              <a
-                href="https://www.mahadhssn.com/logbook/sclerocare"
-                className="underline"
-              >
-                an app
-              </a>{" "}
-              for{" "}
-              <a
-                href="https://www.scleroderma.ca"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline"
-              >
-                Scleroderma Canada
-              </a>{" "}
-              partnered with Tech4Good and the McMaster iBioSociety to help
-              patients 📱
-            </li>
-            <li>
-              Website Developer for the{" "}
-              <a
-                href="https://ses.eng.mcmaster.ca"
-                target="_blank"
-                className="underline"
-              >
-                Software Eng Society
-              </a>{" "}
-              at McMaster 💻
-            </li>
-          </ul>
+            <div className="mt-7 grid grid-cols-1 md:grid-cols-2 gap-4">
+              <MiniPanel title="Short-term">
+                <ChangeWord list={shortGoals} />
+              </MiniPanel>
+              <MiniPanel title="Long-term">
+                <ChangeWord list={longGoals} />
+              </MiniPanel>
+            </div>
+          </section>
 
-          <span className="text-2xl md:text-3xl">
-            📬 <ChangeWord list={previously} />
-          </span>
+          {/* NOW */}
+          <section
+            id="now"
+            ref={(el) => (refs.current.now = el)}
+            className="rounded-3xl border p-8 border-borderlight dark:border-borderdark"
+          >
+            <SectionHeader
+              title={
+                <span className="flex items-center gap-3">
+                  <span>Now</span>
 
-          <ul className="list-disc list-inside mb-8">
-            <li>
-              {" "}
-              Software Engineering Intern at{" "}
-              <a
-                href="https://www.td.com/ca/en/personal-banking"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline"
-              >
-                TD
-              </a>{" "}
-              , saving $1,000,000 anually 🟩{" "}
-            </li>
-            <li>
-              {" "}
-              Combatted threats at{" "}
-              <a
-                href="https://www.qewc.com/qewc/en/subsidiaries/rlpc/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline"
-              >
-                RLPC
-              </a>{" "}
-              as a Cybersecurity Intern 🦠
-            </li>
-            <li>
-              {" "}
-              VP of Events for{" "}
-              <a
-                href="https://www.instagram.com/mcmasterpsa/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline"
-              >
-                McMaster PSA
-              </a>{" "}
-              planning & managing events with 300+ attendees 🇵🇰
-            </li>
-            <li>
-              {" "}
-              VP of Operations for{" "}
-              <a
-                href="https://www.instagram.com/voicesatmac/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline"
-              >
-                VoicesatMac,
-              </a>{" "}
-              helped initialize the club and host interviews with various people
-              of all backgrounds 🎤
-            </li>
-            <li>
-              {" "}
-              Worked part-time as a{" "}
-              <a
-                href="https://housing.mcmaster.ca/housing-conference-services/careers/gra-esa/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline"
-              >
-                GRA & ESA
-              </a>{" "}
-              for student life under McMaster HCS 🏢
-            </li>
-            <li>
-              President and founder of the Chess♟️ and Guitar 🎸 clubs at my
-              high school
-            </li>
-            <li>
-              Volunteered for{" "}
-              <a
-                href="https://www.campquality.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline"
-              >
-                CampQuality
-              </a>{" "}
-              and spent a week at camp 🏕️
-            </li>
-          </ul>
+                  <span className="relative flex h-3 w-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75" />
+                    <span className="relative inline-flex h-3 w-3 rounded-full bg-green-500" />
+                  </span>
+                </span>
+              }
+              subtitle={<ChangeWord list={currently} />}
+            />
+            <div className="mt-6 space-y-4">
+              <TimelineBlock
+                title="School"
+                items={[
+                  {
+                    date: "2022",
+                    content: (
+                      <>
+                        3<span className="text-sm">rd</span> year Software
+                        Engineering student 🖥️
+                      </>
+                    ),
+                  },
+                ]}
+              />
 
-          <span className="text-2xl md:text-3xl">
-            🥇 <ChangeWord list={achievements} />
-          </span>
-          <ul className="list-disc list-inside">
-            <li>Consistent Dean's List at McMaster 💯</li>
-            <li>Winner at MacEngComp 24' 🏆</li>
-            <li>Finalists at MacEngComp 23' 🏆</li>
-            <li>Raised nearly $6,000 for charity with McMasterPSA 🎗️</li>
-            <li>
-              Accomodated the Move-In/Move-out of up to 4700 first year students
-              as an ESA
-            </li>
-            <li>Scored 1480 on the SAT 🎓</li>
-            <li>Received the AP Scholar with Honor Award 🏅</li>
-          </ul>
-        </span>
+              <TimelineBlock
+                title="Teams + clubs"
+                items={[
+                  {
+                    date: "Oct 2025",
+                    content: (
+                      <>
+                        Machine learning Engineer at{" "}
+                        <a
+                          href="https://www.macdrones.ca"
+                          className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
+                        >
+                          McMaster Drone Club
+                        </a>{" "}
+                        ✈
+                      </>
+                    ),
+                  },
+                  {
+                    date: "Sept 2025",
+                    content: (
+                      <>
+                        Controls-Subteam at{" "}
+                        <a
+                          href="https://www.macrocketry.ca"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
+                        >
+                          McMaster Rocketry
+                        </a>{" "}
+                        🚀
+                      </>
+                    ),
+                  },
+                  {
+                    date: "July 2025",
+                    content: (
+                      <>
+                        Website Developer for{" "}
+                        <a
+                          href="https://ses.eng.mcmaster.ca"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
+                        >
+                          Software Eng Society
+                        </a>{" "}
+                        💻
+                      </>
+                    ),
+                  },
+                  {
+                    date: "Jan 2025",
+                    content: (
+                      <>
+                        Developing{" "}
+                        <a
+                          href="https://www.mahadhssn.com/logbook/sclerocare"
+                          className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
+                        >
+                          an app
+                        </a>{" "}
+                        for{" "}
+                        <a
+                          href="https://www.scleroderma.ca"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
+                        >
+                          Scleroderma Canada
+                        </a>{" "}
+                        📱
+                      </>
+                    ),
+                  },
+                  {
+                    date: "Aug 2024",
+                    content: (
+                      <>
+                        Attendee Relations Executive for{" "}
+                        <a
+                          href="https://www.deltahacks.com"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
+                        >
+                          DeltaHacks
+                        </a>{" "}
+                        💻
+                      </>
+                    ),
+                  },
+                ]}
+              />
+            </div>
+          </section>
+
+          {/* BEFORE */}
+          <section
+            id="before"
+            ref={(el) => (refs.current.before = el)}
+            className="rounded-3xl border p-8 border-borderlight dark:border-borderdark"
+          >
+            <SectionHeader
+              title="Before"
+              subtitle={<ChangeWord list={previously} />}
+            />
+
+            <div className="mt-6 space-y-4">
+              <TimelineBlock
+                title="Work"
+                items={[
+                  {
+                    date: "May - Aug 2025",
+                    content: (
+                      <>
+                        Software Engineering Intern @{" "}
+                        <a
+                          href="https://www.td.com/ca/en/personal-banking"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
+                        >
+                          TD
+                        </a>{" "}
+                        🟩
+                      </>
+                    ),
+                  },
+                  {
+                    date: "June - Aug 2024",
+                    content: (
+                      <>
+                        Cybersecurity Intern @{" "}
+                        <a
+                          href="https://www.qewc.com/qewc/en/subsidiaries/rlpc/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
+                        >
+                          RLPC
+                        </a>{" "}
+                        🦠
+                      </>
+                    ),
+                  },
+                ]}
+              />
+
+              <TimelineBlock
+                title="Leadership + community"
+                items={[
+                  {
+                    date: "Oct 2024 - Sept 2025",
+                    content: (
+                      <>
+                        VP of Operations @{" "}
+                        <a
+                          href="https://www.instagram.com/voicesatmac/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
+                        >
+                          VoicesatMac
+                        </a>{" "}
+                        🎤
+                      </>
+                    ),
+                  },
+                  {
+                    date: "@ Sept 2024",
+                    content: (
+                      <>
+                        Volunteered for{" "}
+                        <a
+                          href="https://www.hammerhacks.ca"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
+                        >
+                          HammerHacks
+                        </a>{" "}
+                        💻
+                      </>
+                    ),
+                  },
+                  {
+                    date: "June 2024 - April 2025",
+                    content: (
+                      <>
+                        VP of Events @{" "}
+                        <a
+                          href="https://www.instagram.com/mcmasterpsa/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
+                        >
+                          McMaster PSA
+                        </a>{" "}
+                        🇵🇰
+                      </>
+                    ),
+                  },
+                  {
+                    date: "@ Aug 2024",
+                    content: (
+                      <>
+                        Volunteered for{" "}
+                        <a
+                          href="https://www.campquality.org"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
+                        >
+                          CampQuality
+                        </a>{" "}
+                        🏕️
+                      </>
+                    ),
+                  },
+                ]}
+              />
+            </div>
+          </section>
+
+          {/* WINS */}
+          <section
+            id="wins"
+            ref={(el) => (refs.current.wins = el)}
+            className="rounded-3xl border p-8 border-borderlight dark:border-borderdark"
+          >
+            <SectionHeader
+              title="Wins"
+              subtitle={<ChangeWord list={achievements} />}
+            />
+
+            <div className="mt-6 space-y-4">
+              <TimelineBlock
+                title="Academics"
+                items={[
+                  { content: "Consistent Dean's List at McMaster 💯" },
+                  { content: "Scored 1480 on the SAT 🎓" },
+                  { content: "Received the AP Scholar with Honor Award 🏅" },
+                ]}
+              />
+
+              <TimelineBlock
+                title="Competitions"
+                items={[
+                  { content: "Winner at MacEngComp 25' 🏆" },
+                  { content: "Winner at MacEngComp 24' 🏆" },
+                  { content: "Finalists at MacEngComp 23' 🏆" },
+                ]}
+              />
+
+              <TimelineBlock
+                title="Leadership & Impact"
+                items={[
+                  {
+                    date: "June 2024 - Apr 2025",
+                    content:
+                      "Raised nearly $6,000 for charity with McMasterPSA 🎗️",
+                  },
+                  {
+                    date: "Nov 2023 - Apr 2025",
+                    content:
+                      "Accomodated Move-In/Move-out of up to 4700 first year students as an ESA",
+                  },
+                ]}
+              />
+            </div>
+          </section>
+        </main>
       </div>
     </div>
   );
@@ -257,18 +421,11 @@ const About = () => {
 
 const styles = {
   imageWrapper: {
-    display: "inline-block",
-    width: "50%",
-    padding: "4px",
-    paddingBottom: "0",
-    borderRadius: "12px",
-    background: "linear-gradient(0deg, rgb(103, 0, 0), rgb(0, 192, 192))",
-    backgroundSize: "200% 200%",
-    animation: "rotate-gradient 4s linear infinite",
+    width: "100%",
+    maxWidth: "420px",
   },
   img: {
-    display: "block",
-    borderRadius: "8px",
+    borderRadius: "12px",
     width: "100%",
   },
 };
