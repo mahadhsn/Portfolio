@@ -19,7 +19,7 @@ const CountUpCard = ({ value, suffix = "", label, duration = 1800 }) => {
           observer.disconnect();
         }
       },
-      { threshold: 0.35 }
+      { threshold: 0.35 },
     );
 
     observer.observe(el);
@@ -48,7 +48,7 @@ const CountUpCard = ({ value, suffix = "", label, duration = 1800 }) => {
   return (
     <div
       ref={ref}
-      className="rounded-2xl border px-5 py-4
+      className="rounded-3xl border px-5 py-4
         border-borderlight dark:border-borderdark"
     >
       <div className="text-2xl font-bold">

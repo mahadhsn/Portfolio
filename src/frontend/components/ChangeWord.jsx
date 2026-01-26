@@ -10,7 +10,7 @@ const ChangeWord = ({ list }) => {
 
   return (
     <span
-      className="underline cursor-pointer font-semibold select-none"
+      className="underline cursor-pointer font-semibold select-none over:text-accenthoverlight dark:hover:text-accenthoverdark transtion-colors"
       onClick={handleWordClick}
     >
       {currentWord}
