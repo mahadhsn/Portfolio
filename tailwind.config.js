@@ -2,12 +2,9 @@
 
 export default {
   darkMode: "class",
-  content: [
-    "./src/index.html",
-    "./src/frontend/*.{js,ts,jsx,tsx}",
-    "./src/frontend/components/*.{js,ts,jsx,tsx}",
-    "./src/frontend/data/*.{js,ts,jsx,tsx}",
-    "./src/frontend/pages/*.{js,ts,jsx,tsx}",
+    content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     screens: {

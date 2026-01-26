@@ -10,24 +10,31 @@ const TimelineBlock = ({ title, items }) => {
 
       {/* Items */}
       <ul className="mt-4 space-y-4">
-        {items.map((item, idx) => (
-          <li key={idx}>
-            <div className="leading-relaxed">{item.content}</div>
+  {items.map((item, idx) => (
+    <li key={idx}>
+      <div className="flex items-start gap-3">
+        {/* red bullet */}
+        <span className="mt-[7px] h-2 w-2 rounded-full bg-accentdark dark:bg-accentdark" />
 
-            {item.date && (
-              <div className="mt-2 md:flex md:justify-end">
-                <span
-                  className="inline-block px-3 py-1 text-xs rounded-full border
-                    border-borderlight dark:border-borderdark
-                    text-textlight/70 dark:text-textdark/70"
-                >
-                  {item.date.replace("@ ", "")}
-                </span>
-              </div>
-            )}
-          </li>
-        ))}
-      </ul>
+        {/* content */}
+        <div className="flex-1">
+          <div className="leading-relaxed">{item.content}</div>
+
+          {/* date under content */}
+          {item.date && (
+            <span
+              className="mt-2 inline-block px-3 py-1 text-xs rounded-full border
+                border-borderlight dark:border-borderdark
+                text-textlight/70 dark:text-textdark/70"
+            >
+              {item.date.replace("@ ", "")}
+            </span>
+          )}
+        </div>
+      </div>
+    </li>
+  ))}
+</ul>
     </div>
   );
 };
