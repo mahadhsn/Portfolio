@@ -20,7 +20,7 @@ const Home = () => {
   };
 
   return (
-    <div className="space-y-10 -mt-10">
+    <div className="space-y-10 md:-mt-10">
       <Helmet>
         <title>Mahad Hassan</title>
         <meta
@@ -42,9 +42,7 @@ const Home = () => {
             {currentGreeting.flag && (
               <span className="flex items-center">{currentGreeting.flag}</span>
             )}
-            <span className="underline font-bold">
-              {currentGreeting.text}
-            </span>
+            <span className="underline font-bold">{currentGreeting.text}</span>
           </span>
           <span>I'm Mahad</span>
         </h1>
@@ -77,7 +75,7 @@ const Home = () => {
             >
               {label}
             </a>
-          )
+          ),
         )}
       </div>
 
@@ -94,9 +92,7 @@ const Home = () => {
               <span className="text-xl">A</span>BOUT
             </div>
             <div className="h-1 w-12 rounded-full bg-accentlight dark:bg-accentdark mb-5" />
-            <div className="text-2xl font-semibold mt-1">
-              Quick snapshot
-            </div>
+            <div className="text-2xl font-semibold mt-1">Quick snapshot</div>
 
             <div className="mt-5 flex flex-wrap gap-3">
               {[
@@ -127,9 +123,7 @@ const Home = () => {
             </div>
             <div className="h-1 w-12 rounded-full bg-accentlight dark:bg-accentdark mb-5" />
 
-            <div className="text-2xl font-semibold mt-1">
-              Digit Recognizer
-            </div>
+            <div className="text-2xl font-semibold mt-1">Digit Recognizer</div>
 
             <p className="text-sm mt-5  leading-relaxed">
               8-layer CNN built to detect hand-drawn digits with 99.3% accuracy
@@ -188,7 +182,6 @@ const Home = () => {
           </div>
 
           {/* Overview */}
-          {/* Snapshot */}
           <div
             className="lg:col-span-4 rounded-3xl border p-8
               border-borderlight dark:border-borderdark"
