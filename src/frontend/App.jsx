@@ -15,6 +15,7 @@ import KillBear3825 from "./pages/pics/KillBear3825";
 import Toronto27825 from "./pages/pics/Toronto27825";
 import Bronte31825 from "./pages/pics/Bronte31825";
 import Stirling111025 from "./pages/pics/Stirling111025";
+import ScrollToTop from "./components/layout/ScrollToTop";
 
 export default function App() {
   if (window.location.hash.startsWith("#/")) {
@@ -24,6 +25,7 @@ export default function App() {
   return (
     <div className="bg-bglight dark:bg-bgdark">
       <Router>
+        <ScrollToTop />
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />

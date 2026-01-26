@@ -11,7 +11,7 @@ export const cornerOptions = [
 ];
 
 export const greetings = [
-  { text: "Hey", flag: null },
+  { text: "Hey,", flag: null },
   { text: "Hola", flag: "🇪🇸" },
   { text: "Bonjour", flag: "🇫🇷" },
   { text: "Merhaba", flag: "🇹🇷" },
@@ -20,7 +20,7 @@ export const greetings = [
   { text: "Olá", flag: "🇧🇷" },
   { text: "नमस्ते", flag: "🇮🇳" },
   { text: "سلام", flag: "🇵🇰" },
-  { text: "こんにちは", flag: "🇯🇵" },
+  // { text: "こんにちは", flag: "🇯🇵" },
   { text: "안녕하세요", flag: "🇰🇷" },
 ];
 

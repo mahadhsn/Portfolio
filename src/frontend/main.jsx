@@ -9,6 +9,9 @@ const options = {
   api_host: import.meta.env.VITE_PUBLIC_POSTHOG_HOST,
   defaults: "2025-05-24",
 };
+if ("scrollRestoration" in window.history) {
+  window.history.scrollRestoration = "manual";
+}
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

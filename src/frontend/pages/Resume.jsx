@@ -8,7 +8,7 @@ const Resume = () => {
   });
 
   return (
-    <div className="md:ml-5">
+    <div className="mx-auto">
       <Helmet>
         <title>Mahad's Resume</title>
         <meta
