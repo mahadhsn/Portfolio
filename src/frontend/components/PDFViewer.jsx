@@ -14,7 +14,7 @@ const PDFViewer = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen gap-4 pt-5">
+    <div className="flex flex-col items-center gap-4 pt-5">
       {/* Check if iframe is supported */}
       {iframeSupported ? (
         <>
