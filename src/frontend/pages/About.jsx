@@ -40,7 +40,7 @@ const About = () => {
   // Keep page container open (no mobile padding). Fix “mini tables” by making
   // the *TimelineBlock* larger on mobile via wrapper classes.
   const sectionCard =
-    "rounded-3xl border border-borderlight dark:border-borderdark " +
+    "rounded-3xl border-borderlight dark:border-borderdark " +
     "p-7 md:p-8"; // keep your section padding basically as-is
 
   // This is the important part: make the TimelineBlocks (School/Teams/etc)
@@ -64,7 +64,7 @@ const About = () => {
         />
       </Helmet>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-10">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-0">
         <AboutRail
           sections={sections}
           active={active}
