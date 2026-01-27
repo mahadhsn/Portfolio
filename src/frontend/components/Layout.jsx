@@ -16,7 +16,7 @@ const Layout = () => {
       <div className="flex flex-col">
         <main
           key={pathname}
-          className="w-full flex md:max-w-[50%] mobile:max-w-[80%] mx-auto mb-10
+          className="w-full flex md:max-w-[50%] mobile:max-w-[90%] mx-auto mb-10
             text-textlight dark:text-textdark text-lg
             mt-[5%] md:mt-[8%]
             animate-page-in"

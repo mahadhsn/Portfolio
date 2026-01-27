@@ -37,25 +37,19 @@ const About = () => {
     clickLockMs: 550,
   });
 
-  // Keep page container open (no mobile padding). Fix “mini tables” by making
-  // the *TimelineBlock* larger on mobile via wrapper classes.
   const sectionCard =
-    "rounded-3xl border-borderlight dark:border-borderdark " +
-    "p-7 md:p-8"; // keep your section padding basically as-is
+    "rounded-3xl border-borderlight dark:border-borderdark " + "p-2 md:p-8";
 
-  // This is the important part: make the TimelineBlocks (School/Teams/etc)
-  // feel bigger + less cramped on mobile.
-  const blockWrap = "-mx-2 sm:mx-0"; // lets the block breathe wider than the section padding on tiny screens
+  const blockWrap = "-mx-2 sm:mx-0";
 
   const blockCardClassName =
     "rounded-3xl border border-borderlight dark:border-borderdark " +
-    "px-7 py-7 md:px-6 md:py-6"; // BIGGER on mobile, normal on md+
+    "px-7 py-7 md:px-6 md:py-6";
 
-  // Also give the NOW/BEORE/WINS blocks a bit more spacing on mobile
   const blocksStack = "mt-7 space-y-6 md:space-y-4";
 
   return (
-    <div className="max-w-6xl mx-auto md:px-8">
+    <div className="mx-auto md:px-8">
       <Helmet>
         <title>About Mahad</title>
         <meta
