@@ -301,7 +301,7 @@ const About = () => {
                         <>
                           Cybersecurity Intern @{" "}
                           <a
-                            href="https://www.qewc.com/qewc/en/subsidiaries/rlpc/"
+                            href="https://www.linkedin.com/company/ras-laffan-power-company/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
