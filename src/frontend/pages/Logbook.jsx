@@ -79,7 +79,7 @@ const Logbook = () => {
   ];
 
   return (
-    <div>
+    <div className="mx-auto">
       <Helmet>
         <title>Mahad's Life</title>
         <meta
