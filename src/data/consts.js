@@ -84,3 +84,16 @@ export const achievements = [
   "Successes",
   "Triumphs",
 ];
+
+export const styles = {
+  img: {
+    display: "block",
+    margin: "0 auto",
+    maxWidth: "100%", // never overflow container
+    width: "100%", // fill container width on mobile
+    height: "auto",
+    maxHeight: "75vh", // still cap tall portraits
+    objectFit: "contain",
+    borderRadius: "1rem",
+  },
+};
