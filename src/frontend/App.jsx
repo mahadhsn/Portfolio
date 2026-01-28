@@ -15,6 +15,7 @@ import KillBear3825 from "./pages/pics/KillBear3825";
 import Toronto27825 from "./pages/pics/Toronto27825";
 import Bronte31825 from "./pages/pics/Bronte31825";
 import Stirling111025 from "./pages/pics/Stirling111025";
+import MDL18126 from "./pages/pics/MDL18126";
 import ScrollToTop from "./components/layout/ScrollToTop";
 
 export default function App() {
@@ -52,6 +53,8 @@ export default function App() {
               path="/logbook/stirling-11-10-25"
               element={<Stirling111025 />}
             />
+
+            <Route path="/logbook/mdl-18-1-26" element={<MDL18126 />} />
 
             <Route path="/resume" element={<Resume />} />
             <Route path="/contact" element={<Contact />} />
