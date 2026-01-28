@@ -1,21 +1,22 @@
 import Header from "../../components/logs/Header";
 
-const Bronte31825 = () => {
+const MDL18126 = () => {
   const images = import.meta.glob(
-    "../../../assets/canon/bronte-31-8-25/optimized/*-1600.webp",
+    "../../../assets/canon/mdl-18-1-26/optimized/*-1600.webp",
     { eager: true, as: "url" },
   );
+
   const imageUrls = Object.values(images)
     .filter((v) => typeof v === "string")
     .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
 
   return (
-    <div>
-      <Header Title={"Bronte Creek"} Date={"August 31st, 2025"} />
+    <div className="mx-auto">
+      <Header Title={"MDL"} Date={"January 17/18th, 2026"} />
 
-      <div className="grid w-full grid-cols-1 gap-10">
+      <div className="flex flex-col items-center gap-12 mt-8">
         {imageUrls.map((src, idx) => (
-          <img key={idx} src={src} alt={`Bronte ${idx}`} style={styles.img} />
+          <img key={idx} src={src} alt={`MDL ${idx}`} style={styles.img} />
         ))}
       </div>
     </div>
@@ -33,4 +34,4 @@ const styles = {
   },
 };
 
-export default Bronte31825;
+export default MDL18126;

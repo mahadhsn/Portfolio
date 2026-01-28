@@ -19,7 +19,7 @@ const KillBear3825 = () => {
             key={idx}
             src={src}
             alt={`Belfountain ${idx}`}
-            style={styles.img_landscape}
+            style={styles.img}
           />
         ))}
       </div>
@@ -28,12 +28,12 @@ const KillBear3825 = () => {
 };
 
 const styles = {
-  img_landscape: {
-    display: "block",
-    marginTop: "1rem",
-    marginBottom: "4rem",
-    width: "100%",
+  img: {
+    maxWidth: "80vh",
+    maxHeight: "75vh", // key line: prevents tall portraits
+    width: "auto",
     height: "auto",
+    margin: "0 auto",
     borderRadius: "1rem",
   },
 };

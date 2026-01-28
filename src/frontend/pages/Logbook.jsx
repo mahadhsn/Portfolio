@@ -76,6 +76,12 @@ const Logbook = () => {
       date: "2025-10-11",
       written_date: "October 11th, 2025",
     },
+    {
+      title: "MDL Designathon",
+      path: "/logbook/mdl-18-1-26",
+      date: "2026-01-18",
+      written_date: "January 17/18th, 2026",
+    },
   ];
 
   return (
