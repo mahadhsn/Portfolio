@@ -39,6 +39,13 @@ const Logbook = () => {
       date: "2025-07-24",
       written_date: "July 24th, 2025",
     },
+    {
+      title: "My time with TD",
+      path: "/logbook/td",
+      categories: ["career"],
+      date: "2026-02-02",
+      written_date: "February 2nd, 2026",
+    },
   ];
 
   const pics = [

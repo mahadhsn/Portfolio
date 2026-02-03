@@ -33,7 +33,7 @@ const Intro = () => {
 
       <ol className="list-disc list-outside mb-4 text-lg space-y-2">
         <li>
-          <span className="font-bold">NO AI!</span> — We often blindly use AI in
+          <span className="font-bold">NO AI!</span> - We often blindly use AI in
           everything nowadays and I feel it makes it difficult for us to be
           authentic. You'll be seeing me myself and I on this blob of the
           internet. The max I'll do is use it for motivation maybe... pls dont
