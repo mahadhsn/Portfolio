@@ -21,26 +21,29 @@ const TD = () => {
         <meta name="description" content="Description of my TD internship" />
       </Helmet>
 
-      <Image
-        src="../../../images/logs/TD/TD_Table.jpg"
-        imgStyle={styles.img}
-        captionText="My desk (with the old laptop), May 7th 2025"
-      />
 
-      <p>
-        It's about time I give an in-depth review of how my internship with TD
-        went. It's now been more than 5 months since I finished and I still
-        think about how nice my time there was. From playing on the PS5, to
-        playing poker with the interns, to even exploring the Sky Garden, TD
-        Terrace's ammenities were unmatched. This makes it sound like I did no
-        work there but I promise I did!!
-      </p>
+      <div className="flex flex-row gap-5 justify-center">
+        <Image
+          src="../../../images/logs/TD/TD_Table.jpg"
+          imgStyle={styles.img}
+          captionText="My desk (with the old laptop), May 7th 2025"
+        />
 
-      <Image
-        src="../../../images/logs/TD/TD_PS5.jpg"
-        imgStyle={styles.img}
-        captionText="PS5 on the Arcade floor, May 7th 2025"
-      />
+
+        <Image
+          src="../../../images/logs/TD/TD_PS5.jpg"
+          imgStyle={styles.img}
+          captionText="PS5 on the Arcade floor, May 7th 2025"
+          />
+      </div>
+        <p>
+          It's about time I give an in-depth review of how my internship with TD
+          went. It's now been more than 5 months since I finished and I still
+          think about how nice my time there was. From playing on the PS5, to
+          playing poker with the interns, to even exploring the Sky Garden, TD
+          Terrace's ammenities were unmatched. This makes it sound like I did no
+          work there but I promise I did!!
+        </p>
 
       <div className="space-y-4">
         <h1 className="text-2xl font-bold underline">A little about Fraud</h1>
