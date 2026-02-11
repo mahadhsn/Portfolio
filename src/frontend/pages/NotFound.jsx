@@ -5,7 +5,7 @@ const NotFound = () => {
     document.title = "404 Error";
   });
   return (
-    <div className="mb-20 text-center py-20 text-xl font-bold">
+    <div className="text-center py-20 text-xl font-bold min-w-full">
       <h1 className="text-4xl mb-8 text-accentlight dark:text-accentdark">
         404 - Page Not Found
       </h1>
