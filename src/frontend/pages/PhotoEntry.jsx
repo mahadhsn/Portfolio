@@ -28,7 +28,7 @@ const PhotoEntry = ({ id }) => {
   return (
     <>
       <Helmet>
-        <title>{photo.title} — Mahad Hassan</title>
+        <title>{photo.title} | Mahad Hassan</title>
       </Helmet>
 
       <div className="photo-detail">

@@ -13,7 +13,7 @@ export const PROJECTS = [
   {
     id: "preppal",
     title: "PrepPal",
-    desc: "Disaster awareness & emergency-support web app — helps people make informed decisions before and during natural disasters.",
+    desc: "Disaster awareness & emergency-support web app. Helps people make informed decisions before and during natural disasters.",
     tag: "Web",
     year: "2025",
     featured: true,
@@ -63,7 +63,7 @@ export const PROJECTS = [
   {
     id: "securevault",
     title: "SecureVault",
-    desc: "Cybersecurity system — face recognition, file encryption, and more.",
+    desc: "Cybersecurity system: face recognition, file encryption, and more.",
     tag: "Security",
     year: "2024",
     award: "MacEngComp '24",
@@ -72,7 +72,7 @@ export const PROJECTS = [
   {
     id: "portfolio",
     title: "Portfolio",
-    desc: "This site — built with React, Vite, and Tailwind CSS.",
+    desc: "This site, built with React, Vite, and Tailwind CSS.",
     tag: "Web",
     year: "2024",
     url: "https://github.com/mahadhsn/Portfolio",
@@ -115,7 +115,7 @@ export const LOGS = [
   },
   {
     id: "intro",
-    title: "Intro — why I started writing",
+    title: "Intro: why I started writing",
     date: "JUN 21, 2025",
     read: "4 min",
     tag: "life",
@@ -195,90 +195,4 @@ export const STATS = [
   { num: "5", plus: true, label: "Technologies" },
   { num: "2", plus: false, label: "Hackathon Wins" },
   { num: "3", plus: false, label: "Log Entries" },
-];
-
-// ── Legacy text arrays (used by ChangeWord / About) ──────────
-export const cornerOptions = [
-  "corner of the internet",
-  "part of the web",
-  "slice of the digital world",
-  "spot in cyberspace",
-  "digital realm",
-  "virtual space",
-  "web haven",
-  "section of the net",
-  "patch of cyberspace",
-];
-
-export const greetings = [
-  { text: "Hey,", flag: null },
-  { text: "Hola", flag: "🇪🇸" },
-  { text: "Bonjour", flag: "🇫🇷" },
-  { text: "Merhaba", flag: "🇹🇷" },
-  { text: "Hallo", flag: "🇩🇪" },
-  { text: "Ciao", flag: "🇮🇹" },
-  { text: "Olá", flag: "🇧🇷" },
-  { text: "नमस्ते", flag: "🇮🇳" },
-  { text: "سلام", flag: "🇵🇰" },
-  { text: "안녕하세요", flag: "🇰🇷" },
-];
-
-export const hobbies = [
-  "jamming on the guitar",
-  "figuring out how not to fall off a snowboard",
-  "totally not coding anyway - I swear",
-  "trying not to get lost while camping",
-  "befriending a stray cat",
-  "getting stuck halfway up a climbing wall but loving it anyway",
-  "attempting to cook something edible",
-  "dreaming of coding from/for space someday",
-  "definitely not getting lost hiking",
-  "attempting to hit Grand Champ in Rocket League",
-  "creating another Spotify playlist",
-  "learning a new hobby just to forget it a week later",
-  "staring at the stars through a telescope",
-  "finding new ways to chase the stars - literally and metaphorically",
-];
-
-export const shortGoals = [
-  "learning how to play the piano 🎹",
-  "getting past 1600 ELO in chess ♟️",
-  "attending more hackathons 💻",
-  "learning how to surf 🏄",
-  "cooking a new dish every week 😋",
-  "go scuba diving 🤿",
-  "mastering snowboarding 🏂",
-];
-
-export const longGoals = [
-  "start my own company 🧑‍💻",
-  "visit every continent 🌎",
-  "learn more languages ㊗️",
-  "help advance the human civilization 📡",
-  "eradicate world hunger 💪",
-  "learn how to fly a plane ✈️",
-];
-
-export const currently = [
-  "Currently",
-  "Presently",
-  "At the moment",
-  "As of now",
-  "Lately",
-];
-
-export const previously = [
-  "Previously",
-  "Before",
-  "In the past",
-  "Earlier",
-  "Formerly",
-];
-
-export const achievements = [
-  "Achievements",
-  "Accomplishments",
-  "Awards",
-  "Successes",
-  "Triumphs",
 ];

@@ -3,7 +3,9 @@ import { GitHub, LinkedIn, Mail, TikTok } from "./Icons";
 const Footer = () => (
   <footer className="foot">
     <span>© 2026 Mahad Hassan</span>
-    <span className="foot-center">Designed + built in Hamilton, ON</span>
+    <span className="foot-center">
+      Built with <span className="foot-heart">♥</span>
+    </span>
     <div className="foot-right">
       <a
         href="https://github.com/mahadhsn"

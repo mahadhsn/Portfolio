@@ -30,7 +30,7 @@ const Home = () => {
         />
       </Helmet>
 
-      <p className="eyebrow">01 — HOME</p>
+      <p className="eyebrow">01 / HOME</p>
 
       {/* ── Hero ── */}
       <section className="home-hero">
@@ -171,7 +171,7 @@ const Home = () => {
         <blockquote className="quote-block">
           <span className="mark">&ldquo;</span>
           {quote.Quote}
-          <cite>— {quote.Author}</cite>
+          <cite>{quote.Author}</cite>
         </blockquote>
       )}
     </>

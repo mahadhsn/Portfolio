@@ -6,10 +6,10 @@ _July 7, 2025 · 12 min read · career_
 
 Alright, let's get some things straight before you start reading this:
 
-- **I am not some internship wizard.** You'll see people on LinkedIn with 7 FAANG internships who started coding out of the womb, but that's not me. Think of this as a checklist — checking these off will likely increase your chances, but can never guarantee that you'll land one.
+- **I am not some internship wizard.** You'll see people on LinkedIn with 7 FAANG internships who started coding out of the womb, but that's not me. Think of this as a checklist. Checking these off will likely increase your chances, but can never guarantee that you'll land one.
 - **A lot of it comes down to luck.** Even if you LeetCode in your sleep, nothing stops the hiring manager from picking a better-qualified individual. Focus on what is in your hands and leave the rest for fate to decide.
 
-Now that the disclaimers are out of the way — to understand how to land an internship, we need to first understand why companies even hire interns.
+Now that the disclaimers are out of the way. To understand how to land an internship, we need to first understand why companies even hire interns.
 
 ## Why hire interns?
 
@@ -61,13 +61,13 @@ At this point, you should have decent skills and a network you can rely on. Appl
 
 - **Projects.** Keep the same "did x to improve y by z%" format. Include projects that solve real-world problems.
 
-- **Extras.** I'd recommend having links all over your resume — GitHub for each project, company websites, contact information. Check out [my resume](/resume) for reference.
+- **Extras.** I'd recommend having links all over your resume: GitHub for each project, company websites, contact information. Check out [my resume](/resume) for reference.
 
 ## Cover Letter
 
 No one likes writing cover letters. However, a good few applications still require one.
 
-Follow the same template as your resume. Include 5 total paragraphs — 2 for the intro and conclusion, 1 for experiences, 1 for projects, and 1 for why you want to work at the company specifically. ~300 words is the sweet spot.
+Follow the same template as your resume. Include 5 total paragraphs: 2 for the intro and conclusion, 1 for experiences, 1 for projects, and 1 for why you want to work at the company specifically. ~300 words is the sweet spot.
 
 At this point, apply, apply, and apply. Try to submit 10 applications a day. That way, you'll have submitted 300 by the end of the month.
 
@@ -83,14 +83,14 @@ For the technical portion, grind out LeetCode. For full-stack positions, do rese
 
 For the behavioural portion, the **STAR method** is unmatched:
 
-- **S**ituation — describe the context
-- **T**ask — what was your role
-- **A**ction — what you did (be honest about collaboration)
-- **R**esult — the outcome
+- **S**ituation: describe the context
+- **T**ask: what was your role
+- **A**ction: what you did (be honest about collaboration)
+- **R**esult: the outcome
 
 Don't be nervous to take your time. 5–10 seconds spent brainstorming can be the difference between rambling and a well-structured response.
 
-## Offer — or not
+## Offer, or not
 
 At this point, you have done everything you could, so try not to stress. Let fate decide what happens. Having faith in that helps you from wasting energy on stressing.
 

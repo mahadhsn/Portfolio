@@ -15,7 +15,7 @@ const About = () => {
         />
       </Helmet>
 
-      <p className="eyebrow">02 — ABOUT</p>
+      <p className="eyebrow">02 / ABOUT</p>
 
       {/* Hero row */}
       <div className="about-hero">
@@ -72,7 +72,7 @@ const About = () => {
             Hello, <em>world.</em>
           </h2>
           <p>
-            I'm someone who's always looking to try new things — learning,
+            I'm someone who's always looking to try new things: learning,
             meeting new people, and experiencing new cultures keeps me going. I
             love tech, space, music, video games, movies, nature, and more. If
             you want the real story, my{" "}
@@ -187,33 +187,31 @@ const About = () => {
             </div>
             <div className="tl-row">
               <span className="tl-date">Oct 2025</span>
-              <span className="tl-title">
-                ML Engineer — McMaster Drone Club
-              </span>
+              <span className="tl-title">ML Engineer, McMaster Drone Club</span>
               <span className="tl-meta">✈</span>
             </div>
             <div className="tl-row">
               <span className="tl-date">Sept 2025</span>
               <span className="tl-title">
-                Controls Subteam — McMaster Rocketry
+                Controls Subteam, McMaster Rocketry
               </span>
               <span className="tl-meta">🚀</span>
             </div>
             <div className="tl-row">
               <span className="tl-date">July 2025</span>
-              <span className="tl-title">Web Dev — Software Eng Society</span>
+              <span className="tl-title">Web Dev, Software Eng Society</span>
               <span className="tl-meta">💻</span>
             </div>
             <div className="tl-row">
               <span className="tl-date">Jan 2025</span>
               <span className="tl-title">
-                Developer — ScleroCare / Scleroderma Canada
+                Developer, ScleroCare / Scleroderma Canada
               </span>
               <span className="tl-meta">📱</span>
             </div>
             <div className="tl-row">
               <span className="tl-date">Aug 2024</span>
-              <span className="tl-title">Attendee Relations — DeltaHacks</span>
+              <span className="tl-title">Attendee Relations, DeltaHacks</span>
               <span className="tl-meta">💻</span>
             </div>
           </div>
@@ -230,32 +228,32 @@ const About = () => {
           <div className="timeline">
             <div className="tl-row">
               <span className="tl-date">May – Aug 2025</span>
-              <span className="tl-title">Software Engineering Intern — TD</span>
+              <span className="tl-title">Software Engineering Intern, TD</span>
               <span className="tl-meta">🟩</span>
             </div>
             <div className="tl-row">
               <span className="tl-date">Jun – Aug 2024</span>
-              <span className="tl-title">Cybersecurity Intern — RLPC</span>
+              <span className="tl-title">Cybersecurity Intern, RLPC</span>
               <span className="tl-meta">🦠</span>
             </div>
             <div className="tl-row">
               <span className="tl-date">Oct 2024 – Sept 2025</span>
-              <span className="tl-title">VP of Operations — VoicesatMac</span>
+              <span className="tl-title">VP of Operations, VoicesatMac</span>
               <span className="tl-meta">🎤</span>
             </div>
             <div className="tl-row">
               <span className="tl-date">Jun 2024 – Apr 2025</span>
-              <span className="tl-title">VP of Events — McMaster PSA</span>
+              <span className="tl-title">VP of Events, McMaster PSA</span>
               <span className="tl-meta">🇵🇰</span>
             </div>
             <div className="tl-row">
               <span className="tl-date">Sept 2024</span>
-              <span className="tl-title">Volunteer — HammerHacks</span>
+              <span className="tl-title">Volunteer, HammerHacks</span>
               <span className="tl-meta">💻</span>
             </div>
             <div className="tl-row">
               <span className="tl-date">Aug 2024</span>
-              <span className="tl-title">Volunteer — CampQuality</span>
+              <span className="tl-title">Volunteer, CampQuality</span>
               <span className="tl-meta">🏕️</span>
             </div>
           </div>
@@ -273,12 +271,12 @@ const About = () => {
             <div className="win">
               <div className="win-icon">🏆</div>
               <div className="win-title">MacEngComp '25 Winner</div>
-              <div className="win-meta">PrepPal — Disaster awareness app</div>
+              <div className="win-meta">PrepPal, Disaster awareness app</div>
             </div>
             <div className="win">
               <div className="win-icon">🏆</div>
               <div className="win-title">MacEngComp '24 Winner</div>
-              <div className="win-meta">SecureVault — Cybersecurity system</div>
+              <div className="win-meta">SecureVault, Cybersecurity system</div>
             </div>
             <div className="win">
               <div className="win-icon">🏅</div>
