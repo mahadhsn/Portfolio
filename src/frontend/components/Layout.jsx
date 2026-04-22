@@ -17,10 +17,18 @@ const Layout = () => {
       <div className="mobile-float">
         <NowPlaying />
         <div className="theme-pill">
-          <button className={mode === "light" ? "active" : ""} onClick={() => setMode("light")} aria-label="Light mode">
+          <button
+            className={mode === "light" ? "active" : ""}
+            onClick={() => setMode("light")}
+            aria-label="Light mode"
+          >
             <Sun size={13} />
           </button>
-          <button className={mode === "dark" ? "active" : ""} onClick={() => setMode("dark")} aria-label="Dark mode">
+          <button
+            className={mode === "dark" ? "active" : ""}
+            onClick={() => setMode("dark")}
+            aria-label="Dark mode"
+          >
             <Moon size={13} />
           </button>
         </div>

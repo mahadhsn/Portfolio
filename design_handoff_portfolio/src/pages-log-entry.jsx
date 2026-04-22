@@ -63,14 +63,32 @@ This logbook is my fix for that. It's not a blog. I'm not writing to optimize fo
 
 /* Tiny markdown → React renderer (headings, paragraphs, quotes, lists, em/strong) */
 function renderMd(md) {
-  const lines = md.split('\n');
+  const lines = md.split("\n");
   const out = [];
   let listBuffer = null;
   let olBuffer = null;
 
   const flushLists = () => {
-    if (listBuffer) { out.push(<ul key={'ul'+out.length}>{listBuffer.map((l,i)=><li key={i}>{inline(l)}</li>)}</ul>); listBuffer = null; }
-    if (olBuffer)   { out.push(<ol key={'ol'+out.length}>{olBuffer.map((l,i)=><li key={i}>{inline(l)}</li>)}</ol>); olBuffer = null; }
+    if (listBuffer) {
+      out.push(
+        <ul key={"ul" + out.length}>
+          {listBuffer.map((l, i) => (
+            <li key={i}>{inline(l)}</li>
+          ))}
+        </ul>,
+      );
+      listBuffer = null;
+    }
+    if (olBuffer) {
+      out.push(
+        <ol key={"ol" + out.length}>
+          {olBuffer.map((l, i) => (
+            <li key={i}>{inline(l)}</li>
+          ))}
+        </ol>,
+      );
+      olBuffer = null;
+    }
   };
 
   const inline = (s) => {
@@ -81,13 +99,18 @@ function renderMd(md) {
     const re = /(\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`)/;
     while (rest.length) {
       const m = rest.match(re);
-      if (!m) { parts.push(rest); break; }
+      if (!m) {
+        parts.push(rest);
+        break;
+      }
       const before = rest.slice(0, m.index);
       if (before) parts.push(before);
       const tok = m[0];
-      if (tok.startsWith('**')) parts.push(<strong key={key++}>{tok.slice(2,-2)}</strong>);
-      else if (tok.startsWith('`')) parts.push(<code key={key++}>{tok.slice(1,-1)}</code>);
-      else parts.push(<em key={key++}>{tok.slice(1,-1)}</em>);
+      if (tok.startsWith("**"))
+        parts.push(<strong key={key++}>{tok.slice(2, -2)}</strong>);
+      else if (tok.startsWith("`"))
+        parts.push(<code key={key++}>{tok.slice(1, -1)}</code>);
+      else parts.push(<em key={key++}>{tok.slice(1, -1)}</em>);
       rest = rest.slice(m.index + tok.length);
     }
     return parts;
@@ -95,13 +118,42 @@ function renderMd(md) {
 
   for (const raw of lines) {
     const line = raw;
-    if (/^\s*$/.test(line)) { flushLists(); continue; }
-    if (/^# /.test(line))       { flushLists(); out.push(<h1 key={out.length}>{inline(line.slice(2))}</h1>); continue; }
-    if (/^## /.test(line))      { flushLists(); out.push(<h2 key={out.length}>{inline(line.slice(3))}</h2>); continue; }
-    if (/^### /.test(line))     { flushLists(); out.push(<h3 key={out.length}>{inline(line.slice(4))}</h3>); continue; }
-    if (/^> /.test(line))       { flushLists(); out.push(<blockquote key={out.length}>{inline(line.slice(2))}</blockquote>); continue; }
-    if (/^- /.test(line))       { if (!listBuffer) listBuffer = []; listBuffer.push(line.slice(2)); continue; }
-    if (/^\d+\. /.test(line))   { if (!olBuffer) olBuffer = []; olBuffer.push(line.replace(/^\d+\.\s/, '')); continue; }
+    if (/^\s*$/.test(line)) {
+      flushLists();
+      continue;
+    }
+    if (/^# /.test(line)) {
+      flushLists();
+      out.push(<h1 key={out.length}>{inline(line.slice(2))}</h1>);
+      continue;
+    }
+    if (/^## /.test(line)) {
+      flushLists();
+      out.push(<h2 key={out.length}>{inline(line.slice(3))}</h2>);
+      continue;
+    }
+    if (/^### /.test(line)) {
+      flushLists();
+      out.push(<h3 key={out.length}>{inline(line.slice(4))}</h3>);
+      continue;
+    }
+    if (/^> /.test(line)) {
+      flushLists();
+      out.push(
+        <blockquote key={out.length}>{inline(line.slice(2))}</blockquote>,
+      );
+      continue;
+    }
+    if (/^- /.test(line)) {
+      if (!listBuffer) listBuffer = [];
+      listBuffer.push(line.slice(2));
+      continue;
+    }
+    if (/^\d+\. /.test(line)) {
+      if (!olBuffer) olBuffer = [];
+      olBuffer.push(line.replace(/^\d+\.\s/, ""));
+      continue;
+    }
     flushLists();
     out.push(<p key={out.length}>{inline(line)}</p>);
   }
@@ -116,14 +168,46 @@ function PageLogEntry({ id }) {
   return (
     <main className="page page-enter">
       <article className="log-article md">
-        <a href="#" className="log-back" onClick={(e) => { e.preventDefault(); navigate('/logbook'); }}>
+        <a
+          href="#"
+          className="log-back"
+          onClick={(e) => {
+            e.preventDefault();
+            navigate("/logbook");
+          }}
+        >
           <Icon.arrowLeft /> Back to logbook
         </a>
         {renderMd(md)}
 
         <div className="log-next">
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--ink-muted)' }}>NEXT IN THE LOGBOOK</span>
-          <a href="#" onClick={(e) => { e.preventDefault(); navigate('/logbook'); }} style={{ fontFamily: 'var(--font-display)', fontSize: '20px', letterSpacing: 'var(--display-tracking)', display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--accent)' }}>
+          <span
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: "11px",
+              textTransform: "uppercase",
+              letterSpacing: "0.1em",
+              color: "var(--ink-muted)",
+            }}
+          >
+            NEXT IN THE LOGBOOK
+          </span>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/logbook");
+            }}
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "20px",
+              letterSpacing: "var(--display-tracking)",
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+              color: "var(--accent)",
+            }}
+          >
             Browse all entries <Icon.arrow />
           </a>
         </div>

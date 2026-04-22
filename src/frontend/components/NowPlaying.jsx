@@ -44,7 +44,9 @@ const NowPlaying = () => {
     >
       <div
         className="np-cover"
-        style={songData.image ? { backgroundImage: `url(${songData.image})` } : {}}
+        style={
+          songData.image ? { backgroundImage: `url(${songData.image})` } : {}
+        }
       >
         {!songData.image && <Note size={16} />}
       </div>
@@ -54,7 +56,10 @@ const NowPlaying = () => {
       </div>
       {songData.nowPlaying && (
         <div className="np-wave">
-          <span /><span /><span /><span />
+          <span />
+          <span />
+          <span />
+          <span />
         </div>
       )}
     </a>

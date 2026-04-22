@@ -18,7 +18,8 @@ const LogEntry = ({ id }) => {
   const navigate = useNavigate();
   const content = mdContent[id];
   const currentIndex = LOGS.findIndex((l) => l.id === id);
-  const nextLog = currentIndex < LOGS.length - 1 ? LOGS[currentIndex + 1] : null;
+  const nextLog =
+    currentIndex < LOGS.length - 1 ? LOGS[currentIndex + 1] : null;
 
   if (!content) {
     return (
@@ -47,10 +48,30 @@ const LogEntry = ({ id }) => {
         <ReactMarkdown
           components={{
             img: ({ src, alt }) => (
-              <img src={src} alt={alt} style={{ maxWidth: "100%", borderRadius: "var(--r-md)", margin: "24px 0", border: "1px solid var(--line)" }} />
+              <img
+                src={src}
+                alt={alt}
+                style={{
+                  maxWidth: "100%",
+                  borderRadius: "var(--r-md)",
+                  margin: "24px 0",
+                  border: "1px solid var(--line)",
+                }}
+              />
             ),
             a: ({ href, children }) => (
-              <a href={href} style={{ color: "var(--accent)", textDecoration: "underline", textUnderlineOffset: "3px" }} target={href?.startsWith("http") ? "_blank" : undefined} rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}>
+              <a
+                href={href}
+                style={{
+                  color: "var(--accent)",
+                  textDecoration: "underline",
+                  textUnderlineOffset: "3px",
+                }}
+                target={href?.startsWith("http") ? "_blank" : undefined}
+                rel={
+                  href?.startsWith("http") ? "noopener noreferrer" : undefined
+                }
+              >
                 {children}
               </a>
             ),
@@ -61,20 +82,48 @@ const LogEntry = ({ id }) => {
 
         <div className="log-next">
           <div>
-            <p style={{ fontFamily: "var(--font-mono)", fontSize: "11px", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--ink-muted)" }}>
+            <p
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: "11px",
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+                color: "var(--ink-muted)",
+              }}
+            >
               {nextLog ? "Next in the logbook" : "End of logbook"}
             </p>
             {nextLog ? (
               <button
                 onClick={() => navigate(nextLog.path)}
-                style={{ fontFamily: "var(--font-display)", fontSize: "20px", letterSpacing: "var(--display-tracking)", display: "flex", alignItems: "center", gap: "10px", color: "var(--accent)", cursor: "pointer", marginTop: "8px" }}
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "20px",
+                  letterSpacing: "var(--display-tracking)",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "10px",
+                  color: "var(--accent)",
+                  cursor: "pointer",
+                  marginTop: "8px",
+                }}
               >
                 {nextLog.title} <ArrowRight size={16} />
               </button>
             ) : (
               <button
                 onClick={() => navigate("/logbook")}
-                style={{ fontFamily: "var(--font-display)", fontSize: "20px", letterSpacing: "var(--display-tracking)", display: "flex", alignItems: "center", gap: "10px", color: "var(--accent)", cursor: "pointer", marginTop: "8px" }}
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "20px",
+                  letterSpacing: "var(--display-tracking)",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "10px",
+                  color: "var(--accent)",
+                  cursor: "pointer",
+                  marginTop: "8px",
+                }}
               >
                 Browse all entries <ArrowRight size={16} />
               </button>

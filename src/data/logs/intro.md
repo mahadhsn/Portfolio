@@ -1,6 +1,6 @@
 # Intro — why I started writing
 
-*June 21, 2025 · 4 min read · life*
+_June 21, 2025 · 4 min read · life_
 
 ![Norway's Fjords, August 2018](/images/logs/intro/norway18.jpg)
 

@@ -1,6 +1,6 @@
 # How to Land an Internship 101
 
-*July 7, 2025 · 12 min read · career*
+_July 7, 2025 · 12 min read · career_
 
 ![The view from the 46th floor of TD Terrace, May 2025](/images/logs/internship/TD_View.jpg)
 
@@ -37,7 +37,7 @@ I'd recommend you focus on one thing and not dabble in too much, or else you bec
 
 ## Network
 
-A lady at our orientation day at TD said that *"My network is my net worth,"* and it was a little cheesy but very true. Even if you're an introvert, try to meet people whenever you can and set up meaningful coffee chats with them.
+A lady at our orientation day at TD said that _"My network is my net worth,"_ and it was a little cheesy but very true. Even if you're an introvert, try to meet people whenever you can and set up meaningful coffee chats with them.
 
 The best practice for a coffee chat is to have a genuine interest in what the person does and their history. If someone you've never met before reached out to you and started begging you for a referral, would you give them one? Probably not. However, if that same person showed genuine interest and was able to hold an interesting conversation, you might even refer them without them asking.
 

@@ -1,2192 +1,3313 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Mahad Hassan — Portfolio (Redesign)</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-/* =========================================================
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mahad Hassan — Portfolio (Redesign)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* =========================================================
    MAHAD HASSAN — PORTFOLIO REDESIGN
    Tokens + globals. Theme controlled by data-theme + data-mode.
    ========================================================= */
 
-:root {
-  /* radii */
-  --r-xs: 4px;
-  --r-sm: 8px;
-  --r-md: 12px;
-  --r-lg: 20px;
-  --r-xl: 28px;
-  --r-full: 999px;
-
-  /* sizing */
-  --nav-w: 240px;
-  --nav-w-collapsed: 76px;
-  --page-max: 1100px;
-
-  /* timing */
-  --ease-out: cubic-bezier(.2,.7,.1,1);
-  --ease-swoop: cubic-bezier(.76, 0, .24, 1);
-  --ease-soft: cubic-bezier(.4, 0, .2, 1);
-
-  color-scheme: light dark;
-}
-
-/* ========== THEME: SIGNATURE (default — light=blue, dark=red) ========== */
-[data-theme="editorial"][data-mode="light"] {
-  --bg: #f4f3ee;
-  --bg-raised: #fbfaf7;
-  --bg-sunk: #e8e6df;
-  --ink: #15171c;
-  --ink-soft: #4d5461;
-  --ink-muted: #858a94;
-  --line: #dbd9d2;
-  --line-strong: #b5b3ab;
-  --accent: #2d4cc8;
-  --accent-soft: #dfe4f7;
-  --accent-ink: #132270;
-  --highlight: #f5dc6b;
-
-  --font-display: 'Fraunces', 'Instrument Serif', serif;
-  --font-body: 'Inter', system-ui, sans-serif;
-  --font-mono: 'Geist Mono', ui-monospace, monospace;
-
-  --display-tracking: -0.035em;
-  --display-weight: 400;
-}
-[data-theme="editorial"][data-mode="dark"] {
-  --bg: #0f0f12;
-  --bg-raised: #18181c;
-  --bg-sunk: #08080a;
-  --ink: #ededf0;
-  --ink-soft: #a8a8b0;
-  --ink-muted: #6a6a72;
-  --line: #25252b;
-  --line-strong: #38383f;
-  --accent: #e84a5f;
-  --accent-soft: #2a1418;
-  --accent-ink: #ffc4cc;
-  --highlight: #d4b94a;
-
-  --font-display: 'Fraunces', 'Instrument Serif', serif;
-  --font-body: 'Inter', system-ui, sans-serif;
-  --font-mono: 'Geist Mono', ui-monospace, monospace;
-
-  --display-tracking: -0.035em;
-  --display-weight: 400;
-}
-
-/* ========== THEME: PRECISE (clean sans, teal-blue light, amber dark) ========== */
-[data-theme="precise"][data-mode="light"] {
-  --bg: #fafafa;
-  --bg-raised: #ffffff;
-  --bg-sunk: #f0f0f0;
-  --ink: #0a0a0a;
-  --ink-soft: #555;
-  --ink-muted: #999;
-  --line: #e4e4e0;
-  --line-strong: #c2c2bc;
-  --accent: #0e6e8a;
-  --accent-soft: #d5eaf2;
-  --accent-ink: #053344;
-  --highlight: #ffeb3b;
-
-  --font-display: 'Geist', 'Inter', sans-serif;
-  --font-body: 'Geist', 'Inter', sans-serif;
-  --font-mono: 'Geist Mono', ui-monospace, monospace;
-
-  --display-tracking: -0.045em;
-  --display-weight: 500;
-}
-[data-theme="precise"][data-mode="dark"] {
-  --bg: #0b0b0c;
-  --bg-raised: #141416;
-  --bg-sunk: #050506;
-  --ink: #f2f2ef;
-  --ink-soft: #a8a8a3;
-  --ink-muted: #6d6d68;
-  --line: #24242a;
-  --line-strong: #3a3a42;
-  --accent: #e8b14a;
-  --accent-soft: #2a1f08;
-  --accent-ink: #ffd78a;
-  --highlight: #ffeb3b;
-
-  --font-display: 'Geist', 'Inter', sans-serif;
-  --font-body: 'Geist', 'Inter', sans-serif;
-  --font-mono: 'Geist Mono', ui-monospace, monospace;
-
-  --display-tracking: -0.045em;
-  --display-weight: 500;
-}
-
-/* ========== THEME: MONO (strict mono, single red accent both modes) ========== */
-[data-theme="brutal"][data-mode="light"] {
-  --bg: #f7f7f5;
-  --bg-raised: #ffffff;
-  --bg-sunk: #eceae5;
-  --ink: #121212;
-  --ink-soft: #4a4a4a;
-  --ink-muted: #8a8a8a;
-  --line: #dcdad5;
-  --line-strong: #b8b6b0;
-  --accent: #c8304a;
-  --accent-soft: #fadce2;
-  --accent-ink: #5a0a1a;
-  --highlight: #f7d94e;
-
-  --font-display: 'Instrument Serif', 'Fraunces', serif;
-  --font-body: 'Geist', 'Inter', sans-serif;
-  --font-mono: 'Geist Mono', ui-monospace, monospace;
-
-  --display-tracking: -0.02em;
-  --display-weight: 400;
-}
-[data-theme="brutal"][data-mode="dark"] {
-  --bg: #0c0c0c;
-  --bg-raised: #161616;
-  --bg-sunk: #050505;
-  --ink: #f0f0ee;
-  --ink-soft: #a0a0a0;
-  --ink-muted: #666;
-  --line: #252525;
-  --line-strong: #3a3a3a;
-  --accent: #ff4d67;
-  --accent-soft: #2a0a12;
-  --accent-ink: #ffc0cc;
-  --highlight: #ffcf3d;
-
-  --font-display: 'Instrument Serif', 'Fraunces', serif;
-  --font-body: 'Geist', 'Inter', sans-serif;
-  --font-mono: 'Geist Mono', ui-monospace, monospace;
-
-  --display-tracking: -0.02em;
-  --display-weight: 400;
-}
-
-/* ========== BASE ========== */
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
-html { -webkit-font-smoothing: antialiased; }
-body {
-  font-family: var(--font-body);
-  color: var(--ink);
-  background: var(--bg);
-  font-size: 16px;
-  line-height: 1.5;
-  min-height: 100vh;
-  transition: background .5s var(--ease-soft), color .5s var(--ease-soft);
-  overflow-x: hidden;
-}
-a { color: inherit; text-decoration: none; }
-button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; padding: 0; }
-img { display: block; max-width: 100%; }
-
-::selection { background: var(--accent); color: var(--bg); }
-
-/* scrollbar */
-::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 10px; border: 2px solid var(--bg); }
-
-/* ========== LAYOUT ========== */
-.app {
-  display: grid;
-  grid-template-columns: var(--nav-w) 1fr;
-  min-height: 100vh;
-}
-
-.page {
-  padding: 40px 56px 120px;
-  max-width: calc(var(--page-max) + 112px);
-  position: relative;
-}
-
-.page-shell {
-  position: relative;
-  overflow-x: hidden;
-}
-
-/* Page transition (subtle fade-up, no curtain) */
-.curtain { display: none; }
-.page-enter {
-  animation: page-enter .35s var(--ease-out) both;
-}
-@keyframes page-enter {
-  from { opacity: 0; transform: translateY(6px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* stagger children */
-.stagger > * {
-  opacity: 0;
-  animation: fade-up .6s var(--ease-out) forwards;
-}
-.stagger > *:nth-child(1) { animation-delay: .05s; }
-.stagger > *:nth-child(2) { animation-delay: .12s; }
-.stagger > *:nth-child(3) { animation-delay: .19s; }
-.stagger > *:nth-child(4) { animation-delay: .26s; }
-.stagger > *:nth-child(5) { animation-delay: .33s; }
-.stagger > *:nth-child(6) { animation-delay: .40s; }
-.stagger > *:nth-child(7) { animation-delay: .47s; }
-.stagger > *:nth-child(8) { animation-delay: .54s; }
-.stagger > *:nth-child(n+9) { animation-delay: .6s; }
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* ========== SIDE NAV ========== */
-.nav {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  padding: 28px 20px 20px;
-  display: flex;
-  flex-direction: column;
-  border-right: 1px solid var(--line);
-  background: var(--bg);
-  z-index: 50;
-}
-.nav-brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 4px 8px 20px;
-  font-family: var(--font-display);
-  font-size: 22px;
-  letter-spacing: var(--display-tracking);
-  font-weight: var(--display-weight);
-}
-.nav-brand-mark {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--accent);
-  color: var(--bg);
-  display: grid;
-  place-items: center;
-  font-family: var(--font-display);
-  font-size: 15px;
-  font-weight: 600;
-  flex-shrink: 0;
-  transition: transform .6s var(--ease-swoop);
-}
-.nav-brand:hover .nav-brand-mark { transform: rotate(360deg); }
-
-.nav-list {
-  list-style: none;
-  padding: 0;
-  margin: 12px 0 0;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-.nav-item {
-  position: relative;
-}
-.nav-link {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 10px 12px;
-  border-radius: var(--r-sm);
-  color: var(--ink-soft);
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  transition: color .2s, background .2s;
-  position: relative;
-}
-.nav-link:hover { color: var(--ink); background: var(--bg-sunk); }
-.nav-link.active {
-  color: var(--ink);
-  font-weight: 600;
-}
-.nav-link.active::before {
-  content: '';
-  position: absolute;
-  left: -21px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 3px;
-  height: 22px;
-  background: var(--accent);
-  border-radius: 0 3px 3px 0;
-  animation: nav-indicator .4s var(--ease-out);
-}
-@keyframes nav-indicator {
-  from { height: 0; }
-  to   { height: 22px; }
-}
-.nav-link-idx {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--ink-muted);
-  min-width: 18px;
-}
-.nav-link.active .nav-link-idx { color: var(--accent); }
-
-.nav-footer {
-  margin-top: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 12px 8px 4px;
-  border-top: 1px solid var(--line);
-}
-.nav-foot-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  color: var(--ink-muted);
-  font-family: var(--font-mono);
-}
-.nav-foot-row .dot { width: 6px; height: 6px; border-radius: 50%; background: #3ecf7a; box-shadow: 0 0 0 3px rgba(62,207,122,.2); animation: dot-pulse 2s infinite; }
-@keyframes dot-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
-
-/* Theme toggle pill */
-.theme-pill {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  background: var(--bg-sunk);
-  border: 1px solid var(--line);
-  border-radius: var(--r-full);
-  padding: 3px;
-}
-.theme-pill button {
-  flex: 1;
-  padding: 6px 8px;
-  border-radius: var(--r-full);
-  color: var(--ink-muted);
-  font-size: 11px;
-  font-family: var(--font-mono);
-  transition: all .25s;
-  display: grid;
-  place-items: center;
-}
-.theme-pill button.active {
-  background: var(--bg-raised);
-  color: var(--ink);
-  box-shadow: 0 1px 2px rgba(0,0,0,.08);
-}
-.theme-pill button:hover:not(.active) { color: var(--ink-soft); }
-
-/* ========== TYPE ========== */
-.display {
-  font-family: var(--font-display);
-  letter-spacing: var(--display-tracking);
-  font-weight: var(--display-weight);
-  line-height: 0.95;
-}
-.eyebrow {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-muted);
-  margin: 0 0 14px;
-}
-.page-title {
-  font-size: clamp(48px, 7vw, 96px);
-  margin: 0 0 8px;
-}
-.subtle { color: var(--ink-soft); }
-
-/* ========== HOME ========== */
-.home-hero {
-  padding-top: 64px;
-  position: relative;
-  min-height: 72vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.home-greet {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--ink-muted);
-  letter-spacing: 0.1em;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 28px;
-}
-.home-greet .bar { width: 36px; height: 1px; background: var(--ink-muted); }
-
-.home-name {
-  font-family: var(--font-display);
-  font-weight: var(--display-weight);
-  letter-spacing: var(--display-tracking);
-  font-size: clamp(80px, 13vw, 200px);
-  line-height: 0.88;
-  margin: 0;
-}
-.home-name .char {
-  display: inline-block;
-  animation: char-in .5s var(--ease-out) both;
-}
-.home-name .char.red { color: var(--accent); font-style: italic; }
-@keyframes char-in {
-  from { opacity: 0; transform: translateY(20%); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.home-tag {
-  font-size: 18px;
-  color: var(--ink-soft);
-  max-width: 540px;
-  margin: 32px 0 0;
-  line-height: 1.55;
-}
-.home-tag em {
-  font-family: var(--font-display);
-  font-style: italic;
-  color: var(--ink);
-  font-weight: 500;
-}
-
-.home-cta-row {
-  display: flex;
-  gap: 12px;
-  margin-top: 36px;
-  flex-wrap: wrap;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 20px;
-  border-radius: var(--r-full);
-  font-size: 14px;
-  font-weight: 500;
-  border: 1px solid var(--line-strong);
-  background: var(--bg-raised);
-  color: var(--ink);
-  transition: transform .3s var(--ease-out), background .2s, border-color .2s, color .2s;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-.btn:hover { transform: translateY(-2px); }
-.btn.primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-.btn.primary:hover { background: var(--accent); border-color: var(--accent); }
-.btn.accent { background: var(--accent); color: var(--bg); border-color: var(--accent); }
-.btn.ghost { background: transparent; }
-.btn .arrow { transition: transform .3s var(--ease-out); }
-.btn:hover .arrow { transform: translateX(4px); }
-
-/* Section split below hero */
-.home-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 24px;
-  margin-top: 96px;
-}
-
-/* Card base */
-.card {
-  background: var(--bg-raised);
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  padding: 28px;
-  transition: transform .4s var(--ease-out), border-color .2s;
-  position: relative;
-  overflow: hidden;
-}
-.card:hover { border-color: var(--line-strong); }
-
-.card-label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  color: var(--ink-muted);
-  text-transform: uppercase;
-  margin-bottom: 18px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.card-label .num {
-  color: var(--accent);
-}
-
-.card h3 {
-  font-family: var(--font-display);
-  font-size: 28px;
-  margin: 0 0 14px;
-  font-weight: var(--display-weight);
-  letter-spacing: var(--display-tracking);
-  line-height: 1.05;
-}
-.card ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.card ul li {
-  padding-left: 18px;
-  position: relative;
-  font-size: 15px;
-  color: var(--ink-soft);
-}
-.card ul li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 10px;
-  width: 6px;
-  height: 6px;
-  background: var(--accent);
-  border-radius: 50%;
-}
-
-.now-card {
-  grid-column: span 1;
-  background: linear-gradient(135deg, var(--bg-raised), var(--accent-soft));
-}
-
-/* Stats strip */
-.stats-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  margin-top: 24px;
-  overflow: hidden;
-}
-.stat {
-  background: var(--bg-raised);
-  padding: 28px 24px;
-  transition: background .3s;
-}
-.stat:hover { background: var(--bg-sunk); }
-.stat-num {
-  font-family: var(--font-display);
-  font-size: 54px;
-  font-weight: var(--display-weight);
-  letter-spacing: var(--display-tracking);
-  line-height: 1;
-  color: var(--ink);
-}
-.stat-num .plus { color: var(--accent); }
-.stat-label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-muted);
-  margin-top: 10px;
-}
-
-/* Featured project card */
-.featured {
-  margin-top: 24px;
-  padding: 36px;
-  background: var(--ink);
-  color: var(--bg);
-  border-radius: var(--r-xl);
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 24px;
-  align-items: end;
-  min-height: 220px;
-  transition: transform .5s var(--ease-out);
-}
-.featured::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 80% 20%, var(--accent) 0%, transparent 60%);
-  opacity: 0.35;
-  transition: opacity .5s, transform .8s var(--ease-out);
-}
-.featured:hover::before { opacity: 0.55; transform: scale(1.2); }
-.featured:hover { transform: translateY(-3px); }
-.featured-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--bg);
-  opacity: 0.6;
-  margin-bottom: 12px;
-  position: relative;
-}
-.featured-title {
-  font-family: var(--font-display);
-  font-size: 48px;
-  line-height: 1;
-  margin: 0 0 10px;
-  font-weight: var(--display-weight);
-  letter-spacing: var(--display-tracking);
-  position: relative;
-}
-.featured-sub {
-  font-size: 16px;
-  opacity: 0.75;
-  max-width: 460px;
-  position: relative;
-}
-.featured-cta {
-  font-size: 13px;
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--accent);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  position: relative;
-}
-
-/* Quote block */
-.quote-block {
-  margin-top: 24px;
-  padding: 40px 36px;
-  border-radius: var(--r-xl);
-  background: var(--accent-soft);
-  color: var(--accent-ink);
-  font-family: var(--font-display);
-  font-size: 32px;
-  line-height: 1.2;
-  font-style: italic;
-  position: relative;
-}
-.quote-block .mark {
-  font-size: 80px;
-  line-height: 0;
-  position: absolute;
-  top: 50px;
-  left: 14px;
-  opacity: 0.3;
-}
-.quote-block cite {
-  display: block;
-  margin-top: 16px;
-  font-family: var(--font-mono);
-  font-style: normal;
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  opacity: 0.7;
-}
-
-/* Now-playing mini widget */
-.now-playing {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 14px 12px 12px;
-  background: var(--bg-raised);
-  border: 1px solid var(--line);
-  border-radius: var(--r-full);
-  transition: all .3s;
-  cursor: pointer;
-}
-.now-playing:hover { transform: scale(1.02); border-color: var(--accent); }
-.np-cover {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), var(--ink));
-  flex-shrink: 0;
-  animation: spin 8s linear infinite;
-  display: grid;
-  place-items: center;
-  color: var(--bg);
-  font-size: 14px;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-.np-text { display: flex; flex-direction: column; line-height: 1.2; }
-.np-title { font-size: 12px; font-weight: 600; color: var(--ink); }
-.np-artist { font-size: 11px; color: var(--ink-muted); }
-.np-wave {
-  display: flex;
-  align-items: end;
-  gap: 2px;
-  height: 14px;
-  margin-left: auto;
-}
-.np-wave span {
-  width: 2px;
-  background: var(--accent);
-  border-radius: 1px;
-  animation: wave .9s ease-in-out infinite;
-}
-.np-wave span:nth-child(1) { height: 40%; animation-delay: 0s; }
-.np-wave span:nth-child(2) { height: 80%; animation-delay: .15s; }
-.np-wave span:nth-child(3) { height: 60%; animation-delay: .3s; }
-.np-wave span:nth-child(4) { height: 90%; animation-delay: .45s; }
-@keyframes wave { 0%, 100% { height: 20%; } 50% { height: 90%; } }
-
-/* ========== ABOUT ========== */
-.about-hero {
-  display: grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap: 56px;
-  align-items: end;
-  margin-bottom: 72px;
-}
-.about-photo-frame {
-  aspect-ratio: 4/5;
-  background: var(--bg-sunk);
-  border-radius: var(--r-lg);
-  overflow: hidden;
-  position: relative;
-  border: 1px solid var(--line);
-}
-.about-photo-frame::after {
-  content: 'Polaroid placeholder — concert photo 2023';
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  padding: 24px;
-  text-align: center;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--ink-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  background: repeating-linear-gradient(45deg, var(--bg-raised) 0 20px, var(--bg-sunk) 20px 22px);
-}
-
-.about-tabs {
-  display: flex;
-  gap: 4px;
-  padding: 4px;
-  background: var(--bg-sunk);
-  border-radius: var(--r-full);
-  margin-bottom: 32px;
-  width: fit-content;
-}
-.about-tab {
-  padding: 9px 18px;
-  border-radius: var(--r-full);
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--ink-soft);
-  transition: all .25s;
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-.about-tab.active { background: var(--bg-raised); color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,.06); }
-
-.about-section {
-  animation: fade-up .5s var(--ease-out);
-}
-.about-section h2 {
-  font-family: var(--font-display);
-  font-size: 56px;
-  line-height: 1;
-  margin: 0 0 28px;
-  letter-spacing: var(--display-tracking);
-  font-weight: var(--display-weight);
-}
-.about-section h2 em { color: var(--accent); font-style: italic; }
-.about-section p {
-  font-size: 17px;
-  color: var(--ink-soft);
-  line-height: 1.6;
-  max-width: 620px;
-  margin: 0 0 16px;
-}
-
-.timeline {
-  margin-top: 32px;
-  border-top: 1px solid var(--line);
-}
-.tl-row {
-  display: grid;
-  grid-template-columns: 120px 1fr auto;
-  gap: 24px;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--line);
-  align-items: baseline;
-  position: relative;
-  transition: padding .4s var(--ease-out);
-}
-.tl-row:hover { padding-left: 12px; }
-.tl-row::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: var(--accent);
-  transform: scaleY(0);
-  transform-origin: center;
-  transition: transform .3s var(--ease-out);
-}
-.tl-row:hover::before { transform: scaleY(1); }
-.tl-date {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--ink-muted);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-.tl-title {
-  font-family: var(--font-display);
-  font-size: 22px;
-  letter-spacing: var(--display-tracking);
-  font-weight: var(--display-weight);
-  margin: 0;
-}
-.tl-meta { font-size: 13px; color: var(--ink-muted); font-family: var(--font-mono); }
-
-.wins-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  margin-top: 32px;
-}
-.win {
-  padding: 20px;
-  border: 1px solid var(--line);
-  border-radius: var(--r-md);
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  background: var(--bg-raised);
-  transition: transform .3s var(--ease-out);
-}
-.win:hover { transform: translateY(-3px); border-color: var(--accent); }
-.win-icon { font-size: 22px; margin-bottom: 4px; }
-.win-title { font-size: 15px; font-weight: 600; }
-.win-meta { font-family: var(--font-mono); font-size: 11px; color: var(--ink-muted); }
-
-/* ========== PROJECTS ========== */
-.proj-intro {
-  max-width: 640px;
-  margin: 0 0 48px;
-  font-size: 18px;
-  color: var(--ink-soft);
-  line-height: 1.6;
-}
-
-.proj-filter {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 32px;
-  flex-wrap: wrap;
-}
-.proj-filter button {
-  padding: 8px 14px;
-  border-radius: var(--r-full);
-  font-family: var(--font-mono);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--ink-muted);
-  border: 1px solid var(--line);
-  transition: all .25s;
-}
-.proj-filter button:hover { color: var(--ink); border-color: var(--line-strong); }
-.proj-filter button.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-
-.proj-list {
-  border-top: 1px solid var(--line);
-}
-.proj-row {
-  display: grid;
-  grid-template-columns: 40px 1.5fr 1fr 140px auto;
-  gap: 24px;
-  padding: 24px 0 24px 16px;
-  border-bottom: 1px solid var(--line);
-  align-items: center;
-  position: relative;
-  cursor: pointer;
-  transition: padding-left .4s var(--ease-out);
-}
-.proj-row::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--bg-raised);
-  border-radius: var(--r-md);
-  opacity: 0;
-  transition: opacity .25s;
-  z-index: -1;
-}
-.proj-row:hover { padding-left: 28px; }
-.proj-row:hover::before { opacity: 1; }
-.proj-idx {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--ink-muted);
-}
-.proj-title {
-  font-family: var(--font-display);
-  font-size: 32px;
-  letter-spacing: var(--display-tracking);
-  font-weight: var(--display-weight);
-  line-height: 1.05;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.proj-title .trophy { font-size: 18px; }
-.proj-desc {
-  font-size: 14px;
-  color: var(--ink-soft);
-  line-height: 1.4;
-}
-.proj-tag {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--ink-muted);
-}
-.proj-arrow {
-  color: var(--ink-muted);
-  transition: transform .3s, color .3s;
-}
-.proj-row:hover .proj-arrow { transform: translateX(6px); color: var(--accent); }
-
-.proj-featured {
-  margin-bottom: 40px;
-  padding: 0;
-  background: var(--bg-raised);
-  border: 1px solid var(--line);
-  border-radius: var(--r-xl);
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  min-height: 320px;
-  transition: border-color .3s;
-  cursor: pointer;
-}
-.proj-featured:hover { border-color: var(--accent); }
-.proj-featured-body { padding: 40px; display: flex; flex-direction: column; justify-content: space-between; }
-.proj-featured-body h2 {
-  font-family: var(--font-display);
-  font-size: 56px;
-  margin: 12px 0 16px;
-  letter-spacing: var(--display-tracking);
-  font-weight: var(--display-weight);
-  line-height: 1;
-}
-.proj-featured-img {
-  background: linear-gradient(135deg, var(--accent), var(--ink));
-  position: relative;
-  overflow: hidden;
-}
-.proj-featured-img::after {
-  content: 'PrepPal screenshot placeholder';
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  color: var(--bg);
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  opacity: 0.7;
-}
-
-/* ========== LOGBOOK ========== */
-.logbook-head { display: flex; justify-content: space-between; align-items: end; margin-bottom: 32px; gap: 32px; flex-wrap: wrap; }
-.logbook-chip-row { display: flex; gap: 6px; margin-top: 16px; }
-.chip {
-  padding: 6px 12px;
-  border-radius: var(--r-full);
-  background: var(--bg-sunk);
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-}
-
-.log-section-title {
-  font-family: var(--font-display);
-  font-size: 40px;
-  letter-spacing: var(--display-tracking);
-  font-weight: var(--display-weight);
-  margin: 56px 0 24px;
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
-}
-.log-section-title .count {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  color: var(--ink-muted);
-}
-
-.log-list {
-  border-top: 1px solid var(--line);
-}
-.log-row {
-  display: grid;
-  grid-template-columns: 120px 1fr auto;
-  gap: 24px;
-  padding: 22px 16px;
-  border-bottom: 1px solid var(--line);
-  align-items: center;
-  cursor: pointer;
-  position: relative;
-  transition: padding-left .3s var(--ease-out);
-}
-.log-row:hover { padding-left: 28px; }
-.log-row::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background: var(--bg-raised);
-  opacity: 0;
-  border-radius: var(--r-md);
-  z-index: -1;
-  transition: opacity .25s;
-}
-.log-row:hover::after { opacity: 1; }
-.log-date { font-family: var(--font-mono); font-size: 11px; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.06em; }
-.log-title { font-family: var(--font-display); font-size: 24px; letter-spacing: var(--display-tracking); font-weight: var(--display-weight); margin: 0; }
-.log-meta { font-family: var(--font-mono); font-size: 11px; color: var(--ink-muted); }
-
-/* Photo grid */
-.photo-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-top: 8px;
-}
-.photo-tile {
-  aspect-ratio: 4/5;
-  background: var(--bg-sunk);
-  border-radius: var(--r-md);
-  overflow: hidden;
-  position: relative;
-  cursor: pointer;
-  border: 1px solid var(--line);
-  transition: transform .5s var(--ease-out);
-}
-.photo-tile:hover { transform: scale(1.02); }
-.photo-tile:nth-child(5n+1) { aspect-ratio: 4/5; }
-.photo-tile:nth-child(5n+2) { aspect-ratio: 1; }
-.photo-tile:nth-child(5n+3) { aspect-ratio: 4/5; }
-.photo-tile:nth-child(5n+4) { aspect-ratio: 1; }
-.photo-tile:nth-child(5n+5) { aspect-ratio: 3/4; }
-.photo-grad {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(160deg, var(--accent) 0%, var(--ink) 100%);
-  opacity: 0.85;
-}
-.photo-tile:nth-child(2n) .photo-grad { background: linear-gradient(200deg, var(--highlight), var(--accent)); }
-.photo-tile:nth-child(3n) .photo-grad { background: linear-gradient(135deg, var(--ink), var(--accent-soft)); }
-.photo-tile:nth-child(5n) .photo-grad { background: linear-gradient(120deg, var(--accent-soft), var(--ink-soft)); }
-.photo-overlay {
-  position: absolute;
-  inset: 0;
-  padding: 18px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  color: var(--bg);
-  opacity: 0;
-  transition: opacity .3s;
-  background: linear-gradient(to top, rgba(0,0,0,.75), transparent 60%);
-}
-.photo-tile:hover .photo-overlay { opacity: 1; }
-.photo-overlay-title {
-  font-family: var(--font-display);
-  font-size: 20px;
-  letter-spacing: var(--display-tracking);
-}
-.photo-overlay-date {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  opacity: 0.8;
-}
-
-/* ========== LOG ENTRY ========== */
-.log-article {
-  max-width: 680px;
-  margin: 0 auto;
-  padding: 40px 0 0;
-}
-.log-back {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--ink-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 32px;
-}
-.log-back:hover { color: var(--accent); }
-/* Markdown article — plain prose, GitHub-markdown compatible */
-.log-article.md h1 {
-  font-family: var(--font-display);
-  font-size: clamp(36px, 5vw, 56px);
-  line-height: 1.1;
-  letter-spacing: var(--display-tracking);
-  font-weight: var(--display-weight);
-  margin: 0 0 8px;
-}
-.log-article.md h1 + p em:first-child,
-.log-article.md h1 + p {
-  color: var(--ink-muted);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.05em;
-  margin: 0 0 32px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--line);
-}
-.log-article.md h2 {
-  font-family: var(--font-display);
-  font-size: 26px;
-  letter-spacing: var(--display-tracking);
-  font-weight: var(--display-weight);
-  margin: 40px 0 14px;
-}
-.log-article.md h3 {
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 18px;
-  margin: 28px 0 10px;
-}
-.log-article.md p {
-  font-size: 17px;
-  line-height: 1.7;
-  color: var(--ink);
-  margin: 0 0 18px;
-}
-.log-article.md ul, .log-article.md ol {
-  padding-left: 24px;
-  margin: 0 0 20px;
-  color: var(--ink);
-}
-.log-article.md li {
-  font-size: 17px;
-  line-height: 1.7;
-  margin: 0 0 6px;
-}
-.log-article.md blockquote {
-  border-left: 3px solid var(--accent);
-  padding-left: 18px;
-  margin: 24px 0;
-  color: var(--ink-soft);
-  font-style: italic;
-  font-size: 17px;
-  line-height: 1.6;
-}
-.log-article.md code {
-  font-family: var(--font-mono);
-  font-size: 0.9em;
-  padding: 2px 6px;
-  background: var(--bg-sunk);
-  border-radius: 4px;
-}
-.log-next {
-  margin-top: 80px;
-  padding-top: 32px;
-  border-top: 1px solid var(--line);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* Photo detail */
-.photo-detail {
-  padding-top: 24px;
-}
-.photo-hero {
-  aspect-ratio: 3/2;
-  background: var(--bg-sunk);
-  border-radius: var(--r-lg);
-  overflow: hidden;
-  position: relative;
-  margin-bottom: 24px;
-  border: 1px solid var(--line);
-}
-.photo-hero .photo-grad {
-  background: linear-gradient(135deg, var(--accent), var(--ink));
-}
-.photo-hero::after {
-  content: attr(data-caption);
-  position: absolute;
-  bottom: 20px;
-  left: 24px;
-  color: var(--bg);
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  opacity: 0.9;
-}
-.photo-detail-meta {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin: 24px 0 48px;
-  padding: 20px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-.pdm-label { font-family: var(--font-mono); font-size: 10px; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.1em; }
-.pdm-value { font-family: var(--font-display); font-size: 18px; margin-top: 4px; letter-spacing: var(--display-tracking); font-weight: var(--display-weight); }
-
-.photo-gallery {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-}
-.photo-gallery .photo-tile { aspect-ratio: 4/3; }
-
-/* ========== RESUME ========== */
-.resume-head { display: flex; justify-content: space-between; align-items: end; gap: 32px; margin-bottom: 32px; flex-wrap: wrap; }
-.resume-actions { display: flex; gap: 8px; }
-.resume-frame {
-  background: var(--bg-raised);
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  padding: 64px 80px;
-  aspect-ratio: 8.5/11;
-  max-width: 900px;
-  position: relative;
-  box-shadow: 0 8px 32px rgba(0,0,0,.06), 0 2px 4px rgba(0,0,0,.04);
-}
-[data-mode="dark"] .resume-frame { box-shadow: 0 8px 32px rgba(0,0,0,.35); }
-.resume-frame h1 {
-  font-family: var(--font-display);
-  font-size: 48px;
-  margin: 0;
-  letter-spacing: var(--display-tracking);
-  font-weight: var(--display-weight);
-  line-height: 1;
-}
-.resume-contact { font-family: var(--font-mono); font-size: 11px; color: var(--ink-muted); margin: 8px 0 32px; letter-spacing: 0.05em; }
-.resume-frame h3 {
-  font-family: var(--font-display);
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-weight: 500;
-  margin: 28px 0 14px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--line);
-}
-.resume-frame .job { margin-bottom: 18px; font-size: 13px; }
-.resume-frame .job-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
-.resume-frame .job-title { font-weight: 600; font-size: 14px; }
-.resume-frame .job-date { font-family: var(--font-mono); font-size: 10px; color: var(--ink-muted); }
-.resume-frame .job-company { font-size: 12px; color: var(--ink-soft); margin-bottom: 4px; }
-.resume-frame .job p { font-size: 12px; color: var(--ink-soft); line-height: 1.5; margin: 0; }
-
-/* ========== CONTACT ========== */
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  margin-top: 48px;
-  align-items: start;
-}
-.contact-hello {
-  font-family: var(--font-display);
-  font-size: clamp(48px, 6vw, 80px);
-  letter-spacing: var(--display-tracking);
-  font-weight: var(--display-weight);
-  line-height: 0.95;
-  margin: 0 0 24px;
-}
-.contact-hello em { color: var(--accent); font-style: italic; }
-.contact-channels { display: flex; flex-direction: column; gap: 2px; margin-top: 32px; }
-.contact-channel {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 0;
-  border-bottom: 1px solid var(--line);
-  transition: padding-left .3s var(--ease-out);
-  font-size: 15px;
-  cursor: pointer;
-}
-.contact-channel:hover { padding-left: 12px; color: var(--accent); }
-.contact-channel-label { font-family: var(--font-mono); font-size: 11px; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.1em; }
-
-.contact-form {
-  background: var(--bg-raised);
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  padding: 32px;
-}
-.field { margin-bottom: 20px; }
-.field label {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--ink-muted);
-  margin-bottom: 8px;
-}
-.field input, .field textarea {
-  width: 100%;
-  padding: 12px 0;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid var(--line);
-  color: var(--ink);
-  font-size: 16px;
-  font-family: var(--font-body);
-  transition: border-color .2s;
-  resize: vertical;
-}
-.field input:focus, .field textarea:focus { outline: none; border-bottom-color: var(--accent); }
-.field textarea { min-height: 100px; }
-.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-
-/* ========== FOOTER ========== */
-.foot {
-  margin-top: 80px;
-  padding: 40px 0 24px;
-  border-top: 1px solid var(--line);
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 24px;
-  align-items: center;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--ink-muted);
-  letter-spacing: 0.05em;
-}
-.foot a:hover { color: var(--accent); }
-.foot-center { justify-self: center; }
-.foot-right { justify-self: end; display: flex; gap: 14px; }
-
-/* ========== TWEAKS PANEL ========== */
-.tweaks {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  width: 300px;
-  background: var(--bg-raised);
-  border: 1px solid var(--line-strong);
-  border-radius: var(--r-lg);
-  padding: 20px;
-  z-index: 300;
-  box-shadow: 0 24px 48px -12px rgba(0,0,0,.25), 0 4px 12px rgba(0,0,0,.1);
-  font-size: 13px;
-  animation: tweak-in .4s var(--ease-out);
-  backdrop-filter: blur(20px);
-}
-@keyframes tweak-in {
-  from { opacity: 0; transform: translateY(20px) scale(.95); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
-}
-.tweaks h4 {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-muted);
-  margin: 0 0 8px;
-}
-.tweaks .tweak-group { margin-bottom: 18px; }
-.tweaks .swatch-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-.tweaks .swatch {
-  padding: 12px 8px;
-  border: 1px solid var(--line);
-  border-radius: var(--r-sm);
-  text-align: center;
-  font-size: 11px;
-  transition: all .2s;
-  cursor: pointer;
-  background: var(--bg);
-}
-.tweaks .swatch:hover { border-color: var(--line-strong); }
-.tweaks .swatch.active { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-ink); }
-.tweaks .swatch-chip {
-  width: 100%;
-  height: 20px;
-  border-radius: var(--r-xs);
-  margin-bottom: 6px;
-}
-
-/* Responsive */
-@media (max-width: 960px) {
-  .app { grid-template-columns: 1fr; }
-  .nav { position: static; height: auto; flex-direction: row; border-right: none; border-bottom: 1px solid var(--line); padding: 16px; }
-  .nav-list { flex-direction: row; gap: 4px; overflow-x: auto; }
-  .nav-footer { display: none; }
-  .page { padding: 24px; }
-  .home-grid, .about-hero, .contact-grid { grid-template-columns: 1fr; gap: 24px; }
-  .proj-featured { grid-template-columns: 1fr; }
-  .proj-row { grid-template-columns: 30px 1fr auto; }
-  .proj-row .proj-desc, .proj-row .proj-tag { display: none; }
-  .photo-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-</style>
-</head>
-<body>
-<div id="root"></div>
-
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-
-<script type="text/babel" data-file="src/data.jsx">
-/* Shared data for the prototype */
-
-const NAV_ITEMS = [
-  { id: 'home',     label: 'Home',     path: '/',         idx: '01' },
-  { id: 'about',    label: 'About',    path: '/about',    idx: '02' },
-  { id: 'projects', label: 'Projects', path: '/projects', idx: '03' },
-  { id: 'logbook',  label: 'Logbook',  path: '/logbook',  idx: '04' },
-  { id: 'resume',   label: 'Resume',   path: '/resume',   idx: '05' },
-  { id: 'contact',  label: 'Contact',  path: '/contact',  idx: '06' },
-];
-
-const PROJECTS = [
-  { id: 'preppal',   title: 'PrepPal',           desc: 'Disaster awareness + emergency-support web app for natural disasters.', tag: 'Web / AI', year: '2025', featured: true, award: "MacEngComp '25" },
-  { id: 'sclerocare',title: 'ScleroCare',        desc: 'Patient-facing app with Tech4Good & Scleroderma Canada. Coming to the App Store.', tag: 'Mobile', year: '2025' },
-  { id: 'drone',     title: 'Drone Rescue',      desc: 'State + strategy pattern drone controller for rescue missions.', tag: 'Java', year: '2025' },
-  { id: 'digit',     title: 'Digit Recognizer',  desc: '8-layer CNN recognising hand-drawn digits at 99.3% accuracy.', tag: 'Python / ML', year: '2024' },
-  { id: 'cview',     title: 'C-View',            desc: 'Lightweight command-line image processor written in C.', tag: 'C', year: '2024' },
-  { id: 'tictactoe', title: 'Tic-Tac-Toe AI',    desc: 'Minimax-backed adversary for classic Tic-Tac-Toe.', tag: 'Java', year: '2024' },
-  { id: 'securevault',title:'SecureVault',       desc: 'Face recognition + file encryption cybersecurity system.', tag: 'Security', year: '2024', award: "MacEngComp '24" },
-  { id: 'portfolio', title: 'Portfolio',         desc: 'This site — built with React + Tailwind; about me and my work.', tag: 'Web', year: '2024' },
-  { id: 'numsys',    title: 'Convert Numbers',   desc: 'Convert values between number systems, written in C.', tag: 'C', year: '2023' },
-  { id: 'babynames', title: 'US Baby Names',     desc: 'Bash script ranking baby names in the US.', tag: 'Bash', year: '2023' },
-];
-
-const LOGS = [
-  { id: 'sclerocare',  title: 'ScleroCare: An App for Patients', date: 'July 24, 2025', read: '8 min', tag: 'build' },
-  { id: 'internship',  title: 'How to Land an Internship 101',   date: 'July 7, 2025',  read: '12 min', tag: 'career' },
-  { id: 'intro',       title: 'Intro — why I started writing',   date: 'June 21, 2025', read: '4 min',  tag: 'life' },
-];
-
-const PHOTOS = [
-  { id: 'mdl',        title: 'MDL Designathon', date: 'Jan 17–18, 2026', location: 'Hamilton, ON' },
-  { id: 'stirling',   title: 'Stirling',        date: 'Oct 11, 2025',    location: 'Stirling, Scotland' },
-  { id: 'bronte',     title: 'Bronte Creek',    date: 'Aug 31, 2025',    location: 'Oakville, ON' },
-  { id: 'toronto',    title: 'Toronto',         date: 'Aug 27, 2025',    location: 'Toronto, ON' },
-  { id: 'killbear',   title: 'Killbear',        date: 'Aug 3, 2025',     location: 'Nobel, ON' },
-  { id: 'belfountain',title: 'Belfountain',     date: 'Jun 30, 2025',    location: 'Caledon, ON' },
-];
-
-const ABOUT_SECTIONS = [
-  { id: 'intro',  label: 'Intro'  },
-  { id: 'now',    label: 'Now'    },
-  { id: 'before', label: 'Before' },
-  { id: 'wins',   label: 'Wins'   },
-];
-
-Object.assign(window, { NAV_ITEMS, PROJECTS, LOGS, PHOTOS, ABOUT_SECTIONS });
-
-</script>
-
-<script type="text/babel" data-file="src/icons.jsx">
-/* Minimal inline icons as React components */
-const Icon = {
-  arrow: () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>,
-  arrowUpRight: () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>,
-  arrowLeft: () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>,
-  sun: () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/></svg>,
-  moon: () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>,
-  download: () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>,
-  play: () => <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>,
-  note: () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>,
-  github: () => <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.3 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.7.2 2.9.1 3.2.8.9 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3z"/></svg>,
-  linkedin: () => <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zm1.78 13.02H3.56V9h3.56v11.45z"/></svg>,
-  mail: () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>,
-  sparkle: () => <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2 8 8 2-8 2-2 8-2-8-8-2 8-2z"/></svg>,
-};
-window.Icon = Icon;
-
-</script>
-
-<script type="text/babel" data-file="src/components.jsx">
-/* Shared components: Nav, Footer, NowPlaying, etc. */
-
-const { useState, useEffect, useRef, useMemo, useCallback } = React;
-
-/* ---------- Router (very small) ---------- */
-const RouterCtx = React.createContext({ path: '/', navigate: () => {} });
-
-function useRouter() { return React.useContext(RouterCtx); }
-
-function RouterProvider({ children }) {
-  const [path, setPath] = useState(() => {
-    const stored = localStorage.getItem('mh-path');
-    return stored || '/';
-  });
-  const navigate = useCallback((to) => {
-    if (to === path) return;
-    setPath(to);
-    localStorage.setItem('mh-path', to);
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  }, [path]);
-
-  return (
-    <RouterCtx.Provider value={{ path, navigate }}>
-      {children}
-    </RouterCtx.Provider>
-  );
-}
-
-/* ---------- Theme ---------- */
-const ThemeCtx = React.createContext({});
-
-function ThemeProvider({ children, initial, onChange }) {
-  const [theme, setTheme] = useState(initial.theme);
-  const [mode, setMode] = useState(initial.mode);
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-    document.documentElement.setAttribute('data-mode', mode);
-    onChange && onChange({ theme, mode });
-  }, [theme, mode]);
-  return (
-    <ThemeCtx.Provider value={{ theme, mode, setTheme, setMode }}>
-      {children}
-    </ThemeCtx.Provider>
-  );
-}
-function useTheme() { return React.useContext(ThemeCtx); }
-
-/* ---------- Nav ---------- */
-function Nav() {
-  const { path, navigate } = useRouter();
-  const { mode, setMode } = useTheme();
-
-  return (
-    <aside className="nav">
-      <a className="nav-brand" href="#" onClick={(e) => { e.preventDefault(); navigate('/'); }}>
-        <span className="nav-brand-mark">M</span>
-        <span>mahad.</span>
-      </a>
-
-      <ul className="nav-list">
-        {NAV_ITEMS.map(item => {
-          const active = path === item.path || (item.path !== '/' && path.startsWith(item.path));
-          return (
-            <li className="nav-item" key={item.id}>
+      :root {
+        /* radii */
+        --r-xs: 4px;
+        --r-sm: 8px;
+        --r-md: 12px;
+        --r-lg: 20px;
+        --r-xl: 28px;
+        --r-full: 999px;
+
+        /* sizing */
+        --nav-w: 240px;
+        --nav-w-collapsed: 76px;
+        --page-max: 1100px;
+
+        /* timing */
+        --ease-out: cubic-bezier(0.2, 0.7, 0.1, 1);
+        --ease-swoop: cubic-bezier(0.76, 0, 0.24, 1);
+        --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+
+        color-scheme: light dark;
+      }
+
+      /* ========== THEME: SIGNATURE (default — light=blue, dark=red) ========== */
+      [data-theme="editorial"][data-mode="light"] {
+        --bg: #f4f3ee;
+        --bg-raised: #fbfaf7;
+        --bg-sunk: #e8e6df;
+        --ink: #15171c;
+        --ink-soft: #4d5461;
+        --ink-muted: #858a94;
+        --line: #dbd9d2;
+        --line-strong: #b5b3ab;
+        --accent: #2d4cc8;
+        --accent-soft: #dfe4f7;
+        --accent-ink: #132270;
+        --highlight: #f5dc6b;
+
+        --font-display: "Fraunces", "Instrument Serif", serif;
+        --font-body: "Inter", system-ui, sans-serif;
+        --font-mono: "Geist Mono", ui-monospace, monospace;
+
+        --display-tracking: -0.035em;
+        --display-weight: 400;
+      }
+      [data-theme="editorial"][data-mode="dark"] {
+        --bg: #0f0f12;
+        --bg-raised: #18181c;
+        --bg-sunk: #08080a;
+        --ink: #ededf0;
+        --ink-soft: #a8a8b0;
+        --ink-muted: #6a6a72;
+        --line: #25252b;
+        --line-strong: #38383f;
+        --accent: #e84a5f;
+        --accent-soft: #2a1418;
+        --accent-ink: #ffc4cc;
+        --highlight: #d4b94a;
+
+        --font-display: "Fraunces", "Instrument Serif", serif;
+        --font-body: "Inter", system-ui, sans-serif;
+        --font-mono: "Geist Mono", ui-monospace, monospace;
+
+        --display-tracking: -0.035em;
+        --display-weight: 400;
+      }
+
+      /* ========== THEME: PRECISE (clean sans, teal-blue light, amber dark) ========== */
+      [data-theme="precise"][data-mode="light"] {
+        --bg: #fafafa;
+        --bg-raised: #ffffff;
+        --bg-sunk: #f0f0f0;
+        --ink: #0a0a0a;
+        --ink-soft: #555;
+        --ink-muted: #999;
+        --line: #e4e4e0;
+        --line-strong: #c2c2bc;
+        --accent: #0e6e8a;
+        --accent-soft: #d5eaf2;
+        --accent-ink: #053344;
+        --highlight: #ffeb3b;
+
+        --font-display: "Geist", "Inter", sans-serif;
+        --font-body: "Geist", "Inter", sans-serif;
+        --font-mono: "Geist Mono", ui-monospace, monospace;
+
+        --display-tracking: -0.045em;
+        --display-weight: 500;
+      }
+      [data-theme="precise"][data-mode="dark"] {
+        --bg: #0b0b0c;
+        --bg-raised: #141416;
+        --bg-sunk: #050506;
+        --ink: #f2f2ef;
+        --ink-soft: #a8a8a3;
+        --ink-muted: #6d6d68;
+        --line: #24242a;
+        --line-strong: #3a3a42;
+        --accent: #e8b14a;
+        --accent-soft: #2a1f08;
+        --accent-ink: #ffd78a;
+        --highlight: #ffeb3b;
+
+        --font-display: "Geist", "Inter", sans-serif;
+        --font-body: "Geist", "Inter", sans-serif;
+        --font-mono: "Geist Mono", ui-monospace, monospace;
+
+        --display-tracking: -0.045em;
+        --display-weight: 500;
+      }
+
+      /* ========== THEME: MONO (strict mono, single red accent both modes) ========== */
+      [data-theme="brutal"][data-mode="light"] {
+        --bg: #f7f7f5;
+        --bg-raised: #ffffff;
+        --bg-sunk: #eceae5;
+        --ink: #121212;
+        --ink-soft: #4a4a4a;
+        --ink-muted: #8a8a8a;
+        --line: #dcdad5;
+        --line-strong: #b8b6b0;
+        --accent: #c8304a;
+        --accent-soft: #fadce2;
+        --accent-ink: #5a0a1a;
+        --highlight: #f7d94e;
+
+        --font-display: "Instrument Serif", "Fraunces", serif;
+        --font-body: "Geist", "Inter", sans-serif;
+        --font-mono: "Geist Mono", ui-monospace, monospace;
+
+        --display-tracking: -0.02em;
+        --display-weight: 400;
+      }
+      [data-theme="brutal"][data-mode="dark"] {
+        --bg: #0c0c0c;
+        --bg-raised: #161616;
+        --bg-sunk: #050505;
+        --ink: #f0f0ee;
+        --ink-soft: #a0a0a0;
+        --ink-muted: #666;
+        --line: #252525;
+        --line-strong: #3a3a3a;
+        --accent: #ff4d67;
+        --accent-soft: #2a0a12;
+        --accent-ink: #ffc0cc;
+        --highlight: #ffcf3d;
+
+        --font-display: "Instrument Serif", "Fraunces", serif;
+        --font-body: "Geist", "Inter", sans-serif;
+        --font-mono: "Geist Mono", ui-monospace, monospace;
+
+        --display-tracking: -0.02em;
+        --display-weight: 400;
+      }
+
+      /* ========== BASE ========== */
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        -webkit-font-smoothing: antialiased;
+      }
+      body {
+        font-family: var(--font-body);
+        color: var(--ink);
+        background: var(--bg);
+        font-size: 16px;
+        line-height: 1.5;
+        min-height: 100vh;
+        transition:
+          background 0.5s var(--ease-soft),
+          color 0.5s var(--ease-soft);
+        overflow-x: hidden;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button {
+        font: inherit;
+        color: inherit;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      ::selection {
+        background: var(--accent);
+        color: var(--bg);
+      }
+
+      /* scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bg);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--line-strong);
+        border-radius: 10px;
+        border: 2px solid var(--bg);
+      }
+
+      /* ========== LAYOUT ========== */
+      .app {
+        display: grid;
+        grid-template-columns: var(--nav-w) 1fr;
+        min-height: 100vh;
+      }
+
+      .page {
+        padding: 40px 56px 120px;
+        max-width: calc(var(--page-max) + 112px);
+        position: relative;
+      }
+
+      .page-shell {
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      /* Page transition (subtle fade-up, no curtain) */
+      .curtain {
+        display: none;
+      }
+      .page-enter {
+        animation: page-enter 0.35s var(--ease-out) both;
+      }
+      @keyframes page-enter {
+        from {
+          opacity: 0;
+          transform: translateY(6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* stagger children */
+      .stagger > * {
+        opacity: 0;
+        animation: fade-up 0.6s var(--ease-out) forwards;
+      }
+      .stagger > *:nth-child(1) {
+        animation-delay: 0.05s;
+      }
+      .stagger > *:nth-child(2) {
+        animation-delay: 0.12s;
+      }
+      .stagger > *:nth-child(3) {
+        animation-delay: 0.19s;
+      }
+      .stagger > *:nth-child(4) {
+        animation-delay: 0.26s;
+      }
+      .stagger > *:nth-child(5) {
+        animation-delay: 0.33s;
+      }
+      .stagger > *:nth-child(6) {
+        animation-delay: 0.4s;
+      }
+      .stagger > *:nth-child(7) {
+        animation-delay: 0.47s;
+      }
+      .stagger > *:nth-child(8) {
+        animation-delay: 0.54s;
+      }
+      .stagger > *:nth-child(n + 9) {
+        animation-delay: 0.6s;
+      }
+      @keyframes fade-up {
+        from {
+          opacity: 0;
+          transform: translateY(14px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ========== SIDE NAV ========== */
+      .nav {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        padding: 28px 20px 20px;
+        display: flex;
+        flex-direction: column;
+        border-right: 1px solid var(--line);
+        background: var(--bg);
+        z-index: 50;
+      }
+      .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 4px 8px 20px;
+        font-family: var(--font-display);
+        font-size: 22px;
+        letter-spacing: var(--display-tracking);
+        font-weight: var(--display-weight);
+      }
+      .nav-brand-mark {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: var(--bg);
+        display: grid;
+        place-items: center;
+        font-family: var(--font-display);
+        font-size: 15px;
+        font-weight: 600;
+        flex-shrink: 0;
+        transition: transform 0.6s var(--ease-swoop);
+      }
+      .nav-brand:hover .nav-brand-mark {
+        transform: rotate(360deg);
+      }
+
+      .nav-list {
+        list-style: none;
+        padding: 0;
+        margin: 12px 0 0;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .nav-item {
+        position: relative;
+      }
+      .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 10px 12px;
+        border-radius: var(--r-sm);
+        color: var(--ink-soft);
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        transition:
+          color 0.2s,
+          background 0.2s;
+        position: relative;
+      }
+      .nav-link:hover {
+        color: var(--ink);
+        background: var(--bg-sunk);
+      }
+      .nav-link.active {
+        color: var(--ink);
+        font-weight: 600;
+      }
+      .nav-link.active::before {
+        content: "";
+        position: absolute;
+        left: -21px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 3px;
+        height: 22px;
+        background: var(--accent);
+        border-radius: 0 3px 3px 0;
+        animation: nav-indicator 0.4s var(--ease-out);
+      }
+      @keyframes nav-indicator {
+        from {
+          height: 0;
+        }
+        to {
+          height: 22px;
+        }
+      }
+      .nav-link-idx {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--ink-muted);
+        min-width: 18px;
+      }
+      .nav-link.active .nav-link-idx {
+        color: var(--accent);
+      }
+
+      .nav-footer {
+        margin-top: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 12px 8px 4px;
+        border-top: 1px solid var(--line);
+      }
+      .nav-foot-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 11px;
+        color: var(--ink-muted);
+        font-family: var(--font-mono);
+      }
+      .nav-foot-row .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #3ecf7a;
+        box-shadow: 0 0 0 3px rgba(62, 207, 122, 0.2);
+        animation: dot-pulse 2s infinite;
+      }
+      @keyframes dot-pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+
+      /* Theme toggle pill */
+      .theme-pill {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        background: var(--bg-sunk);
+        border: 1px solid var(--line);
+        border-radius: var(--r-full);
+        padding: 3px;
+      }
+      .theme-pill button {
+        flex: 1;
+        padding: 6px 8px;
+        border-radius: var(--r-full);
+        color: var(--ink-muted);
+        font-size: 11px;
+        font-family: var(--font-mono);
+        transition: all 0.25s;
+        display: grid;
+        place-items: center;
+      }
+      .theme-pill button.active {
+        background: var(--bg-raised);
+        color: var(--ink);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+      }
+      .theme-pill button:hover:not(.active) {
+        color: var(--ink-soft);
+      }
+
+      /* ========== TYPE ========== */
+      .display {
+        font-family: var(--font-display);
+        letter-spacing: var(--display-tracking);
+        font-weight: var(--display-weight);
+        line-height: 0.95;
+      }
+      .eyebrow {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--ink-muted);
+        margin: 0 0 14px;
+      }
+      .page-title {
+        font-size: clamp(48px, 7vw, 96px);
+        margin: 0 0 8px;
+      }
+      .subtle {
+        color: var(--ink-soft);
+      }
+
+      /* ========== HOME ========== */
+      .home-hero {
+        padding-top: 64px;
+        position: relative;
+        min-height: 72vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .home-greet {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--ink-muted);
+        letter-spacing: 0.1em;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 28px;
+      }
+      .home-greet .bar {
+        width: 36px;
+        height: 1px;
+        background: var(--ink-muted);
+      }
+
+      .home-name {
+        font-family: var(--font-display);
+        font-weight: var(--display-weight);
+        letter-spacing: var(--display-tracking);
+        font-size: clamp(80px, 13vw, 200px);
+        line-height: 0.88;
+        margin: 0;
+      }
+      .home-name .char {
+        display: inline-block;
+        animation: char-in 0.5s var(--ease-out) both;
+      }
+      .home-name .char.red {
+        color: var(--accent);
+        font-style: italic;
+      }
+      @keyframes char-in {
+        from {
+          opacity: 0;
+          transform: translateY(20%);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .home-tag {
+        font-size: 18px;
+        color: var(--ink-soft);
+        max-width: 540px;
+        margin: 32px 0 0;
+        line-height: 1.55;
+      }
+      .home-tag em {
+        font-family: var(--font-display);
+        font-style: italic;
+        color: var(--ink);
+        font-weight: 500;
+      }
+
+      .home-cta-row {
+        display: flex;
+        gap: 12px;
+        margin-top: 36px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 20px;
+        border-radius: var(--r-full);
+        font-size: 14px;
+        font-weight: 500;
+        border: 1px solid var(--line-strong);
+        background: var(--bg-raised);
+        color: var(--ink);
+        transition:
+          transform 0.3s var(--ease-out),
+          background 0.2s,
+          border-color 0.2s,
+          color 0.2s;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+      .btn.primary {
+        background: var(--ink);
+        color: var(--bg);
+        border-color: var(--ink);
+      }
+      .btn.primary:hover {
+        background: var(--accent);
+        border-color: var(--accent);
+      }
+      .btn.accent {
+        background: var(--accent);
+        color: var(--bg);
+        border-color: var(--accent);
+      }
+      .btn.ghost {
+        background: transparent;
+      }
+      .btn .arrow {
+        transition: transform 0.3s var(--ease-out);
+      }
+      .btn:hover .arrow {
+        transform: translateX(4px);
+      }
+
+      /* Section split below hero */
+      .home-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 24px;
+        margin-top: 96px;
+      }
+
+      /* Card base */
+      .card {
+        background: var(--bg-raised);
+        border: 1px solid var(--line);
+        border-radius: var(--r-lg);
+        padding: 28px;
+        transition:
+          transform 0.4s var(--ease-out),
+          border-color 0.2s;
+        position: relative;
+        overflow: hidden;
+      }
+      .card:hover {
+        border-color: var(--line-strong);
+      }
+
+      .card-label {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        color: var(--ink-muted);
+        text-transform: uppercase;
+        margin-bottom: 18px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .card-label .num {
+        color: var(--accent);
+      }
+
+      .card h3 {
+        font-family: var(--font-display);
+        font-size: 28px;
+        margin: 0 0 14px;
+        font-weight: var(--display-weight);
+        letter-spacing: var(--display-tracking);
+        line-height: 1.05;
+      }
+      .card ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .card ul li {
+        padding-left: 18px;
+        position: relative;
+        font-size: 15px;
+        color: var(--ink-soft);
+      }
+      .card ul li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 10px;
+        width: 6px;
+        height: 6px;
+        background: var(--accent);
+        border-radius: 50%;
+      }
+
+      .now-card {
+        grid-column: span 1;
+        background: linear-gradient(
+          135deg,
+          var(--bg-raised),
+          var(--accent-soft)
+        );
+      }
+
+      /* Stats strip */
+      .stats-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1px;
+        background: var(--line);
+        border: 1px solid var(--line);
+        border-radius: var(--r-lg);
+        margin-top: 24px;
+        overflow: hidden;
+      }
+      .stat {
+        background: var(--bg-raised);
+        padding: 28px 24px;
+        transition: background 0.3s;
+      }
+      .stat:hover {
+        background: var(--bg-sunk);
+      }
+      .stat-num {
+        font-family: var(--font-display);
+        font-size: 54px;
+        font-weight: var(--display-weight);
+        letter-spacing: var(--display-tracking);
+        line-height: 1;
+        color: var(--ink);
+      }
+      .stat-num .plus {
+        color: var(--accent);
+      }
+      .stat-label {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ink-muted);
+        margin-top: 10px;
+      }
+
+      /* Featured project card */
+      .featured {
+        margin-top: 24px;
+        padding: 36px;
+        background: var(--ink);
+        color: var(--bg);
+        border-radius: var(--r-xl);
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 24px;
+        align-items: end;
+        min-height: 220px;
+        transition: transform 0.5s var(--ease-out);
+      }
+      .featured::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at 80% 20%,
+          var(--accent) 0%,
+          transparent 60%
+        );
+        opacity: 0.35;
+        transition:
+          opacity 0.5s,
+          transform 0.8s var(--ease-out);
+      }
+      .featured:hover::before {
+        opacity: 0.55;
+        transform: scale(1.2);
+      }
+      .featured:hover {
+        transform: translateY(-3px);
+      }
+      .featured-eyebrow {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--bg);
+        opacity: 0.6;
+        margin-bottom: 12px;
+        position: relative;
+      }
+      .featured-title {
+        font-family: var(--font-display);
+        font-size: 48px;
+        line-height: 1;
+        margin: 0 0 10px;
+        font-weight: var(--display-weight);
+        letter-spacing: var(--display-tracking);
+        position: relative;
+      }
+      .featured-sub {
+        font-size: 16px;
+        opacity: 0.75;
+        max-width: 460px;
+        position: relative;
+      }
+      .featured-cta {
+        font-size: 13px;
+        font-family: var(--font-mono);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--accent);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        position: relative;
+      }
+
+      /* Quote block */
+      .quote-block {
+        margin-top: 24px;
+        padding: 40px 36px;
+        border-radius: var(--r-xl);
+        background: var(--accent-soft);
+        color: var(--accent-ink);
+        font-family: var(--font-display);
+        font-size: 32px;
+        line-height: 1.2;
+        font-style: italic;
+        position: relative;
+      }
+      .quote-block .mark {
+        font-size: 80px;
+        line-height: 0;
+        position: absolute;
+        top: 50px;
+        left: 14px;
+        opacity: 0.3;
+      }
+      .quote-block cite {
+        display: block;
+        margin-top: 16px;
+        font-family: var(--font-mono);
+        font-style: normal;
+        font-size: 12px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        opacity: 0.7;
+      }
+
+      /* Now-playing mini widget */
+      .now-playing {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 14px 12px 12px;
+        background: var(--bg-raised);
+        border: 1px solid var(--line);
+        border-radius: var(--r-full);
+        transition: all 0.3s;
+        cursor: pointer;
+      }
+      .now-playing:hover {
+        transform: scale(1.02);
+        border-color: var(--accent);
+      }
+      .np-cover {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent), var(--ink));
+        flex-shrink: 0;
+        animation: spin 8s linear infinite;
+        display: grid;
+        place-items: center;
+        color: var(--bg);
+        font-size: 14px;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .np-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.2;
+      }
+      .np-title {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--ink);
+      }
+      .np-artist {
+        font-size: 11px;
+        color: var(--ink-muted);
+      }
+      .np-wave {
+        display: flex;
+        align-items: end;
+        gap: 2px;
+        height: 14px;
+        margin-left: auto;
+      }
+      .np-wave span {
+        width: 2px;
+        background: var(--accent);
+        border-radius: 1px;
+        animation: wave 0.9s ease-in-out infinite;
+      }
+      .np-wave span:nth-child(1) {
+        height: 40%;
+        animation-delay: 0s;
+      }
+      .np-wave span:nth-child(2) {
+        height: 80%;
+        animation-delay: 0.15s;
+      }
+      .np-wave span:nth-child(3) {
+        height: 60%;
+        animation-delay: 0.3s;
+      }
+      .np-wave span:nth-child(4) {
+        height: 90%;
+        animation-delay: 0.45s;
+      }
+      @keyframes wave {
+        0%,
+        100% {
+          height: 20%;
+        }
+        50% {
+          height: 90%;
+        }
+      }
+
+      /* ========== ABOUT ========== */
+      .about-hero {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 56px;
+        align-items: end;
+        margin-bottom: 72px;
+      }
+      .about-photo-frame {
+        aspect-ratio: 4/5;
+        background: var(--bg-sunk);
+        border-radius: var(--r-lg);
+        overflow: hidden;
+        position: relative;
+        border: 1px solid var(--line);
+      }
+      .about-photo-frame::after {
+        content: "Polaroid placeholder — concert photo 2023";
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        text-align: center;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--ink-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        background: repeating-linear-gradient(
+          45deg,
+          var(--bg-raised) 0 20px,
+          var(--bg-sunk) 20px 22px
+        );
+      }
+
+      .about-tabs {
+        display: flex;
+        gap: 4px;
+        padding: 4px;
+        background: var(--bg-sunk);
+        border-radius: var(--r-full);
+        margin-bottom: 32px;
+        width: fit-content;
+      }
+      .about-tab {
+        padding: 9px 18px;
+        border-radius: var(--r-full);
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--ink-soft);
+        transition: all 0.25s;
+        font-family: var(--font-mono);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .about-tab.active {
+        background: var(--bg-raised);
+        color: var(--ink);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+      }
+
+      .about-section {
+        animation: fade-up 0.5s var(--ease-out);
+      }
+      .about-section h2 {
+        font-family: var(--font-display);
+        font-size: 56px;
+        line-height: 1;
+        margin: 0 0 28px;
+        letter-spacing: var(--display-tracking);
+        font-weight: var(--display-weight);
+      }
+      .about-section h2 em {
+        color: var(--accent);
+        font-style: italic;
+      }
+      .about-section p {
+        font-size: 17px;
+        color: var(--ink-soft);
+        line-height: 1.6;
+        max-width: 620px;
+        margin: 0 0 16px;
+      }
+
+      .timeline {
+        margin-top: 32px;
+        border-top: 1px solid var(--line);
+      }
+      .tl-row {
+        display: grid;
+        grid-template-columns: 120px 1fr auto;
+        gap: 24px;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--line);
+        align-items: baseline;
+        position: relative;
+        transition: padding 0.4s var(--ease-out);
+      }
+      .tl-row:hover {
+        padding-left: 12px;
+      }
+      .tl-row::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: var(--accent);
+        transform: scaleY(0);
+        transform-origin: center;
+        transition: transform 0.3s var(--ease-out);
+      }
+      .tl-row:hover::before {
+        transform: scaleY(1);
+      }
+      .tl-date {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--ink-muted);
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+      .tl-title {
+        font-family: var(--font-display);
+        font-size: 22px;
+        letter-spacing: var(--display-tracking);
+        font-weight: var(--display-weight);
+        margin: 0;
+      }
+      .tl-meta {
+        font-size: 13px;
+        color: var(--ink-muted);
+        font-family: var(--font-mono);
+      }
+
+      .wins-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin-top: 32px;
+      }
+      .win {
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: var(--r-md);
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        background: var(--bg-raised);
+        transition: transform 0.3s var(--ease-out);
+      }
+      .win:hover {
+        transform: translateY(-3px);
+        border-color: var(--accent);
+      }
+      .win-icon {
+        font-size: 22px;
+        margin-bottom: 4px;
+      }
+      .win-title {
+        font-size: 15px;
+        font-weight: 600;
+      }
+      .win-meta {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--ink-muted);
+      }
+
+      /* ========== PROJECTS ========== */
+      .proj-intro {
+        max-width: 640px;
+        margin: 0 0 48px;
+        font-size: 18px;
+        color: var(--ink-soft);
+        line-height: 1.6;
+      }
+
+      .proj-filter {
+        display: flex;
+        gap: 6px;
+        margin-bottom: 32px;
+        flex-wrap: wrap;
+      }
+      .proj-filter button {
+        padding: 8px 14px;
+        border-radius: var(--r-full);
+        font-family: var(--font-mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--ink-muted);
+        border: 1px solid var(--line);
+        transition: all 0.25s;
+      }
+      .proj-filter button:hover {
+        color: var(--ink);
+        border-color: var(--line-strong);
+      }
+      .proj-filter button.active {
+        background: var(--ink);
+        color: var(--bg);
+        border-color: var(--ink);
+      }
+
+      .proj-list {
+        border-top: 1px solid var(--line);
+      }
+      .proj-row {
+        display: grid;
+        grid-template-columns: 40px 1.5fr 1fr 140px auto;
+        gap: 24px;
+        padding: 24px 0 24px 16px;
+        border-bottom: 1px solid var(--line);
+        align-items: center;
+        position: relative;
+        cursor: pointer;
+        transition: padding-left 0.4s var(--ease-out);
+      }
+      .proj-row::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--bg-raised);
+        border-radius: var(--r-md);
+        opacity: 0;
+        transition: opacity 0.25s;
+        z-index: -1;
+      }
+      .proj-row:hover {
+        padding-left: 28px;
+      }
+      .proj-row:hover::before {
+        opacity: 1;
+      }
+      .proj-idx {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--ink-muted);
+      }
+      .proj-title {
+        font-family: var(--font-display);
+        font-size: 32px;
+        letter-spacing: var(--display-tracking);
+        font-weight: var(--display-weight);
+        line-height: 1.05;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .proj-title .trophy {
+        font-size: 18px;
+      }
+      .proj-desc {
+        font-size: 14px;
+        color: var(--ink-soft);
+        line-height: 1.4;
+      }
+      .proj-tag {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--ink-muted);
+      }
+      .proj-arrow {
+        color: var(--ink-muted);
+        transition:
+          transform 0.3s,
+          color 0.3s;
+      }
+      .proj-row:hover .proj-arrow {
+        transform: translateX(6px);
+        color: var(--accent);
+      }
+
+      .proj-featured {
+        margin-bottom: 40px;
+        padding: 0;
+        background: var(--bg-raised);
+        border: 1px solid var(--line);
+        border-radius: var(--r-xl);
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        min-height: 320px;
+        transition: border-color 0.3s;
+        cursor: pointer;
+      }
+      .proj-featured:hover {
+        border-color: var(--accent);
+      }
+      .proj-featured-body {
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .proj-featured-body h2 {
+        font-family: var(--font-display);
+        font-size: 56px;
+        margin: 12px 0 16px;
+        letter-spacing: var(--display-tracking);
+        font-weight: var(--display-weight);
+        line-height: 1;
+      }
+      .proj-featured-img {
+        background: linear-gradient(135deg, var(--accent), var(--ink));
+        position: relative;
+        overflow: hidden;
+      }
+      .proj-featured-img::after {
+        content: "PrepPal screenshot placeholder";
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        color: var(--bg);
+        font-family: var(--font-mono);
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        opacity: 0.7;
+      }
+
+      /* ========== LOGBOOK ========== */
+      .logbook-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        margin-bottom: 32px;
+        gap: 32px;
+        flex-wrap: wrap;
+      }
+      .logbook-chip-row {
+        display: flex;
+        gap: 6px;
+        margin-top: 16px;
+      }
+      .chip {
+        padding: 6px 12px;
+        border-radius: var(--r-full);
+        background: var(--bg-sunk);
+        font-family: var(--font-mono);
+        font-size: 11px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+      }
+
+      .log-section-title {
+        font-family: var(--font-display);
+        font-size: 40px;
+        letter-spacing: var(--display-tracking);
+        font-weight: var(--display-weight);
+        margin: 56px 0 24px;
+        display: flex;
+        align-items: baseline;
+        gap: 16px;
+      }
+      .log-section-title .count {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: var(--ink-muted);
+      }
+
+      .log-list {
+        border-top: 1px solid var(--line);
+      }
+      .log-row {
+        display: grid;
+        grid-template-columns: 120px 1fr auto;
+        gap: 24px;
+        padding: 22px 16px;
+        border-bottom: 1px solid var(--line);
+        align-items: center;
+        cursor: pointer;
+        position: relative;
+        transition: padding-left 0.3s var(--ease-out);
+      }
+      .log-row:hover {
+        padding-left: 28px;
+      }
+      .log-row::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: var(--bg-raised);
+        opacity: 0;
+        border-radius: var(--r-md);
+        z-index: -1;
+        transition: opacity 0.25s;
+      }
+      .log-row:hover::after {
+        opacity: 1;
+      }
+      .log-date {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--ink-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      .log-title {
+        font-family: var(--font-display);
+        font-size: 24px;
+        letter-spacing: var(--display-tracking);
+        font-weight: var(--display-weight);
+        margin: 0;
+      }
+      .log-meta {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--ink-muted);
+      }
+
+      /* Photo grid */
+      .photo-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-top: 8px;
+      }
+      .photo-tile {
+        aspect-ratio: 4/5;
+        background: var(--bg-sunk);
+        border-radius: var(--r-md);
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+        border: 1px solid var(--line);
+        transition: transform 0.5s var(--ease-out);
+      }
+      .photo-tile:hover {
+        transform: scale(1.02);
+      }
+      .photo-tile:nth-child(5n + 1) {
+        aspect-ratio: 4/5;
+      }
+      .photo-tile:nth-child(5n + 2) {
+        aspect-ratio: 1;
+      }
+      .photo-tile:nth-child(5n + 3) {
+        aspect-ratio: 4/5;
+      }
+      .photo-tile:nth-child(5n + 4) {
+        aspect-ratio: 1;
+      }
+      .photo-tile:nth-child(5n + 5) {
+        aspect-ratio: 3/4;
+      }
+      .photo-grad {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(160deg, var(--accent) 0%, var(--ink) 100%);
+        opacity: 0.85;
+      }
+      .photo-tile:nth-child(2n) .photo-grad {
+        background: linear-gradient(200deg, var(--highlight), var(--accent));
+      }
+      .photo-tile:nth-child(3n) .photo-grad {
+        background: linear-gradient(135deg, var(--ink), var(--accent-soft));
+      }
+      .photo-tile:nth-child(5n) .photo-grad {
+        background: linear-gradient(
+          120deg,
+          var(--accent-soft),
+          var(--ink-soft)
+        );
+      }
+      .photo-overlay {
+        position: absolute;
+        inset: 0;
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        color: var(--bg);
+        opacity: 0;
+        transition: opacity 0.3s;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.75),
+          transparent 60%
+        );
+      }
+      .photo-tile:hover .photo-overlay {
+        opacity: 1;
+      }
+      .photo-overlay-title {
+        font-family: var(--font-display);
+        font-size: 20px;
+        letter-spacing: var(--display-tracking);
+      }
+      .photo-overlay-date {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        opacity: 0.8;
+      }
+
+      /* ========== LOG ENTRY ========== */
+      .log-article {
+        max-width: 680px;
+        margin: 0 auto;
+        padding: 40px 0 0;
+      }
+      .log-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--ink-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 32px;
+      }
+      .log-back:hover {
+        color: var(--accent);
+      }
+      /* Markdown article — plain prose, GitHub-markdown compatible */
+      .log-article.md h1 {
+        font-family: var(--font-display);
+        font-size: clamp(36px, 5vw, 56px);
+        line-height: 1.1;
+        letter-spacing: var(--display-tracking);
+        font-weight: var(--display-weight);
+        margin: 0 0 8px;
+      }
+      .log-article.md h1 + p em:first-child,
+      .log-article.md h1 + p {
+        color: var(--ink-muted);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        letter-spacing: 0.05em;
+        margin: 0 0 32px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--line);
+      }
+      .log-article.md h2 {
+        font-family: var(--font-display);
+        font-size: 26px;
+        letter-spacing: var(--display-tracking);
+        font-weight: var(--display-weight);
+        margin: 40px 0 14px;
+      }
+      .log-article.md h3 {
+        font-family: var(--font-body);
+        font-weight: 600;
+        font-size: 18px;
+        margin: 28px 0 10px;
+      }
+      .log-article.md p {
+        font-size: 17px;
+        line-height: 1.7;
+        color: var(--ink);
+        margin: 0 0 18px;
+      }
+      .log-article.md ul,
+      .log-article.md ol {
+        padding-left: 24px;
+        margin: 0 0 20px;
+        color: var(--ink);
+      }
+      .log-article.md li {
+        font-size: 17px;
+        line-height: 1.7;
+        margin: 0 0 6px;
+      }
+      .log-article.md blockquote {
+        border-left: 3px solid var(--accent);
+        padding-left: 18px;
+        margin: 24px 0;
+        color: var(--ink-soft);
+        font-style: italic;
+        font-size: 17px;
+        line-height: 1.6;
+      }
+      .log-article.md code {
+        font-family: var(--font-mono);
+        font-size: 0.9em;
+        padding: 2px 6px;
+        background: var(--bg-sunk);
+        border-radius: 4px;
+      }
+      .log-next {
+        margin-top: 80px;
+        padding-top: 32px;
+        border-top: 1px solid var(--line);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      /* Photo detail */
+      .photo-detail {
+        padding-top: 24px;
+      }
+      .photo-hero {
+        aspect-ratio: 3/2;
+        background: var(--bg-sunk);
+        border-radius: var(--r-lg);
+        overflow: hidden;
+        position: relative;
+        margin-bottom: 24px;
+        border: 1px solid var(--line);
+      }
+      .photo-hero .photo-grad {
+        background: linear-gradient(135deg, var(--accent), var(--ink));
+      }
+      .photo-hero::after {
+        content: attr(data-caption);
+        position: absolute;
+        bottom: 20px;
+        left: 24px;
+        color: var(--bg);
+        font-family: var(--font-mono);
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        opacity: 0.9;
+      }
+      .photo-detail-meta {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        margin: 24px 0 48px;
+        padding: 20px 0;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+      .pdm-label {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--ink-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+      .pdm-value {
+        font-family: var(--font-display);
+        font-size: 18px;
+        margin-top: 4px;
+        letter-spacing: var(--display-tracking);
+        font-weight: var(--display-weight);
+      }
+
+      .photo-gallery {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .photo-gallery .photo-tile {
+        aspect-ratio: 4/3;
+      }
+
+      /* ========== RESUME ========== */
+      .resume-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 32px;
+        margin-bottom: 32px;
+        flex-wrap: wrap;
+      }
+      .resume-actions {
+        display: flex;
+        gap: 8px;
+      }
+      .resume-frame {
+        background: var(--bg-raised);
+        border: 1px solid var(--line);
+        border-radius: var(--r-lg);
+        padding: 64px 80px;
+        aspect-ratio: 8.5/11;
+        max-width: 900px;
+        position: relative;
+        box-shadow:
+          0 8px 32px rgba(0, 0, 0, 0.06),
+          0 2px 4px rgba(0, 0, 0, 0.04);
+      }
+      [data-mode="dark"] .resume-frame {
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+      }
+      .resume-frame h1 {
+        font-family: var(--font-display);
+        font-size: 48px;
+        margin: 0;
+        letter-spacing: var(--display-tracking);
+        font-weight: var(--display-weight);
+        line-height: 1;
+      }
+      .resume-contact {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--ink-muted);
+        margin: 8px 0 32px;
+        letter-spacing: 0.05em;
+      }
+      .resume-frame h3 {
+        font-family: var(--font-display);
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        font-weight: 500;
+        margin: 28px 0 14px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--line);
+      }
+      .resume-frame .job {
+        margin-bottom: 18px;
+        font-size: 13px;
+      }
+      .resume-frame .job-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 4px;
+      }
+      .resume-frame .job-title {
+        font-weight: 600;
+        font-size: 14px;
+      }
+      .resume-frame .job-date {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--ink-muted);
+      }
+      .resume-frame .job-company {
+        font-size: 12px;
+        color: var(--ink-soft);
+        margin-bottom: 4px;
+      }
+      .resume-frame .job p {
+        font-size: 12px;
+        color: var(--ink-soft);
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      /* ========== CONTACT ========== */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+        margin-top: 48px;
+        align-items: start;
+      }
+      .contact-hello {
+        font-family: var(--font-display);
+        font-size: clamp(48px, 6vw, 80px);
+        letter-spacing: var(--display-tracking);
+        font-weight: var(--display-weight);
+        line-height: 0.95;
+        margin: 0 0 24px;
+      }
+      .contact-hello em {
+        color: var(--accent);
+        font-style: italic;
+      }
+      .contact-channels {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        margin-top: 32px;
+      }
+      .contact-channel {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 0;
+        border-bottom: 1px solid var(--line);
+        transition: padding-left 0.3s var(--ease-out);
+        font-size: 15px;
+        cursor: pointer;
+      }
+      .contact-channel:hover {
+        padding-left: 12px;
+        color: var(--accent);
+      }
+      .contact-channel-label {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--ink-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      .contact-form {
+        background: var(--bg-raised);
+        border: 1px solid var(--line);
+        border-radius: var(--r-lg);
+        padding: 32px;
+      }
+      .field {
+        margin-bottom: 20px;
+      }
+      .field label {
+        display: block;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--ink-muted);
+        margin-bottom: 8px;
+      }
+      .field input,
+      .field textarea {
+        width: 100%;
+        padding: 12px 0;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid var(--line);
+        color: var(--ink);
+        font-size: 16px;
+        font-family: var(--font-body);
+        transition: border-color 0.2s;
+        resize: vertical;
+      }
+      .field input:focus,
+      .field textarea:focus {
+        outline: none;
+        border-bottom-color: var(--accent);
+      }
+      .field textarea {
+        min-height: 100px;
+      }
+      .field-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      /* ========== FOOTER ========== */
+      .foot {
+        margin-top: 80px;
+        padding: 40px 0 24px;
+        border-top: 1px solid var(--line);
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        gap: 24px;
+        align-items: center;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--ink-muted);
+        letter-spacing: 0.05em;
+      }
+      .foot a:hover {
+        color: var(--accent);
+      }
+      .foot-center {
+        justify-self: center;
+      }
+      .foot-right {
+        justify-self: end;
+        display: flex;
+        gap: 14px;
+      }
+
+      /* ========== TWEAKS PANEL ========== */
+      .tweaks {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        width: 300px;
+        background: var(--bg-raised);
+        border: 1px solid var(--line-strong);
+        border-radius: var(--r-lg);
+        padding: 20px;
+        z-index: 300;
+        box-shadow:
+          0 24px 48px -12px rgba(0, 0, 0, 0.25),
+          0 4px 12px rgba(0, 0, 0, 0.1);
+        font-size: 13px;
+        animation: tweak-in 0.4s var(--ease-out);
+        backdrop-filter: blur(20px);
+      }
+      @keyframes tweak-in {
+        from {
+          opacity: 0;
+          transform: translateY(20px) scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      .tweaks h4 {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--ink-muted);
+        margin: 0 0 8px;
+      }
+      .tweaks .tweak-group {
+        margin-bottom: 18px;
+      }
+      .tweaks .swatch-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+      .tweaks .swatch {
+        padding: 12px 8px;
+        border: 1px solid var(--line);
+        border-radius: var(--r-sm);
+        text-align: center;
+        font-size: 11px;
+        transition: all 0.2s;
+        cursor: pointer;
+        background: var(--bg);
+      }
+      .tweaks .swatch:hover {
+        border-color: var(--line-strong);
+      }
+      .tweaks .swatch.active {
+        border-color: var(--accent);
+        background: var(--accent-soft);
+        color: var(--accent-ink);
+      }
+      .tweaks .swatch-chip {
+        width: 100%;
+        height: 20px;
+        border-radius: var(--r-xs);
+        margin-bottom: 6px;
+      }
+
+      /* Responsive */
+      @media (max-width: 960px) {
+        .app {
+          grid-template-columns: 1fr;
+        }
+        .nav {
+          position: static;
+          height: auto;
+          flex-direction: row;
+          border-right: none;
+          border-bottom: 1px solid var(--line);
+          padding: 16px;
+        }
+        .nav-list {
+          flex-direction: row;
+          gap: 4px;
+          overflow-x: auto;
+        }
+        .nav-footer {
+          display: none;
+        }
+        .page {
+          padding: 24px;
+        }
+        .home-grid,
+        .about-hero,
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+        .proj-featured {
+          grid-template-columns: 1fr;
+        }
+        .proj-row {
+          grid-template-columns: 30px 1fr auto;
+        }
+        .proj-row .proj-desc,
+        .proj-row .proj-tag {
+          display: none;
+        }
+        .photo-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script
+      src="https://unpkg.com/react@18.3.1/umd/react.development.js"
+      integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"
+      integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"
+      integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y"
+      crossorigin="anonymous"
+    ></script>
+
+    <script type="text/babel" data-file="src/data.jsx">
+      /* Shared data for the prototype */
+
+      const NAV_ITEMS = [
+        { id: "home", label: "Home", path: "/", idx: "01" },
+        { id: "about", label: "About", path: "/about", idx: "02" },
+        { id: "projects", label: "Projects", path: "/projects", idx: "03" },
+        { id: "logbook", label: "Logbook", path: "/logbook", idx: "04" },
+        { id: "resume", label: "Resume", path: "/resume", idx: "05" },
+        { id: "contact", label: "Contact", path: "/contact", idx: "06" },
+      ];
+
+      const PROJECTS = [
+        {
+          id: "preppal",
+          title: "PrepPal",
+          desc: "Disaster awareness + emergency-support web app for natural disasters.",
+          tag: "Web / AI",
+          year: "2025",
+          featured: true,
+          award: "MacEngComp '25",
+        },
+        {
+          id: "sclerocare",
+          title: "ScleroCare",
+          desc: "Patient-facing app with Tech4Good & Scleroderma Canada. Coming to the App Store.",
+          tag: "Mobile",
+          year: "2025",
+        },
+        {
+          id: "drone",
+          title: "Drone Rescue",
+          desc: "State + strategy pattern drone controller for rescue missions.",
+          tag: "Java",
+          year: "2025",
+        },
+        {
+          id: "digit",
+          title: "Digit Recognizer",
+          desc: "8-layer CNN recognising hand-drawn digits at 99.3% accuracy.",
+          tag: "Python / ML",
+          year: "2024",
+        },
+        {
+          id: "cview",
+          title: "C-View",
+          desc: "Lightweight command-line image processor written in C.",
+          tag: "C",
+          year: "2024",
+        },
+        {
+          id: "tictactoe",
+          title: "Tic-Tac-Toe AI",
+          desc: "Minimax-backed adversary for classic Tic-Tac-Toe.",
+          tag: "Java",
+          year: "2024",
+        },
+        {
+          id: "securevault",
+          title: "SecureVault",
+          desc: "Face recognition + file encryption cybersecurity system.",
+          tag: "Security",
+          year: "2024",
+          award: "MacEngComp '24",
+        },
+        {
+          id: "portfolio",
+          title: "Portfolio",
+          desc: "This site — built with React + Tailwind; about me and my work.",
+          tag: "Web",
+          year: "2024",
+        },
+        {
+          id: "numsys",
+          title: "Convert Numbers",
+          desc: "Convert values between number systems, written in C.",
+          tag: "C",
+          year: "2023",
+        },
+        {
+          id: "babynames",
+          title: "US Baby Names",
+          desc: "Bash script ranking baby names in the US.",
+          tag: "Bash",
+          year: "2023",
+        },
+      ];
+
+      const LOGS = [
+        {
+          id: "sclerocare",
+          title: "ScleroCare: An App for Patients",
+          date: "July 24, 2025",
+          read: "8 min",
+          tag: "build",
+        },
+        {
+          id: "internship",
+          title: "How to Land an Internship 101",
+          date: "July 7, 2025",
+          read: "12 min",
+          tag: "career",
+        },
+        {
+          id: "intro",
+          title: "Intro — why I started writing",
+          date: "June 21, 2025",
+          read: "4 min",
+          tag: "life",
+        },
+      ];
+
+      const PHOTOS = [
+        {
+          id: "mdl",
+          title: "MDL Designathon",
+          date: "Jan 17–18, 2026",
+          location: "Hamilton, ON",
+        },
+        {
+          id: "stirling",
+          title: "Stirling",
+          date: "Oct 11, 2025",
+          location: "Stirling, Scotland",
+        },
+        {
+          id: "bronte",
+          title: "Bronte Creek",
+          date: "Aug 31, 2025",
+          location: "Oakville, ON",
+        },
+        {
+          id: "toronto",
+          title: "Toronto",
+          date: "Aug 27, 2025",
+          location: "Toronto, ON",
+        },
+        {
+          id: "killbear",
+          title: "Killbear",
+          date: "Aug 3, 2025",
+          location: "Nobel, ON",
+        },
+        {
+          id: "belfountain",
+          title: "Belfountain",
+          date: "Jun 30, 2025",
+          location: "Caledon, ON",
+        },
+      ];
+
+      const ABOUT_SECTIONS = [
+        { id: "intro", label: "Intro" },
+        { id: "now", label: "Now" },
+        { id: "before", label: "Before" },
+        { id: "wins", label: "Wins" },
+      ];
+
+      Object.assign(window, {
+        NAV_ITEMS,
+        PROJECTS,
+        LOGS,
+        PHOTOS,
+        ABOUT_SECTIONS,
+      });
+    </script>
+
+    <script type="text/babel" data-file="src/icons.jsx">
+      /* Minimal inline icons as React components */
+      const Icon = {
+        arrow: () => (
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+        ),
+        arrowUpRight: () => (
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <line x1="7" y1="17" x2="17" y2="7" />
+            <polyline points="7 7 17 7 17 17" />
+          </svg>
+        ),
+        arrowLeft: () => (
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <line x1="19" y1="12" x2="5" y2="12" />
+            <polyline points="12 19 5 12 12 5" />
+          </svg>
+        ),
+        sun: () => (
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <circle cx="12" cy="12" r="4" />
+            <line x1="12" y1="2" x2="12" y2="4" />
+            <line x1="12" y1="20" x2="12" y2="22" />
+            <line x1="4.93" y1="4.93" x2="6.34" y2="6.34" />
+            <line x1="17.66" y1="17.66" x2="19.07" y2="19.07" />
+            <line x1="2" y1="12" x2="4" y2="12" />
+            <line x1="20" y1="12" x2="22" y2="12" />
+            <line x1="4.93" y1="19.07" x2="6.34" y2="17.66" />
+            <line x1="17.66" y1="6.34" x2="19.07" y2="4.93" />
+          </svg>
+        ),
+        moon: () => (
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+        ),
+        download: () => (
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+        ),
+        play: () => (
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="5 3 19 12 5 21 5 3" />
+          </svg>
+        ),
+        note: () => (
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M9 18V5l12-2v13" />
+            <circle cx="6" cy="18" r="3" />
+            <circle cx="18" cy="16" r="3" />
+          </svg>
+        ),
+        github: () => (
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.3 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.7.2 2.9.1 3.2.8.9 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3z" />
+          </svg>
+        ),
+        linkedin: () => (
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zm1.78 13.02H3.56V9h3.56v11.45z" />
+          </svg>
+        ),
+        mail: () => (
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <polyline points="22 6 12 13 2 6" />
+          </svg>
+        ),
+        sparkle: () => (
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0l2 8 8 2-8 2-2 8-2-8-8-2 8-2z" />
+          </svg>
+        ),
+      };
+      window.Icon = Icon;
+    </script>
+
+    <script type="text/babel" data-file="src/components.jsx">
+      /* Shared components: Nav, Footer, NowPlaying, etc. */
+
+      const { useState, useEffect, useRef, useMemo, useCallback } = React;
+
+      /* ---------- Router (very small) ---------- */
+      const RouterCtx = React.createContext({ path: "/", navigate: () => {} });
+
+      function useRouter() {
+        return React.useContext(RouterCtx);
+      }
+
+      function RouterProvider({ children }) {
+        const [path, setPath] = useState(() => {
+          const stored = localStorage.getItem("mh-path");
+          return stored || "/";
+        });
+        const navigate = useCallback(
+          (to) => {
+            if (to === path) return;
+            setPath(to);
+            localStorage.setItem("mh-path", to);
+            window.scrollTo({ top: 0, behavior: "instant" });
+          },
+          [path],
+        );
+
+        return (
+          <RouterCtx.Provider value={{ path, navigate }}>
+            {children}
+          </RouterCtx.Provider>
+        );
+      }
+
+      /* ---------- Theme ---------- */
+      const ThemeCtx = React.createContext({});
+
+      function ThemeProvider({ children, initial, onChange }) {
+        const [theme, setTheme] = useState(initial.theme);
+        const [mode, setMode] = useState(initial.mode);
+        useEffect(() => {
+          document.documentElement.setAttribute("data-theme", theme);
+          document.documentElement.setAttribute("data-mode", mode);
+          onChange && onChange({ theme, mode });
+        }, [theme, mode]);
+        return (
+          <ThemeCtx.Provider value={{ theme, mode, setTheme, setMode }}>
+            {children}
+          </ThemeCtx.Provider>
+        );
+      }
+      function useTheme() {
+        return React.useContext(ThemeCtx);
+      }
+
+      /* ---------- Nav ---------- */
+      function Nav() {
+        const { path, navigate } = useRouter();
+        const { mode, setMode } = useTheme();
+
+        return (
+          <aside className="nav">
+            <a
+              className="nav-brand"
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/");
+              }}
+            >
+              <span className="nav-brand-mark">M</span>
+              <span>mahad.</span>
+            </a>
+
+            <ul className="nav-list">
+              {NAV_ITEMS.map((item) => {
+                const active =
+                  path === item.path ||
+                  (item.path !== "/" && path.startsWith(item.path));
+                return (
+                  <li className="nav-item" key={item.id}>
+                    <a
+                      href="#"
+                      className={`nav-link ${active ? "active" : ""}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        navigate(item.path);
+                      }}
+                    >
+                      <span className="nav-link-idx">{item.idx}</span>
+                      <span>{item.label}</span>
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+
+            <div className="nav-footer">
+              <NowPlaying compact />
+              <div className="theme-pill" role="group" aria-label="Theme mode">
+                <button
+                  className={mode === "light" ? "active" : ""}
+                  onClick={() => setMode("light")}
+                  title="Light"
+                >
+                  <Icon.sun />
+                </button>
+                <button
+                  className={mode === "dark" ? "active" : ""}
+                  onClick={() => setMode("dark")}
+                  title="Dark"
+                >
+                  <Icon.moon />
+                </button>
+              </div>
+              <div className="nav-foot-row">
+                <span className="dot" />
+                <span>Available — Fall '26</span>
+              </div>
+            </div>
+          </aside>
+        );
+      }
+
+      /* ---------- Footer ---------- */
+      function Footer() {
+        return (
+          <footer className="foot">
+            <div>© 2026 Mahad Hassan</div>
+            <div className="foot-center">
+              <span style={{ opacity: 0.7 }}>
+                Designed + built in Hamilton, ON
+              </span>
+            </div>
+            <div className="foot-right">
+              <a href="#">GitHub</a>
+              <a href="#">LinkedIn</a>
+              <a href="#">Email</a>
+            </div>
+          </footer>
+        );
+      }
+
+      /* ---------- Now playing ---------- */
+      function NowPlaying() {
+        return (
+          <div className="now-playing" title="Currently playing">
+            <div className="np-cover">
+              <Icon.note />
+            </div>
+            <div className="np-text">
+              <span className="np-title">Aria Math</span>
+              <span className="np-artist">C418</span>
+            </div>
+            <div className="np-wave">
+              <span />
+              <span />
+              <span />
+              <span />
+            </div>
+          </div>
+        );
+      }
+
+      /* ---------- Button ---------- */
+      function Button({ variant = "default", onClick, children, icon = true }) {
+        return (
+          <button className={`btn ${variant}`} onClick={onClick}>
+            <span>{children}</span>
+            {icon && (
+              <span className="arrow">
+                <Icon.arrow />
+              </span>
+            )}
+          </button>
+        );
+      }
+
+      Object.assign(window, {
+        RouterProvider,
+        useRouter,
+        ThemeProvider,
+        useTheme,
+        Nav,
+        Footer,
+        NowPlaying,
+        Button,
+      });
+    </script>
+
+    <script type="text/babel" data-file="src/pages-home.jsx">
+      /* Home page */
+
+      function PageHome() {
+        const { navigate } = useRouter();
+        const name = "Mahad";
+
+        return (
+          <main className="page page-enter">
+            <section className="home-hero">
+              <div className="home-greet">
+                <span className="bar" />
+                <span>PORTFOLIO / 2026</span>
+              </div>
+              <h1 className="home-name">
+                {"Hey, I\u2019m".split("").map((c, i) => (
+                  <span
+                    key={`g${i}`}
+                    className="char"
+                    style={{
+                      animationDelay: `${i * 0.03}s`,
+                      color: "var(--ink-soft)",
+                      fontSize: "0.35em",
+                      letterSpacing: "0",
+                      display: "inline-block",
+                      marginRight: c === " " ? "0.2em" : 0,
+                    }}
+                  >
+                    {c === " " ? "\u00A0" : c}
+                  </span>
+                ))}
+                <br />
+                {name.split("").map((c, i) => (
+                  <span
+                    key={i}
+                    className={`char ${i === 0 ? "red" : ""}`}
+                    style={{ animationDelay: `${0.4 + i * 0.07}s` }}
+                  >
+                    {c}
+                  </span>
+                ))}
+                <span
+                  className="char red"
+                  style={{ animationDelay: `${0.4 + name.length * 0.07}s` }}
+                >
+                  .
+                </span>
+              </h1>
+
+              <p className="home-tag">
+                Software engineer building <em>clean systems</em> and
+                integrating <em>AI-based solutions</em>. Currently doing my
+                third year at McMaster — previously at TD. Outside the editor I
+                shoot film, write logs, and learn piano.
+              </p>
+
+              <div className="home-cta-row">
+                <Button variant="primary" onClick={() => navigate("/projects")}>
+                  See projects
+                </Button>
+                <Button variant="ghost" onClick={() => navigate("/resume")}>
+                  View résumé
+                </Button>
+                <Button variant="ghost" onClick={() => navigate("/contact")}>
+                  Get in touch
+                </Button>
+              </div>
+            </section>
+
+            <div className="home-grid stagger">
+              <div className="card">
+                <div className="card-label">
+                  <span className="num">01</span> ABOUT
+                </div>
+                <h3>A quick snapshot.</h3>
+                <ul>
+                  <li>Software Engineering III @ McMaster</li>
+                  <li>Previously @ TD</li>
+                  <li>Building clean, scalable systems</li>
+                  <li>Integrating AI-based solutions</li>
+                </ul>
+              </div>
+              <div className="card now-card">
+                <div className="card-label">
+                  <span className="num">02</span> NOW
+                </div>
+                <h3>What I'm focused on.</h3>
+                <ul>
+                  <li>Building scalable AI solutions</li>
+                  <li>Solving real-world problems</li>
+                  <li>Dean's list + 7 clubs</li>
+                </ul>
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate("/about");
+                  }}
+                  style={{
+                    marginTop: "18px",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "6px",
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "11px",
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                    color: "var(--accent)",
+                  }}
+                >
+                  Read more <Icon.arrow />
+                </a>
+              </div>
+            </div>
+
+            <div className="stats-row stagger" style={{ marginTop: "24px" }}>
+              <div className="stat">
+                <div className="stat-num">
+                  10<span className="plus">+</span>
+                </div>
+                <div className="stat-label">Projects</div>
+              </div>
+              <div className="stat">
+                <div className="stat-num">
+                  5<span className="plus">+</span>
+                </div>
+                <div className="stat-label">Hackathons</div>
+              </div>
+              <div className="stat">
+                <div className="stat-num">2</div>
+                <div className="stat-label">Internships</div>
+              </div>
+              <div className="stat">
+                <div className="stat-num">7</div>
+                <div className="stat-label">Clubs</div>
+              </div>
+            </div>
+
+            <div className="featured" onClick={() => navigate("/projects")}>
+              <div>
+                <div className="featured-eyebrow">
+                  FEATURED · MacEngComp '25 Winner
+                </div>
+                <h2 className="featured-title">PrepPal</h2>
+                <div className="featured-sub">
+                  Disaster awareness + emergency-support web app helping people
+                  make informed decisions before and during natural disasters.
+                </div>
+              </div>
+              <div className="featured-cta">
+                Try it out <Icon.arrowUpRight />
+              </div>
+            </div>
+
+            <div className="quote-block">
+              <span className="mark">"</span>
+              <div>
+                Nobody will believe in you unless you believe in yourself.
+              </div>
+              <cite>— Liberace</cite>
+            </div>
+
+            <Footer />
+          </main>
+        );
+      }
+
+      window.PageHome = PageHome;
+    </script>
+
+    <script type="text/babel" data-file="src/pages-about.jsx">
+      /* About page */
+
+      function PageAbout() {
+        const [tab, setTab] = useState("intro");
+
+        return (
+          <main className="page page-enter">
+            <div className="eyebrow">02 — ABOUT</div>
+            <div className="about-hero">
+              <div>
+                <h1 className="display page-title">
+                  A{" "}
+                  <em style={{ color: "var(--accent)", fontStyle: "italic" }}>
+                    curious
+                  </em>
+                  <br /> human first.
+                </h1>
+                <p
+                  className="subtle"
+                  style={{
+                    fontSize: "17px",
+                    maxWidth: "480px",
+                    marginTop: "20px",
+                  }}
+                >
+                  Engineer by trade, photographer by hobby. I believe small
+                  steps lead to big changes — and that you're your own biggest
+                  competition.
+                </p>
+              </div>
+              <div className="about-photo-frame" />
+            </div>
+
+            <div className="about-tabs">
+              {ABOUT_SECTIONS.map((s) => (
+                <button
+                  key={s.id}
+                  className={`about-tab ${tab === s.id ? "active" : ""}`}
+                  onClick={() => setTab(s.id)}
+                >
+                  {s.label}
+                </button>
+              ))}
+            </div>
+
+            {tab === "intro" && (
+              <div className="about-section" key="intro">
+                <h2>
+                  Hello, I'm <em>Mahad</em>.
+                </h2>
+                <p>
+                  Someone who's always looking to try new things. Learning new
+                  things, meeting new people, and experiencing new cultures
+                  keeps me going. I love tech, space, music, video games,
+                  movies, nature, animals — the full menu.
+                </p>
+                <p>
+                  If you want the real story, my logbook is where I write things
+                  as I learn and build. I put huge emphasis on bettering myself
+                  mentally, physically, and emotionally.
+                </p>
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr 1fr",
+                    gap: "24px",
+                    marginTop: "40px",
+                  }}
+                >
+                  <div
+                    style={{
+                      padding: "20px",
+                      border: "1px solid var(--line)",
+                      borderRadius: "var(--r-md)",
+                    }}
+                  >
+                    <div className="eyebrow" style={{ margin: 0 }}>
+                      SHORT-TERM
+                    </div>
+                    <div
+                      style={{
+                        fontFamily: "var(--font-display)",
+                        fontSize: "22px",
+                        marginTop: "10px",
+                      }}
+                    >
+                      Learning piano 🎹
+                    </div>
+                  </div>
+                  <div
+                    style={{
+                      padding: "20px",
+                      border: "1px solid var(--line)",
+                      borderRadius: "var(--r-md)",
+                    }}
+                  >
+                    <div className="eyebrow" style={{ margin: 0 }}>
+                      LONG-TERM
+                    </div>
+                    <div
+                      style={{
+                        fontFamily: "var(--font-display)",
+                        fontSize: "22px",
+                        marginTop: "10px",
+                      }}
+                    >
+                      Start my own company 🧑‍💻
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {tab === "now" && (
+              <div className="about-section" key="now">
+                <h2>
+                  Right <em>now</em>.
+                </h2>
+                <p className="subtle">
+                  Third year Software Engineering at McMaster — plus a handful
+                  of clubs that make the weeks blur together.
+                </p>
+                <div className="timeline">
+                  {[
+                    {
+                      date: "Oct 2025",
+                      title: "ML Engineer — McMaster Drone Club",
+                      meta: "✈",
+                    },
+                    {
+                      date: "Sept 2025",
+                      title: "Controls Subteam — McMaster Rocketry",
+                      meta: "🚀",
+                    },
+                    {
+                      date: "July 2025",
+                      title: "Web Developer — Software Eng Society",
+                      meta: "💻",
+                    },
+                    {
+                      date: "Jan 2025",
+                      title: "Developer — Scleroderma Canada app",
+                      meta: "📱",
+                    },
+                    {
+                      date: "Aug 2024",
+                      title: "Attendee Relations — DeltaHacks",
+                      meta: "💻",
+                    },
+                  ].map((r, i) => (
+                    <div className="tl-row" key={i}>
+                      <div className="tl-date">{r.date}</div>
+                      <h3 className="tl-title">{r.title}</h3>
+                      <div className="tl-meta">{r.meta}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {tab === "before" && (
+              <div className="about-section" key="before">
+                <h2>
+                  Before <em>this</em>.
+                </h2>
+                <p className="subtle">
+                  A couple of internships, a bunch of volunteering, and some
+                  leadership roles along the way.
+                </p>
+                <div className="timeline">
+                  {[
+                    {
+                      date: "May – Aug 2025",
+                      title: "Software Engineering Intern",
+                      meta: "TD 🟩",
+                    },
+                    {
+                      date: "Jun – Aug 2024",
+                      title: "Cybersecurity Intern",
+                      meta: "RLPC 🦠",
+                    },
+                    {
+                      date: "Oct 2024 – Sept 2025",
+                      title: "VP of Operations",
+                      meta: "VoicesatMac 🎤",
+                    },
+                    {
+                      date: "Jun 2024 – Apr 2025",
+                      title: "VP of Events",
+                      meta: "McMaster PSA 🇵🇰",
+                    },
+                    {
+                      date: "Sept 2024",
+                      title: "Volunteer",
+                      meta: "HammerHacks 💻",
+                    },
+                    {
+                      date: "Aug 2024",
+                      title: "Volunteer",
+                      meta: "CampQuality 🏕️",
+                    },
+                  ].map((r, i) => (
+                    <div className="tl-row" key={i}>
+                      <div className="tl-date">{r.date}</div>
+                      <h3 className="tl-title">{r.title}</h3>
+                      <div className="tl-meta">{r.meta}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {tab === "wins" && (
+              <div className="about-section" key="wins">
+                <h2>
+                  A few <em>wins</em>.
+                </h2>
+                <p className="subtle">
+                  Trophies on the shelf — and a few charity receipts I'm prouder
+                  of.
+                </p>
+                <div className="wins-grid">
+                  {[
+                    {
+                      icon: "🏆",
+                      title: "Winner · MacEngComp '25",
+                      meta: "Engineering Competition",
+                    },
+                    {
+                      icon: "🏆",
+                      title: "Winner · MacEngComp '24",
+                      meta: "Engineering Competition",
+                    },
+                    {
+                      icon: "🏆",
+                      title: "Finalist · MacEngComp '23",
+                      meta: "Engineering Competition",
+                    },
+                    {
+                      icon: "💯",
+                      title: "Dean's List",
+                      meta: "McMaster · ongoing",
+                    },
+                    {
+                      icon: "🎓",
+                      title: "1480 SAT",
+                      meta: "plus AP Scholar with Honor",
+                    },
+                    {
+                      icon: "🎗️",
+                      title: "~$6,000 raised for charity",
+                      meta: "McMaster PSA · 2024–2025",
+                    },
+                  ].map((w, i) => (
+                    <div className="win" key={i}>
+                      <div className="win-icon">{w.icon}</div>
+                      <div className="win-title">{w.title}</div>
+                      <div className="win-meta">{w.meta}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <Footer />
+          </main>
+        );
+      }
+
+      window.PageAbout = PageAbout;
+    </script>
+
+    <script type="text/babel" data-file="src/pages-projects.jsx">
+      /* Projects page */
+
+      function PageProjects() {
+        const [filter, setFilter] = useState("all");
+        const filters = ["all", "web", "mobile", "ml", "systems"];
+
+        const filterMap = {
+          all: () => true,
+          web: (p) => /web/i.test(p.tag),
+          mobile: (p) => /mobile/i.test(p.tag),
+          ml: (p) => /ml|ai/i.test(p.tag),
+          systems: (p) => /c\b|java|bash|security/i.test(p.tag),
+        };
+
+        const visible = PROJECTS.filter(filterMap[filter]);
+        const featured = PROJECTS.find((p) => p.featured);
+        const rest = visible.filter((p) => !p.featured);
+
+        return (
+          <main className="page page-enter">
+            <div className="eyebrow">03 — PROJECTS</div>
+            <h1 className="display page-title">
+              Things I've
+              <br />
+              built lately.
+            </h1>
+            <p className="proj-intro">
+              A sampler of my work. Full catalog lives on{" "}
               <a
+                style={{
+                  color: "var(--accent)",
+                  textDecoration: "underline",
+                  textUnderlineOffset: "4px",
+                }}
                 href="#"
-                className={`nav-link ${active ? 'active' : ''}`}
-                onClick={(e) => { e.preventDefault(); navigate(item.path); }}
               >
-                <span className="nav-link-idx">{item.idx}</span>
-                <span>{item.label}</span>
+                GitHub
               </a>
-            </li>
-          );
-        })}
-      </ul>
+              .
+            </p>
 
-      <div className="nav-footer">
-        <NowPlaying compact />
-        <div className="theme-pill" role="group" aria-label="Theme mode">
-          <button className={mode === 'light' ? 'active' : ''} onClick={() => setMode('light')} title="Light">
-            <Icon.sun />
-          </button>
-          <button className={mode === 'dark' ? 'active' : ''} onClick={() => setMode('dark')} title="Dark">
-            <Icon.moon />
-          </button>
-        </div>
-        <div className="nav-foot-row">
-          <span className="dot" />
-          <span>Available — Fall '26</span>
-        </div>
-      </div>
-    </aside>
-  );
-}
-
-/* ---------- Footer ---------- */
-function Footer() {
-  return (
-    <footer className="foot">
-      <div>© 2026 Mahad Hassan</div>
-      <div className="foot-center">
-        <span style={{ opacity: 0.7 }}>Designed + built in Hamilton, ON</span>
-      </div>
-      <div className="foot-right">
-        <a href="#">GitHub</a>
-        <a href="#">LinkedIn</a>
-        <a href="#">Email</a>
-      </div>
-    </footer>
-  );
-}
-
-/* ---------- Now playing ---------- */
-function NowPlaying() {
-  return (
-    <div className="now-playing" title="Currently playing">
-      <div className="np-cover"><Icon.note /></div>
-      <div className="np-text">
-        <span className="np-title">Aria Math</span>
-        <span className="np-artist">C418</span>
-      </div>
-      <div className="np-wave">
-        <span /><span /><span /><span />
-      </div>
-    </div>
-  );
-}
-
-/* ---------- Button ---------- */
-function Button({ variant = 'default', onClick, children, icon = true }) {
-  return (
-    <button className={`btn ${variant}`} onClick={onClick}>
-      <span>{children}</span>
-      {icon && <span className="arrow"><Icon.arrow /></span>}
-    </button>
-  );
-}
-
-Object.assign(window, { RouterProvider, useRouter, ThemeProvider, useTheme, Nav, Footer, NowPlaying, Button });
-
-</script>
-
-<script type="text/babel" data-file="src/pages-home.jsx">
-/* Home page */
-
-function PageHome() {
-  const { navigate } = useRouter();
-  const name = 'Mahad';
-
-  return (
-    <main className="page page-enter">
-      <section className="home-hero">
-        <div className="home-greet">
-          <span className="bar" />
-          <span>PORTFOLIO / 2026</span>
-        </div>
-        <h1 className="home-name">
-          {'Hey, I\u2019m'.split('').map((c, i) => (
-            <span key={`g${i}`} className="char" style={{ animationDelay: `${i * 0.03}s`, color: 'var(--ink-soft)', fontSize: '0.35em', letterSpacing: '0', display: 'inline-block', marginRight: c === ' ' ? '0.2em' : 0 }}>
-              {c === ' ' ? '\u00A0' : c}
-            </span>
-          ))}
-          <br />
-          {name.split('').map((c, i) => (
-            <span key={i} className={`char ${i === 0 ? 'red' : ''}`} style={{ animationDelay: `${0.4 + i * 0.07}s` }}>{c}</span>
-          ))}
-          <span className="char red" style={{ animationDelay: `${0.4 + name.length * 0.07}s` }}>.</span>
-        </h1>
-
-        <p className="home-tag">
-          Software engineer building <em>clean systems</em> and integrating <em>AI-based solutions</em>. Currently doing my third year at McMaster — previously at TD. Outside the editor I shoot film, write logs, and learn piano.
-        </p>
-
-        <div className="home-cta-row">
-          <Button variant="primary" onClick={() => navigate('/projects')}>See projects</Button>
-          <Button variant="ghost" onClick={() => navigate('/resume')}>View résumé</Button>
-          <Button variant="ghost" onClick={() => navigate('/contact')}>Get in touch</Button>
-        </div>
-      </section>
-
-      <div className="home-grid stagger">
-        <div className="card">
-          <div className="card-label"><span className="num">01</span> ABOUT</div>
-          <h3>A quick snapshot.</h3>
-          <ul>
-            <li>Software Engineering III @ McMaster</li>
-            <li>Previously @ TD</li>
-            <li>Building clean, scalable systems</li>
-            <li>Integrating AI-based solutions</li>
-          </ul>
-        </div>
-        <div className="card now-card">
-          <div className="card-label"><span className="num">02</span> NOW</div>
-          <h3>What I'm focused on.</h3>
-          <ul>
-            <li>Building scalable AI solutions</li>
-            <li>Solving real-world problems</li>
-            <li>Dean's list + 7 clubs</li>
-          </ul>
-          <a href="#" onClick={(e) => { e.preventDefault(); navigate('/about'); }} style={{ marginTop: '18px', display: 'inline-flex', alignItems: 'center', gap: '6px', fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)' }}>
-            Read more <Icon.arrow />
-          </a>
-        </div>
-      </div>
-
-      <div className="stats-row stagger" style={{ marginTop: '24px' }}>
-        <div className="stat"><div className="stat-num">10<span className="plus">+</span></div><div className="stat-label">Projects</div></div>
-        <div className="stat"><div className="stat-num">5<span className="plus">+</span></div><div className="stat-label">Hackathons</div></div>
-        <div className="stat"><div className="stat-num">2</div><div className="stat-label">Internships</div></div>
-        <div className="stat"><div className="stat-num">7</div><div className="stat-label">Clubs</div></div>
-      </div>
-
-      <div className="featured" onClick={() => navigate('/projects')}>
-        <div>
-          <div className="featured-eyebrow">FEATURED · MacEngComp '25 Winner</div>
-          <h2 className="featured-title">PrepPal</h2>
-          <div className="featured-sub">
-            Disaster awareness + emergency-support web app helping people make informed decisions before and during natural disasters.
-          </div>
-        </div>
-        <div className="featured-cta">Try it out <Icon.arrowUpRight /></div>
-      </div>
-
-      <div className="quote-block">
-        <span className="mark">"</span>
-        <div>Nobody will believe in you unless you believe in yourself.</div>
-        <cite>— Liberace</cite>
-      </div>
-
-      <Footer />
-    </main>
-  );
-}
-
-window.PageHome = PageHome;
-
-</script>
-
-<script type="text/babel" data-file="src/pages-about.jsx">
-/* About page */
-
-function PageAbout() {
-  const [tab, setTab] = useState('intro');
-
-  return (
-    <main className="page page-enter">
-      <div className="eyebrow">02 — ABOUT</div>
-      <div className="about-hero">
-        <div>
-          <h1 className="display page-title">
-            A <em style={{ color: 'var(--accent)', fontStyle: 'italic' }}>curious</em><br /> human first.
-          </h1>
-          <p className="subtle" style={{ fontSize: '17px', maxWidth: '480px', marginTop: '20px' }}>
-            Engineer by trade, photographer by hobby. I believe small steps lead to big changes — and that you're your own biggest competition.
-          </p>
-        </div>
-        <div className="about-photo-frame" />
-      </div>
-
-      <div className="about-tabs">
-        {ABOUT_SECTIONS.map(s => (
-          <button key={s.id} className={`about-tab ${tab === s.id ? 'active' : ''}`} onClick={() => setTab(s.id)}>{s.label}</button>
-        ))}
-      </div>
-
-      {tab === 'intro' && (
-        <div className="about-section" key="intro">
-          <h2>Hello, I'm <em>Mahad</em>.</h2>
-          <p>Someone who's always looking to try new things. Learning new things, meeting new people, and experiencing new cultures keeps me going. I love tech, space, music, video games, movies, nature, animals — the full menu.</p>
-          <p>If you want the real story, my logbook is where I write things as I learn and build. I put huge emphasis on bettering myself mentally, physically, and emotionally.</p>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginTop: '40px' }}>
-            <div style={{ padding: '20px', border: '1px solid var(--line)', borderRadius: 'var(--r-md)' }}>
-              <div className="eyebrow" style={{ margin: 0 }}>SHORT-TERM</div>
-              <div style={{ fontFamily: 'var(--font-display)', fontSize: '22px', marginTop: '10px' }}>Learning piano 🎹</div>
-            </div>
-            <div style={{ padding: '20px', border: '1px solid var(--line)', borderRadius: 'var(--r-md)' }}>
-              <div className="eyebrow" style={{ margin: 0 }}>LONG-TERM</div>
-              <div style={{ fontFamily: 'var(--font-display)', fontSize: '22px', marginTop: '10px' }}>Start my own company 🧑‍💻</div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {tab === 'now' && (
-        <div className="about-section" key="now">
-          <h2>Right <em>now</em>.</h2>
-          <p className="subtle">Third year Software Engineering at McMaster — plus a handful of clubs that make the weeks blur together.</p>
-          <div className="timeline">
-            {[
-              { date: 'Oct 2025', title: 'ML Engineer — McMaster Drone Club', meta: '✈' },
-              { date: 'Sept 2025', title: 'Controls Subteam — McMaster Rocketry', meta: '🚀' },
-              { date: 'July 2025', title: 'Web Developer — Software Eng Society', meta: '💻' },
-              { date: 'Jan 2025', title: 'Developer — Scleroderma Canada app', meta: '📱' },
-              { date: 'Aug 2024', title: 'Attendee Relations — DeltaHacks', meta: '💻' },
-            ].map((r, i) => (
-              <div className="tl-row" key={i}>
-                <div className="tl-date">{r.date}</div>
-                <h3 className="tl-title">{r.title}</h3>
-                <div className="tl-meta">{r.meta}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {tab === 'before' && (
-        <div className="about-section" key="before">
-          <h2>Before <em>this</em>.</h2>
-          <p className="subtle">A couple of internships, a bunch of volunteering, and some leadership roles along the way.</p>
-          <div className="timeline">
-            {[
-              { date: 'May – Aug 2025', title: 'Software Engineering Intern', meta: 'TD 🟩' },
-              { date: 'Jun – Aug 2024', title: 'Cybersecurity Intern', meta: 'RLPC 🦠' },
-              { date: 'Oct 2024 – Sept 2025', title: 'VP of Operations', meta: 'VoicesatMac 🎤' },
-              { date: 'Jun 2024 – Apr 2025', title: 'VP of Events', meta: 'McMaster PSA 🇵🇰' },
-              { date: 'Sept 2024', title: 'Volunteer', meta: 'HammerHacks 💻' },
-              { date: 'Aug 2024', title: 'Volunteer', meta: 'CampQuality 🏕️' },
-            ].map((r, i) => (
-              <div className="tl-row" key={i}>
-                <div className="tl-date">{r.date}</div>
-                <h3 className="tl-title">{r.title}</h3>
-                <div className="tl-meta">{r.meta}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {tab === 'wins' && (
-        <div className="about-section" key="wins">
-          <h2>A few <em>wins</em>.</h2>
-          <p className="subtle">Trophies on the shelf — and a few charity receipts I'm prouder of.</p>
-          <div className="wins-grid">
-            {[
-              { icon: '🏆', title: "Winner · MacEngComp '25", meta: 'Engineering Competition' },
-              { icon: '🏆', title: "Winner · MacEngComp '24", meta: 'Engineering Competition' },
-              { icon: '🏆', title: "Finalist · MacEngComp '23", meta: 'Engineering Competition' },
-              { icon: '💯', title: "Dean's List", meta: 'McMaster · ongoing' },
-              { icon: '🎓', title: '1480 SAT', meta: 'plus AP Scholar with Honor' },
-              { icon: '🎗️', title: '~$6,000 raised for charity', meta: 'McMaster PSA · 2024–2025' },
-            ].map((w, i) => (
-              <div className="win" key={i}>
-                <div className="win-icon">{w.icon}</div>
-                <div className="win-title">{w.title}</div>
-                <div className="win-meta">{w.meta}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      <Footer />
-    </main>
-  );
-}
-
-window.PageAbout = PageAbout;
-
-</script>
-
-<script type="text/babel" data-file="src/pages-projects.jsx">
-/* Projects page */
-
-function PageProjects() {
-  const [filter, setFilter] = useState('all');
-  const filters = ['all', 'web', 'mobile', 'ml', 'systems'];
-
-  const filterMap = {
-    all: () => true,
-    web: (p) => /web/i.test(p.tag),
-    mobile: (p) => /mobile/i.test(p.tag),
-    ml: (p) => /ml|ai/i.test(p.tag),
-    systems: (p) => /c\b|java|bash|security/i.test(p.tag),
-  };
-
-  const visible = PROJECTS.filter(filterMap[filter]);
-  const featured = PROJECTS.find(p => p.featured);
-  const rest = visible.filter(p => !p.featured);
-
-  return (
-    <main className="page page-enter">
-      <div className="eyebrow">03 — PROJECTS</div>
-      <h1 className="display page-title">Things I've<br />built lately.</h1>
-      <p className="proj-intro">
-        A sampler of my work. Full catalog lives on <a style={{ color: 'var(--accent)', textDecoration: 'underline', textUnderlineOffset: '4px' }} href="#">GitHub</a>.
-      </p>
-
-      {filter === 'all' && featured && (
-        <div className="proj-featured">
-          <div className="proj-featured-body">
-            <div className="eyebrow" style={{ margin: 0 }}>
-              <span style={{ color: 'var(--accent)' }}>★</span> FEATURED · {featured.award}
-            </div>
-            <h2>{featured.title}</h2>
-            <p style={{ color: 'var(--ink-soft)', fontSize: '16px', lineHeight: 1.5, margin: '0 0 20px' }}>{featured.desc}</p>
-            <div style={{ display: 'flex', gap: '10px' }}>
-              <Button variant="primary">Visit site</Button>
-              <Button variant="ghost">Read log</Button>
-            </div>
-          </div>
-          <div className="proj-featured-img" />
-        </div>
-      )}
-
-      <div className="proj-filter">
-        {filters.map(f => (
-          <button key={f} className={filter === f ? 'active' : ''} onClick={() => setFilter(f)}>{f}</button>
-        ))}
-      </div>
-
-      <div className="proj-list">
-        {rest.map((p, i) => (
-          <div className="proj-row" key={p.id}>
-            <div className="proj-idx">{String(i + 1).padStart(2, '0')}</div>
-            <div className="proj-title">
-              {p.title} {p.award && <span className="trophy">🏆</span>}
-            </div>
-            <div className="proj-desc">{p.desc}</div>
-            <div className="proj-tag">{p.tag} · {p.year}</div>
-            <div className="proj-arrow"><Icon.arrowUpRight /></div>
-          </div>
-        ))}
-      </div>
-
-      <Footer />
-    </main>
-  );
-}
-
-window.PageProjects = PageProjects;
-
-</script>
-
-<script type="text/babel" data-file="src/pages-logbook.jsx">
-/* Logbook index */
-
-function PageLogbook() {
-  const { navigate } = useRouter();
-  const [tag, setTag] = useState('all');
-  const tags = ['all', 'life', 'school', 'career', 'build'];
-
-  return (
-    <main className="page page-enter">
-      <div className="eyebrow">04 — LOGBOOK</div>
-      <div className="logbook-head">
-        <div>
-          <h1 className="display page-title">Logbook.</h1>
-          <p className="subtle" style={{ fontSize: '18px', maxWidth: '540px' }}>
-            Where I keep the raw version of what I'm learning, building, and shooting.
-          </p>
-          <div className="logbook-chip-row">
-            {tags.map(t => (
-              <button key={t} className="chip" style={{ cursor: 'pointer', border: tag === t ? '1px solid var(--accent)' : '1px solid transparent', color: tag === t ? 'var(--accent-ink)' : '', background: tag === t ? 'var(--accent-soft)' : 'var(--bg-sunk)' }} onClick={() => setTag(t)}>{t}</button>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <h2 className="log-section-title">
-        Writing <span className="count">{LOGS.length} entries</span>
-      </h2>
-      <div className="log-list">
-        {LOGS.map(l => (
-          <div className="log-row" key={l.id} onClick={() => navigate(`/logbook/${l.id}`)}>
-            <div className="log-date">{l.date}</div>
-            <h3 className="log-title">{l.title}</h3>
-            <div className="log-meta">{l.read} · {l.tag}</div>
-          </div>
-        ))}
-      </div>
-
-      <h2 className="log-section-title">
-        Photography <span className="count">{PHOTOS.length} rolls</span>
-      </h2>
-      <div className="photo-grid">
-        {PHOTOS.map((p, i) => (
-          <div className="photo-tile" key={p.id} onClick={() => navigate(`/logbook/photo/${p.id}`)}>
-            <div className="photo-grad" />
-            <div className="photo-overlay">
-              <div className="photo-overlay-title">{p.title}</div>
-              <div className="photo-overlay-date">{p.date}</div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <p className="subtle" style={{ fontSize: '12px', fontFamily: 'var(--font-mono)', marginTop: '56px', color: 'var(--ink-muted)' }}>
-        All opinions here are my own. All images are mine unless otherwise stated.
-      </p>
-
-      <Footer />
-    </main>
-  );
-}
-
-window.PageLogbook = PageLogbook;
-
-</script>
-
-<script type="text/babel" data-file="src/pages-resume-contact.jsx">
-/* Resume + Contact pages */
-
-function PageResume() {
-  return (
-    <main className="page page-enter">
-      <div className="eyebrow">05 — RESUME</div>
-      <div className="resume-head">
-        <div>
-          <h1 className="display page-title">Résumé.</h1>
-          <p className="subtle" style={{ fontSize: '17px', maxWidth: '480px' }}>
-            A one-pager of everything relevant. Prefer PDF? Download below.
-          </p>
-        </div>
-        <div className="resume-actions">
-          <Button variant="primary" icon={false}><Icon.download /> <span style={{ marginLeft: 6 }}>Download PDF</span></Button>
-          <Button variant="ghost">Open in new tab</Button>
-        </div>
-      </div>
-
-      <div className="resume-frame stagger">
-        <h1>Mahad Hassan</h1>
-        <div className="resume-contact">Hamilton, ON · mahad@example.com · linkedin.com/in/mahadhssn · github.com/mahadhssn</div>
-
-        <h3>Education</h3>
-        <div className="job">
-          <div className="job-head">
-            <div className="job-title">McMaster University — B.Eng. Software Engineering</div>
-            <div className="job-date">2023 – 2027</div>
-          </div>
-          <div className="job-company">Dean's List · GPA 3.9</div>
-        </div>
-
-        <h3>Experience</h3>
-        <div className="job">
-          <div className="job-head">
-            <div className="job-title">Software Engineering Intern — TD</div>
-            <div className="job-date">May – Aug 2025</div>
-          </div>
-          <div className="job-company">Toronto, ON</div>
-          <p>Shipped internal tooling to help engineers triage incidents faster. Built on React / Node; integrated with existing observability pipeline.</p>
-        </div>
-        <div className="job">
-          <div className="job-head">
-            <div className="job-title">Cybersecurity Intern — RLPC</div>
-            <div className="job-date">Jun – Aug 2024</div>
-          </div>
-          <div className="job-company">Toronto, ON</div>
-          <p>Audited legacy applications for common vulnerabilities and wrote a playbook for the in-house team.</p>
-        </div>
-
-        <h3>Selected Projects</h3>
-        <div className="job">
-          <div className="job-head">
-            <div className="job-title">PrepPal — MacEngComp '25 Winner</div>
-            <div className="job-date">2025</div>
-          </div>
-          <p>Disaster-awareness web app with an AI support flow for triaging emergency steps.</p>
-        </div>
-        <div className="job">
-          <div className="job-head">
-            <div className="job-title">Digit Recognizer</div>
-            <div className="job-date">2024</div>
-          </div>
-          <p>8-layer CNN in Python reaching 99.3% accuracy on handwritten digit classification.</p>
-        </div>
-
-        <h3>Skills</h3>
-        <p>Python · Java · C · TypeScript · React · Node · PyTorch · PostgreSQL · Linux</p>
-      </div>
-
-      <Footer />
-    </main>
-  );
-}
-
-function PageContact() {
-  const [sent, setSent] = useState(false);
-  const submit = (e) => { e.preventDefault(); setSent(true); };
-
-  return (
-    <main className="page page-enter">
-      <div className="eyebrow">06 — CONTACT</div>
-      <div className="contact-grid">
-        <div>
-          <h1 className="contact-hello">
-            Let's <em>talk</em>.
-          </h1>
-          <p className="subtle" style={{ fontSize: '17px', maxWidth: '380px' }}>
-            Whether it's a project, an internship, or just to swap book recs — my inbox is open.
-          </p>
-          <div className="contact-channels">
-            <div className="contact-channel">
-              <span className="contact-channel-label">EMAIL</span>
-              <span>mahad@example.com</span>
-            </div>
-            <div className="contact-channel">
-              <span className="contact-channel-label">LINKEDIN</span>
-              <span>@mahadhssn</span>
-            </div>
-            <div className="contact-channel">
-              <span className="contact-channel-label">GITHUB</span>
-              <span>@mahadhssn</span>
-            </div>
-            <div className="contact-channel">
-              <span className="contact-channel-label">LOCATION</span>
-              <span>Hamilton, ON</span>
-            </div>
-          </div>
-        </div>
-
-        <form className="contact-form" onSubmit={submit}>
-          {sent ? (
-            <div style={{ padding: '40px 0', textAlign: 'center' }}>
-              <div style={{ fontFamily: 'var(--font-display)', fontSize: '40px', color: 'var(--accent)', letterSpacing: 'var(--display-tracking)' }}>Thanks!</div>
-              <p className="subtle" style={{ marginTop: '12px' }}>I'll be in touch shortly.</p>
-            </div>
-          ) : (
-            <>
-              <div className="field-row">
-                <div className="field">
-                  <label>First Name</label>
-                  <input type="text" placeholder="Jane" />
+            {filter === "all" && featured && (
+              <div className="proj-featured">
+                <div className="proj-featured-body">
+                  <div className="eyebrow" style={{ margin: 0 }}>
+                    <span style={{ color: "var(--accent)" }}>★</span> FEATURED ·{" "}
+                    {featured.award}
+                  </div>
+                  <h2>{featured.title}</h2>
+                  <p
+                    style={{
+                      color: "var(--ink-soft)",
+                      fontSize: "16px",
+                      lineHeight: 1.5,
+                      margin: "0 0 20px",
+                    }}
+                  >
+                    {featured.desc}
+                  </p>
+                  <div style={{ display: "flex", gap: "10px" }}>
+                    <Button variant="primary">Visit site</Button>
+                    <Button variant="ghost">Read log</Button>
+                  </div>
                 </div>
-                <div className="field">
-                  <label>Last Name</label>
-                  <input type="text" placeholder="Doe" />
+                <div className="proj-featured-img" />
+              </div>
+            )}
+
+            <div className="proj-filter">
+              {filters.map((f) => (
+                <button
+                  key={f}
+                  className={filter === f ? "active" : ""}
+                  onClick={() => setFilter(f)}
+                >
+                  {f}
+                </button>
+              ))}
+            </div>
+
+            <div className="proj-list">
+              {rest.map((p, i) => (
+                <div className="proj-row" key={p.id}>
+                  <div className="proj-idx">
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+                  <div className="proj-title">
+                    {p.title} {p.award && <span className="trophy">🏆</span>}
+                  </div>
+                  <div className="proj-desc">{p.desc}</div>
+                  <div className="proj-tag">
+                    {p.tag} · {p.year}
+                  </div>
+                  <div className="proj-arrow">
+                    <Icon.arrowUpRight />
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <Footer />
+          </main>
+        );
+      }
+
+      window.PageProjects = PageProjects;
+    </script>
+
+    <script type="text/babel" data-file="src/pages-logbook.jsx">
+      /* Logbook index */
+
+      function PageLogbook() {
+        const { navigate } = useRouter();
+        const [tag, setTag] = useState("all");
+        const tags = ["all", "life", "school", "career", "build"];
+
+        return (
+          <main className="page page-enter">
+            <div className="eyebrow">04 — LOGBOOK</div>
+            <div className="logbook-head">
+              <div>
+                <h1 className="display page-title">Logbook.</h1>
+                <p
+                  className="subtle"
+                  style={{ fontSize: "18px", maxWidth: "540px" }}
+                >
+                  Where I keep the raw version of what I'm learning, building,
+                  and shooting.
+                </p>
+                <div className="logbook-chip-row">
+                  {tags.map((t) => (
+                    <button
+                      key={t}
+                      className="chip"
+                      style={{
+                        cursor: "pointer",
+                        border:
+                          tag === t
+                            ? "1px solid var(--accent)"
+                            : "1px solid transparent",
+                        color: tag === t ? "var(--accent-ink)" : "",
+                        background:
+                          tag === t ? "var(--accent-soft)" : "var(--bg-sunk)",
+                      }}
+                      onClick={() => setTag(t)}
+                    >
+                      {t}
+                    </button>
+                  ))}
                 </div>
               </div>
-              <div className="field">
-                <label>Email</label>
-                <input type="email" placeholder="jane@example.com" />
+            </div>
+
+            <h2 className="log-section-title">
+              Writing <span className="count">{LOGS.length} entries</span>
+            </h2>
+            <div className="log-list">
+              {LOGS.map((l) => (
+                <div
+                  className="log-row"
+                  key={l.id}
+                  onClick={() => navigate(`/logbook/${l.id}`)}
+                >
+                  <div className="log-date">{l.date}</div>
+                  <h3 className="log-title">{l.title}</h3>
+                  <div className="log-meta">
+                    {l.read} · {l.tag}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <h2 className="log-section-title">
+              Photography <span className="count">{PHOTOS.length} rolls</span>
+            </h2>
+            <div className="photo-grid">
+              {PHOTOS.map((p, i) => (
+                <div
+                  className="photo-tile"
+                  key={p.id}
+                  onClick={() => navigate(`/logbook/photo/${p.id}`)}
+                >
+                  <div className="photo-grad" />
+                  <div className="photo-overlay">
+                    <div className="photo-overlay-title">{p.title}</div>
+                    <div className="photo-overlay-date">{p.date}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <p
+              className="subtle"
+              style={{
+                fontSize: "12px",
+                fontFamily: "var(--font-mono)",
+                marginTop: "56px",
+                color: "var(--ink-muted)",
+              }}
+            >
+              All opinions here are my own. All images are mine unless otherwise
+              stated.
+            </p>
+
+            <Footer />
+          </main>
+        );
+      }
+
+      window.PageLogbook = PageLogbook;
+    </script>
+
+    <script type="text/babel" data-file="src/pages-resume-contact.jsx">
+      /* Resume + Contact pages */
+
+      function PageResume() {
+        return (
+          <main className="page page-enter">
+            <div className="eyebrow">05 — RESUME</div>
+            <div className="resume-head">
+              <div>
+                <h1 className="display page-title">Résumé.</h1>
+                <p
+                  className="subtle"
+                  style={{ fontSize: "17px", maxWidth: "480px" }}
+                >
+                  A one-pager of everything relevant. Prefer PDF? Download
+                  below.
+                </p>
               </div>
-              <div className="field">
-                <label>Subject</label>
-                <input type="text" placeholder="A quick hello" />
+              <div className="resume-actions">
+                <Button variant="primary" icon={false}>
+                  <Icon.download />{" "}
+                  <span style={{ marginLeft: 6 }}>Download PDF</span>
+                </Button>
+                <Button variant="ghost">Open in new tab</Button>
               </div>
-              <div className="field">
-                <label>Message</label>
-                <textarea placeholder="Tell me about it..." />
+            </div>
+
+            <div className="resume-frame stagger">
+              <h1>Mahad Hassan</h1>
+              <div className="resume-contact">
+                Hamilton, ON · mahad@example.com · linkedin.com/in/mahadhssn ·
+                github.com/mahadhssn
               </div>
-              <Button variant="accent">Send message</Button>
-            </>
-          )}
-        </form>
-      </div>
 
-      <Footer />
-    </main>
-  );
-}
+              <h3>Education</h3>
+              <div className="job">
+                <div className="job-head">
+                  <div className="job-title">
+                    McMaster University — B.Eng. Software Engineering
+                  </div>
+                  <div className="job-date">2023 – 2027</div>
+                </div>
+                <div className="job-company">Dean's List · GPA 3.9</div>
+              </div>
 
-Object.assign(window, { PageResume, PageContact });
+              <h3>Experience</h3>
+              <div className="job">
+                <div className="job-head">
+                  <div className="job-title">
+                    Software Engineering Intern — TD
+                  </div>
+                  <div className="job-date">May – Aug 2025</div>
+                </div>
+                <div className="job-company">Toronto, ON</div>
+                <p>
+                  Shipped internal tooling to help engineers triage incidents
+                  faster. Built on React / Node; integrated with existing
+                  observability pipeline.
+                </p>
+              </div>
+              <div className="job">
+                <div className="job-head">
+                  <div className="job-title">Cybersecurity Intern — RLPC</div>
+                  <div className="job-date">Jun – Aug 2024</div>
+                </div>
+                <div className="job-company">Toronto, ON</div>
+                <p>
+                  Audited legacy applications for common vulnerabilities and
+                  wrote a playbook for the in-house team.
+                </p>
+              </div>
 
-</script>
+              <h3>Selected Projects</h3>
+              <div className="job">
+                <div className="job-head">
+                  <div className="job-title">
+                    PrepPal — MacEngComp '25 Winner
+                  </div>
+                  <div className="job-date">2025</div>
+                </div>
+                <p>
+                  Disaster-awareness web app with an AI support flow for
+                  triaging emergency steps.
+                </p>
+              </div>
+              <div className="job">
+                <div className="job-head">
+                  <div className="job-title">Digit Recognizer</div>
+                  <div className="job-date">2024</div>
+                </div>
+                <p>
+                  8-layer CNN in Python reaching 99.3% accuracy on handwritten
+                  digit classification.
+                </p>
+              </div>
 
-<script type="text/babel" data-file="src/pages-log-entry.jsx">
-/* Log entry detail page — markdown-rendered */
+              <h3>Skills</h3>
+              <p>
+                Python · Java · C · TypeScript · React · Node · PyTorch ·
+                PostgreSQL · Linux
+              </p>
+            </div>
 
-const LOG_MD = {
-  sclerocare: `# ScleroCare: An App for Patients
+            <Footer />
+          </main>
+        );
+      }
+
+      function PageContact() {
+        const [sent, setSent] = useState(false);
+        const submit = (e) => {
+          e.preventDefault();
+          setSent(true);
+        };
+
+        return (
+          <main className="page page-enter">
+            <div className="eyebrow">06 — CONTACT</div>
+            <div className="contact-grid">
+              <div>
+                <h1 className="contact-hello">
+                  Let's <em>talk</em>.
+                </h1>
+                <p
+                  className="subtle"
+                  style={{ fontSize: "17px", maxWidth: "380px" }}
+                >
+                  Whether it's a project, an internship, or just to swap book
+                  recs — my inbox is open.
+                </p>
+                <div className="contact-channels">
+                  <div className="contact-channel">
+                    <span className="contact-channel-label">EMAIL</span>
+                    <span>mahad@example.com</span>
+                  </div>
+                  <div className="contact-channel">
+                    <span className="contact-channel-label">LINKEDIN</span>
+                    <span>@mahadhssn</span>
+                  </div>
+                  <div className="contact-channel">
+                    <span className="contact-channel-label">GITHUB</span>
+                    <span>@mahadhssn</span>
+                  </div>
+                  <div className="contact-channel">
+                    <span className="contact-channel-label">LOCATION</span>
+                    <span>Hamilton, ON</span>
+                  </div>
+                </div>
+              </div>
+
+              <form className="contact-form" onSubmit={submit}>
+                {sent ? (
+                  <div style={{ padding: "40px 0", textAlign: "center" }}>
+                    <div
+                      style={{
+                        fontFamily: "var(--font-display)",
+                        fontSize: "40px",
+                        color: "var(--accent)",
+                        letterSpacing: "var(--display-tracking)",
+                      }}
+                    >
+                      Thanks!
+                    </div>
+                    <p className="subtle" style={{ marginTop: "12px" }}>
+                      I'll be in touch shortly.
+                    </p>
+                  </div>
+                ) : (
+                  <>
+                    <div className="field-row">
+                      <div className="field">
+                        <label>First Name</label>
+                        <input type="text" placeholder="Jane" />
+                      </div>
+                      <div className="field">
+                        <label>Last Name</label>
+                        <input type="text" placeholder="Doe" />
+                      </div>
+                    </div>
+                    <div className="field">
+                      <label>Email</label>
+                      <input type="email" placeholder="jane@example.com" />
+                    </div>
+                    <div className="field">
+                      <label>Subject</label>
+                      <input type="text" placeholder="A quick hello" />
+                    </div>
+                    <div className="field">
+                      <label>Message</label>
+                      <textarea placeholder="Tell me about it..." />
+                    </div>
+                    <Button variant="accent">Send message</Button>
+                  </>
+                )}
+              </form>
+            </div>
+
+            <Footer />
+          </main>
+        );
+      }
+
+      Object.assign(window, { PageResume, PageContact });
+    </script>
+
+    <script type="text/babel" data-file="src/pages-log-entry.jsx">
+      /* Log entry detail page — markdown-rendered */
+
+      const LOG_MD = {
+        sclerocare: `# ScleroCare: An App for Patients
 
 *July 24, 2025 · 8 min read*
 
@@ -2210,7 +3331,7 @@ That sentence became our north star. Every feature we shipped after that was mea
 
 More to come as we roll out to beta testers.`,
 
-  internship: `# How to Land an Internship 101
+        internship: `# How to Land an Internship 101
 
 *July 7, 2025 · 12 min read*
 
@@ -2235,7 +3356,7 @@ A lot of interns bring valuable technical expertise to the table. Secondly, inte
 3. Do one project you can actually demo end-to-end
 4. Practice talking, not just coding`,
 
-  intro: `# Intro — why I started writing
+        intro: `# Intro — why I started writing
 
 *June 21, 2025 · 4 min read*
 
@@ -2244,289 +3365,490 @@ Why I decided to start writing these in the first place.
 I've always been bad at remembering things. Not names — those I'm fine with — but the texture of what I was doing three months ago. Which project I was excited about. Which bug took me out for a weekend.
 
 This logbook is my fix for that. It's not a blog. I'm not writing to optimize for reach. I'm writing to have something to look back on.`,
-};
+      };
 
-/* Tiny markdown → React renderer (headings, paragraphs, quotes, lists, em/strong) */
-function renderMd(md) {
-  const lines = md.split('\n');
-  const out = [];
-  let listBuffer = null;
-  let olBuffer = null;
+      /* Tiny markdown → React renderer (headings, paragraphs, quotes, lists, em/strong) */
+      function renderMd(md) {
+        const lines = md.split("\n");
+        const out = [];
+        let listBuffer = null;
+        let olBuffer = null;
 
-  const flushLists = () => {
-    if (listBuffer) { out.push(<ul key={'ul'+out.length}>{listBuffer.map((l,i)=><li key={i}>{inline(l)}</li>)}</ul>); listBuffer = null; }
-    if (olBuffer)   { out.push(<ol key={'ol'+out.length}>{olBuffer.map((l,i)=><li key={i}>{inline(l)}</li>)}</ol>); olBuffer = null; }
-  };
+        const flushLists = () => {
+          if (listBuffer) {
+            out.push(
+              <ul key={"ul" + out.length}>
+                {listBuffer.map((l, i) => (
+                  <li key={i}>{inline(l)}</li>
+                ))}
+              </ul>,
+            );
+            listBuffer = null;
+          }
+          if (olBuffer) {
+            out.push(
+              <ol key={"ol" + out.length}>
+                {olBuffer.map((l, i) => (
+                  <li key={i}>{inline(l)}</li>
+                ))}
+              </ol>,
+            );
+            olBuffer = null;
+          }
+        };
 
-  const inline = (s) => {
-    // split by **...** then *...*
-    const parts = [];
-    let rest = s;
-    let key = 0;
-    const re = /(\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`)/;
-    while (rest.length) {
-      const m = rest.match(re);
-      if (!m) { parts.push(rest); break; }
-      const before = rest.slice(0, m.index);
-      if (before) parts.push(before);
-      const tok = m[0];
-      if (tok.startsWith('**')) parts.push(<strong key={key++}>{tok.slice(2,-2)}</strong>);
-      else if (tok.startsWith('`')) parts.push(<code key={key++}>{tok.slice(1,-1)}</code>);
-      else parts.push(<em key={key++}>{tok.slice(1,-1)}</em>);
-      rest = rest.slice(m.index + tok.length);
-    }
-    return parts;
-  };
+        const inline = (s) => {
+          // split by **...** then *...*
+          const parts = [];
+          let rest = s;
+          let key = 0;
+          const re = /(\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`)/;
+          while (rest.length) {
+            const m = rest.match(re);
+            if (!m) {
+              parts.push(rest);
+              break;
+            }
+            const before = rest.slice(0, m.index);
+            if (before) parts.push(before);
+            const tok = m[0];
+            if (tok.startsWith("**"))
+              parts.push(<strong key={key++}>{tok.slice(2, -2)}</strong>);
+            else if (tok.startsWith("`"))
+              parts.push(<code key={key++}>{tok.slice(1, -1)}</code>);
+            else parts.push(<em key={key++}>{tok.slice(1, -1)}</em>);
+            rest = rest.slice(m.index + tok.length);
+          }
+          return parts;
+        };
 
-  for (const raw of lines) {
-    const line = raw;
-    if (/^\s*$/.test(line)) { flushLists(); continue; }
-    if (/^# /.test(line))       { flushLists(); out.push(<h1 key={out.length}>{inline(line.slice(2))}</h1>); continue; }
-    if (/^## /.test(line))      { flushLists(); out.push(<h2 key={out.length}>{inline(line.slice(3))}</h2>); continue; }
-    if (/^### /.test(line))     { flushLists(); out.push(<h3 key={out.length}>{inline(line.slice(4))}</h3>); continue; }
-    if (/^> /.test(line))       { flushLists(); out.push(<blockquote key={out.length}>{inline(line.slice(2))}</blockquote>); continue; }
-    if (/^- /.test(line))       { if (!listBuffer) listBuffer = []; listBuffer.push(line.slice(2)); continue; }
-    if (/^\d+\. /.test(line))   { if (!olBuffer) olBuffer = []; olBuffer.push(line.replace(/^\d+\.\s/, '')); continue; }
-    flushLists();
-    out.push(<p key={out.length}>{inline(line)}</p>);
-  }
-  flushLists();
-  return out;
-}
+        for (const raw of lines) {
+          const line = raw;
+          if (/^\s*$/.test(line)) {
+            flushLists();
+            continue;
+          }
+          if (/^# /.test(line)) {
+            flushLists();
+            out.push(<h1 key={out.length}>{inline(line.slice(2))}</h1>);
+            continue;
+          }
+          if (/^## /.test(line)) {
+            flushLists();
+            out.push(<h2 key={out.length}>{inline(line.slice(3))}</h2>);
+            continue;
+          }
+          if (/^### /.test(line)) {
+            flushLists();
+            out.push(<h3 key={out.length}>{inline(line.slice(4))}</h3>);
+            continue;
+          }
+          if (/^> /.test(line)) {
+            flushLists();
+            out.push(
+              <blockquote key={out.length}>{inline(line.slice(2))}</blockquote>,
+            );
+            continue;
+          }
+          if (/^- /.test(line)) {
+            if (!listBuffer) listBuffer = [];
+            listBuffer.push(line.slice(2));
+            continue;
+          }
+          if (/^\d+\. /.test(line)) {
+            if (!olBuffer) olBuffer = [];
+            olBuffer.push(line.replace(/^\d+\.\s/, ""));
+            continue;
+          }
+          flushLists();
+          out.push(<p key={out.length}>{inline(line)}</p>);
+        }
+        flushLists();
+        return out;
+      }
 
-function PageLogEntry({ id }) {
-  const { navigate } = useRouter();
-  const md = LOG_MD[id] || LOG_MD.intro;
+      function PageLogEntry({ id }) {
+        const { navigate } = useRouter();
+        const md = LOG_MD[id] || LOG_MD.intro;
 
-  return (
-    <main className="page page-enter">
-      <article className="log-article md">
-        <a href="#" className="log-back" onClick={(e) => { e.preventDefault(); navigate('/logbook'); }}>
-          <Icon.arrowLeft /> Back to logbook
-        </a>
-        {renderMd(md)}
+        return (
+          <main className="page page-enter">
+            <article className="log-article md">
+              <a
+                href="#"
+                className="log-back"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate("/logbook");
+                }}
+              >
+                <Icon.arrowLeft /> Back to logbook
+              </a>
+              {renderMd(md)}
 
-        <div className="log-next">
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--ink-muted)' }}>NEXT IN THE LOGBOOK</span>
-          <a href="#" onClick={(e) => { e.preventDefault(); navigate('/logbook'); }} style={{ fontFamily: 'var(--font-display)', fontSize: '20px', letterSpacing: 'var(--display-tracking)', display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--accent)' }}>
-            Browse all entries <Icon.arrow />
-          </a>
-        </div>
-      </article>
-      <Footer />
-    </main>
-  );
-}
+              <div className="log-next">
+                <span
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "11px",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.1em",
+                    color: "var(--ink-muted)",
+                  }}
+                >
+                  NEXT IN THE LOGBOOK
+                </span>
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate("/logbook");
+                  }}
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: "20px",
+                    letterSpacing: "var(--display-tracking)",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "10px",
+                    color: "var(--accent)",
+                  }}
+                >
+                  Browse all entries <Icon.arrow />
+                </a>
+              </div>
+            </article>
+            <Footer />
+          </main>
+        );
+      }
 
-window.PageLogEntry = PageLogEntry;
+      window.PageLogEntry = PageLogEntry;
+    </script>
 
-</script>
+    <script type="text/babel" data-file="src/pages-photo.jsx">
+      /* Photo detail page */
 
-<script type="text/babel" data-file="src/pages-photo.jsx">
-/* Photo detail page */
+      function PagePhoto({ id }) {
+        const { navigate } = useRouter();
+        const photo = PHOTOS.find((p) => p.id === id) || PHOTOS[0];
 
-function PagePhoto({ id }) {
-  const { navigate } = useRouter();
-  const photo = PHOTOS.find(p => p.id === id) || PHOTOS[0];
+        return (
+          <main className="page page-enter">
+            <article className="photo-detail">
+              <a
+                href="#"
+                className="log-back"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate("/logbook");
+                }}
+              >
+                <Icon.arrowLeft /> Back to logbook
+              </a>
 
-  return (
-    <main className="page page-enter">
-      <article className="photo-detail">
-        <a href="#" className="log-back" onClick={(e) => { e.preventDefault(); navigate('/logbook'); }}>
-          <Icon.arrowLeft /> Back to logbook
-        </a>
+              <h1
+                className="display"
+                style={{
+                  fontSize: "clamp(48px, 6vw, 88px)",
+                  margin: "8px 0 24px",
+                }}
+              >
+                {photo.title}
+              </h1>
 
-        <h1 className="display" style={{ fontSize: 'clamp(48px, 6vw, 88px)', margin: '8px 0 24px' }}>{photo.title}</h1>
+              <div
+                className="photo-hero"
+                data-caption={`${photo.location} · ${photo.date}`}
+              >
+                <div className="photo-grad" />
+              </div>
 
-        <div className="photo-hero" data-caption={`${photo.location} · ${photo.date}`}>
-          <div className="photo-grad" />
-        </div>
+              <div className="photo-detail-meta">
+                <div>
+                  <div className="pdm-label">LOCATION</div>
+                  <div className="pdm-value">{photo.location}</div>
+                </div>
+                <div>
+                  <div className="pdm-label">DATE</div>
+                  <div className="pdm-value">{photo.date}</div>
+                </div>
+                <div>
+                  <div className="pdm-label">CAMERA</div>
+                  <div className="pdm-value">Fuji X-T4</div>
+                </div>
+                <div>
+                  <div className="pdm-label">FRAMES</div>
+                  <div className="pdm-value">12</div>
+                </div>
+              </div>
 
-        <div className="photo-detail-meta">
-          <div>
-            <div className="pdm-label">LOCATION</div>
-            <div className="pdm-value">{photo.location}</div>
-          </div>
-          <div>
-            <div className="pdm-label">DATE</div>
-            <div className="pdm-value">{photo.date}</div>
-          </div>
-          <div>
-            <div className="pdm-label">CAMERA</div>
-            <div className="pdm-value">Fuji X-T4</div>
-          </div>
-          <div>
-            <div className="pdm-label">FRAMES</div>
-            <div className="pdm-value">12</div>
-          </div>
-        </div>
+              <p
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "22px",
+                  lineHeight: 1.4,
+                  color: "var(--ink-soft)",
+                  maxWidth: "620px",
+                }}
+              >
+                A short set from {photo.title}. Dappled light, long walks,
+                better conversation than pictures.
+              </p>
 
-        <p style={{ fontFamily: 'var(--font-display)', fontSize: '22px', lineHeight: 1.4, color: 'var(--ink-soft)', maxWidth: '620px' }}>
-          A short set from {photo.title}. Dappled light, long walks, better conversation than pictures.
-        </p>
+              <div className="photo-gallery" style={{ marginTop: "32px" }}>
+                {Array.from({ length: 6 }).map((_, i) => (
+                  <div className="photo-tile" key={i}>
+                    <div className="photo-grad" />
+                  </div>
+                ))}
+              </div>
 
-        <div className="photo-gallery" style={{ marginTop: '32px' }}>
-          {Array.from({ length: 6 }).map((_, i) => (
-            <div className="photo-tile" key={i}>
-              <div className="photo-grad" />
-            </div>
-          ))}
-        </div>
+              <div className="log-next">
+                <span
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "11px",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.1em",
+                    color: "var(--ink-muted)",
+                  }}
+                >
+                  BACK TO
+                </span>
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate("/logbook");
+                  }}
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: "20px",
+                    letterSpacing: "var(--display-tracking)",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "10px",
+                    color: "var(--accent)",
+                  }}
+                >
+                  All photography <Icon.arrow />
+                </a>
+              </div>
+            </article>
+            <Footer />
+          </main>
+        );
+      }
 
-        <div className="log-next">
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--ink-muted)' }}>BACK TO</span>
-          <a href="#" onClick={(e) => { e.preventDefault(); navigate('/logbook'); }} style={{ fontFamily: 'var(--font-display)', fontSize: '20px', letterSpacing: 'var(--display-tracking)', display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--accent)' }}>
-            All photography <Icon.arrow />
-          </a>
-        </div>
-      </article>
-      <Footer />
-    </main>
-  );
-}
+      window.PagePhoto = PagePhoto;
+    </script>
 
-window.PagePhoto = PagePhoto;
+    <script type="text/babel" data-file="src/tweaks.jsx">
+      /* Tweaks panel — live design system toggles */
 
-</script>
+      const THEMES = [
+        {
+          id: "editorial",
+          label: "Signature",
+          swatch: "#2d4cc8",
+          swatchDark: "#e84a5f",
+          desc: "Blue light · red dark (default)",
+        },
+        {
+          id: "precise",
+          label: "Precise",
+          swatch: "#0e6e8a",
+          swatchDark: "#e8b14a",
+          desc: "Teal light · amber dark",
+        },
+        {
+          id: "brutal",
+          label: "Mono",
+          swatch: "#c8304a",
+          swatchDark: "#ff4d67",
+          desc: "Strict mono · red accent",
+        },
+      ];
 
-<script type="text/babel" data-file="src/tweaks.jsx">
-/* Tweaks panel — live design system toggles */
-
-const THEMES = [
-  { id: 'editorial', label: 'Signature', swatch: '#2d4cc8', swatchDark: '#e84a5f', desc: 'Blue light · red dark (default)' },
-  { id: 'precise',   label: 'Precise',   swatch: '#0e6e8a', swatchDark: '#e8b14a', desc: 'Teal light · amber dark' },
-  { id: 'brutal',    label: 'Mono',      swatch: '#c8304a', swatchDark: '#ff4d67', desc: 'Strict mono · red accent' },
-];
-
-function TweaksPanel({ onThemeChange, onModeChange, theme, mode }) {
-  return (
-    <div className="tweaks">
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '12px' }}>
-        <strong style={{ fontFamily: 'var(--font-display)', fontSize: '20px', letterSpacing: 'var(--display-tracking)' }}>Tweaks</strong>
-        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--ink-muted)', letterSpacing: '0.1em' }}>LIVE</span>
-      </div>
-
-      <div className="tweak-group">
-        <h4>Design Direction</h4>
-        <div className="swatch-row">
-          {THEMES.map(t => (
-            <button
-              key={t.id}
-              className={`swatch ${theme === t.id ? 'active' : ''}`}
-              onClick={() => onThemeChange(t.id)}
-              title={t.desc}
+      function TweaksPanel({ onThemeChange, onModeChange, theme, mode }) {
+        return (
+          <div className="tweaks">
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "baseline",
+                marginBottom: "12px",
+              }}
             >
-              <div className="swatch-chip" style={{ background: t.swatch }} />
-              <div>{t.label}</div>
-            </button>
-          ))}
-        </div>
-      </div>
+              <strong
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "20px",
+                  letterSpacing: "var(--display-tracking)",
+                }}
+              >
+                Tweaks
+              </strong>
+              <span
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "10px",
+                  color: "var(--ink-muted)",
+                  letterSpacing: "0.1em",
+                }}
+              >
+                LIVE
+              </span>
+            </div>
 
-      <div className="tweak-group">
-        <h4>Mode</h4>
-        <div className="swatch-row" style={{ gridTemplateColumns: '1fr 1fr' }}>
-          <button className={`swatch ${mode === 'light' ? 'active' : ''}`} onClick={() => onModeChange('light')}>
-            <div className="swatch-chip" style={{ background: '#f5f1ea', border: '1px solid #ccc' }} />
-            <div>Light</div>
-          </button>
-          <button className={`swatch ${mode === 'dark' ? 'active' : ''}`} onClick={() => onModeChange('dark')}>
-            <div className="swatch-chip" style={{ background: '#15120e' }} />
-            <div>Dark</div>
-          </button>
-        </div>
-      </div>
+            <div className="tweak-group">
+              <h4>Design Direction</h4>
+              <div className="swatch-row">
+                {THEMES.map((t) => (
+                  <button
+                    key={t.id}
+                    className={`swatch ${theme === t.id ? "active" : ""}`}
+                    onClick={() => onThemeChange(t.id)}
+                    title={t.desc}
+                  >
+                    <div
+                      className="swatch-chip"
+                      style={{ background: t.swatch }}
+                    />
+                    <div>{t.label}</div>
+                  </button>
+                ))}
+              </div>
+            </div>
 
-      <p style={{ fontSize: '11px', color: 'var(--ink-muted)', margin: 0, lineHeight: 1.5 }}>
-        Three directions to explore — pick one and the whole site reflows with it. Light-first is default.
-      </p>
-    </div>
-  );
-}
+            <div className="tweak-group">
+              <h4>Mode</h4>
+              <div
+                className="swatch-row"
+                style={{ gridTemplateColumns: "1fr 1fr" }}
+              >
+                <button
+                  className={`swatch ${mode === "light" ? "active" : ""}`}
+                  onClick={() => onModeChange("light")}
+                >
+                  <div
+                    className="swatch-chip"
+                    style={{ background: "#f5f1ea", border: "1px solid #ccc" }}
+                  />
+                  <div>Light</div>
+                </button>
+                <button
+                  className={`swatch ${mode === "dark" ? "active" : ""}`}
+                  onClick={() => onModeChange("dark")}
+                >
+                  <div
+                    className="swatch-chip"
+                    style={{ background: "#15120e" }}
+                  />
+                  <div>Dark</div>
+                </button>
+              </div>
+            </div>
 
-window.TweaksPanel = TweaksPanel;
+            <p
+              style={{
+                fontSize: "11px",
+                color: "var(--ink-muted)",
+                margin: 0,
+                lineHeight: 1.5,
+              }}
+            >
+              Three directions to explore — pick one and the whole site reflows
+              with it. Light-first is default.
+            </p>
+          </div>
+        );
+      }
 
-</script>
+      window.TweaksPanel = TweaksPanel;
+    </script>
 
-<script type="text/babel" data-file="src/app.jsx">
-/* Root app — router + theme + tweaks */
+    <script type="text/babel" data-file="src/app.jsx">
+      /* Root app — router + theme + tweaks */
 
-/*EDITMODE-BEGIN*/
-const TWEAKS_DEFAULTS = {
-  "theme": "editorial",
-  "mode": "light"
-};
-/*EDITMODE-END*/
+      /*EDITMODE-BEGIN*/
+      const TWEAKS_DEFAULTS = {
+        theme: "editorial",
+        mode: "light",
+      };
+      /*EDITMODE-END*/
 
-function App() {
-  const stored = {
-    theme: localStorage.getItem('mh-theme') || TWEAKS_DEFAULTS.theme,
-    mode:  localStorage.getItem('mh-mode')  || TWEAKS_DEFAULTS.mode,
-  };
-  const [tweaksOpen, setTweaksOpen] = useState(false);
+      function App() {
+        const stored = {
+          theme: localStorage.getItem("mh-theme") || TWEAKS_DEFAULTS.theme,
+          mode: localStorage.getItem("mh-mode") || TWEAKS_DEFAULTS.mode,
+        };
+        const [tweaksOpen, setTweaksOpen] = useState(false);
 
-  useEffect(() => {
-    const handler = (e) => {
-      if (!e.data || typeof e.data !== 'object') return;
-      if (e.data.type === '__activate_edit_mode') setTweaksOpen(true);
-      if (e.data.type === '__deactivate_edit_mode') setTweaksOpen(false);
-    };
-    window.addEventListener('message', handler);
-    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
-    return () => window.removeEventListener('message', handler);
-  }, []);
+        useEffect(() => {
+          const handler = (e) => {
+            if (!e.data || typeof e.data !== "object") return;
+            if (e.data.type === "__activate_edit_mode") setTweaksOpen(true);
+            if (e.data.type === "__deactivate_edit_mode") setTweaksOpen(false);
+          };
+          window.addEventListener("message", handler);
+          window.parent.postMessage({ type: "__edit_mode_available" }, "*");
+          return () => window.removeEventListener("message", handler);
+        }, []);
 
-  return (
-    <RouterProvider>
-      <ThemeProvider
-        initial={stored}
-        onChange={({ theme, mode }) => {
-          localStorage.setItem('mh-theme', theme);
-          localStorage.setItem('mh-mode', mode);
-        }}
-      >
-        <Shell tweaksOpen={tweaksOpen} />
-      </ThemeProvider>
-    </RouterProvider>
-  );
-}
+        return (
+          <RouterProvider>
+            <ThemeProvider
+              initial={stored}
+              onChange={({ theme, mode }) => {
+                localStorage.setItem("mh-theme", theme);
+                localStorage.setItem("mh-mode", mode);
+              }}
+            >
+              <Shell tweaksOpen={tweaksOpen} />
+            </ThemeProvider>
+          </RouterProvider>
+        );
+      }
 
-function Shell({ tweaksOpen }) {
-  const { path } = useRouter();
-  const { theme, mode, setTheme, setMode } = useTheme();
+      function Shell({ tweaksOpen }) {
+        const { path } = useRouter();
+        const { theme, mode, setTheme, setMode } = useTheme();
 
-  let page;
-  if (path === '/') page = <PageHome />;
-  else if (path === '/about') page = <PageAbout />;
-  else if (path === '/projects') page = <PageProjects />;
-  else if (path === '/logbook') page = <PageLogbook />;
-  else if (path === '/resume') page = <PageResume />;
-  else if (path === '/contact') page = <PageContact />;
-  else if (path.startsWith('/logbook/photo/')) page = <PagePhoto id={path.split('/').pop()} />;
-  else if (path.startsWith('/logbook/')) page = <PageLogEntry id={path.split('/').pop()} />;
-  else page = <PageHome />;
+        let page;
+        if (path === "/") page = <PageHome />;
+        else if (path === "/about") page = <PageAbout />;
+        else if (path === "/projects") page = <PageProjects />;
+        else if (path === "/logbook") page = <PageLogbook />;
+        else if (path === "/resume") page = <PageResume />;
+        else if (path === "/contact") page = <PageContact />;
+        else if (path.startsWith("/logbook/photo/"))
+          page = <PagePhoto id={path.split("/").pop()} />;
+        else if (path.startsWith("/logbook/"))
+          page = <PageLogEntry id={path.split("/").pop()} />;
+        else page = <PageHome />;
 
-  return (
-    <div className="app">
-      <Nav />
-      <div className="page-shell" key={path}>
-        {page}
-      </div>
-      {tweaksOpen && (
-        <TweaksPanel
-          theme={theme}
-          mode={mode}
-          onThemeChange={setTheme}
-          onModeChange={setMode}
-        />
-      )}
-    </div>
-  );
-}
+        return (
+          <div className="app">
+            <Nav />
+            <div className="page-shell" key={path}>
+              {page}
+            </div>
+            {tweaksOpen && (
+              <TweaksPanel
+                theme={theme}
+                mode={mode}
+                onThemeChange={setTheme}
+                onModeChange={setMode}
+              />
+            )}
+          </div>
+        );
+      }
 
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
-
-</script>
-
-</body>
+      ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+    </script>
+  </body>
 </html>
