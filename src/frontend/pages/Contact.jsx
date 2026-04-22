@@ -81,7 +81,7 @@ const Contact = () => {
         <meta name="description" content="Get in touch with Mahad Hassan." />
       </Helmet>
 
-      <p className="eyebrow">06 — CONTACT</p>
+      <p className="eyebrow">06 / CONTACT</p>
 
       <h1 className="display page-title">
         Let&apos;s{" "}

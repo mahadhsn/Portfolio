@@ -30,7 +30,7 @@ const Projects = () => {
         />
       </Helmet>
 
-      <p className="eyebrow">03 — PROJECTS</p>
+      <p className="eyebrow">03 / PROJECTS</p>
       <h1 className="display page-title">Things I&apos;ve built lately.</h1>
       <p className="proj-intro">
         A mix of side projects, hackathon builds, and coursework. See everything

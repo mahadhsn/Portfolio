@@ -4,7 +4,7 @@ _July 24, 2025 · 8 min read · build_
 
 ScleroCare is a partnership between the [iBioMed Society](https://www.eng.mcmaster.ca/ibiomed/resources/ibiomed-society/) at McMaster University and [Scleroderma Canada](https://www.scleroderma.ca) via the [Tech4Good](https://ibiomedsociety.ca/studentlife/tech4good) program.
 
-The app helps users get connected with the right resources depending on their needs — new research/clinical trials, content/workshops, support libraries for patients, caregivers, and healthcare providers, a map with POIs near the user's location, and a fully encrypted Medical Resume.
+The app helps users get connected with the right resources depending on their needs: new research/clinical trials, content/workshops, support libraries for patients, caregivers, and healthcare providers, a map with POIs near the user's location, and a fully encrypted Medical Resume.
 
 ## Background
 
@@ -18,17 +18,17 @@ It would be my first time working on an app that eventually makes its way to the
 
 The app is built in **React Native** with **TypeScript**. It also implements **Firebase** as of now for most of the backend functionality, including data storage, encryption, and user authentication.
 
-Though this app is currently not open-source, I attached the Figma designs for the front-end, which are identical to what the app will actually look like once public. Development has been underway since January. We are a team of 4 developers — you can learn more about us [here](https://ibiomedsociety.ca/studentlife/tech4good).
+Though this app is currently not open-source, I attached the Figma designs for the front-end, which are identical to what the app will actually look like once public. Development has been underway since January. We are a team of 4 developers. You can learn more about us [here](https://ibiomedsociety.ca/studentlife/tech4good).
 
 ## Why?
 
 It's a little deeper than a simple "cuz why not".
 
-Here's a fun fact about me. I actually joined McMaster University back in 2022 for a program called Chemical and Physical Sciences Gateway — essentially a Life Science program where you choose your specialization the following year.
+Here's a fun fact about me. I actually joined McMaster University back in 2022 for a program called Chemical and Physical Sciences Gateway, essentially a Life Science program where you choose your specialization the following year.
 
 The reason for this was, surprise surprise... I wanted to be a Doctor. My mom was a Doctor and my dad a Mechanical Engineer, so I had always been on both sides of the coin. After some research and spending time watching medical shows (The Good Doctor & Grey's Anatomy), I fell in love with medicine. However, only after joining University for a Life Science degree did I realize that I'm not meant for that life.
 
-Biology 1M03 — Biodiversity, Evolution and Humanity — was the end of me. I quickly realized that memorization was not my strong suit, and I instead preferred to understand things on a deeper level.
+Biology 1M03 (Biodiversity, Evolution and Humanity) was the end of me. I quickly realized that memorization was not my strong suit, and I instead preferred to understand things on a deeper level.
 
 After the end of my first semester, I decided to make the switch into the faculty of Engineering, specifically Software Engineering. This was a very tough decision:
 
@@ -42,7 +42,7 @@ I was able to make the switch, and now I'm here!
 
 ## Challenges
 
-Balancing this project along with school was not easy in January. I was VP of Events for MacPSA, VP of Operations for VoicesAtMac, and Attendee Relations Exec for DeltaHacks — all while studying full-time and having never done any app development or Firebase work.
+Balancing this project along with school was not easy in January. I was VP of Events for MacPSA, VP of Operations for VoicesAtMac, and Attendee Relations Exec for DeltaHacks, all while studying full-time and having never done any app development or Firebase work.
 
 However, I managed my time and slowly added iterations and built the app step by step while collaborating with the team. We split up the work in a way where everyone works on their own pages, but would also be open to helping each other out if needed. This helpful environment made it much easier to work on new and unknown tech.
 

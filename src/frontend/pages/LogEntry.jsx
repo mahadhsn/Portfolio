@@ -37,7 +37,7 @@ const LogEntry = ({ id }) => {
   return (
     <>
       <Helmet>
-        <title>{logMeta?.title || "Log"} — Mahad Hassan</title>
+        <title>{logMeta?.title || "Log"} | Mahad Hassan</title>
       </Helmet>
 
       <div className="log-article">
@@ -48,16 +48,35 @@ const LogEntry = ({ id }) => {
         <ReactMarkdown
           components={{
             img: ({ src, alt }) => (
-              <img
-                src={src}
-                alt={alt}
-                style={{
-                  maxWidth: "100%",
-                  borderRadius: "var(--r-md)",
-                  margin: "24px 0",
-                  border: "1px solid var(--line)",
-                }}
-              />
+              <figure style={{ margin: "24px 0", textAlign: "center" }}>
+                <img
+                  src={src}
+                  alt={alt}
+                  style={{
+                    maxWidth: "100%",
+                    maxHeight: "480px",
+                    width: "auto",
+                    display: "block",
+                    borderRadius: "var(--r-md)",
+                    margin: "0 auto",
+                    border: "1px solid var(--line)",
+                    objectFit: "cover",
+                  }}
+                />
+                {alt && (
+                  <figcaption
+                    style={{
+                      marginTop: "10px",
+                      fontSize: "13px",
+                      color: "var(--ink-muted)",
+                      fontFamily: "var(--font-mono)",
+                      letterSpacing: "0.02em",
+                    }}
+                  >
+                    {alt}
+                  </figcaption>
+                )}
+              </figure>
             ),
             a: ({ href, children }) => (
               <a

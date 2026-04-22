@@ -38,7 +38,7 @@ const Logbook = () => {
         />
       </Helmet>
 
-      <p className="eyebrow">04 — LOGBOOK</p>
+      <p className="eyebrow">04 / LOGBOOK</p>
       <div className="logbook-head">
         <div>
           <h1 className="display page-title" style={{ marginBottom: 8 }}>
