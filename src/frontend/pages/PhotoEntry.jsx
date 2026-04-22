@@ -11,7 +11,8 @@ const PhotoEntry = ({ id }) => {
   const [hero, ...rest] = images;
 
   const currentIndex = PHOTOS.findIndex((p) => p.globKey === id);
-  const nextPhoto = currentIndex < PHOTOS.length - 1 ? PHOTOS[currentIndex + 1] : null;
+  const nextPhoto =
+    currentIndex < PHOTOS.length - 1 ? PHOTOS[currentIndex + 1] : null;
 
   if (!photo) {
     return (
@@ -86,14 +87,33 @@ const PhotoEntry = ({ id }) => {
         {/* Next */}
         <div className="log-next">
           <div>
-            <p style={{ fontFamily: "var(--font-mono)", fontSize: "11px", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--ink-muted)" }}>
+            <p
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: "11px",
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+                color: "var(--ink-muted)",
+              }}
+            >
               {nextPhoto ? "Next in photography" : "Back to logbook"}
             </p>
             <button
               onClick={() => navigate(nextPhoto ? nextPhoto.path : "/logbook")}
-              style={{ fontFamily: "var(--font-display)", fontSize: "20px", letterSpacing: "var(--display-tracking)", display: "flex", alignItems: "center", gap: "10px", color: "var(--accent)", cursor: "pointer", marginTop: "8px" }}
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "20px",
+                letterSpacing: "var(--display-tracking)",
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                color: "var(--accent)",
+                cursor: "pointer",
+                marginTop: "8px",
+              }}
             >
-              {nextPhoto ? nextPhoto.title : "All photography"} <ArrowRight size={16} />
+              {nextPhoto ? nextPhoto.title : "All photography"}{" "}
+              <ArrowRight size={16} />
             </button>
           </div>
         </div>

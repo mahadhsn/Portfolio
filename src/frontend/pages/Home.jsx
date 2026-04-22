@@ -24,7 +24,10 @@ const Home = () => {
     <>
       <Helmet>
         <title>Mahad Hassan</title>
-        <meta name="description" content="Software engineering student. Builder, explorer, and curious human." />
+        <meta
+          name="description"
+          content="Software engineering student. Builder, explorer, and curious human."
+        />
       </Helmet>
 
       <p className="eyebrow">01 — HOME</p>
@@ -32,7 +35,6 @@ const Home = () => {
       {/* ── Hero ── */}
       <section className="home-hero">
         <div className="home-hero-text">
-
           <div className="home-name-row">
             <h1 className="home-name">
               <div>
@@ -71,8 +73,8 @@ const Home = () => {
           </div>
 
           <p className="home-tag">
-            Software engineering student at McMaster. I build things for the web,{" "}
-            <em>chase ideas</em>, and write about the journey.
+            Software engineering student at McMaster. I build things for the
+            web, <em>chase ideas</em>, and write about the journey.
           </p>
 
           <div className="home-cta-row">
@@ -149,7 +151,10 @@ const Home = () => {
 
       {/* ── Featured ── */}
       {featured && (
-        <div className="featured" onClick={() => window.open(featured.url, "_blank")}>
+        <div
+          className="featured"
+          onClick={() => window.open(featured.url, "_blank")}
+        >
           <div>
             <p className="featured-eyebrow">★ FEATURED · {featured.award}</p>
             <h2 className="featured-title">{featured.title}</h2>

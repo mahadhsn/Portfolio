@@ -1,11 +1,11 @@
 // ── Nav ──────────────────────────────────────────────────────
 export const NAV_ITEMS = [
-  { id: "home",     label: "Home",     path: "/",         idx: "01" },
-  { id: "about",    label: "About",    path: "/about",    idx: "02" },
+  { id: "home", label: "Home", path: "/", idx: "01" },
+  { id: "about", label: "About", path: "/about", idx: "02" },
   { id: "projects", label: "Projects", path: "/projects", idx: "03" },
-  { id: "logbook",  label: "Logbook",  path: "/logbook",  idx: "04" },
-  { id: "resume",   label: "Resume",   path: "/resume",   idx: "05" },
-  { id: "contact",  label: "Contact",  path: "/contact",  idx: "06" },
+  { id: "logbook", label: "Logbook", path: "/logbook", idx: "04" },
+  { id: "resume", label: "Resume", path: "/resume", idx: "05" },
+  { id: "contact", label: "Contact", path: "/contact", idx: "06" },
 ];
 
 // ── Projects ─────────────────────────────────────────────────
@@ -183,18 +183,18 @@ export const PHOTOS = [
 
 // ── About tabs ────────────────────────────────────────────────
 export const ABOUT_SECTIONS = [
-  { id: "intro",  label: "Intro"  },
-  { id: "now",    label: "Now"    },
+  { id: "intro", label: "Intro" },
+  { id: "now", label: "Now" },
   { id: "before", label: "Before" },
-  { id: "wins",   label: "Wins"   },
+  { id: "wins", label: "Wins" },
 ];
 
 // ── Home stats ────────────────────────────────────────────────
 export const STATS = [
-  { num: "10", plus: true,  label: "Projects"    },
-  { num: "5",  plus: true,  label: "Technologies" },
-  { num: "2",  plus: false, label: "Hackathon Wins" },
-  { num: "3",  plus: false, label: "Log Entries"  },
+  { num: "10", plus: true, label: "Projects" },
+  { num: "5", plus: true, label: "Technologies" },
+  { num: "2", plus: false, label: "Hackathon Wins" },
+  { num: "3", plus: false, label: "Log Entries" },
 ];
 
 // ── Legacy text arrays (used by ChangeWord / About) ──────────

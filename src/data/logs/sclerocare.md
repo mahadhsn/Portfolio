@@ -1,6 +1,6 @@
 # ScleroCare: An App for Patients
 
-*July 24, 2025 · 8 min read · build*
+_July 24, 2025 · 8 min read · build_
 
 ScleroCare is a partnership between the [iBioMed Society](https://www.eng.mcmaster.ca/ibiomed/resources/ibiomed-society/) at McMaster University and [Scleroderma Canada](https://www.scleroderma.ca) via the [Tech4Good](https://ibiomedsociety.ca/studentlife/tech4good) program.
 
