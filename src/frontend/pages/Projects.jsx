@@ -1,145 +1,107 @@
-import { useEffect } from "react";
+import { useState } from "react";
 import { Helmet } from "react-helmet";
-import Project from "../components/projects/Project";
-import { FaReact, FaJava, FaPython } from "react-icons/fa";
-import { IoLogoFirebase } from "react-icons/io5";
-import {
-  SiJavascript,
-  SiTypescript,
-  SiApachemaven,
-  SiTensorflow,
-  SiNumpy,
-  SiOpencv,
-  SiFlask,
-  SiGnubash,
-} from "react-icons/si";
-import { RiTailwindCssFill, RiNextjsFill } from "react-icons/ri";
-import { TbCircleLetterCFilled } from "react-icons/tb";
-import { PiFileSqlFill } from "react-icons/pi";
-import { SiGooglecloud } from "react-icons/si";
-import { AiFillOpenAI } from "react-icons/ai";
+import { ArrowUpRight } from "../components/Icons";
+import { PROJECTS } from "../../data/consts";
+
+const filters = ["all", "web", "mobile", "ml", "systems"];
+
+const filterMap = {
+  all: () => true,
+  web: (p) => /web/i.test(p.tag),
+  mobile: (p) => /mobile/i.test(p.tag),
+  ml: (p) => /ml|ai/i.test(p.tag),
+  systems: (p) => /systems|java|bash|security/i.test(p.tag),
+};
 
 const Projects = () => {
-  useEffect(() => {
-    document.title = "Mahad's Projects";
-  });
+  const [filter, setFilter] = useState("all");
+
+  const featured = PROJECTS.find((p) => p.featured);
+  const visible = PROJECTS.filter(filterMap[filter]);
+  const rest = visible.filter((p) => !p.featured);
 
   return (
-    <div>
+    <>
       <Helmet>
-        <title>Mahad's Projects</title>
-        <meta
-          name="description"
-          content="Projects page of Mahad Hassan's software engineering portfolio."
-        />
+        <title>Mahad&apos;s Projects</title>
+        <meta name="description" content="Projects by Mahad Hassan — web, mobile, ML, and systems." />
       </Helmet>
 
-      <span className="md:text-xl text-lg">
-        <h2 className="text-lg md:text-xl mb-4">
-          A list of some of my projects. Take a look at all of them at my{" "}
-          <a
-            href="https://github.com/mahadhsn"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline"
-          >
-            GitHub!
-          </a>{" "}
-          🚀
-        </h2>
-        <hr className="border-textlight dark:border-textdark"></hr>
-        <Project
-          Title={"PrepPal"}
-          Description={
-            "Disaster awareness and emergency-support web application that helps individuals make informed decisions before and during natural disasters | (winners at MacEngComp 25') 🏆"
-          }
-          href={"https://natural-disaster-map.vercel.app"}
-          Icons={[
-            RiNextjsFill,
-            FaReact,
-            RiTailwindCssFill,
-            SiGooglecloud,
-            AiFillOpenAI,
-          ]}
-        />
+      <p className="eyebrow">03 — PROJECTS</p>
+      <h1 className="display page-title">Things I&apos;ve built lately.</h1>
+      <p className="proj-intro">
+        A mix of side projects, hackathon builds, and coursework. See everything on{" "}
+        <a
+          href="https://github.com/mahadhsn"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: "var(--accent)", textDecoration: "underline", textUnderlineOffset: "4px" }}
+        >
+          GitHub
+        </a>
+        .
+      </p>
 
-        <Project
-          Title={"ScleroCare"}
-          Description={
-            "An app for patients, partnering with Tech4Good & Scleroderma Canada, soon to be on the App Store!"
-          }
-          href={"/logbook/sclerocare"}
-          Icons={[FaReact, IoLogoFirebase, SiTypescript]}
-        />
-        <Project
-          Title={"Drone Rescue Mission"}
-          Description={
-            "Drone controller uses states and strategies to rescue a drone in Java"
-          }
-          href={"https://github.com/mahadhsn/A2-Recue-Mission-T11"}
-          Icons={[FaJava, SiApachemaven]}
-        />
-        <Project
-          Title={"C-View"}
-          Description={"Lightweight, command-line image processor written in C"}
-          href={"https://github.com/mahadhsn/C-View"}
-          Icons={[TbCircleLetterCFilled]}
-        />
-        <Project
-          Title={"Convert-Number-Systems"}
-          Description={"Convert numbers between number systems in C"}
-          href={"https://github.com/mahadhsn/Convert-Number-Systems"}
-          Icons={[TbCircleLetterCFilled]}
-        />
-        <Project
-          Title={"Digit-Recognizer"}
-          Description={
-            "Python program to recognize handwritten digits with 99.3% accuracy"
-          }
-          href={"https://digit-recognizer-web.vercel.app"}
-          Icons={[
-            FaReact,
-            SiTypescript,
-            RiTailwindCssFill,
-            FaPython,
-            SiTensorflow,
-            SiNumpy,
-          ]}
-        />
-        <Project
-          Title={"Java-Tic-Tac-Toe-AI"}
-          Description={
-            "Play Tic-Tac-Toe against an AI that uses the minimax algorithm"
-          }
-          href={"https://github.com/mahadhsn/Java-Tic-Tac-Toe-AI"}
-          Icons={[FaJava, SiApachemaven]}
-        />
-        <Project
-          Title={"Portfolio"}
-          Description={
-            "This portfolio! Created using React and Tailwind CSS and contains information about me."
-          }
-          href={"https://github.com/mahadhsn/Portfolio"}
-          Icons={[FaReact, SiJavascript, RiTailwindCssFill]}
-        />
-        <Project
-          Title={"SecureVault"}
-          Description={
-            "Cybersecurity system - face recognition, file encryption, and more | (winners at MacEngComp 24') 🏆"
-          }
-          href={"https://github.com/mahadhsn/MacEngComp24"}
-          Icons={[FaPython, SiOpencv, SiFlask, PiFileSqlFill]}
-        />
-        <Project
-          Title={"US-Baby-Names"}
-          Description={
-            "Bash script to list the rankings of baby names in the US"
-          }
-          href={"https://github.com/mahadhsn/US-Baby-Names"}
-          Icons={[SiGnubash]}
-        />
-      </span>
-    </div>
+      {/* Featured card */}
+      {filter === "all" && featured && (
+        <div
+          className="proj-featured"
+          onClick={() => window.open(featured.url, "_blank")}
+        >
+          <div className="proj-featured-body">
+            <div>
+              <p className="eyebrow" style={{ margin: 0 }}>★ FEATURED · {featured.award}</p>
+              <h2>{featured.title}</h2>
+              <p style={{ color: "var(--ink-soft)", fontSize: "16px", lineHeight: 1.5, margin: "0 0 20px" }}>
+                {featured.desc}
+              </p>
+            </div>
+            <div style={{ display: "flex", gap: "10px" }}>
+              <a href={featured.url} target="_blank" rel="noopener noreferrer" className="btn primary">
+                Try it out <ArrowUpRight size={13} />
+              </a>
+            </div>
+          </div>
+          <div className="proj-featured-img" />
+        </div>
+      )}
+
+      {/* Filter chips */}
+      <div className="proj-filter">
+        {filters.map((f) => (
+          <button
+            key={f}
+            className={filter === f ? "active" : ""}
+            onClick={() => setFilter(f)}
+          >
+            {f}
+          </button>
+        ))}
+      </div>
+
+      {/* Project list */}
+      <div className="proj-list">
+        {rest.map((p, i) => (
+          <div
+            key={p.id}
+            className="proj-row"
+            onClick={() => {
+              if (p.url.startsWith("http")) window.open(p.url, "_blank");
+              else window.location.href = p.url;
+            }}
+          >
+            <span className="proj-idx">{String(i + (filter === "all" ? 2 : 1)).padStart(2, "0")}</span>
+            <span className="proj-title">
+              {p.title}
+              {p.award && <span className="trophy">🏆</span>}
+            </span>
+            <span className="proj-desc">{p.desc}</span>
+            <span className="proj-tag">{p.tag} · {p.year}</span>
+            <span className="proj-arrow"><ArrowUpRight size={14} /></span>
+          </div>
+        ))}
+      </div>
+    </>
   );
 };
 
