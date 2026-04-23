@@ -2,10 +2,11 @@ import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { ArrowRight } from "../components/Icons";
-import { LOGS, PHOTOS } from "../../data/consts";
+import { PHOTOS } from "../../data/consts";
 import { galleries } from "./photoGalleries";
+import { LOGS } from "../../data/logUtils";
 
-const tags = ["all", "life", "school", "career", "build"];
+const tags = ["all", ...new Set(LOGS.map((l) => l.tag).filter(Boolean))].sort();
 
 // Pick a random cover image per gallery, stable for this page load
 const pickCover = (globKey) => {

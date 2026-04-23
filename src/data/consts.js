@@ -95,42 +95,6 @@ export const PROJECTS = [
   },
 ];
 
-// ── Logs (writing) ────────────────────────────────────────────
-export const LOGS = [
-  {
-    id: "td",
-    title: "My time with TD",
-    date: "FEB 02, 2026",
-    read: "3 min",
-    tag: "work",
-    path: "/logbook/td",
-  },
-  {
-    id: "sclerocare",
-    title: "ScleroCare: An App for Patients",
-    date: "JUL 24, 2025",
-    read: "8 min",
-    tag: "build",
-    path: "/logbook/sclerocare",
-  },
-  {
-    id: "internship",
-    title: "How to Land an Internship 101",
-    date: "JUL 07, 2025",
-    read: "12 min",
-    tag: "career",
-    path: "/logbook/internship",
-  },
-  {
-    id: "intro",
-    title: "Intro: why I started writing",
-    date: "JUN 21, 2025",
-    read: "4 min",
-    tag: "life",
-    path: "/logbook/intro",
-  },
-];
-
 // ── Photos ────────────────────────────────────────────────────
 export const PHOTOS = [
   {
