@@ -98,6 +98,14 @@ export const PROJECTS = [
 // ── Logs (writing) ────────────────────────────────────────────
 export const LOGS = [
   {
+    id: "td",
+    title: "My time with TD",
+    date: "FEB 02, 2026",
+    read: "3 min",
+    tag: "work",
+    path: "/logbook/td",
+  },
+  {
     id: "sclerocare",
     title: "ScleroCare: An App for Patients",
     date: "JUL 24, 2025",

@@ -7,11 +7,13 @@ import { LOGS } from "../../data/consts";
 import introMd from "../../data/logs/intro.md?raw";
 import internshipMd from "../../data/logs/internship.md?raw";
 import sclerocardMd from "../../data/logs/sclerocare.md?raw";
+import tdMd from "../../data/logs/td.md?raw";
 
 const mdContent = {
   intro: introMd,
   internship: internshipMd,
   sclerocare: sclerocardMd,
+  td: tdMd,
 };
 
 const LogEntry = ({ id }) => {
