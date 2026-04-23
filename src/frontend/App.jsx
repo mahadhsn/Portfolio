@@ -33,6 +33,7 @@ export default function App() {
             path="/logbook/sclerocare"
             element={<LogEntry id="sclerocare" />}
           />
+          <Route path="/logbook/td" element={<LogEntry id="td" />} />
 
           <Route
             path="/logbook/belfountain-30-6-25"

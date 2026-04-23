@@ -1,27 +1,28 @@
-import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import { ArrowLeft } from "../components/Icons";
 
 const NotFound = () => {
-  useEffect(() => {
-    document.title = "404 Error";
-  });
+  const navigate = useNavigate();
+
   return (
-    <div className="text-center py-20 text-xl font-bold min-w-full">
-      <h1 className="text-4xl mb-8 text-accentlight dark:text-accentdark">
-        404 - Page Not Found
+    <>
+      <Helmet>
+        <title>404 – Page Not Found | Mahad Hassan</title>
+      </Helmet>
+
+      <p className="eyebrow">?? / NOT FOUND</p>
+      <h1 className="display page-title" style={{ marginBottom: 8 }}>
+        404.
       </h1>
-      <p className="mb-4">Sorry, the page you're looking for doesn't exist.</p>
-      <p className="mb-12">
-        Use the Navbar above to navigate through my website or...
+      <p className="subtle" style={{ fontSize: "18px", maxWidth: "480px", marginBottom: 40 }}>
+        This page doesn&apos;t exist. You might have followed a broken link or
+        typed the address wrong.
       </p>
-      <div>
-        <a
-          href="/"
-          className="text-accentlight dark:text-accentdark underline font-bold"
-        >
-          Go back home
-        </a>
-      </div>
-    </div>
+      <button className="log-back" onClick={() => navigate("/")}>
+        <ArrowLeft size={12} /> Back to home
+      </button>
+    </>
   );
 };
 
