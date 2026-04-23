@@ -1,24 +1,13 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import ReactMarkdown from "react-markdown";
 import { ArrowLeft, ArrowRight } from "../components/Icons";
-import { LOGS } from "../../data/consts";
+import { LOGS, logContents } from "../../data/logUtils";
 
-import introMd from "../../data/logs/intro.md?raw";
-import internshipMd from "../../data/logs/internship.md?raw";
-import sclerocardMd from "../../data/logs/sclerocare.md?raw";
-import tdMd from "../../data/logs/td.md?raw";
-
-const mdContent = {
-  intro: introMd,
-  internship: internshipMd,
-  sclerocare: sclerocardMd,
-  td: tdMd,
-};
-
-const LogEntry = ({ id }) => {
+const LogEntry = () => {
+  const { id } = useParams();
   const navigate = useNavigate();
-  const content = mdContent[id];
+  const content = logContents[id];
   const currentIndex = LOGS.findIndex((l) => l.id === id);
   const nextLog =
     currentIndex < LOGS.length - 1 ? LOGS[currentIndex + 1] : null;

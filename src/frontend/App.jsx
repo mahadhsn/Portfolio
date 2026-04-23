@@ -24,16 +24,7 @@ export default function App() {
           <Route path="/projects" element={<Projects />} />
 
           <Route path="/logbook" element={<Logbook />} />
-          <Route path="/logbook/intro" element={<LogEntry id="intro" />} />
-          <Route
-            path="/logbook/internship"
-            element={<LogEntry id="internship" />}
-          />
-          <Route
-            path="/logbook/sclerocare"
-            element={<LogEntry id="sclerocare" />}
-          />
-          <Route path="/logbook/td" element={<LogEntry id="td" />} />
+          <Route path="/logbook/:id" element={<LogEntry />} />
 
           <Route
             path="/logbook/belfountain-30-6-25"
