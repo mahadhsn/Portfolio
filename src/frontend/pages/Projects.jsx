@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet";
-import { ArrowUpRight } from "../components/Icons";
 import { PROJECTS } from "../../data/consts";
+import ProjectModal from "../components/ProjectModal";
 
 const filters = ["all", "web", "mobile", "ml", "systems"];
 
@@ -15,10 +15,9 @@ const filterMap = {
 
 const Projects = () => {
   const [filter, setFilter] = useState("all");
+  const [selected, setSelected] = useState(null);
 
-  const featured = PROJECTS.find((p) => p.featured);
   const visible = PROJECTS.filter(filterMap[filter]);
-  const rest = visible.filter((p) => !p.featured);
 
   return (
     <>
@@ -50,44 +49,6 @@ const Projects = () => {
         .
       </p>
 
-      {/* Featured card */}
-      {filter === "all" && featured && (
-        <div
-          className="proj-featured"
-          onClick={() => window.open(featured.url, "_blank")}
-        >
-          <div className="proj-featured-body">
-            <div>
-              <p className="eyebrow" style={{ margin: 0 }}>
-                ★ FEATURED · {featured.award}
-              </p>
-              <h2>{featured.title}</h2>
-              <p
-                style={{
-                  color: "var(--ink-soft)",
-                  fontSize: "16px",
-                  lineHeight: 1.5,
-                  margin: "0 0 20px",
-                }}
-              >
-                {featured.desc}
-              </p>
-            </div>
-            <div style={{ display: "flex", gap: "10px" }}>
-              <a
-                href={featured.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn primary"
-              >
-                Try it out <ArrowUpRight size={13} />
-              </a>
-            </div>
-          </div>
-          <div className="proj-featured-img" />
-        </div>
-      )}
-
       {/* Filter chips */}
       <div className="proj-filter">
         {filters.map((f) => (
@@ -101,34 +62,33 @@ const Projects = () => {
         ))}
       </div>
 
-      {/* Project list */}
-      <div className="proj-list">
-        {rest.map((p, i) => (
+      {/* Card grid */}
+      <div className="proj-grid">
+        {visible.map((p) => (
           <div
             key={p.id}
-            className="proj-row"
-            onClick={() => {
-              if (p.url.startsWith("http")) window.open(p.url, "_blank");
-              else window.location.href = p.url;
-            }}
+            className="proj-card"
+            onClick={() => setSelected(p)}
           >
-            <span className="proj-idx">
-              {String(i + (filter === "all" ? 2 : 1)).padStart(2, "0")}
-            </span>
-            <span className="proj-title">
-              {p.title}
-              {p.award && <span className="trophy">🏆</span>}
-            </span>
-            <span className="proj-desc">{p.desc}</span>
-            <span className="proj-tag">
-              {p.tag} · {p.year}
-            </span>
-            <span className="proj-arrow">
-              <ArrowUpRight size={14} />
-            </span>
+            <div className={`proj-card-img proj-placeholder-${p.id}`}>
+              {p.image && <img src={p.image} alt={p.title} />}
+              {p.award && <span className="proj-card-award">🏆 {p.award}</span>}
+            </div>
+            <div className="proj-card-body">
+              <div className="proj-card-meta">
+                <span className="proj-tag-pill">{p.tag}</span>
+                <span className="proj-card-year">{p.year}</span>
+              </div>
+              <h3 className="proj-card-title">{p.title}</h3>
+              <p className="proj-card-desc">{p.desc}</p>
+            </div>
           </div>
         ))}
       </div>
+
+      {selected && (
+        <ProjectModal project={selected} onClose={() => setSelected(null)} />
+      )}
     </>
   );
 };

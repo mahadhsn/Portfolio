@@ -33,6 +33,9 @@ export const PROJECTS = [
     featured: true,
     award: "MacEngComp '25",
     url: "https://natural-disaster-map.vercel.app",
+    role: "Full-stack · Hackathon team",
+    tech: ["TypeScript", "React", "Next.js", "Tailwind CSS", "GCP Vision", "OpenAI"],
+    image: null,
   },
   {
     id: "sclerocare",
@@ -41,6 +44,9 @@ export const PROJECTS = [
     tag: "Mobile",
     year: "2025",
     url: "/logbook/sclerocare",
+    role: "Mobile developer · Team of 4",
+    tech: ["React Native", "Firebase", "Expo"],
+    image: null,
   },
   {
     id: "drone",
@@ -49,6 +55,9 @@ export const PROJECTS = [
     tag: "Java",
     year: "2025",
     url: "https://github.com/mahadhsn/A2-Recue-Mission-T11",
+    role: "Solo project",
+    tech: ["Java", "State Pattern", "Strategy Pattern"],
+    image: null,
   },
   {
     id: "digit",
@@ -57,6 +66,9 @@ export const PROJECTS = [
     tag: "ML",
     year: "2024",
     url: "https://digit-recognizer-web.vercel.app",
+    role: "Solo project",
+    tech: ["Python", "TensorFlow", "Matplotlib", "TypeScript", "React", "Tailwind CSS"],
+    image: null,
   },
   {
     id: "cview",
@@ -65,6 +77,9 @@ export const PROJECTS = [
     tag: "Systems",
     year: "2024",
     url: "https://github.com/mahadhsn/C-View",
+    role: "Solo project",
+    tech: ["C"],
+    image: null,
   },
   {
     id: "ttt",
@@ -73,6 +88,9 @@ export const PROJECTS = [
     tag: "Java",
     year: "2024",
     url: "https://github.com/mahadhsn/Java-Tic-Tac-Toe-AI",
+    role: "Solo project",
+    tech: ["Java", "Minimax"],
+    image: null,
   },
   {
     id: "securevault",
@@ -82,6 +100,9 @@ export const PROJECTS = [
     year: "2024",
     award: "MacEngComp '24",
     url: "https://github.com/mahadhsn/MacEngComp24",
+    role: "Full-stack · Hackathon team",
+    tech: ["Python", "OpenCV", "Flask", "SQL", "Cryptography"],
+    image: null,
   },
   {
     id: "portfolio",
@@ -90,6 +111,9 @@ export const PROJECTS = [
     tag: "Web",
     year: "2024",
     url: "https://github.com/mahadhsn/Portfolio",
+    role: "Solo project",
+    tech: ["React", "Vite", "Tailwind CSS", "Node.js", "Vercel"],
+    image: null,
   },
   {
     id: "convertnums",
@@ -98,6 +122,9 @@ export const PROJECTS = [
     tag: "Systems",
     year: "2023",
     url: "https://github.com/mahadhsn/Convert-Number-Systems",
+    role: "Solo project",
+    tech: ["C"],
+    image: null,
   },
   {
     id: "babynames",
@@ -106,6 +133,9 @@ export const PROJECTS = [
     tag: "Bash",
     year: "2023",
     url: "https://github.com/mahadhsn/US-Baby-Names",
+    role: "Solo project",
+    tech: ["Bash"],
+    image: null,
   },
 ];
 
