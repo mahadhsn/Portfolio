@@ -1,465 +1,309 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useState } from "react";
 import { Helmet } from "react-helmet";
-import ChangeWord from "../components/ChangeWord";
-import Image from "../components/logs/Image";
-import AboutRail from "../components/about/AboutRail";
-import SectionHeader from "../components/about/SectionHeader";
-import MiniPanel from "../components/about/MiniPanel";
-import TimelineBlock from "../components/about/TimelineBlock";
-import useActiveSection from "../components/about/useActiveSection";
-import {
-  currently,
-  previously,
-  achievements,
-  shortGoals,
-  longGoals,
-} from "../../data/consts";
+import { ABOUT_SECTIONS } from "../../data/consts";
 
 const About = () => {
-  useEffect(() => {
-    document.title = "About Mahad";
-  }, []);
-
-  const sections = useMemo(
-    () => [
-      { id: "intro", label: "Intro" },
-      { id: "now", label: "Now" },
-      { id: "before", label: "Before" },
-      { id: "wins", label: "Wins" },
-    ],
-    [],
-  );
-
-  const refs = useRef({});
-  const { active, scrollTo } = useActiveSection(sections, refs, {
-    activationRatio: 0.32,
-    yOffset: -12,
-    clickLockMs: 550,
-  });
-
-  const sectionCard =
-    "rounded-3xl border-borderlight dark:border-borderdark " + "p-2 md:p-8";
-
-  const blockWrap = "-mx-2 sm:mx-0";
-
-  const blockCardClassName =
-    "rounded-3xl border border-borderlight dark:border-borderdark " +
-    "px-7 py-7 md:px-6 md:py-6";
-
-  const blocksStack = "mt-7 space-y-6 md:space-y-4";
+  const [tab, setTab] = useState("intro");
 
   return (
-    <div className="mx-auto md:px-8">
+    <>
       <Helmet>
         <title>About Mahad</title>
         <meta
           name="description"
-          content="About page of Mahad Hassan's software engineering portfolio."
+          content="About Mahad Hassan — software engineering student, builder, curious human."
         />
       </Helmet>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-0">
-        <AboutRail
-          sections={sections}
-          active={active}
-          onSelect={scrollTo}
-          image={
-            <Image
-              divStyle={styles.imageWrapper}
-              imgStyle={styles.img}
-              src="/images/about/me.jpg"
-              captionText="Me at a Daniel Caeser concert - Oct 2023"
-            />
-          }
-        />
+      <p className="eyebrow">02 / ABOUT</p>
 
-        <main className="lg:col-span-8 space-y-8 md:space-y-10">
-          {/* INTRO */}
-          <section
-            id="intro"
-            ref={(el) => (refs.current.intro = el)}
-            className={sectionCard}
+      {/* Hero row */}
+      <div className="about-hero">
+        <div>
+          <h1 className="display page-title">
+            A{" "}
+            <em style={{ color: "var(--accent)", fontStyle: "italic" }}>
+              curious
+            </em>{" "}
+            human first.
+          </h1>
+          <p
+            className="subtle"
+            style={{
+              fontSize: "17px",
+              maxWidth: "480px",
+              marginTop: "20px",
+              lineHeight: 1.6,
+            }}
           >
-            <SectionHeader title="Intro" />
-
-            <div className="text-lg md:text-xl leading-relaxed space-y-6">
-              <p>
-                <span className="font-bold">Hello!</span> I’m someone who’s
-                always looking to try new things. Learning new things, meeting
-                new people, and experiencing new cultures keeps me going. I love
-                tech, space, music, video games, movies, nature, animals, and
-                more. If you want the real story, my{" "}
-                <a
-                  href="/logbook"
-                  className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
-                >
-                  logbook
-                </a>{" "}
-                is where I write things as I learn and build.
-              </p>
-
-              <p>
-                I put huge emphasis on bettering myself mentally, physically,
-                and emotionally. I believe small steps lead to big changes. You
-                are your biggest competition, and the only person you should be
-                better than is who you were yesterday.
-              </p>
-            </div>
-
-            <div className="mt-7 grid grid-cols-1 md:grid-cols-2 gap-4">
-              <MiniPanel title="Short-term">
-                <ChangeWord list={shortGoals} />
-              </MiniPanel>
-              <MiniPanel title="Long-term">
-                <ChangeWord list={longGoals} />
-              </MiniPanel>
-            </div>
-          </section>
-
-          {/* NOW */}
-          <section
-            id="now"
-            ref={(el) => (refs.current.now = el)}
-            className={sectionCard}
-          >
-            <SectionHeader
-              title={
-                <span className="flex items-center gap-3">
-                  <span>Now</span>
-                  <span className="relative flex h-3 w-3">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75" />
-                    <span className="relative inline-flex h-3 w-3 rounded-full bg-green-500" />
-                  </span>
-                </span>
-              }
-              subtitle={<ChangeWord list={currently} />}
-            />
-
-            <div className={blocksStack}>
-              <div className={blockWrap}>
-                <TimelineBlock
-                  className={blockCardClassName}
-                  title="School"
-                  items={[
-                    {
-                      date: "2022",
-                      content: (
-                        <>
-                          3<span className="text-sm">rd</span> year Software
-                          Engineering student 🖥️
-                        </>
-                      ),
-                    },
-                  ]}
-                />
-              </div>
-
-              <div className={blockWrap}>
-                <TimelineBlock
-                  className={blockCardClassName}
-                  title="Teams + clubs"
-                  items={[
-                    {
-                      date: "Oct 2025",
-                      content: (
-                        <>
-                          Machine learning Engineer at{" "}
-                          <a
-                            href="https://www.macdrones.ca"
-                            className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
-                          >
-                            McMaster Drone Club
-                          </a>{" "}
-                          ✈
-                        </>
-                      ),
-                    },
-                    {
-                      date: "Sept 2025",
-                      content: (
-                        <>
-                          Controls-Subteam at{" "}
-                          <a
-                            href="https://www.macrocketry.ca"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
-                          >
-                            McMaster Rocketry
-                          </a>{" "}
-                          🚀
-                        </>
-                      ),
-                    },
-                    {
-                      date: "July 2025",
-                      content: (
-                        <>
-                          Website Developer for{" "}
-                          <a
-                            href="https://ses.eng.mcmaster.ca"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
-                          >
-                            Software Eng Society
-                          </a>{" "}
-                          💻
-                        </>
-                      ),
-                    },
-                    {
-                      date: "Jan 2025",
-                      content: (
-                        <>
-                          Developing{" "}
-                          <a
-                            href="https://www.mahadhssn.com/logbook/sclerocare"
-                            className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
-                          >
-                            an app
-                          </a>{" "}
-                          for{" "}
-                          <a
-                            href="https://www.scleroderma.ca"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
-                          >
-                            Scleroderma Canada
-                          </a>{" "}
-                          📱
-                        </>
-                      ),
-                    },
-                    {
-                      date: "Aug 2024",
-                      content: (
-                        <>
-                          Attendee Relations Executive for{" "}
-                          <a
-                            href="https://www.deltahacks.com"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
-                          >
-                            DeltaHacks
-                          </a>{" "}
-                          💻
-                        </>
-                      ),
-                    },
-                  ]}
-                />
-              </div>
-            </div>
-          </section>
-
-          {/* BEFORE */}
-          <section
-            id="before"
-            ref={(el) => (refs.current.before = el)}
-            className={sectionCard}
-          >
-            <SectionHeader
-              title="Before"
-              subtitle={<ChangeWord list={previously} />}
-            />
-
-            <div className={blocksStack}>
-              <div className={blockWrap}>
-                <TimelineBlock
-                  className={blockCardClassName}
-                  title="Work"
-                  items={[
-                    {
-                      date: "May - Aug 2025",
-                      content: (
-                        <>
-                          Software Engineering Intern @{" "}
-                          <a
-                            href="https://www.td.com/ca/en/personal-banking"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
-                          >
-                            TD
-                          </a>{" "}
-                          🟩
-                        </>
-                      ),
-                    },
-                    {
-                      date: "June - Aug 2024",
-                      content: (
-                        <>
-                          Cybersecurity Intern @{" "}
-                          <a
-                            href="https://www.linkedin.com/company/ras-laffan-power-company/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
-                          >
-                            RLPC
-                          </a>{" "}
-                          🦠
-                        </>
-                      ),
-                    },
-                  ]}
-                />
-              </div>
-
-              <div className={blockWrap}>
-                <TimelineBlock
-                  className={blockCardClassName}
-                  title="Leadership + community"
-                  items={[
-                    {
-                      date: "Oct 2024 - Sept 2025",
-                      content: (
-                        <>
-                          VP of Operations @{" "}
-                          <a
-                            href="https://www.instagram.com/voicesatmac/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
-                          >
-                            VoicesatMac
-                          </a>{" "}
-                          🎤
-                        </>
-                      ),
-                    },
-                    {
-                      date: "@ Sept 2024",
-                      content: (
-                        <>
-                          Volunteered for{" "}
-                          <a
-                            href="https://www.hammerhacks.ca"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
-                          >
-                            HammerHacks
-                          </a>{" "}
-                          💻
-                        </>
-                      ),
-                    },
-                    {
-                      date: "June 2024 - April 2025",
-                      content: (
-                        <>
-                          VP of Events @{" "}
-                          <a
-                            href="https://www.instagram.com/mcmasterpsa/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
-                          >
-                            McMaster PSA
-                          </a>{" "}
-                          🇵🇰
-                        </>
-                      ),
-                    },
-                    {
-                      date: "@ Aug 2024",
-                      content: (
-                        <>
-                          Volunteered for{" "}
-                          <a
-                            href="https://www.campquality.org"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="underline hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
-                          >
-                            CampQuality
-                          </a>{" "}
-                          🏕️
-                        </>
-                      ),
-                    },
-                  ]}
-                />
-              </div>
-            </div>
-          </section>
-
-          {/* WINS */}
-          <section
-            id="wins"
-            ref={(el) => (refs.current.wins = el)}
-            className={sectionCard}
-          >
-            <SectionHeader
-              title="Wins"
-              subtitle={<ChangeWord list={achievements} />}
-            />
-
-            <div className={blocksStack}>
-              <div className={blockWrap}>
-                <TimelineBlock
-                  className={blockCardClassName}
-                  title="Academics"
-                  items={[
-                    { content: "Consistent Dean's List at McMaster 💯" },
-                    { content: "Scored 1480 on the SAT 🎓" },
-                    { content: "Received the AP Scholar with Honor Award 🏅" },
-                  ]}
-                />
-              </div>
-
-              <div className={blockWrap}>
-                <TimelineBlock
-                  className={blockCardClassName}
-                  title="Competitions"
-                  items={[
-                    { content: "Winner at MacEngComp 25' 🏆" },
-                    { content: "Winner at MacEngComp 24' 🏆" },
-                    { content: "Finalists at MacEngComp 23' 🏆" },
-                  ]}
-                />
-              </div>
-
-              <div className={blockWrap}>
-                <TimelineBlock
-                  className={blockCardClassName}
-                  title="Leadership & Impact"
-                  items={[
-                    {
-                      date: "June 2024 - Apr 2025",
-                      content:
-                        "Raised nearly $6,000 for charity with McMasterPSA 🎗️",
-                    },
-                    {
-                      date: "Nov 2023 - Apr 2025",
-                      content:
-                        "Accomodated Move-In/Move-out of up to 4700 first year students as an ESA",
-                    },
-                  ]}
-                />
-              </div>
-            </div>
-          </section>
-        </main>
+            Software engineering student at McMaster. I build things, explore
+            ideas, and try not to take life too seriously. My logbook is where
+            the honest stuff lives.
+          </p>
+        </div>
+        <div className="about-photo-frame">
+          <img
+            src="/images/about/me.jpg"
+            alt="Mahad at a Daniel Caesar concert, Oct 2023"
+          />
+          <span className="about-photo-caption">
+            Daniel Caesar concert · Oct 2023
+          </span>
+        </div>
       </div>
-    </div>
-  );
-};
 
-const styles = {
-  imageWrapper: {
-    width: "100%",
-    maxWidth: "420px",
-  },
-  img: {
-    borderRadius: "12px",
-    width: "100%",
-  },
+      {/* Tabs */}
+      <div className="about-tabs">
+        {ABOUT_SECTIONS.map((s) => (
+          <button
+            key={s.id}
+            className={`about-tab${tab === s.id ? " active" : ""}`}
+            onClick={() => setTab(s.id)}
+          >
+            {s.label}
+          </button>
+        ))}
+      </div>
+
+      {/* ── INTRO ── */}
+      {tab === "intro" && (
+        <div className="about-section" key="intro">
+          <h2>
+            Hello, <em>world.</em>
+          </h2>
+          <p>
+            I'm someone who's always looking to try new things: learning,
+            meeting new people, and experiencing new cultures keeps me going. I
+            love tech, space, music (check out my TikTok on the footer where I
+            sing!), video games, movies, nature, and more. If you want the real
+            story, my{" "}
+            <a href="/logbook" style={{ color: "var(--accent)" }}>
+              logbook
+            </a>{" "}
+            is where I write things as I learn and build.
+          </p>
+          <p>
+            I put huge emphasis on bettering myself mentally, physically, and
+            emotionally. I believe small steps lead to big changes. You are your
+            biggest competition, and the only person you should be better than
+            is who you were yesterday.
+          </p>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "24px",
+              marginTop: "40px",
+            }}
+          >
+            <div
+              style={{
+                padding: "20px",
+                border: "1px solid var(--line)",
+                borderRadius: "var(--r-md)",
+              }}
+            >
+              <p
+                style={{
+                  margin: 0,
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "11px",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.08em",
+                  color: "var(--ink-muted)",
+                }}
+              >
+                Short-term
+              </p>
+              <p
+                className="display"
+                style={{ fontSize: "22px", marginTop: "10px" }}
+              >
+                Learning piano 🎹
+              </p>
+              <p
+                style={{
+                  color: "var(--ink-soft)",
+                  fontSize: "14px",
+                  marginTop: "8px",
+                }}
+              >
+                Getting past 1600 ELO in chess, attending more hackathons,
+                learning to surf.
+              </p>
+            </div>
+            <div
+              style={{
+                padding: "20px",
+                border: "1px solid var(--line)",
+                borderRadius: "var(--r-md)",
+              }}
+            >
+              <p
+                style={{
+                  margin: 0,
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "11px",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.08em",
+                  color: "var(--ink-muted)",
+                }}
+              >
+                Long-term
+              </p>
+              <p
+                className="display"
+                style={{ fontSize: "22px", marginTop: "10px" }}
+              >
+                Start a company 🧑‍💻
+              </p>
+              <p
+                style={{
+                  color: "var(--ink-soft)",
+                  fontSize: "14px",
+                  marginTop: "8px",
+                }}
+              >
+                Visit every continent, learn more languages, help advance the
+                human civilization.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── NOW ── */}
+      {tab === "now" && (
+        <div className="about-section" key="now">
+          <h2>
+            Currently <em>building.</em>
+          </h2>
+          <p>What I'm spending my time on right now.</p>
+          <div className="timeline">
+            <div className="tl-row">
+              <span className="tl-date">2022 →</span>
+              <span className="tl-title">Software Engineering @ McMaster</span>
+              <span className="tl-meta">3rd year 🖥️</span>
+            </div>
+            <div className="tl-row">
+              <span className="tl-date">Oct 2025</span>
+              <span className="tl-title">ML Engineer, McMaster Drone Club</span>
+              <span className="tl-meta">✈</span>
+            </div>
+            <div className="tl-row">
+              <span className="tl-date">Sept 2025</span>
+              <span className="tl-title">
+                Controls Subteam, McMaster Rocketry
+              </span>
+              <span className="tl-meta">🚀</span>
+            </div>
+            <div className="tl-row">
+              <span className="tl-date">July 2025</span>
+              <span className="tl-title">Web Dev, Software Eng Society</span>
+              <span className="tl-meta">💻</span>
+            </div>
+            <div className="tl-row">
+              <span className="tl-date">Jan 2025</span>
+              <span className="tl-title">
+                Developer, ScleroCare / Scleroderma Canada
+              </span>
+              <span className="tl-meta">📱</span>
+            </div>
+            <div className="tl-row">
+              <span className="tl-date">Aug 2024</span>
+              <span className="tl-title">Attendee Relations, DeltaHacks</span>
+              <span className="tl-meta">💻</span>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── BEFORE ── */}
+      {tab === "before" && (
+        <div className="about-section" key="before">
+          <h2>
+            Where I've <em>been.</em>
+          </h2>
+          <p>Work, leadership, and community before now.</p>
+          <div className="timeline">
+            <div className="tl-row">
+              <span className="tl-date">May – Aug 2025</span>
+              <span className="tl-title">Software Engineering Intern, TD</span>
+              <span className="tl-meta">🟩</span>
+            </div>
+            <div className="tl-row">
+              <span className="tl-date">Jun – Aug 2024</span>
+              <span className="tl-title">Cybersecurity Intern, RLPC</span>
+              <span className="tl-meta">🦠</span>
+            </div>
+            <div className="tl-row">
+              <span className="tl-date">Oct 2024 – Sept 2025</span>
+              <span className="tl-title">VP of Operations, VoicesatMac</span>
+              <span className="tl-meta">🎤</span>
+            </div>
+            <div className="tl-row">
+              <span className="tl-date">Jun 2024 – Apr 2025</span>
+              <span className="tl-title">VP of Events, McMaster PSA</span>
+              <span className="tl-meta">🇵🇰</span>
+            </div>
+            <div className="tl-row">
+              <span className="tl-date">Sept 2024</span>
+              <span className="tl-title">Volunteer, HammerHacks</span>
+              <span className="tl-meta">💻</span>
+            </div>
+            <div className="tl-row">
+              <span className="tl-date">Aug 2024</span>
+              <span className="tl-title">Volunteer, CampQuality</span>
+              <span className="tl-meta">🏕️</span>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── WINS ── */}
+      {tab === "wins" && (
+        <div className="about-section" key="wins">
+          <h2>
+            Proud <em>moments.</em>
+          </h2>
+          <p>Things I'm glad happened.</p>
+          <div className="wins-grid">
+            <div className="win">
+              <div className="win-icon">🏆</div>
+              <div className="win-title">MacEngComp '25 Winner</div>
+              <div className="win-meta">PrepPal, Disaster awareness app</div>
+            </div>
+            <div className="win">
+              <div className="win-icon">🏆</div>
+              <div className="win-title">MacEngComp '24 Winner</div>
+              <div className="win-meta">SecureVault, Cybersecurity system</div>
+            </div>
+            <div className="win">
+              <div className="win-icon">🏅</div>
+              <div className="win-title">MacEngComp '23 Finalist</div>
+              <div className="win-meta">Top teams at the competition</div>
+            </div>
+            <div className="win">
+              <div className="win-icon">💯</div>
+              <div className="win-title">Consistent Dean&apos;s List</div>
+              <div className="win-meta">McMaster University</div>
+            </div>
+            <div className="win">
+              <div className="win-icon">🎓</div>
+              <div className="win-title">AP Scholar with Honor</div>
+              <div className="win-meta">1480 SAT score</div>
+            </div>
+            <div className="win">
+              <div className="win-icon">🎗️</div>
+              <div className="win-title">~$6,000 raised for charity</div>
+              <div className="win-meta">With McMaster PSA, 2024–25</div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
 };
 
 export default About;

@@ -1,218 +1,201 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import { Link } from "react-router-dom";
-import Image from "../components/logs/Image";
-import { greetings } from "../../data/consts";
-import Quotes from "../components/Quotes";
-import CountUpCard from "../components/home/CountUpCard";
+import Button from "../components/Button";
+import { ArrowUpRight } from "../components/Icons";
+import { STATS, PROJECTS, GREETINGS } from "../../data/consts";
+
+const im = " I'm";
+const line2 = "Mahad.";
 
 const Home = () => {
+  const navigate = useNavigate();
+  const [quote, setQuote] = useState(null);
+  const [greetingIdx, setGreetingIdx] = useState(0);
+  const featured = PROJECTS.find((p) => p.featured);
+  const greeting = GREETINGS[greetingIdx];
+  const cycleGreeting = () => setGreetingIdx((i) => (i + 1) % GREETINGS.length);
+
   useEffect(() => {
-    document.title = "Mahad Hassan";
+    fetch("/api/quote")
+      .then((r) => r.json())
+      .then((d) => setQuote(d))
+      .catch(() => {});
   }, []);
 
-  const [currentGreeting, setCurrentGreeting] = useState(greetings[0]);
-
-  const handleGreetingClick = () => {
-    const nextIndex =
-      (greetings.indexOf(currentGreeting) + 1) % greetings.length;
-    setCurrentGreeting(greetings[nextIndex]);
-  };
-
   return (
-    <div className="space-y-10 md:-mt-10">
+    <>
       <Helmet>
         <title>Mahad Hassan</title>
         <meta
           name="description"
-          content="Home page of Mahad Hassan's software engineering portfolio."
+          content="Software engineering student. Builder, explorer, and curious human."
         />
       </Helmet>
 
-      {/* HERO */}
-      <div className="flex flex-col text-center space-y-3">
-        <Image src="/images/hero.jpeg" imgStyle={styles.img} />
+      <p className="eyebrow">01 / HOME</p>
 
-        <h1 className="text-3xl md:text-5xl flex items-center justify-center gap-2">
-          <span
-            className="cursor-pointer flex items-center gap-2 select-none transition-colors
-              hover:text-accenthoverlight dark:hover:text-accenthoverdark"
-            onClick={handleGreetingClick}
-          >
-            {currentGreeting.flag && (
-              <span className="flex items-center">{currentGreeting.flag}</span>
-            )}
-            <span className="underline font-bold">{currentGreeting.text}</span>
-          </span>
-          <span>I'm Mahad</span>
-        </h1>
-      </div>
-
-      {/* QUICK ACTIONS */}
-      <div className="flex flex-col sm:flex-row gap-3 justify-center">
-        {[
-          { to: "/resume", label: "View Resume", isLink: false },
-          { to: "/projects", label: "Projects", isLink: true },
-          { to: "/contact", label: "Contact", isLink: true },
-        ].map(({ to, label, isLink }) =>
-          isLink ? (
-            <Link
-              key={to}
-              to={to}
-              className="px-5 py-2 rounded-lg border transition text-center
-                border-borderlight dark:border-borderdark
-                hover:border-accentlight dark:hover:border-accentdark"
-            >
-              {label}
-            </Link>
-          ) : (
-            <a
-              key={to}
-              href={to}
-              className="px-5 py-2 rounded-lg border transition text-center
-                border-borderlight dark:border-borderdark
-                hover:border-accentlight dark:hover:border-accentdark"
-            >
-              {label}
-            </a>
-          ),
-        )}
-      </div>
-
-      {/* VISUAL GRID */}
-      <div className="space-y-8 md:space-y-10">
-        {/* Row 1 */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8">
-          {/* About */}
-          <div
-            className="lg:col-span-7 rounded-3xl border p-8
-              border-borderlight dark:border-borderdark"
-          >
-            <div className="text-sm font-bold">
-              <span className="text-xl">A</span>BOUT
-            </div>
-            <div className="h-1 w-12 rounded-full bg-accentlight dark:bg-accentdark mb-5" />
-            <div className="text-2xl font-semibold mt-1">Quick snapshot</div>
-
-            <div className="mt-5 flex flex-wrap gap-3">
-              {[
-                "Software Engineering III @ McMaster",
-                "Prev @ TD",
-                "Building clean systems",
-                "Integrating AI-based solutions",
-              ].map((t) => (
+      {/* ── Hero ── */}
+      <section className="home-hero">
+        <div className="home-hero-text">
+          <div className="home-name-row">
+            <h1 className="home-name">
+              <div>
                 <span
-                  key={t}
-                  className="px-4 py-2 rounded-full border text-sm
-                    border-borderlight dark:border-borderdark
-                  "
+                  className="char greeting-text"
+                  onClick={cycleGreeting}
+                  style={{
+                    animationDelay: "0s",
+                    fontSize: "0.35em",
+                    letterSpacing: 0,
+                    cursor: "pointer",
+                  }}
                 >
-                  {t}
+                  {greeting.text}
+                  {greeting.flag && (
+                    <span style={{ margin: "0 0.15em" }}>{greeting.flag}</span>
+                  )}
+                  {","}
+                  <span className="greeting-cycle-hint">↻</span>
                 </span>
-              ))}
+                {im.split("").map((c, i) => (
+                  <span
+                    key={i}
+                    className="char"
+                    style={{
+                      animationDelay: `${(i + 1) * 0.03}s`,
+                      color: "var(--ink-soft)",
+                      fontSize: "0.35em",
+                      letterSpacing: 0,
+                      marginRight: c === " " ? "0.2em" : 0,
+                    }}
+                  >
+                    {c}
+                  </span>
+                ))}
+              </div>
+              <div>
+                {line2.split("").map((c, i) => (
+                  <span
+                    key={i}
+                    className={`char${c === "." ? " red" : i === 0 ? " accent-char" : ""}`}
+                    style={{ animationDelay: `${0.4 + i * 0.07}s` }}
+                  >
+                    {c}
+                  </span>
+                ))}
+              </div>
+            </h1>
+
+            <div className="home-hero-photo">
+              <img src="/images/hero.jpeg" alt="Mahad Hassan" />
             </div>
           </div>
 
-          {/* Featured */}
-          <div
-            className="lg:col-span-5 rounded-3xl border p-8
-              border-borderlight dark:border-borderdark"
-          >
-            <div className="text-sm font-bold">
-              <span className="text-xl">F</span>EATURED
-            </div>
-            <div className="h-1 w-12 rounded-full bg-accentlight dark:bg-accentdark mb-5" />
+          <p className="home-tag">
+            Software engineering student at McMaster. I build things for the
+            world, <em>chase ideas</em>, and love to learn.
+          </p>
 
-            <div className="text-2xl font-semibold mt-1">Digit Recognizer</div>
-
-            <p className="text-sm mt-5  leading-relaxed">
-              8-layer CNN built to detect hand-drawn digits with 99.3% accuracy
-            </p>
-
-            <a
-              href="https://digit-recognizer-web.vercel.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block mt-5 underline text-sm
-              
-                hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
-            >
-              Try it out!
-            </a>
+          <div className="home-cta-row">
+            <Button variant="primary" onClick={() => navigate("/projects")}>
+              See projects
+            </Button>
+            <Button variant="ghost" onClick={() => navigate("/resume")}>
+              View Résumé
+            </Button>
+            <Button variant="ghost" onClick={() => navigate("/contact")}>
+              Get in touch
+            </Button>
           </div>
         </div>
+      </section>
 
-        {/* Row 2 */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8">
-          {/* Now */}
-          <div
-            className="lg:col-span-8 rounded-3xl border p-8
-              border-borderlight dark:border-borderdark"
-          >
-            <div className="text-sm font-bold">
-              <span className="text-xl">N</span>OW
-            </div>
-            <div className="h-1 w-12 rounded-full bg-accentlight dark:bg-accentdark mb-5" />
-
-            <div className="text-2xl font-semibold mt-1">
-              What I’m focused on
-            </div>
-
-            <ul className="mt-5 space-y-3 text-sm ">
-              {[
-                "Building scalable AI solutions",
-                "Advancing humanity by solving real world problems",
-                "Maintaining dean's list with involvement in 7 clubs",
-              ].map((t) => (
-                <li key={t} className="flex items-start gap-3">
-                  <span className="mt-[7px] h-2 w-2 rounded-full bg-accentlight dark:bg-accentdark" />
-                  <span className="leading-relaxed">{t}</span>
-                </li>
-              ))}
-            </ul>
-
-            <Link
-              to="/about"
-              className="inline-block mt-5 underline text-sm
-              
-                hover:text-accenthoverlight dark:hover:text-accenthoverdark transition-colors"
-            >
-              Read more
-            </Link>
+      {/* ── Grid ── */}
+      <div className="home-grid stagger">
+        <div className="card">
+          <div className="card-label">
+            <span className="num">01</span> · ABOUT
           </div>
+          <h3>A quick snapshot.</h3>
+          <ul>
+            <li>Software Engineering @ McMaster University</li>
+            <li>Diverse developer with a love for ML</li>
+            <li>Hackathon winner x 2 (MacEngComp &apos;24 &amp; &apos;25)</li>
+            <li>Always building, always learning</li>
+          </ul>
+        </div>
 
-          {/* Overview */}
-          <div
-            className="lg:col-span-4 rounded-3xl border p-8
-              border-borderlight dark:border-borderdark"
-          >
-            <div className="text-sm font-bold">
-              <span className="text-xl">O</span>VERVIEW
-            </div>
-            <div className="h-1 w-12 rounded-full bg-accentlight dark:bg-accentdark mb-5" />
-
-            <div className="mt-5 space-y-3">
-              <CountUpCard value={10} suffix="+" label="Projects" />
-              <CountUpCard value={5} suffix="+" label="Hackathons" />
-              <CountUpCard value={2} label="Internships" />
-            </div>
+        <div className="card now-card">
+          <div className="card-label">
+            <span className="num">02</span> · NOW
           </div>
+          <h3>What I&apos;m focused on.</h3>
+          <ul>
+            <li>Shipping ScleroCare to the App Store</li>
+            <li>Exploring ML / computer vision</li>
+            <li>Traveling more</li>
+          </ul>
+          <button
+            onClick={() => navigate("/about")}
+            style={{
+              marginTop: "18px",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "6px",
+              fontFamily: "var(--font-mono)",
+              fontSize: "11px",
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              color: "var(--accent)",
+              cursor: "pointer",
+            }}
+          >
+            Read more →
+          </button>
         </div>
       </div>
 
-      <Quotes />
-    </div>
-  );
-};
+      {/* ── Stats ── */}
+      <div className="stats-row stagger">
+        {STATS.map((s) => (
+          <div key={s.label} className="stat">
+            <div className="stat-num">
+              {s.num}
+              {s.plus && <span className="plus">+</span>}
+            </div>
+            <div className="stat-label">{s.label}</div>
+          </div>
+        ))}
+      </div>
 
-const styles = {
-  img: {
-    display: "block",
-    borderRadius: "50%",
-    width: "300px",
-    height: "300px",
-    objectFit: "cover",
-  },
+      {/* ── Featured ── */}
+      {featured && (
+        <div
+          className="featured"
+          onClick={() => window.open(featured.url, "_blank")}
+        >
+          <div>
+            <p className="featured-eyebrow">★ FEATURED · {featured.award}</p>
+            <h2 className="featured-title">{featured.title}</h2>
+            <p className="featured-sub">{featured.desc}</p>
+          </div>
+          <div className="featured-cta">
+            Try it out <ArrowUpRight size={13} />
+          </div>
+        </div>
+      )}
+
+      {/* ── Quote ── */}
+      {quote && (
+        <blockquote className="quote-block">
+          <span className="mark">&ldquo;</span>
+          {quote.Quote}
+          <cite>{quote.Author}</cite>
+        </blockquote>
+      )}
+    </>
+  );
 };
 
 export default Home;
