@@ -74,8 +74,9 @@ const About = () => {
           <p>
             I'm someone who's always looking to try new things: learning,
             meeting new people, and experiencing new cultures keeps me going. I
-            love tech, space, music (check out my TikTok on the footer where I sing!), video games, movies, nature, and more. If
-            you want the real story, my{" "}
+            love tech, space, music (check out my TikTok on the footer where I
+            sing!), video games, movies, nature, and more. If you want the real
+            story, my{" "}
             <a href="/logbook" style={{ color: "var(--accent)" }}>
               logbook
             </a>{" "}
