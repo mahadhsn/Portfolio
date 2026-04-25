@@ -1327,6 +1327,27 @@ img {
   white-space: nowrap;
 }
 
+@media (max-width: 499px) {
+  .log-row {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: "date meta" "title title";
+    gap: 6px 12px;
+  }
+  .log-date {
+    grid-area: date;
+    align-self: center;
+  }
+  .log-title {
+    grid-area: title;
+    font-size: 20px;
+  }
+  .log-meta {
+    grid-area: meta;
+    align-self: center;
+  }
+}
+
 /* Photo grid */
 .photo-grid {
   display: grid;

@@ -1,6 +1,6 @@
 # My time with TD
 
-_February 2, 2026 · 3 min read · work_
+_April 24, 2026 · 10 min read · work_
 
 ![My desk (with the old laptop), May 7th 2025](/images/logs/TD/TD_Table.jpg)
 ![PS5 on the Arcade floor, May 7th 2025](/images/logs/TD/TD_PS5.jpg)
