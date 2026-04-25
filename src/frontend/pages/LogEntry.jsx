@@ -1,16 +1,43 @@
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import ReactMarkdown from "react-markdown";
 import { ArrowLeft, ArrowRight } from "../components/Icons";
-import { LOGS, logContents } from "../../data/logUtils";
+import { LOGS } from "../../data/logUtils";
+
+const lazyLogs = import.meta.glob("../../data/logs/*.md", { query: "?raw" });
 
 const LogEntry = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const content = logContents[id];
+  const [content, setContent] = useState(null);
+  const [notFound, setNotFound] = useState(false);
+
+  useEffect(() => {
+    setContent(null);
+    setNotFound(false);
+    const loader = lazyLogs[`../../data/logs/${id}.md`];
+    if (!loader) {
+      setNotFound(true);
+      return;
+    }
+    loader().then((mod) => setContent(mod.default));
+  }, [id]);
+
   const currentIndex = LOGS.findIndex((l) => l.id === id);
   const nextLog =
     currentIndex < LOGS.length - 1 ? LOGS[currentIndex + 1] : null;
+
+  if (notFound) {
+    return (
+      <div className="log-article">
+        <button className="log-back" onClick={() => navigate("/logbook")}>
+          <ArrowLeft size={12} /> Back to logbook
+        </button>
+        <p>Entry not found.</p>
+      </div>
+    );
+  }
 
   if (!content) {
     return (
@@ -18,7 +45,6 @@ const LogEntry = () => {
         <button className="log-back" onClick={() => navigate("/logbook")}>
           <ArrowLeft size={12} /> Back to logbook
         </button>
-        <p>Entry not found.</p>
       </div>
     );
   }
@@ -38,6 +64,18 @@ const LogEntry = () => {
 
         <ReactMarkdown
           components={{
+            p: ({ node, children }) => {
+              const meaningful = node.children.filter(
+                (c) => !(c.type === "text" && c.value.trim() === "")
+              );
+              if (
+                meaningful.length > 1 &&
+                meaningful.every((c) => c.tagName === "img")
+              ) {
+                return <div className="md-img-grid">{children}</div>;
+              }
+              return <p>{children}</p>;
+            },
             img: ({ src, alt }) => (
               <figure style={{ margin: "24px 0", textAlign: "center" }}>
                 <img

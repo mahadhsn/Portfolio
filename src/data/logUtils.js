@@ -1,7 +1,5 @@
 const modules = import.meta.glob('./logs/*.md', { query: '?raw', eager: true });
 
-export const logContents = {};
-
 function parseLog(slug, raw) {
   const lines = raw.split('\n').filter((l) => l.trim());
   const title = lines[0]?.replace(/^#\s+/, '') ?? slug;
@@ -28,7 +26,6 @@ function parseLog(slug, raw) {
 export const LOGS = Object.entries(modules)
   .map(([path, mod]) => {
     const slug = path.replace('./logs/', '').replace('.md', '');
-    logContents[slug] = mod.default;
     return parseLog(slug, mod.default);
   })
   .sort((a, b) => b._sortDate - a._sortDate);
