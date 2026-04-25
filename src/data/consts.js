@@ -164,7 +164,7 @@ export const ABOUT_SECTIONS = [
 // ── Home stats ────────────────────────────────────────────────
 export const STATS = [
   { num: "10", plus: true, label: "Projects" },
-  { num: "5", plus: true, label: "Technologies" },
+  { num: "20", plus: true, label: "Technologies" },
   { num: "2", plus: false, label: "Hackathon Wins" },
-  { num: "3", plus: false, label: "Log Entries" },
+  { num: "3", plus: false, label: "Internships" },
 ];
