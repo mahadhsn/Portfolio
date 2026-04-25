@@ -10,4 +10,4 @@ To Do:
 - [x] add logbook page
   - [x] intro log
   - [x] internships log
-  - [ ] TD farewell log
+  - [x] TD farewell log
