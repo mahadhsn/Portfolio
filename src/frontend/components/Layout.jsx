@@ -1,33 +1,44 @@
-import Footer from "./footer/Footer";
-import Navbar from "./Navbar";
 import { Outlet, useLocation } from "react-router-dom";
+import { useTheme } from "../context/ThemeContext";
+import Nav from "./Nav";
+import Footer from "./Footer";
+import NowPlaying from "./NowPlaying";
+import { Sun, Moon } from "./Icons";
 
 const Layout = () => {
   const { pathname } = useLocation();
+  const { mode, setMode } = useTheme();
 
   return (
-    <div className="flex flex-col">
-      {/* Navbar */}
-      <nav className="md:fixed md:top-1/4 md:w-1/5 mt-[15%] md:mt-5 mb-[5%]">
-        <Navbar />
-      </nav>
+    <div className="app">
+      <Nav />
 
-      {/* Content Section */}
-      <div className="flex flex-col">
-        <main
-          key={pathname}
-          className="w-full flex md:max-w-[50%] mobile:max-w-[90%] mx-auto mb-10
-            text-textlight dark:text-textdark text-lg
-            mt-[5%] md:mt-[8%]
-            animate-page-in"
-        >
+      {/* Mobile-only: song floats bottom-left of nav, theme floats bottom-right */}
+      <div className="mobile-float">
+        <NowPlaying />
+        <div className="theme-pill">
+          <button
+            className={mode === "light" ? "active" : ""}
+            onClick={() => setMode("light")}
+            aria-label="Light mode"
+          >
+            <Sun size={13} />
+          </button>
+          <button
+            className={mode === "dark" ? "active" : ""}
+            onClick={() => setMode("dark")}
+            aria-label="Dark mode"
+          >
+            <Moon size={13} />
+          </button>
+        </div>
+      </div>
+
+      <div className="page-shell">
+        <main key={pathname} className="page page-enter">
           <Outlet />
         </main>
-
-        {/* Footer */}
-        <div className="mt-2 pb-10">
-          <Footer />
-        </div>
+        <Footer />
       </div>
     </div>
   );

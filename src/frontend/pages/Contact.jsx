@@ -1,52 +1,73 @@
-import React from "react";
-import { useEffect } from "react";
+import { useState } from "react";
 import { Helmet } from "react-helmet";
+import { Mail, LinkedIn, GitHub } from "../components/Icons";
+
+const CHANNELS = [
+  {
+    icon: <Mail size={16} />,
+    label: "Email",
+    value: "mahadhassan.hello@gmail.com",
+    href: "mailto:mahadhassan.hello@gmail.com",
+  },
+  {
+    icon: <LinkedIn size={16} />,
+    label: "LinkedIn",
+    value: "linkedin.com/in/mahad-hassan/",
+    href: "https://www.linkedin.com/in/mahad-hassan/",
+  },
+  {
+    icon: <GitHub size={16} />,
+    label: "GitHub",
+    value: "github.com/mahadhsn",
+    href: "https://github.com/mahadhsn",
+  },
+  {
+    icon: null,
+    label: "Location",
+    value: "Hamilton, ON · Toronto, ON",
+    href: null,
+  },
+];
 
 const Contact = () => {
-  useEffect(() => {
-    document.title = "Contact Mahad";
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    subject: "",
   });
+  const [status, setStatus] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [sent, setSent] = useState(false);
 
-  const [firstName, setFirstName] = React.useState("");
-  const [lastName, setLastName] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [subject, setSubject] = React.useState("");
-  const [status, setStatus] = React.useState("");
-  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const handleChange = (e) =>
+    setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true); // Trigger the animation state
-
-    // Prepare the form data to send to the server
-    const formData = { firstName, lastName, email, subject };
+    setIsSubmitting(true);
 
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName: form.firstName,
+          lastName: form.lastName,
+          email: form.email,
+          subject: form.subject,
+        }),
       });
 
       if (response.ok) {
-        setStatus(
-          "Your message has been sent successfully! I will get back to you soon :)",
-        );
-        setFirstName("");
-        setLastName("");
-        setEmail("");
-        setSubject("");
+        setSent(true);
+        setForm({ firstName: "", lastName: "", email: "", subject: "" });
       } else if (response.status === 429) {
-        setStatus(
-          "You have reached the email sending limit for today. Please reach out tomorrow and I will be sure to respond!",
-        );
+        setStatus("You've hit the daily send limit. Try again tomorrow.");
       } else {
-        setStatus("Failed to send your message. Please try again.");
+        setStatus("Failed to send. Please try again.");
       }
-    } catch (error) {
-      console.error("Error sending message:", error);
+    } catch {
       setStatus("An error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
@@ -54,95 +75,153 @@ const Contact = () => {
   };
 
   return (
-    <div className="flex flex-col items-center w-full">
+    <>
       <Helmet>
         <title>Contact Mahad</title>
-        <meta
-          name="description"
-          content="Contact page of Mahad Hassan's software engineering portfolio."
-        />
+        <meta name="description" content="Get in touch with Mahad Hassan." />
       </Helmet>
 
-      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-left">
-        Contact Me
-      </h2>
+      <p className="eyebrow">06 / CONTACT</p>
 
-      <hr className=""></hr>
+      <h1 className="display page-title">
+        Let&apos;s{" "}
+        <em style={{ color: "var(--accent)", fontStyle: "italic" }}>talk.</em>
+      </h1>
 
-      <form
-        className="w-full max-w-md bg-secondarybglight dark:bg-secondarybgdark p-6 rounded-lg shadow-lg"
-        onSubmit={handleSubmit}
-      >
-        <div className="mb-4">
-          <label htmlFor="firstName" className="block text-lg font-semibold">
-            First Name
-          </label>
-          <input
-            type="text"
-            id="firstName"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            className="w-full p-2 border-2 border-gray-300 rounded-md text-black"
-            placeholder="Enter your first name"
-            required
-          />
+      <div className="contact-grid">
+        {/* Left — channels */}
+        <div className="contact-info">
+          <p
+            className="subtle"
+            style={{
+              fontSize: "16px",
+              lineHeight: 1.6,
+              marginBottom: "40px",
+              maxWidth: "340px",
+            }}
+          >
+            Open to internships, collaborations, and interesting conversations.
+            Pick a channel or fill the form.
+          </p>
+
+          <div className="contact-channels">
+            {CHANNELS.map((ch) => (
+              <div key={ch.label} className="contact-channel">
+                <span className="contact-channel-label">{ch.label}</span>
+                {ch.href ? (
+                  <a
+                    href={ch.href}
+                    target={ch.href.startsWith("http") ? "_blank" : undefined}
+                    rel={
+                      ch.href.startsWith("http")
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
+                  >
+                    {ch.value}
+                  </a>
+                ) : (
+                  <span>{ch.value}</span>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="mb-4">
-          <label htmlFor="lastName" className="block text-lg font-semibold">
-            Last Name
-          </label>
-          <input
-            type="text"
-            id="lastName"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            className="w-full p-2 border-2 rounded-md text-black"
-            placeholder="Enter your last name"
-            required
-          />
+
+        {/* Right — form */}
+        <div className="contact-form">
+          {sent ? (
+            <div className="contact-thanks">
+              <p
+                className="display"
+                style={{ fontSize: "clamp(32px, 4vw, 52px)" }}
+              >
+                Thanks! 🎉
+              </p>
+              <p className="subtle" style={{ marginTop: "12px" }}>
+                I'll get back to you soon.
+              </p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit}>
+              <div className="field-row">
+                <div className="field">
+                  <label htmlFor="firstName">First name</label>
+                  <input
+                    id="firstName"
+                    name="firstName"
+                    type="text"
+                    value={form.firstName}
+                    onChange={handleChange}
+                    placeholder="John"
+                    required
+                  />
+                </div>
+                <div className="field">
+                  <label htmlFor="lastName">Last name</label>
+                  <input
+                    id="lastName"
+                    name="lastName"
+                    type="text"
+                    value={form.lastName}
+                    onChange={handleChange}
+                    placeholder="Doe"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="field">
+                <label htmlFor="email">Email</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  placeholder="johndoe@example.com"
+                  required
+                />
+              </div>
+
+              <div className="field">
+                <label htmlFor="subject">Message</label>
+                <textarea
+                  id="subject"
+                  name="subject"
+                  value={form.subject}
+                  onChange={handleChange}
+                  placeholder="What's on your mind?"
+                  rows={6}
+                  required
+                />
+              </div>
+
+              {status && (
+                <p
+                  style={{
+                    fontSize: "13px",
+                    color: "var(--ink-soft)",
+                    marginBottom: "12px",
+                  }}
+                >
+                  {status}
+                </p>
+              )}
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="btn primary"
+                style={{ width: "100%", justifyContent: "center" }}
+              >
+                {isSubmitting ? "Sending…" : "Send message"}
+              </button>
+            </form>
+          )}
         </div>
-        <div className="mb-4">
-          <label htmlFor="email" className="block text-lg font-semibold">
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-2 border-2 rounded-md text-black"
-            placeholder="Enter your email"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="subject" className="block text-lg font-semibold">
-            Subject
-          </label>
-          <textarea
-            id="subject"
-            value={subject}
-            onChange={(e) => setSubject(e.target.value)}
-            className="w-full p-2 border-2 rounded-md text-black"
-            placeholder="Enter the subject"
-            rows="8"
-            required
-          />
-        </div>
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className={`w-full p-2 rounded-md transition-all duration-300 ease-in-out ${
-            isSubmitting
-              ? "bg-gray-400 cursor-not-allowed"
-              : "bg-accentlight dark:bg-accentdark hover:bg-accenthoverlight dark:hover:bg-accenthoverdark"
-          }`}
-        >
-          {isSubmitting ? "Sending..." : "Send Message"}
-        </button>
-        <p className="text-center mt-4">{status}</p>
-      </form>
-    </div>
+      </div>
+    </>
   );
 };
 

@@ -1,170 +1,133 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { ArrowRight } from "../components/Icons";
+import { PHOTOS } from "../../data/consts";
+import { LOGS } from "../../data/logUtils";
+import { galleries } from "./photoGalleries";
+
+const tags = ["all", ...new Set(LOGS.map((l) => l.tag).filter(Boolean))].sort();
+
+// Pick a random cover image per gallery, stable for this page load
+const pickCover = (globKey) => {
+  const imgs = galleries[globKey] || [];
+  if (!imgs.length) return null;
+  return imgs[Math.floor(Math.random() * imgs.length)];
+};
 
 const Logbook = () => {
-  useEffect(() => {
-    document.title = "Mahad's Life";
+  const navigate = useNavigate();
+  const [tag, setTag] = useState("all");
+  // Memoize covers so they don't re-randomize on re-render
+  const covers = useMemo(() => {
+    const map = {};
+    PHOTOS.forEach((p) => {
+      map[p.globKey] = pickCover(p.globKey);
+    });
+    return map;
   }, []);
 
-  const [selectedCategories, setSelectedCategories] = useState([]);
-
-  const toggleCategory = (category) => {
-    setSelectedCategories((prevSelected) =>
-      prevSelected.includes(category)
-        ? prevSelected.filter((c) => c !== category)
-        : [...prevSelected, category],
-    );
-  };
-
-  const logs = [
-    {
-      title: "Intro",
-      path: "/logbook/intro",
-      categories: ["life"],
-      date: "2025-06-21",
-      written_date: "June 21st, 2025",
-    },
-    {
-      title: "How to land an internship 101",
-      path: "/logbook/internship",
-      categories: ["career"],
-      date: "2025-07-07",
-      written_date: "July 7th, 2025",
-    },
-    {
-      title: "SceloCare: An App for Patients",
-      path: "/logbook/sclerocare",
-      categories: ["career", "school"],
-      date: "2025-07-24",
-      written_date: "July 24th, 2025",
-    },
-  ];
-
-  const pics = [
-    {
-      title: "Belfountain",
-      path: "/logbook/belfountain-30-6-25",
-      date: "2025-06-30",
-      written_date: "June 30th, 2025",
-    },
-
-    {
-      title: "KillBear",
-      path: "/logbook/killbear-3-8-25",
-      date: "2025-08-03",
-      written_date: "August 3rd, 2025",
-    },
-
-    {
-      title: "Toronto",
-      path: "/logbook/toronto-27-8-25",
-      date: "2025-08-27",
-      written_date: "August 27th, 2025",
-    },
-
-    {
-      title: "Bronte Creek",
-      path: "/logbook/bronte-31-8-25",
-      date: "2025-08-31",
-      written_date: "August 31st, 2025",
-    },
-
-    {
-      title: "Stirling",
-      path: "/logbook/stirling-11-10-25",
-      date: "2025-10-11",
-      written_date: "October 11th, 2025",
-    },
-    {
-      title: "MDL Designathon",
-      path: "/logbook/mdl-18-1-26",
-      date: "2026-01-18",
-      written_date: "January 17/18th, 2026",
-    },
-  ];
+  const filteredLogs = tag === "all" ? LOGS : LOGS.filter((l) => l.tag === tag);
 
   return (
-    <div className="mx-auto">
+    <>
       <Helmet>
-        <title>Mahad's Life</title>
+        <title>Mahad&apos;s Logbook</title>
         <meta
           name="description"
-          content="Logbook page of Mahad Hassan's software engineering portfolio."
+          content="Writing and photography by Mahad Hassan."
         />
       </Helmet>
 
-      <h1 className="text-3xl text-center items-center justify-center align-middle mb-2">
-        Get to know me :)
-      </h1>
+      <p className="eyebrow">04 / LOGBOOK</p>
+      <div className="logbook-head">
+        <div>
+          <h1 className="display page-title" style={{ marginBottom: 8 }}>
+            Logbook.
+          </h1>
+          <p className="subtle" style={{ fontSize: "18px", maxWidth: "540px" }}>
+            Writing, photography, and notes from the journey.
+          </p>
+          <div className="logbook-chip-row">
+            {tags.map((t) => (
+              <button
+                key={t}
+                className="chip"
+                style={
+                  tag === t
+                    ? {
+                        border: "1px solid var(--accent)",
+                        color: "var(--accent-ink)",
+                        background: "var(--accent-soft)",
+                      }
+                    : {}
+                }
+                onClick={() => setTag(t)}
+              >
+                {t}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
 
-      <nav className="flex flex-row items-center justify-center space-x-4 text-lg font-semibold">
-        {["life", "school", "career"].map((category) => (
-          <button
-            key={category}
-            onClick={() => toggleCategory(category)}
-            className={`px-3 py-1 rounded transition-all duration-300 ease-in-out ${
-              selectedCategories.includes(category)
-                ? "text-accentlight dark:text-accentdark"
-                : "hover:text-accenthoverlight dark:hover:text-accenthoverdark"
-            }`}
-          >
-            {category}
-          </button>
+      {/* Writing section */}
+      <div className="log-section-title">
+        Writing
+        <span className="count">{filteredLogs.length} entries</span>
+      </div>
+      <div className="log-list">
+        {filteredLogs.map((l) => (
+          <div key={l.id} className="log-row" onClick={() => navigate(l.path)}>
+            <span className="log-date">{l.date}</span>
+            <span className="log-title">{l.title}</span>
+            <span className="log-meta">
+              {l.read} · {l.tag} <ArrowRight size={12} />
+            </span>
+          </div>
         ))}
-      </nav>
+      </div>
 
-      <hr className="mb-2 mt-2 border-textlight dark:border-textdark"></hr>
+      {/* Photography section */}
+      <div className="log-section-title">
+        Photography
+        <span className="count">{PHOTOS.length} rolls</span>
+      </div>
+      <div className="photo-grid">
+        {PHOTOS.map((p) => (
+          <div
+            key={p.id}
+            className="photo-tile"
+            onClick={() => navigate(p.path)}
+            style={
+              covers[p.globKey]
+                ? { backgroundImage: `url(${covers[p.globKey]})` }
+                : {}
+            }
+          >
+            <div className="photo-grad" />
+            <div className="photo-overlay">
+              <div className="photo-overlay-title">{p.title}</div>
+              <div className="photo-overlay-date">
+                {p.date} · {p.location}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
 
-      <h1 className="text-2xl font-bold mt-4"> logs: </h1>
-
-      <ul className="mt-2 mb-2 space-y-2 list-disc list-inside">
-        {logs
-          .filter(
-            (log) =>
-              selectedCategories.length === 0 ||
-              selectedCategories.every((cat) => log.categories.includes(cat)),
-          )
-          .sort((a, b) => new Date(b.date) - new Date(a.date))
-          .map((log) => (
-            <li key={log.title} className="flex flex-row">
-              <Link
-                to={log.path}
-                className="text-lg mr-3 hover:text-accentlight dark:hover:text-accentdark transition-all duration-300 ease-in-out"
-              >
-                <button>{log.title}</button>
-              </Link>
-              <h2>{log.written_date}</h2>
-            </li>
-          ))}
-      </ul>
-
-      <hr className="mb-2 mt-2 border-textlight dark:border-textdark"></hr>
-
-      <h1 className="text-2xl font-bold mt-4"> pics: </h1>
-
-      <ul className="mt-2 space-y-2 list-disc list-inside">
-        {pics
-          .sort((a, b) => new Date(b.date) - new Date(a.date))
-          .map((pic) => (
-            <li key={pic.title} className="flex flex-row">
-              <Link
-                to={pic.path}
-                className="text-lg mr-3 hover:text-accentlight dark:hover:text-accentdark transition-all duration-300 ease-in-out"
-              >
-                <button>{pic.title}</button>
-              </Link>
-              <h2>{pic.written_date}</h2>
-            </li>
-          ))}
-      </ul>
-
-      <p className="mt-20 text-sm text-center px-4 text-gray-500">
-        All opinions expressed here are my own and do not reflect the views of
-        any affiliated organizations. All images used are my own unless
-        otherwise stated.
+      <p
+        style={{
+          fontSize: "12px",
+          fontFamily: "var(--font-mono)",
+          marginTop: "56px",
+          color: "var(--ink-muted)",
+        }}
+      >
+        All opinions are my own and do not reflect any affiliated organizations.
+        All images are my own unless otherwise stated.
       </p>
-    </div>
+    </>
   );
 };
 

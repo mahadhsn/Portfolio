@@ -1,0 +1,175 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.75in}
+\addtolength{\evensidemargin}{-0.75in}
+\addtolength{\textwidth}{1.5in}
+\addtolength{\topmargin}{-0.75in}
+\addtolength{\textheight}{1.5in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-2pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\pdfgentounicode=1
+
+\newcommand{\resumeItem}[1]{
+  \item\small{{#1 \vspace{-2pt}}}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+  \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & #2 \\
+    \textit{\small#3} & \textit{\small#4} \\
+  \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+  \item
+  \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+    \small#1 & #2 \\
+  \end{tabular*}\vspace{-7pt}
+}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\begin{document}
+
+\begin{center}
+    \textbf{\Huge \scshape Mahad Hassan} \\[2pt]
+    \small Burlington, ON $|$ +1 (289) 952-3792 $|$
+    \href{mailto:mahadhassan.hello@gmail.com}{\underline{mahadhassan.hello@gmail.com\raisebox{0pt}[0pt][0.55ex]{}}} $|$
+    \href{https://www.mahadhssn.com/}{\underline{Portfolio\raisebox{0pt}[0pt][0.55ex]{}}} $|$
+    \href{https://www.linkedin.com/in/mahad-hassan/}{\underline{LinkedIn\raisebox{0pt}[0pt][0.55ex]{}}} $|$
+    \href{https://github.com/mahadhsn}{\underline{GitHub\raisebox{0pt}[0pt][0.55ex]{}}}
+\end{center}
+
+\section{Education}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {\href{https://www.eng.mcmaster.ca/cas/}{McMaster University \faLink}}{Expected May 2027}
+    {Honours Software Engineering Co-op Level III, B.Eng \textbf{(3.9 GPA)}}{Hamilton, ON}
+  \resumeItemListStart
+    \resumeItem{\textbf{Achievements}: Consistent Dean's List $|$ Finalist at MacEngComp 23’ $|$ \$3k entrance scholarship}
+    \resumeItem{\textbf{Courses}: Data Structures \& Algorithms $|$ OOP (Java) $|$ Development (C, Git, Bash) $|$ Math in Python $|$ Databases (SQL)}
+    \resumeItem{\textbf{Leadership}: Events VP, MacPSA $|$ VP Operations, Voices@Mac $|$ Attendee Relations, DeltaHacks $|$ Web Dev @ MacSES}
+  \resumeItemListEnd
+\resumeSubHeadingListEnd
+
+\section{Technical Skills}
+\begin{itemize}[leftmargin=0.15in, label={}]
+\small{\item{
+  \textbf{Languages}{: C/C++, Python, MATLAB, Bash, Verilog, Java, SQL, TypeScript} \\
+  \textbf{Embedded \& Systems}{: Linux, Jetson Nano, Firmware (C/C++), Telemetry Systems, Serial I/O, MATLAB/Simulink} \\
+  \textbf{Machine Learning \& CV}{: TensorFlow, OpenCV, NumPy, Pandas, Matplotlib, Model Optimization, Training \& Inference} \\
+  \textbf{Tools}{: Git/GitHub, Jupyter, VS Code, PyCharm, Anaconda, Vim, Onshape, KiCad, Maven} \\
+  \textbf{Web \& DevOps}{: React.js, Node.js, Firebase, Terraform, GitHub Actions, CI/CD, Cloud (AWS/Azure)}
+}}
+\end{itemize}
+
+\section{Experience}
+\resumeSubHeadingListStart
+
+  \resumeSubheading
+    {\href{https://www.linkedin.com/posts/mahad-hassan_as-my-software-engineering-internship-with-activity-7363738067230195712-W4o_/}{Software Engineer Intern \faLink}}{May 2025 -- August 2025}
+    {TD Bank}{Toronto, ON}
+  \resumeItemListStart
+    \resumeItem{Developed \textbf{FRAM}, a microservice implementation in Java/Spring on Azure using Kafka for data transfer and async design}
+    \resumeItem{Migrated API client processing to non-blocking, concurrent execution, delivering \textbf{\$1M/year} in infrastructure savings}
+    \resumeItem{Analyzed service performance and failure modes across distributed components to improve reliability under production load}
+    \resumeItem{Optimized CI/CD pipelines via GitHub Actions, reducing deployment time by 20\% across 7 distributed services}
+    \resumeItem{Updated \textbf{Terraform} configurations to support infrastructure \textbf{failover testing} in secondary environments}
+  \resumeItemListEnd
+
+  \resumeSubheading
+    {\href{https://www.macdrones.ca}{Machine Learning Engineer \faLink}}{October 2025 -- Present}
+    {McMaster Aerial Robotics and Drones Club}{Hamilton, ON}
+  \resumeItemListStart
+    \resumeItem{Implementing a real-time \textbf{vision model pipeline} using TensorFlow + classical CV for autonomous landing}
+    \resumeItem{Optimizing ML inference on the \textbf{Jetson Nano} (CUDA-accelerated) for low-latency, real-time processing}
+    \resumeItem{Iterating on preprocessing, input resolution, and model parameters to balance accuracy with real-time inference constraints}
+    \resumeItem{Integrating detection outputs with \textbf{precision-landing controllers} and waypoint-navigation logic}
+    \resumeItem{Processing depth and telemetry streams to improve inference stability, robustness, and real-world accuracy}
+  \resumeItemListEnd
+
+  \resumeSubheading
+    {\href{https://www.mahadhssn.com/logbook/sclerocare}{Software Developer \faLink}}{January 2025 -- Present}
+    {McMaster iBioMed Society}{Remote}
+  \resumeItemListStart
+    \resumeItem{Developing an \textbf{app} with \textbf{React Native} and \textbf{Firebase} to centralize \textbf{mental}, \textbf{physical}, \& \textbf{financial} support for patients}
+    \resumeItem{Implementing end-to-end \textbf{encryption}, including a \textbf{secure medical resume} section and \textbf{protected data storage}}
+    \resumeItem{Designing an \textbf{accessible}, user-focused interface to \textbf{ensure privacy}, \textbf{data security}, and \textbf{seamless patient interaction}}
+  \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+\section{Projects}
+\resumeSubHeadingListStart
+
+  \resumeProjectHeading
+    {\textbf{\href{https://digit-recognizer-web.vercel.app/}{Digit Recognizer AI \faLink}} $|$ \emph{Typescript (React, Tailwind CSS), Python (TensorFlow, Matplotlib)}}{}
+  \resumeItemListStart
+    \resumeItem{Designed an \textbf{8-layer CNN} achieving \textbf{99.3\%} accuracy on MNIST using \textbf{60,000} training and \textbf{10,000} test images}
+    \resumeItem{Utilized \textbf{Matplotlib} to visualize model predictions with confidence levels for each digit class, including probabilities}
+    \resumeItem{Integrated \textbf{React} \& \textbf{TailwindCSS} to visually display \textbf{live} bar chart predictions for drawn digits}
+    \resumeItem{Experimented with network depth and pooling strategies to study their impact on convergence and generalization}
+  \resumeItemListEnd
+
+  \resumeProjectHeading
+    {\textbf{\href{https://natural-disaster-map.vercel.app/}{PrepPal \faLink}} $|$ \emph{TypeScript (React, Next.js), Tailwind CSS, GCP Vision, OpenAI}}{\textbf{3rd Place} @ MacEngComp 25'}
+  \resumeItemListStart
+    \resumeItem{Developed an \textbf{AI-powered} disaster-readiness platform using \textbf{Next.js + GCP Vision} with \textbf{$<$2s} image detection}
+    \resumeItem{Designed a modular detection pipeline \textbf{(localization + OCR + label matching)} improving reliability by \textbf{40\%}}
+    \resumeItem{Integrated \textbf{global hazard data} (USGS/NOAA/NASA) enabling \textbf{instant ($<$1s)} risk lookups and threat analysis}
+    \resumeItem{Handled noisy, real-world image inputs by combining model predictions with rule-based validation for safer outputs}
+  \resumeItemListEnd
+
+  \resumeProjectHeading
+    {\textbf{\href{https://github.com/mahadhsn/MacEngComp24}{SecureVault \faLink}} $|$ \emph{Python (OpenCV, Flask, Cryptography), SQL, Git}}{\textbf{2nd Place} @ MacEngComp 24'}
+  \resumeItemListStart
+    \resumeItem{Designed a system combining \textbf{facial recognition}, \textbf{password manager}, and \textbf{file encryption} to enhance data protection}
+    \resumeItem{Leveraged Python and SQL to develop a solution within a \textbf{7-hour coding sprint}, securing \textbf{2nd place} among 30+ teams}
+    \resumeItem{Focused on secure handling of biometric data and encrypted storage under strict time constraints}
+  \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+\end{document}

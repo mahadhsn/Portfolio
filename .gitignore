@@ -10,3 +10,4 @@ dist
 public/last-updated.json
 .env*.local
 raw/
+CLAUDE.md
