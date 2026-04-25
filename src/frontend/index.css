@@ -1989,6 +1989,10 @@ img {
     display: none;
   }
 
+  .nav-link.active {
+    font-weight: 500;
+  }
+
   /* Active indicator: bottom underline */
   .nav-link.active::before {
     left: 50%;
