@@ -66,7 +66,7 @@ const LogEntry = () => {
           components={{
             p: ({ node, children }) => {
               const meaningful = node.children.filter(
-                (c) => !(c.type === "text" && c.value.trim() === "")
+                (c) => !(c.type === "text" && c.value.trim() === ""),
               );
               if (
                 meaningful.length > 1 &&
