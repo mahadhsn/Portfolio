@@ -524,6 +524,31 @@ img {
   display: inline-block;
   animation: char-in 0.5s var(--ease-out) both;
 }
+.home-name .greeting-text {
+  color: var(--accent);
+  text-decoration: underline dashed;
+  text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  text-underline-offset: 5px;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.home-name .greeting-text:hover {
+  opacity: 0.75;
+  transform: scale(1.03);
+}
+.greeting-cycle-hint {
+  font-size: 0.65em;
+  margin-left: 0.25em;
+  opacity: 0.5;
+  display: inline-block;
+  transition: transform 0.25s ease, opacity 0.15s ease;
+  vertical-align: middle;
+}
+.home-name .greeting-text:hover .greeting-cycle-hint {
+  transform: rotate(180deg);
+  opacity: 1;
+}
 .home-name .char.red {
   color: var(--accent);
   font-style: italic;
@@ -1829,7 +1854,7 @@ img {
 
 /* ========== FOOTER ========== */
 .foot {
-  padding: 41px 56px 106px;
+  padding: 21px 56px 106px;
   border-top: 1px solid var(--line);
   display: grid;
   grid-template-columns: 1fr auto 1fr;

@@ -1,3 +1,17 @@
+// ── Greetings ─────────────────────────────────────────────────
+export const GREETINGS = [
+  { text: "Hey", flag: null },
+  { text: "Hola", flag: "🇪🇸" },
+  { text: "Bonjour", flag: "🇫🇷" },
+  { text: "Merhaba", flag: "🇹🇷" },
+  { text: "Hallo", flag: "🇩🇪" },
+  { text: "Ciao", flag: "🇮🇹" },
+  { text: "Olá", flag: "🇧🇷" },
+  { text: "नमस्ते", flag: "🇮🇳" },
+  { text: "سلام", flag: "🇵🇰" },
+  { text: "안녕하세요", flag: "🇰🇷" },
+];
+
 // ── Nav ──────────────────────────────────────────────────────
 export const NAV_ITEMS = [
   { id: "home", label: "Home", path: "/", idx: "01" },

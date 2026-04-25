@@ -3,15 +3,19 @@ import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import Button from "../components/Button";
 import { ArrowUpRight } from "../components/Icons";
-import { STATS, PROJECTS } from "../../data/consts";
+import { STATS, PROJECTS, GREETINGS } from "../../data/consts";
 
-const line1 = "Hey, I'm";
+const im = " I'm";
 const line2 = "Mahad.";
 
 const Home = () => {
   const navigate = useNavigate();
   const [quote, setQuote] = useState(null);
+  const [greetingIdx, setGreetingIdx] = useState(0);
   const featured = PROJECTS.find((p) => p.featured);
+  const greeting = GREETINGS[greetingIdx];
+  const cycleGreeting = () =>
+    setGreetingIdx((i) => (i + 1) % GREETINGS.length);
 
   useEffect(() => {
     fetch("/api/quote")
@@ -38,12 +42,29 @@ const Home = () => {
           <div className="home-name-row">
             <h1 className="home-name">
               <div>
-                {line1.split("").map((c, i) => (
+                <span
+                  className="char greeting-text"
+                  onClick={cycleGreeting}
+                  style={{
+                    animationDelay: "0s",
+                    fontSize: "0.35em",
+                    letterSpacing: 0,
+                    cursor: "pointer",
+                  }}
+                >
+                  {greeting.text}
+                  {greeting.flag && (
+                    <span style={{ margin: "0 0.15em" }}>{greeting.flag}</span>
+                  )}
+                  {","}
+                  <span className="greeting-cycle-hint">↻</span>
+                </span>
+                {im.split("").map((c, i) => (
                   <span
                     key={i}
                     className="char"
                     style={{
-                      animationDelay: `${i * 0.03}s`,
+                      animationDelay: `${(i + 1) * 0.03}s`,
                       color: "var(--ink-soft)",
                       fontSize: "0.35em",
                       letterSpacing: 0,
@@ -74,7 +95,7 @@ const Home = () => {
 
           <p className="home-tag">
             Software engineering student at McMaster. I build things for the
-            web, <em>chase ideas</em>, and write about the journey.
+            world, <em>chase ideas</em>, and love to learn.
           </p>
 
           <div className="home-cta-row">
@@ -100,8 +121,8 @@ const Home = () => {
           <h3>A quick snapshot.</h3>
           <ul>
             <li>Software Engineering @ McMaster University</li>
-            <li>Full-stack developer with a love for clean UI</li>
-            <li>Hackathon winner × 2 (MacEngComp &apos;24 &amp; &apos;25)</li>
+            <li>Diverse developer with a love for ML</li>
+            <li>Hackathon winner x 2 (MacEngComp &apos;24 &amp; &apos;25)</li>
             <li>Always building, always learning</li>
           </ul>
         </div>
@@ -114,7 +135,7 @@ const Home = () => {
           <ul>
             <li>Shipping ScleroCare to the App Store</li>
             <li>Exploring ML / computer vision</li>
-            <li>Writing more in the logbook</li>
+            <li>Traveling more</li>
           </ul>
           <button
             onClick={() => navigate("/about")}
