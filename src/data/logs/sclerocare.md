@@ -2,6 +2,11 @@
 
 _July 24, 2025 · 8 min read · build_
 
+![Splash Page](/images/logs/sclerocare/sclero-splash.png)
+![Home Page](/images/logs/sclerocare/sclero-home.png)
+![Profile Page](/images/logs/sclerocare/sclero-profile.png)
+![Research Page](/images/logs/sclerocare/sclero-research.png)
+
 ScleroCare is a partnership between the [iBioMed Society](https://www.eng.mcmaster.ca/ibiomed/resources/ibiomed-society/) at McMaster University and [Scleroderma Canada](https://www.scleroderma.ca) via the [Tech4Good](https://ibiomedsociety.ca/studentlife/tech4good) program.
 
 The app helps users get connected with the right resources depending on their needs: new research/clinical trials, content/workshops, support libraries for patients, caregivers, and healthcare providers, a map with POIs near the user's location, and a fully encrypted Medical Resume.

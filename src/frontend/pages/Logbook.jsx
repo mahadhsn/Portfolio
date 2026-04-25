@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { ArrowRight } from "../components/Icons";
 import { PHOTOS } from "../../data/consts";
-import { galleries } from "./photoGalleries";
 import { LOGS } from "../../data/logUtils";
+import { galleries } from "./photoGalleries";
 
 const tags = ["all", ...new Set(LOGS.map((l) => l.tag).filter(Boolean))].sort();
 
