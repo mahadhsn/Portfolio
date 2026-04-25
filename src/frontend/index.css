@@ -529,7 +529,9 @@ img {
   text-decoration: underline dashed;
   text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent);
   text-underline-offset: 5px;
-  transition: opacity 0.15s ease, transform 0.15s ease;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
   -webkit-user-select: none;
   user-select: none;
 }
@@ -542,7 +544,9 @@ img {
   margin-left: 0.25em;
   opacity: 0.5;
   display: inline-block;
-  transition: transform 0.25s ease, opacity 0.15s ease;
+  transition:
+    transform 0.25s ease,
+    opacity 0.15s ease;
   vertical-align: middle;
 }
 .home-name .greeting-text:hover .greeting-cycle-hint {

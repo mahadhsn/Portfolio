@@ -15,7 +15,10 @@ const NotFound = () => {
       <h1 className="display page-title" style={{ marginBottom: 8 }}>
         404.
       </h1>
-      <p className="subtle" style={{ fontSize: "18px", maxWidth: "480px", marginBottom: 40 }}>
+      <p
+        className="subtle"
+        style={{ fontSize: "18px", maxWidth: "480px", marginBottom: 40 }}
+      >
         This page doesn&apos;t exist. You might have followed a broken link or
         typed the address wrong.
       </p>

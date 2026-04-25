@@ -14,8 +14,7 @@ const Home = () => {
   const [greetingIdx, setGreetingIdx] = useState(0);
   const featured = PROJECTS.find((p) => p.featured);
   const greeting = GREETINGS[greetingIdx];
-  const cycleGreeting = () =>
-    setGreetingIdx((i) => (i + 1) % GREETINGS.length);
+  const cycleGreeting = () => setGreetingIdx((i) => (i + 1) % GREETINGS.length);
 
   useEffect(() => {
     fetch("/api/quote")

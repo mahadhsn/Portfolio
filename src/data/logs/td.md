@@ -47,7 +47,7 @@ My internship was split into two main learning opportunities in the first and se
 
 1. **Microservice Deployment & CI/CD**
 
-   In order to get more familiar with the techonologies we used, the team decided to give the interns the task to oversee the deployment of numerous microservices into PROD. 
+   In order to get more familiar with the techonologies we used, the team decided to give the interns the task to oversee the deployment of numerous microservices into PROD.
 
    This aided us in, firstly achieving the goal the team had for us but also being able to point out the errors within services by performing forensic investigations using DataDog.
 
@@ -57,16 +57,16 @@ My internship was split into two main learning opportunities in the first and se
 
    Once the team deemed us worthy of working on code within the actual microservices themselves, they began assigning us much more complex work.
 
-   I was assigned to convert one of the microservices to perform any API calls in non-blocking mode to increase efficiency enormously, leading to impressive cost cuts. 
+   I was assigned to convert one of the microservices to perform any API calls in non-blocking mode to increase efficiency enormously, leading to impressive cost cuts.
 
    Due to the overall fraud response the FRAM team deals with, my manager informed me that this jump in performance for this microservice resulted in an increase in the amount of requests the microservice could process within a certain time frame leading to roughly $1M of fraudulent transactions resolved.
 
 ## Things I liked
 
 1. **Work Culture**
-   
-   TD very proudly flaunts their work culture and great work-life balance for good reason. 
-   
+
+   TD very proudly flaunts their work culture and great work-life balance for good reason.
+
    I have not had much other work experience in the past but most interns around us would also side with us on that. From playing Poker at 1PM on a Monday
 
    ![Playing poker with the interns, May 12th 2025](/images/logs/TD/Poker.JPG)
@@ -79,15 +79,15 @@ My internship was split into two main learning opportunities in the first and se
 
 2. **Hospitality**
 
-   Not sure if this is a TD specific thing but everyone there is too damn nice. 
+   Not sure if this is a TD specific thing but everyone there is too damn nice.
 
    From the HR team who hosted intern events more often than necessary (in a good way), to any person from the 100,000 TD employees (yes thats a real fact) who I tried having a coffee chat with, I never once felt like an intern. I mean this in the sense that I never felt like I was a burden or wasting someone's time from their very busy days.
 
-   I met interns, dev leads, managers, senior managers, and even associate VPs, and each was only more and more hospitable.  
+   I met interns, dev leads, managers, senior managers, and even associate VPs, and each was only more and more hospitable.
 
 3. **Ammenities**
 
-   On top of the arcade, the TD Terrace had a bunch of specialized floors. It included a garden room for fresh air, physical fitness areas, cafe's and restaurants, and the Terrace itself. 
+   On top of the arcade, the TD Terrace had a bunch of specialized floors. It included a garden room for fresh air, physical fitness areas, cafe's and restaurants, and the Terrace itself.
 
    I might've gotten lucky with my building but I am definitely not complaining.
 
@@ -101,27 +101,24 @@ My internship was split into two main learning opportunities in the first and se
 
    This is an honourable mention since it's not related to TD itself but would be unfair if I were to not give credit.
 
-   I could not have asked for a more cooperative team. Despite it being their first time getting co op assignees, they supported us through every step of the way. 
+   I could not have asked for a more cooperative team. Despite it being their first time getting co op assignees, they supported us through every step of the way.
 
    On top of that, due to a restructure early on, our manager was let go but the team never let us feel that way. We were told we could rely on anyway throughout and they would always give us priority.
-
 
 ## Things I didn't like
 
 1. **Legacy Code**
 
-   Due to restrictions on the team and the fact that they're in a sensitive department, the team's codebase was pretty old which meant that there wasn't much room for innovation or advancements. 
+   Due to restrictions on the team and the fact that they're in a sensitive department, the team's codebase was pretty old which meant that there wasn't much room for innovation or advancements.
 
    This was likely a FRAM specific thing rather than TD specific.
 
-2. **Restructure**  
+2. **Restructure**
 
    Right when I first joined, TD underwent a large restructure which caused a lot of positions to get changed/removed. This caused my manager to change and get replaced with Jon from the States.
 
-   The only reason this is a thing I didn't like is because I would have loved to meet Jon in person and worked with him in person. Genuinely could not have asked for a better manager so I guess the restructure actually worked out for the better for me. 
-
+   The only reason this is a thing I didn't like is because I would have loved to meet Jon in person and worked with him in person. Genuinely could not have asked for a better manager so I guess the restructure actually worked out for the better for me.
 
 ## Overview
 
-I think overall I'd give my experience with TD a 7/10. The place itself was great and I could not have asked for a better starter internship! It gave me the right taste of the workload while also giving me the chance to take my time with the move and be as flexible as possible. 
-
+I think overall I'd give my experience with TD a 7/10. The place itself was great and I could not have asked for a better starter internship! It gave me the right taste of the workload while also giving me the chance to take my time with the move and be as flexible as possible.
