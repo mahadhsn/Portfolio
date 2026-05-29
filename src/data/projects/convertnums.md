@@ -2,7 +2,7 @@ A command-line utility written in C that converts numbers between different base
 
 ## Why it exists
 
-This was an early systems programming exercise. The goal was to get comfortable with bitwise operations, integer representation, and string manipulation in C — all of which underpin a lot of the lower-level work that higher-level languages abstract away.
+This was an early systems programming exercise. The goal was to get comfortable with bitwise operations, integer representation, and string manipulation in C, all of which underpin a lot of the lower-level work that higher-level languages abstract away.
 
 ## What it does
 

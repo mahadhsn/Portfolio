@@ -1,4 +1,4 @@
-This site is my personal portfolio — the one you're looking at right now. It's gone through several iterations. The current version is the result of a full redesign focused on speed, simplicity, and an editorial aesthetic.
+This site is my personal portfolio, the one you're looking at right now. It's gone through several iterations. The current version is the result of a full redesign focused on speed, simplicity, and an editorial aesthetic.
 
 ## Stack
 
@@ -8,9 +8,9 @@ The logbook uses a custom setup: markdown files live in the source tree and get 
 
 ## Design decisions
 
-The design leans editorial — display typeface, tight spacing, ink-on-paper color palette. Dark mode is toggled via a CSS class rather than system preference, which keeps the implementation simple and the behaviour predictable.
+The design leans editorial: display typeface, tight spacing, ink-on-paper color palette. Dark mode is toggled via a CSS class rather than system preference, which keeps the implementation simple and the behaviour predictable.
 
-Custom CSS variables handle light/dark token switching. The character-by-character hero animation is pure CSS keyframes with staggered delays — no animation library.
+Custom CSS variables handle light/dark token switching. The character-by-character hero animation is pure CSS keyframes with staggered delays, with no animation library.
 
 ## What's ongoing
 
