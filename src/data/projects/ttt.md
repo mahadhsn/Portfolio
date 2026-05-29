@@ -1,10 +1,10 @@
-An unbeatable Tic-Tac-Toe AI built in Java using the minimax algorithm. The AI plays perfectly — it will never lose. At best, you can force a draw.
+An unbeatable Tic-Tac-Toe AI built in Java using the minimax algorithm. The AI plays perfectly; it will never lose. At best, you can force a draw.
 
 ## How minimax works
 
 Minimax is a decision-making algorithm for two-player zero-sum games. The AI looks ahead at every possible move, recursively evaluates the resulting game states, and picks the move that maximizes its outcome while assuming the opponent also plays optimally.
 
-For Tic-Tac-Toe, the game tree is small enough that the AI can search the entire space without pruning — every possible game from the current position gets evaluated. This guarantees optimal play.
+For Tic-Tac-Toe, the game tree is small enough that the AI can search the entire space without pruning; every possible game from the current position gets evaluated. This guarantees optimal play.
 
 ## Why I built it
 

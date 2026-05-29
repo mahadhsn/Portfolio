@@ -7,10 +7,10 @@ const filters = ["all", "web", "mobile", "ml", "systems"];
 
 const filterMap = {
   all: () => true,
-  web: (p) => /web/i.test(p.tag),
-  mobile: (p) => /mobile/i.test(p.tag),
-  ml: (p) => /ml|ai/i.test(p.tag),
-  systems: (p) => /systems|java|bash|security/i.test(p.tag),
+  web: (p) => p.tags.some((t) => /web/i.test(t)),
+  mobile: (p) => p.tags.some((t) => /mobile/i.test(t)),
+  ml: (p) => p.tags.some((t) => /ml|ai/i.test(t)),
+  systems: (p) => p.tags.some((t) => /systems|java|bash|security/i.test(t)),
 };
 
 const Projects = () => {
@@ -73,10 +73,17 @@ const Projects = () => {
             <div className={`proj-card-img proj-placeholder-${p.id}`}>
               {p.image && <img src={p.image} alt={p.title} />}
               {p.award && <span className="proj-card-award">🏆 {p.award}</span>}
+              {p.url.startsWith("https://") && !p.url.includes("github.com") && (
+                <span className="proj-live-dot" title="Live site" />
+              )}
             </div>
             <div className="proj-card-body">
               <div className="proj-card-meta">
-                <span className="proj-tag-pill">{p.tag}</span>
+                <div className="proj-tag-pills">
+                  {p.tags.map((t) => (
+                    <span key={t} className="proj-tag-pill">{t}</span>
+                  ))}
+                </div>
                 <span className="proj-card-year">{p.year}</span>
               </div>
               <h3 className="proj-card-title">{p.title}</h3>

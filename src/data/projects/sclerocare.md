@@ -1,6 +1,6 @@
 ScleroCare is a mobile app built in partnership with Scleroderma Canada and the McMaster iBioMed Society through the Tech4Good program. Scleroderma is a rare autoimmune disease, and patients often struggle to find centralized, reliable resources for their care.
 
-The app brings together clinical trial information, workshops, support libraries for patients and caregivers, a location-aware map of nearby points of interest, and a fully encrypted Medical Resume — all in one place.
+The app brings together clinical trial information, workshops, support libraries for patients and caregivers, a location-aware map of nearby points of interest, and and a fully encrypted Medical Resume, all in one place.
 
 ## Building for real users
 

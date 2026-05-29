@@ -54,7 +54,7 @@ const ProjectModal = ({ project, onClose }) => {
                 <span>Year</span><span>{project.year}</span>
               </div>
               <div className="modal-meta-row">
-                <span>Type</span><span>{project.tag}</span>
+                <span>Type</span><span>{project.tags.join(", ")}</span>
               </div>
               <div className="modal-meta-row">
                 <span>Role</span><span>{project.role}</span>
