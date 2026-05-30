@@ -25,6 +25,7 @@ const LogEntry = () => {
   }, [id]);
 
   const currentIndex = LOGS.findIndex((l) => l.id === id);
+  const prevLog = currentIndex > 0 ? LOGS[currentIndex - 1] : null;
   const nextLog =
     currentIndex < LOGS.length - 1 ? LOGS[currentIndex + 1] : null;
 
@@ -129,6 +130,7 @@ const LogEntry = () => {
         </ReactMarkdown>
 
         <div className="log-next">
+          {/* Left — back / prev */}
           <div>
             <p
               style={{
@@ -139,7 +141,69 @@ const LogEntry = () => {
                 color: "var(--ink-muted)",
               }}
             >
-              {nextLog ? "Next in the logbook" : "End of logbook"}
+              {prevLog ? "Previous entry" : "All entries"}
+            </p>
+            <button
+              onClick={() => navigate(prevLog ? prevLog.path : "/logbook")}
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "20px",
+                letterSpacing: "var(--display-tracking)",
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                color: "var(--accent)",
+                cursor: "pointer",
+                marginTop: "8px",
+              }}
+            >
+              <ArrowLeft size={16} /> {prevLog ? prevLog.title : "Logbook"}
+            </button>
+          </div>
+
+          {/* Center — logbook */}
+          <div style={{ textAlign: "center" }}>
+            <p
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: "11px",
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+                color: "var(--ink-muted)",
+              }}
+            >
+              All entries
+            </p>
+            <button
+              onClick={() => navigate("/logbook")}
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "20px",
+                letterSpacing: "var(--display-tracking)",
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                color: "var(--accent)",
+                cursor: "pointer",
+                marginTop: "8px",
+              }}
+            >
+              Logbook
+            </button>
+          </div>
+
+          {/* Right — next */}
+          <div style={{ textAlign: "right" }}>
+            <p
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: "11px",
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+                color: "var(--ink-muted)",
+              }}
+            >
+              {nextLog ? "Next entry" : "End of logbook"}
             </p>
             {nextLog ? (
               <button

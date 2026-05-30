@@ -1802,12 +1802,20 @@ img {
 }
 
 .photo-gallery {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+  columns: 2;
+  column-gap: 12px;
 }
 .photo-gallery .photo-tile {
-  aspect-ratio: 4/3;
+  aspect-ratio: unset;
+  break-inside: avoid;
+  margin-bottom: 12px;
+}
+.photo-gallery .photo-tile img {
+  position: static;
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: unset;
 }
 
 /* ========== RESUME ========== */
@@ -2255,7 +2263,7 @@ img {
     opacity: 1;
   }
   .photo-gallery {
-    grid-template-columns: 1fr;
+    columns: 1;
   }
   .stats-row {
     grid-template-columns: repeat(2, 1fr);

@@ -34,7 +34,6 @@ const restoule = import.meta.glob(
   { eager: true, as: "url" },
 );
 
-
 const toSortedUrls = (globResult) =>
   Object.values(globResult)
     .filter((v) => typeof v === "string")

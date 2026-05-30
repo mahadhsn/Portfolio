@@ -187,6 +187,11 @@ const About = () => {
               <span className="tl-meta">3rd year 🖥️</span>
             </div>
             <div className="tl-row">
+              <span className="tl-date">May 2026</span>
+              <span className="tl-title">SWE Intern, AMD</span>
+              <span className="tl-meta"></span>
+            </div>
+            <div className="tl-row">
               <span className="tl-date">Oct 2025</span>
               <span className="tl-title">ML Engineer, McMaster Drone Club</span>
               <span className="tl-meta">✈</span>
