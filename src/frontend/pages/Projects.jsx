@@ -65,23 +65,22 @@ const Projects = () => {
       {/* Card grid */}
       <div className="proj-grid">
         {visible.map((p) => (
-          <div
-            key={p.id}
-            className="proj-card"
-            onClick={() => setSelected(p)}
-          >
+          <div key={p.id} className="proj-card" onClick={() => setSelected(p)}>
             <div className={`proj-card-img proj-placeholder-${p.id}`}>
               {p.image && <img src={p.image} alt={p.title} />}
               {p.award && <span className="proj-card-award">🏆 {p.award}</span>}
-              {p.url.startsWith("https://") && !p.url.includes("github.com") && (
-                <span className="proj-live-dot" title="Live site" />
-              )}
+              {p.url.startsWith("https://") &&
+                !p.url.includes("github.com") && (
+                  <span className="proj-live-dot" title="Live site" />
+                )}
             </div>
             <div className="proj-card-body">
               <div className="proj-card-meta">
                 <div className="proj-tag-pills">
                   {p.tags.map((t) => (
-                    <span key={t} className="proj-tag-pill">{t}</span>
+                    <span key={t} className="proj-tag-pill">
+                      {t}
+                    </span>
                   ))}
                 </div>
                 <span className="proj-card-year">{p.year}</span>

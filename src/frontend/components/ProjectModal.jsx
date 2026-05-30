@@ -41,7 +41,9 @@ const ProjectModal = ({ project, onClose }) => {
           {project.image ? (
             <img src={project.image} alt={project.title} />
           ) : (
-            <div className={`modal-hero-placeholder proj-placeholder-${project.id}`} />
+            <div
+              className={`modal-hero-placeholder proj-placeholder-${project.id}`}
+            />
           )}
         </div>
 
@@ -51,17 +53,21 @@ const ProjectModal = ({ project, onClose }) => {
             <p className="modal-sidebar-heading">Overview</p>
             <div className="modal-meta">
               <div className="modal-meta-row">
-                <span>Year</span><span>{project.year}</span>
+                <span>Year</span>
+                <span>{project.year}</span>
               </div>
               <div className="modal-meta-row">
-                <span>Type</span><span>{project.tags.join(", ")}</span>
+                <span>Type</span>
+                <span>{project.tags.join(", ")}</span>
               </div>
               <div className="modal-meta-row">
-                <span>Role</span><span>{project.role}</span>
+                <span>Role</span>
+                <span>{project.role}</span>
               </div>
               {project.award && (
                 <div className="modal-meta-row">
-                  <span>Award</span><span>🏆 {project.award}</span>
+                  <span>Award</span>
+                  <span>🏆 {project.award}</span>
                 </div>
               )}
             </div>
@@ -71,16 +77,27 @@ const ProjectModal = ({ project, onClose }) => {
             </p>
             <div className="modal-tech-list">
               {project.tech?.map((t) => (
-                <span key={t} className="modal-tech-tag">{t}</span>
+                <span key={t} className="modal-tech-tag">
+                  {t}
+                </span>
               ))}
             </div>
 
             <a
               href={project.url}
               target={project.url.startsWith("http") ? "_blank" : undefined}
-              rel={project.url.startsWith("http") ? "noopener noreferrer" : undefined}
+              rel={
+                project.url.startsWith("http")
+                  ? "noopener noreferrer"
+                  : undefined
+              }
               className="btn primary"
-              style={{ marginTop: "28px", display: "inline-flex", alignItems: "center", gap: "6px" }}
+              style={{
+                marginTop: "28px",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "6px",
+              }}
             >
               View project <ArrowUpRight size={13} />
             </a>
@@ -103,7 +120,7 @@ const ProjectModal = ({ project, onClose }) => {
         </div>
       </div>
     </div>,
-    document.body
+    document.body,
   );
 };
 
