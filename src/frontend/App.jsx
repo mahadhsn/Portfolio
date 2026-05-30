@@ -50,6 +50,14 @@ export default function App() {
             path="/logbook/mdl-18-1-26"
             element={<PhotoEntry id="mdl" />}
           />
+          <Route
+            path="/logbook/orchard-11-5-26"
+            element={<PhotoEntry id="orchard" />}
+          />
+          <Route
+            path="/logbook/restoule-16-5-26"
+            element={<PhotoEntry id="restoule" />}
+          />          
 
           <Route path="/resume" element={<Resume />} />
           <Route path="/contact" element={<Contact />} />
