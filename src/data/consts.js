@@ -156,9 +156,28 @@ export const PROJECTS = [
 // ── Photos ────────────────────────────────────────────────────
 export const PHOTOS = [
   {
+    id: "restoule",
+    title: "Restoule",
+    date: "MAY 15-16, 2026",
+    location: "Restoule, ON",
+    camera: "Canon R50",
+    path: "/logbook/restoule-16-5-26",
+    globKey: "restoule",
+  },
+
+  {
+    id: "orchard",
+    title: "Orchard",
+    date: "MAY 11, 2026",
+    location: "Orchard, ON",
+    camera: "Canon R50",
+    path: "/logbook/orchard-11-5-26",
+    globKey: "orchard",
+  },
+  {
     id: "mdl",
     title: "MDL Designathon",
-    date: "JAN 17–18, 2026",
+    date: "JAN 17-18, 2026",
     location: "Hamilton, ON",
     camera: "Canon R50",
     path: "/logbook/mdl-18-1-26",

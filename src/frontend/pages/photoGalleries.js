@@ -25,6 +25,15 @@ const mdl = import.meta.glob(
   "../../assets/canon/mdl-18-1-26/optimized/*-1600.webp",
   { eager: true, as: "url" },
 );
+const orchard = import.meta.glob(
+  "../../assets/canon/orchard-11-5-26/optimized/*-1600.webp",
+  { eager: true, as: "url" },
+);
+const restoule = import.meta.glob(
+  "../../assets/canon/restoule-16-5-26/optimized/*-1600.webp",
+  { eager: true, as: "url" },
+);
+
 
 const toSortedUrls = (globResult) =>
   Object.values(globResult)
@@ -38,4 +47,6 @@ export const galleries = {
   bronte: toSortedUrls(bronte),
   stirling: toSortedUrls(stirling),
   mdl: toSortedUrls(mdl),
+  orchard: toSortedUrls(orchard),
+  restoule: toSortedUrls(restoule),
 };

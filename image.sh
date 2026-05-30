@@ -28,7 +28,7 @@ for folder in "$RAW"/*/; do
     name="${base%.*}"
     outfile="$outdir/${name}-1600.webp"
 
-    # 👉 Skip if THIS file already exists
+
     if [ -f "$outfile" ]; then
       echo "  Skipping $base (already optimized)"
       continue
