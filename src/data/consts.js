@@ -34,7 +34,14 @@ export const PROJECTS = [
     award: "MacEngComp '25",
     url: "https://natural-disaster-map.vercel.app",
     role: "Full-stack · Hackathon team",
-    tech: ["TypeScript", "React", "Next.js", "Tailwind CSS", "GCP Vision", "OpenAI"],
+    tech: [
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "GCP Vision",
+      "OpenAI",
+    ],
     image: "/images/projects/preppal.png",
   },
   {
@@ -67,7 +74,14 @@ export const PROJECTS = [
     year: "2024",
     url: "https://digit-recognizer-web.vercel.app",
     role: "Solo project",
-    tech: ["Python", "TensorFlow", "Matplotlib", "TypeScript", "React", "Tailwind CSS"],
+    tech: [
+      "Python",
+      "TensorFlow",
+      "Matplotlib",
+      "TypeScript",
+      "React",
+      "Tailwind CSS",
+    ],
     image: "/images/projects/digit-rec.png",
   },
   {
