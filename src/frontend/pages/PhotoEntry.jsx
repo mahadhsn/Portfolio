@@ -11,6 +11,7 @@ const PhotoEntry = ({ id }) => {
   const [hero, ...rest] = images;
 
   const currentIndex = PHOTOS.findIndex((p) => p.globKey === id);
+  const prevPhoto = currentIndex > 0 ? PHOTOS[currentIndex - 1] : null;
   const nextPhoto =
     currentIndex < PHOTOS.length - 1 ? PHOTOS[currentIndex + 1] : null;
 
@@ -84,8 +85,9 @@ const PhotoEntry = ({ id }) => {
           </div>
         )}
 
-        {/* Next */}
+        {/* Prev / Next */}
         <div className="log-next">
+          {/* Left — back / prev */}
           <div>
             <p
               style={{
@@ -96,7 +98,69 @@ const PhotoEntry = ({ id }) => {
                 color: "var(--ink-muted)",
               }}
             >
-              {nextPhoto ? "Next in photography" : "Back to logbook"}
+              {prevPhoto ? "Previous set" : "All photography"}
+            </p>
+            <button
+              onClick={() => navigate(prevPhoto ? prevPhoto.path : "/logbook")}
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "20px",
+                letterSpacing: "var(--display-tracking)",
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                color: "var(--accent)",
+                cursor: "pointer",
+                marginTop: "8px",
+              }}
+            >
+              <ArrowLeft size={16} /> {prevPhoto ? prevPhoto.title : "Logbook"}
+            </button>
+          </div>
+
+          {/* Center — logbook */}
+          <div style={{ textAlign: "center" }}>
+            <p
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: "11px",
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+                color: "var(--ink-muted)",
+              }}
+            >
+              All entries
+            </p>
+            <button
+              onClick={() => navigate("/logbook")}
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "20px",
+                letterSpacing: "var(--display-tracking)",
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                color: "var(--accent)",
+                cursor: "pointer",
+                marginTop: "8px",
+              }}
+            >
+              Logbook
+            </button>
+          </div>
+
+          {/* Right — next */}
+          <div style={{ textAlign: "right" }}>
+            <p
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: "11px",
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+                color: "var(--ink-muted)",
+              }}
+            >
+              {nextPhoto ? "Next in photography" : "End of photography"}
             </p>
             <button
               onClick={() => navigate(nextPhoto ? nextPhoto.path : "/logbook")}

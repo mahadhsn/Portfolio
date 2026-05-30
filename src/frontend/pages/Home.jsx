@@ -120,6 +120,7 @@ const Home = () => {
           <h3>A quick snapshot.</h3>
           <ul>
             <li>Software Engineering @ McMaster University</li>
+            <li>Software Engineering Intern @ AMD</li>
             <li>Diverse developer with a love for ML</li>
             <li>Hackathon winner x 2 (MacEngComp &apos;24 &amp; &apos;25)</li>
             <li>Always building, always learning</li>

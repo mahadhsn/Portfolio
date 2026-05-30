@@ -57,7 +57,7 @@ export default function App() {
           <Route
             path="/logbook/restoule-16-5-26"
             element={<PhotoEntry id="restoule" />}
-          />          
+          />
 
           <Route path="/resume" element={<Resume />} />
           <Route path="/contact" element={<Contact />} />
