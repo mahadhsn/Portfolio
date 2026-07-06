@@ -7,6 +7,8 @@ import Projects from "./pages/Projects";
 import Logbook from "./pages/Logbook";
 import LogEntry from "./pages/LogEntry";
 import PhotoEntry from "./pages/PhotoEntry";
+import TripEntry from "./pages/TripEntry";
+import TripDayEntry from "./pages/TripDayEntry";
 import Resume from "./pages/Resume";
 import Contact from "./pages/Contact";
 import ScrollToTop from "./components/layout/ScrollToTop";
@@ -57,6 +59,15 @@ export default function App() {
           <Route
             path="/logbook/restoule-16-5-26"
             element={<PhotoEntry id="restoule" />}
+          />
+
+          <Route
+            path="/logbook/banff-27-6-26"
+            element={<TripEntry tripId="banff" />}
+          />
+          <Route
+            path="/logbook/banff-27-6-26/:day"
+            element={<TripDayEntry tripId="banff" />}
           />
 
           <Route path="/resume" element={<Resume />} />
