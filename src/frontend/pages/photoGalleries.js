@@ -34,6 +34,32 @@ const restoule = import.meta.glob(
   { eager: true, as: "url" },
 );
 
+// Banff trip — one glob per shot day, shared across cameras.
+const banffDay1 = import.meta.glob(
+  "../../assets/banff-27-6-26/2026-06-27/optimized/*-1600.webp",
+  { eager: true, as: "url" },
+);
+const banffDay2 = import.meta.glob(
+  "../../assets/banff-27-6-26/2026-06-28/optimized/*-1600.webp",
+  { eager: true, as: "url" },
+);
+const banffDay3 = import.meta.glob(
+  "../../assets/banff-27-6-26/2026-06-29/optimized/*-1600.webp",
+  { eager: true, as: "url" },
+);
+const banffDay5 = import.meta.glob(
+  "../../assets/banff-27-6-26/2026-07-01/optimized/*-1600.webp",
+  { eager: true, as: "url" },
+);
+const banffDay6 = import.meta.glob(
+  "../../assets/banff-27-6-26/2026-07-02/optimized/*-1600.webp",
+  { eager: true, as: "url" },
+);
+const banffDay7 = import.meta.glob(
+  "../../assets/banff-27-6-26/2026-07-03/optimized/*-1600.webp",
+  { eager: true, as: "url" },
+);
+
 const toSortedUrls = (globResult) =>
   Object.values(globResult)
     .filter((v) => typeof v === "string")
@@ -48,4 +74,10 @@ export const galleries = {
   mdl: toSortedUrls(mdl),
   orchard: toSortedUrls(orchard),
   restoule: toSortedUrls(restoule),
+  banffDay1: toSortedUrls(banffDay1),
+  banffDay2: toSortedUrls(banffDay2),
+  banffDay3: toSortedUrls(banffDay3),
+  banffDay5: toSortedUrls(banffDay5),
+  banffDay6: toSortedUrls(banffDay6),
+  banffDay7: toSortedUrls(banffDay7),
 };

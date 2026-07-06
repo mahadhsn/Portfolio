@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { ArrowRight } from "../components/Icons";
-import { PHOTOS } from "../../data/consts";
+import { TRIPS, PHOTO_ROLLS } from "../../data/consts";
 import { LOGS } from "../../data/logUtils";
 import { galleries } from "./photoGalleries";
 
@@ -15,14 +15,23 @@ const pickCover = (globKey) => {
   return imgs[Math.floor(Math.random() * imgs.length)];
 };
 
+// Trips have no single globKey — pool every day's images and pick one
+const pickTripCover = (tripId) => {
+  const trip = TRIPS.find((t) => t.id === tripId);
+  if (!trip) return null;
+  const pool = trip.days.flatMap((d) => galleries[d.globKey] || []);
+  if (!pool.length) return null;
+  return pool[Math.floor(Math.random() * pool.length)];
+};
+
 const Logbook = () => {
   const navigate = useNavigate();
   const [tag, setTag] = useState("all");
   // Memoize covers so they don't re-randomize on re-render
   const covers = useMemo(() => {
     const map = {};
-    PHOTOS.forEach((p) => {
-      map[p.globKey] = pickCover(p.globKey);
+    PHOTO_ROLLS.forEach((r) => {
+      map[r.id] = r.kind === "trip" ? pickTripCover(r.id) : pickCover(r.globKey);
     });
     return map;
   }, []);
@@ -91,18 +100,16 @@ const Logbook = () => {
       {/* Photography section */}
       <div className="log-section-title">
         Photography
-        <span className="count">{PHOTOS.length} rolls</span>
+        <span className="count">{PHOTO_ROLLS.length} rolls</span>
       </div>
       <div className="photo-grid">
-        {PHOTOS.map((p) => (
+        {PHOTO_ROLLS.map((p) => (
           <div
             key={p.id}
             className="photo-tile"
             onClick={() => navigate(p.path)}
             style={
-              covers[p.globKey]
-                ? { backgroundImage: `url(${covers[p.globKey]})` }
-                : {}
+              covers[p.id] ? { backgroundImage: `url(${covers[p.id]})` } : {}
             }
           >
             <div className="photo-grad" />

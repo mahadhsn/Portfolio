@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { ArrowLeft, ArrowRight } from "../components/Icons";
-import { PHOTOS } from "../../data/consts";
+import { PHOTOS, PHOTO_ROLLS } from "../../data/consts";
 import { galleries } from "./photoGalleries";
 
 const PhotoEntry = ({ id }) => {
@@ -10,10 +10,14 @@ const PhotoEntry = ({ id }) => {
   const images = galleries[id] || [];
   const [hero, ...rest] = images;
 
-  const currentIndex = PHOTOS.findIndex((p) => p.globKey === id);
-  const prevPhoto = currentIndex > 0 ? PHOTOS[currentIndex - 1] : null;
+  const currentIndex = PHOTO_ROLLS.findIndex(
+    (r) => r.kind === "photo" && r.globKey === id,
+  );
+  const prevPhoto = currentIndex > 0 ? PHOTO_ROLLS[currentIndex - 1] : null;
   const nextPhoto =
-    currentIndex < PHOTOS.length - 1 ? PHOTOS[currentIndex + 1] : null;
+    currentIndex < PHOTO_ROLLS.length - 1
+      ? PHOTO_ROLLS[currentIndex + 1]
+      : null;
 
   if (!photo) {
     return (
