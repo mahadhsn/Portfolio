@@ -35,6 +35,7 @@ const Contact = () => {
     lastName: "",
     email: "",
     subject: "",
+    website: "",
   });
   const [status, setStatus] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -51,17 +52,18 @@ const Contact = () => {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          firstName: form.firstName,
-          lastName: form.lastName,
-          email: form.email,
-          subject: form.subject,
-        }),
+        body: JSON.stringify(form),
       });
 
       if (response.ok) {
         setSent(true);
-        setForm({ firstName: "", lastName: "", email: "", subject: "" });
+        setForm({
+          firstName: "",
+          lastName: "",
+          email: "",
+          subject: "",
+          website: "",
+        });
       } else if (response.status === 429) {
         setStatus("You've hit the daily send limit. Try again tomorrow.");
       } else {
@@ -196,6 +198,16 @@ const Contact = () => {
                   required
                 />
               </div>
+
+              <input
+                name="website"
+                value={form.website}
+                onChange={handleChange}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                style={{ position: "absolute", left: "-9999px" }}
+              />
 
               {status && (
                 <p
