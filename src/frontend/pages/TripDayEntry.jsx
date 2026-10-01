@@ -63,7 +63,7 @@ const TripDayEntry = ({ tripId }) => {
   return (
     <>
       <Helmet>
-        <title>{`${trip.title} · Day ${currentDay.dayNumber} — ${currentDay.place} | Mahad Hassan`}</title>
+        <title>{`${trip.title} Day ${currentDay.dayNumber}, ${currentDay.place} | Mahad Hassan`}</title>
       </Helmet>
 
       <div className="photo-detail">
@@ -75,7 +75,7 @@ const TripDayEntry = ({ tripId }) => {
           className="display"
           style={{ fontSize: "clamp(48px, 6vw, 88px)", margin: "8px 0 24px" }}
         >
-          {trip.title} · Day {currentDay.dayNumber}
+          {trip.title}, Day {currentDay.dayNumber}
         </h1>
 
         {hero && (
@@ -85,7 +85,7 @@ const TripDayEntry = ({ tripId }) => {
               alt={`${trip.title} day ${currentDay.dayNumber} hero`}
             />
             <span className="photo-caption">
-              {currentDay.place} · {formatDay(currentDay.date)}
+              {currentDay.place}, {formatDay(currentDay.date)}
             </span>
           </div>
         )}

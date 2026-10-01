@@ -34,7 +34,7 @@ const restoule = import.meta.glob(
   { eager: true, as: "url" },
 );
 
-// Banff trip — one glob per shot day, shared across cameras.
+// Banff trip - one glob per shot day, shared across cameras.
 const banffDay1 = import.meta.glob(
   "../../assets/banff-27-6-26/2026-06-27/optimized/*-1600.webp",
   { eager: true, as: "url" },
