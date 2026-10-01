@@ -91,7 +91,7 @@ const Contact = () => {
       </h1>
 
       <div className="contact-grid">
-        {/* Left — channels */}
+        {/* Left - channels */}
         <div className="contact-info">
           <p
             className="subtle"
@@ -130,7 +130,7 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Right — form */}
+        {/* Right - form */}
         <div className="contact-form">
           {sent ? (
             <div className="contact-thanks">

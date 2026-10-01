@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Optimize a multi-day trip shoot into shared per-day galleries.
-# Multiple cameras can point at the same trip slug — outputs land in the
+# Multiple cameras can point at the same trip slug - outputs land in the
 # same destination day folder so a day's gallery can combine cameras.
 #
 # Usage: ./image-trip.sh <camera> <trip-slug>
