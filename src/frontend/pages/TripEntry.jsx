@@ -8,8 +8,18 @@ import { galleries } from "./photoGalleries";
 const formatDay = (dateStr) => {
   const [, m, d] = dateStr.split("-");
   const months = [
-    "JAN", "FEB", "MAR", "APR", "MAY", "JUN",
-    "JUL", "AUG", "SEP", "OCT", "NOV", "DEC",
+    "JAN",
+    "FEB",
+    "MAR",
+    "APR",
+    "MAY",
+    "JUN",
+    "JUL",
+    "AUG",
+    "SEP",
+    "OCT",
+    "NOV",
+    "DEC",
   ];
   return `${months[parseInt(m, 10) - 1]} ${parseInt(d, 10)}`;
 };

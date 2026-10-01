@@ -164,12 +164,42 @@ export const TRIPS = [
     camera: "Fujifilm X-T50 + Canon EOS Rebel T2i",
     path: "/logbook/banff-27-6-26",
     days: [
-      { date: "2026-06-27", dayNumber: 1, place: "Golden, BC", globKey: "banffDay1" },
-      { date: "2026-06-28", dayNumber: 2, place: "Lake Louise, AB", globKey: "banffDay2" },
-      { date: "2026-06-29", dayNumber: 3, place: "Emerald Lake & Golden, BC", globKey: "banffDay3" },
-      { date: "2026-07-01", dayNumber: 4, place: "Icefields Parkway to Jasper, AB", globKey: "banffDay5" },
-      { date: "2026-07-02", dayNumber: 5, place: "Banff, AB", globKey: "banffDay6" },
-      { date: "2026-07-03", dayNumber: 6, place: "Golden, BC (Kicking Horse Resort)", globKey: "banffDay7" },
+      {
+        date: "2026-06-27",
+        dayNumber: 1,
+        place: "Golden, BC",
+        globKey: "banffDay1",
+      },
+      {
+        date: "2026-06-28",
+        dayNumber: 2,
+        place: "Lake Louise, AB",
+        globKey: "banffDay2",
+      },
+      {
+        date: "2026-06-29",
+        dayNumber: 3,
+        place: "Emerald Lake & Golden, BC",
+        globKey: "banffDay3",
+      },
+      {
+        date: "2026-07-01",
+        dayNumber: 4,
+        place: "Icefields Parkway to Jasper, AB",
+        globKey: "banffDay5",
+      },
+      {
+        date: "2026-07-02",
+        dayNumber: 5,
+        place: "Banff, AB",
+        globKey: "banffDay6",
+      },
+      {
+        date: "2026-07-03",
+        dayNumber: 6,
+        place: "Golden, BC (Kicking Horse Resort)",
+        globKey: "banffDay7",
+      },
     ],
   },
 ];
