@@ -91,7 +91,7 @@ const PhotoEntry = ({ id }) => {
 
         {/* Prev / Next */}
         <div className="log-next">
-          {/* Left — back / prev */}
+          {/* Left - back / prev */}
           <div>
             <p
               style={{
@@ -122,7 +122,7 @@ const PhotoEntry = ({ id }) => {
             </button>
           </div>
 
-          {/* Center — logbook */}
+          {/* Center - logbook */}
           <div style={{ textAlign: "center" }}>
             <p
               style={{
@@ -153,7 +153,7 @@ const PhotoEntry = ({ id }) => {
             </button>
           </div>
 
-          {/* Right — next */}
+          {/* Right - next */}
           <div style={{ textAlign: "right" }}>
             <p
               style={{
