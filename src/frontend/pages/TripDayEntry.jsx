@@ -8,8 +8,18 @@ import { galleries } from "./photoGalleries";
 const formatDay = (dateStr) => {
   const [y, m, d] = dateStr.split("-");
   const months = [
-    "JAN", "FEB", "MAR", "APR", "MAY", "JUN",
-    "JUL", "AUG", "SEP", "OCT", "NOV", "DEC",
+    "JAN",
+    "FEB",
+    "MAR",
+    "APR",
+    "MAY",
+    "JUN",
+    "JUL",
+    "AUG",
+    "SEP",
+    "OCT",
+    "NOV",
+    "DEC",
   ];
   return `${months[parseInt(m, 10) - 1]} ${parseInt(d, 10)}, ${y}`;
 };
@@ -70,7 +80,10 @@ const TripDayEntry = ({ tripId }) => {
 
         {hero && (
           <div className="photo-hero">
-            <img src={hero} alt={`${trip.title} day ${currentDay.dayNumber} hero`} />
+            <img
+              src={hero}
+              alt={`${trip.title} day ${currentDay.dayNumber} hero`}
+            />
             <span className="photo-caption">
               {currentDay.place} · {formatDay(currentDay.date)}
             </span>
@@ -100,7 +113,10 @@ const TripDayEntry = ({ tripId }) => {
           <div className="photo-gallery">
             {rest.map((src, i) => (
               <div key={i} className="photo-tile">
-                <img src={src} alt={`${trip.title} day ${currentDay.dayNumber} ${i + 2}`} />
+                <img
+                  src={src}
+                  alt={`${trip.title} day ${currentDay.dayNumber} ${i + 2}`}
+                />
               </div>
             ))}
           </div>
@@ -135,8 +151,7 @@ const TripDayEntry = ({ tripId }) => {
                 marginTop: "8px",
               }}
             >
-              <ArrowLeft size={16} />{" "}
-              {prevDay ? prevDay.place : trip.title}
+              <ArrowLeft size={16} /> {prevDay ? prevDay.place : trip.title}
             </button>
           </div>
 
@@ -198,8 +213,7 @@ const TripDayEntry = ({ tripId }) => {
                 marginTop: "8px",
               }}
             >
-              {nextDay ? nextDay.place : trip.title}{" "}
-              <ArrowRight size={16} />
+              {nextDay ? nextDay.place : trip.title} <ArrowRight size={16} />
             </button>
           </div>
         </div>
