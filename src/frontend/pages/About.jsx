@@ -11,7 +11,7 @@ const About = () => {
         <title>About Mahad</title>
         <meta
           name="description"
-          content="About Mahad Hassan — software engineering student, builder, curious human."
+          content="About Mahad Hassan: software engineering student, builder, curious human."
         />
       </Helmet>
 

@@ -6,7 +6,7 @@ _June 21, 2025 · 3 min read · life_
 
 Hello again :) Not sure how many people will even read this but I appreciate you for doing so! On the logbook section, I will be documenting my life more in depth (i hope). There are a few rules I'll be following:
 
-- **NO AI!** — We often blindly use AI in everything nowadays and I feel it makes it difficult for us to be authentic. You'll be seeing me myself and I on this blob of the internet. The max I'll do is use it for motivation maybe... pls dont end me
+- **NO AI!**: We often blindly use AI in everything nowadays and I feel it makes it difficult for us to be authentic. You'll be seeing me myself and I on this blob of the internet. The max I'll do is use it for motivation maybe... pls dont end me
 - **NO FILTER!** - I'm going to attempt to be as transparent as possible about my views, opinions, and experiences. Luckily no politics will be discussed.
 
 So that's all I can think of for now but this'll likely be the only part of the logbook that might be edited in the future. I'll also try to keep at least one image per log to retain attention for today's generation.
@@ -27,9 +27,9 @@ Moreso, I might affect someone in a positive way. Maybe someone will read this a
 
 At this point, I wanna write about a lot but you know how that usually goes. I'll try to hold myself accountable and meet those standards but you never know. My current plans are to write about 3 main categories which you might've noticed on the main logbook page:
 
-- **life** — Here I want to write about my personal life choices. This would include anything from hobbies, interests, personal growth, etc...
-- **school** — This will focus on my academic life. I'd like to think I'll keep it going throughout my life incase I pursue a master's or whatnot.
-- **career** — I think this would be interchangeable with school at times but would focus more on professional development such as internships (if I get to do any more </3).
+- **life**: Here I want to write about my personal life choices. This would include anything from hobbies, interests, personal growth, etc...
+- **school**: This will focus on my academic life. I'd like to think I'll keep it going throughout my life incase I pursue a master's or whatnot.
+- **career**: I think this would be interchangeable with school at times but would focus more on professional development such as internships (if I get to do any more </3).
 
 Other than these, I might add reviews on courses I've taken at Mac which I guess would come under school. I could also include some of the external exams I've done such as the SAT, APs, IELTS, etc...
 

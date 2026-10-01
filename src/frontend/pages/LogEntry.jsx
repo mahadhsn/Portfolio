@@ -130,7 +130,7 @@ const LogEntry = () => {
         </ReactMarkdown>
 
         <div className="log-next">
-          {/* Left — back / prev */}
+          {/* Left - back / prev */}
           <div>
             <p
               style={{
@@ -161,7 +161,7 @@ const LogEntry = () => {
             </button>
           </div>
 
-          {/* Center — logbook */}
+          {/* Center - logbook */}
           <div style={{ textAlign: "center" }}>
             <p
               style={{
@@ -192,7 +192,7 @@ const LogEntry = () => {
             </button>
           </div>
 
-          {/* Right — next */}
+          {/* Right - next */}
           <div style={{ textAlign: "right" }}>
             <p
               style={{

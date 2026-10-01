@@ -15,7 +15,7 @@ const pickCover = (globKey) => {
   return imgs[Math.floor(Math.random() * imgs.length)];
 };
 
-// Trips have no single globKey — pool every day's images and pick one
+// Trips have no single globKey - pool every day's images and pick one
 const pickTripCover = (tripId) => {
   const trip = TRIPS.find((t) => t.id === tripId);
   if (!trip) return null;

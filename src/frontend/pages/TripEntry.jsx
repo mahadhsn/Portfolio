@@ -80,7 +80,7 @@ const TripEntry = ({ tripId }) => {
           <div className="photo-hero">
             <img src={hero} alt={`${trip.title} hero`} />
             <span className="photo-caption">
-              {trip.location} · {trip.dateRange}
+              {trip.location}, {trip.dateRange}
             </span>
           </div>
         )}
@@ -120,7 +120,7 @@ const TripEntry = ({ tripId }) => {
               <div className="photo-overlay">
                 <div className="photo-overlay-title">{day.place}</div>
                 <div className="photo-overlay-date">
-                  Day {day.dayNumber} · {formatDay(day.date)} ·{" "}
+                  Day {day.dayNumber}, {formatDay(day.date)},{" "}
                   {day.images.length} frames
                 </div>
               </div>

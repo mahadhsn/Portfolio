@@ -25,7 +25,7 @@ const Projects = () => {
         <title>Mahad&apos;s Projects</title>
         <meta
           name="description"
-          content="Projects by Mahad Hassan — web, mobile, ML, and systems."
+          content="Projects by Mahad Hassan: web, mobile, ML, and systems."
         />
       </Helmet>
 
