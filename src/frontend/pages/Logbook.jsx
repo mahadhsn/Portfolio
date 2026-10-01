@@ -31,7 +31,8 @@ const Logbook = () => {
   const covers = useMemo(() => {
     const map = {};
     PHOTO_ROLLS.forEach((r) => {
-      map[r.id] = r.kind === "trip" ? pickTripCover(r.id) : pickCover(r.globKey);
+      map[r.id] =
+        r.kind === "trip" ? pickTripCover(r.id) : pickCover(r.globKey);
     });
     return map;
   }, []);
