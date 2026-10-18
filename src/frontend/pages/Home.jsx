@@ -8,6 +8,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import Button from "../components/Button";
+import AnimatedStat from "../components/home/AnimatedStat";
 import { ArrowUpRight } from "../components/Icons";
 import {
   STATS,
@@ -217,13 +218,7 @@ const Home = () => {
       {/* ── Stats ── */}
       <div className="stats-row stagger">
         {STATS.map((s) => (
-          <div key={s.label} className="stat">
-            <div className="stat-num">
-              {s.num}
-              {s.plus && <span className="plus">+</span>}
-            </div>
-            <div className="stat-label">{s.label}</div>
-          </div>
+          <AnimatedStat key={s.label} stat={s} />
         ))}
       </div>
 

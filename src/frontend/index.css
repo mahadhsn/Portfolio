@@ -748,6 +748,7 @@ img {
   background: var(--bg-sunk);
 }
 .stat-num {
+  font-variant-numeric: tabular-nums;
   font-family: var(--font-display);
   font-size: 54px;
   font-weight: var(--display-weight);
