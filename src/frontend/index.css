@@ -731,7 +731,7 @@ img {
 /* Stats strip */
 .stats-row {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1px;
   background: var(--line);
   border: 1px solid var(--line);
@@ -740,6 +740,7 @@ img {
   overflow: hidden;
 }
 .stat {
+  min-width: 0;
   background: var(--bg-raised);
   padding: 28px 24px;
   transition: background 0.3s;
@@ -2402,7 +2403,7 @@ img {
     columns: 1;
   }
   .stats-row {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .wins-grid {
     grid-template-columns: 1fr;
