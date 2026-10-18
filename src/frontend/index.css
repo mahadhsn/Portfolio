@@ -2685,3 +2685,121 @@ img {
   color: var(--accent);
   cursor: pointer;
 }
+
+/* ========== PHOTO LIGHTBOX ========== */
+.photo-hero[role="button"],
+.photo-tile[role="button"] {
+  cursor: zoom-in;
+}
+.photo-hero[role="button"]:focus-visible,
+.photo-tile[role="button"]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(8, 8, 10, 0.94);
+  touch-action: pan-y pinch-zoom;
+  overscroll-behavior: contain;
+  -webkit-tap-highlight-color: transparent;
+  animation: lightbox-in 0.2s ease;
+}
+.lightbox-img {
+  width: min(94vw, 1800px);
+  height: 88vh;
+  height: 88dvh;
+  object-fit: contain;
+  border-radius: 4px;
+  user-select: none;
+  animation: lightbox-img-in 0.25s var(--ease-out);
+}
+.lightbox-btn {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.lightbox-btn:hover,
+.lightbox-btn:focus-visible {
+  background: rgba(255, 255, 255, 0.25);
+}
+.lightbox-close {
+  top: max(16px, env(safe-area-inset-top));
+  right: 16px;
+}
+.lightbox-nav {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.lightbox-prev {
+  left: 16px;
+}
+.lightbox-next {
+  right: 16px;
+}
+.lightbox-count {
+  position: absolute;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.7);
+}
+@keyframes lightbox-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes lightbox-img-in {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* Landscape phones: leave room for the counter under the photo. */
+@media (max-height: 500px) {
+  .lightbox-img {
+    height: 78vh;
+    height: 78dvh;
+  }
+}
+@media (max-width: 700px) {
+  .lightbox-img {
+    width: 100vw;
+    height: 80vh;
+    height: 80dvh;
+    border-radius: 0;
+  }
+  .lightbox-nav {
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .lightbox-prev {
+    left: 8px;
+  }
+  .lightbox-next {
+    right: 8px;
+  }
+}

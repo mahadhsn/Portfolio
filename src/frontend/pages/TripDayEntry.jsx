@@ -1,8 +1,10 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { ArrowLeft, ArrowRight } from "../components/Icons";
 import { TRIPS } from "../../data/consts";
+import Lightbox from "../components/logs/Lightbox";
+import lightboxTrigger from "../components/logs/lightboxTrigger";
 import { galleries } from "./photoGalleries";
 
 const formatDay = (dateStr) => {
@@ -43,6 +45,7 @@ const TripDayEntry = ({ tripId }) => {
     currentIndex >= 0 && currentIndex < daysWithPhotos.length - 1
       ? daysWithPhotos[currentIndex + 1]
       : null;
+  const [viewing, setViewing] = useState(null);
 
   if (!trip || !currentDay) {
     return (
@@ -79,7 +82,10 @@ const TripDayEntry = ({ tripId }) => {
         </h1>
 
         {hero && (
-          <div className="photo-hero">
+          <div
+            className="photo-hero"
+            {...lightboxTrigger(() => setViewing(0), "View photo full screen")}
+          >
             <img
               src={hero}
               alt={`${trip.title} day ${currentDay.dayNumber} hero`}
@@ -112,7 +118,14 @@ const TripDayEntry = ({ tripId }) => {
         {rest.length > 0 && (
           <div className="photo-gallery">
             {rest.map((src, i) => (
-              <div key={i} className="photo-tile">
+              <div
+                key={i}
+                className="photo-tile"
+                {...lightboxTrigger(
+                  () => setViewing(i + 1),
+                  "View photo full screen",
+                )}
+              >
                 <img
                   src={src}
                   alt={`${trip.title} day ${currentDay.dayNumber} ${i + 2}`}
@@ -120,6 +133,16 @@ const TripDayEntry = ({ tripId }) => {
               </div>
             ))}
           </div>
+        )}
+
+        {viewing !== null && (
+          <Lightbox
+            images={currentDay.images}
+            index={viewing}
+            alt={`${trip.title} day ${currentDay.dayNumber}`}
+            onClose={() => setViewing(null)}
+            onChange={setViewing}
+          />
         )}
 
         <div className="log-next">

@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { ArrowLeft, ArrowRight } from "../components/Icons";
 import { PHOTOS, PHOTO_ROLLS } from "../../data/consts";
+import Lightbox from "../components/logs/Lightbox";
+import lightboxTrigger from "../components/logs/lightboxTrigger";
 import { galleries } from "./photoGalleries";
 
 const PhotoEntry = ({ id }) => {
@@ -9,6 +12,7 @@ const PhotoEntry = ({ id }) => {
   const photo = PHOTOS.find((p) => p.globKey === id);
   const images = galleries[id] || [];
   const [hero, ...rest] = images;
+  const [viewing, setViewing] = useState(null);
 
   const currentIndex = PHOTO_ROLLS.findIndex(
     (r) => r.kind === "photo" && r.globKey === id,
@@ -50,7 +54,10 @@ const PhotoEntry = ({ id }) => {
 
         {/* Hero image */}
         {hero && (
-          <div className="photo-hero">
+          <div
+            className="photo-hero"
+            {...lightboxTrigger(() => setViewing(0), "View photo full screen")}
+          >
             <img src={hero} alt={`${photo.title} hero`} />
             <span className="photo-caption">
               {photo.location} · {photo.date}
@@ -82,11 +89,28 @@ const PhotoEntry = ({ id }) => {
         {rest.length > 0 && (
           <div className="photo-gallery">
             {rest.map((src, i) => (
-              <div key={i} className="photo-tile">
+              <div
+                key={i}
+                className="photo-tile"
+                {...lightboxTrigger(
+                  () => setViewing(i + 1),
+                  "View photo full screen",
+                )}
+              >
                 <img src={src} alt={`${photo.title} ${i + 2}`} />
               </div>
             ))}
           </div>
+        )}
+
+        {viewing !== null && (
+          <Lightbox
+            images={images}
+            index={viewing}
+            alt={photo.title}
+            onClose={() => setViewing(null)}
+            onChange={setViewing}
+          />
         )}
 
         {/* Prev / Next */}

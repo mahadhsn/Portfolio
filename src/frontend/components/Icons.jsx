@@ -43,6 +43,21 @@ export const ArrowLeft = ({ size = 14 }) => (
   </svg>
 );
 
+export const Close = ({ size = 14 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 14 14"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M2 2l10 10M12 2L2 12" />
+  </svg>
+);
+
 export const Sun = ({ size = 14 }) => (
   <svg
     width={size}
