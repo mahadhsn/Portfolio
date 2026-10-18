@@ -502,14 +502,6 @@ export const EXPERIENCE = [
   },
 ];
 
-// ── About tabs ────────────────────────────────────────────────
-export const ABOUT_SECTIONS = [
-  { id: "intro", label: "Intro" },
-  { id: "now", label: "Now" },
-  { id: "before", label: "Before" },
-  { id: "wins", label: "Wins" },
-];
-
 // ── Home stats ────────────────────────────────────────────────
 export const STATS = [
   { num: "10", plus: true, label: "Projects" },
