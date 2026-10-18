@@ -411,6 +411,10 @@ img {
   font-size: clamp(48px, 7vw, 96px);
   margin: 0 0 8px;
 }
+.page-title em {
+  color: var(--accent);
+  font-style: italic;
+}
 .subtle {
   color: var(--ink-soft);
 }
