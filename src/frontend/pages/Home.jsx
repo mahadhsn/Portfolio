@@ -9,7 +9,14 @@ import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import Button from "../components/Button";
 import { ArrowUpRight } from "../components/Icons";
-import { STATS, PROJECTS, GREETINGS } from "../../data/consts";
+import {
+  STATS,
+  PROJECTS,
+  GREETINGS,
+  HERO_ROLE,
+  HERO_ROLE_PREV,
+  HERO_DEGREE,
+} from "../../data/consts";
 
 const im = " I'm";
 const line2 = "Mahad.";
@@ -143,9 +150,14 @@ const Home = () => {
             </div>
           </div>
 
+          <div className="home-role">
+            <p>{HERO_ROLE}</p>
+            <p className="home-role-prev">{HERO_ROLE_PREV}</p>
+            <p className="home-role-prev">{HERO_DEGREE}</p>
+          </div>
           <p className="home-tag">
-            Software engineering student at McMaster. I build things for the
-            world, <em>chase ideas</em>, and love to learn.
+            I build things for the world, <em>chase ideas</em>, and love to
+            learn.
           </p>
 
           <div className="home-cta-row">
