@@ -532,10 +532,57 @@ export const HERO_ROLE = "Software Test Automation Engineer Intern @ AMD";
 export const HERO_ROLE_PREV = "Previously Software Engineer Intern @ TD Bank";
 export const HERO_DEGREE = "Software Engineering IV @ McMaster University";
 
+export const SNAPSHOT = [
+  {
+    label: "Now",
+    value: "Software Test Automation Engineer Intern @ AMD",
+    detail: "Agentic pipelines that write and validate hardware tests",
+  },
+  {
+    label: "Before",
+    value: "Software Engineer Intern @ TD Bank",
+    detail: "Kafka microservices, $1M/year in infrastructure savings",
+  },
+  {
+    label: "Leading",
+    value: "VP of Tech @ McMaster Software Engineering Society",
+    detail:
+      "Managing tech for the society and its website, used by 500+ students",
+  },
+  {
+    label: "Studying",
+    value: "Software Engineering IV @ McMaster",
+    detail: "Co-op, expected May 2028",
+  },
+];
+
+export const NOW_ITEMS = [
+  {
+    label: "Shipping",
+    value: "ScleroCare to the App Store",
+    detail: "A privacy-first support app for scleroderma patients",
+  },
+  {
+    label: "Exploring",
+    value: "ML and computer vision",
+    detail: "Real-time vision on a Jetson Nano with McMaster Drones",
+  },
+  {
+    label: "Learning",
+    value: "Piano and surfing",
+    detail: "And chasing 1600 ELO in chess",
+  },
+  {
+    label: "Traveling",
+    value: "More, with a camera",
+    detail: "Photos and notes in the logbook",
+  },
+];
+
 // ── Home stats ────────────────────────────────────────────────
 export const STATS = [
-  { num: "10", plus: true, label: "Projects" },
-  { num: "20", plus: true, label: "Technologies" },
-  { num: "2", plus: false, label: "Hackathon Wins" },
+  { num: "$1M", plus: false, label: "Yearly savings @ TD" },
+  { num: "~99%", plus: false, label: "Faster test generation @ AMD" },
+  { num: "2", plus: false, label: "Hackathon wins" },
   { num: "3", plus: false, label: "Internships" },
 ];

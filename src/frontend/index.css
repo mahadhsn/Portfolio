@@ -2527,3 +2527,48 @@ img {
   }
 }
 
+/* ========== HOME SNAPSHOT ========== */
+.snapshot {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.snapshot-row {
+  display: grid;
+  grid-template-columns: 84px 1fr;
+  gap: 16px;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+}
+.snapshot-row dt {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding-top: 3px;
+}
+.snapshot-row dd {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.snapshot-value {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.snapshot-detail {
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+.card-link {
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  cursor: pointer;
+}
