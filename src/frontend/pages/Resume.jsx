@@ -123,9 +123,8 @@ const Resume = () => (
             (Unsloth), Prompt/Context Engineering
           </li>
           <li>
-            <strong>Testing & Automation:</strong> Jenkins,
-            Hardware-in-the-loop Validation, Test Frameworks,
-            Unit/Integration Testing, Log Analysis
+            <strong>Testing & Automation:</strong> Jenkins, Hardware-in-the-loop
+            Validation, Test Frameworks, Unit/Integration Testing, Log Analysis
           </li>
           <li>
             <strong>Machine Learning & CV:</strong> TensorFlow, OpenCV, NumPy,
@@ -179,10 +178,10 @@ const Resume = () => (
             <li>
               Built the <strong>Test Content Agent</strong>, a{" "}
               <strong>fully autonomous</strong> pipeline that gathers
-              requirements, generates tests, and validates them on real
-              hardware with <strong>no human in the loop</strong> until review,
-              cutting generation from ~1 week to hours (<strong>~99%</strong>)
-              across <strong>48</strong> generated tests
+              requirements, generates tests, and validates them on real hardware
+              with <strong>no human in the loop</strong> until review, cutting
+              generation from ~1 week to hours (<strong>~99%</strong>) across{" "}
+              <strong>48</strong> generated tests
             </li>
             <li>
               Built the entire <strong>UI</strong> for tracking and monitoring
@@ -200,8 +199,8 @@ const Resume = () => (
             </li>
             <li>
               Designed its <strong>self-heal loop</strong> with{" "}
-              <strong>rollback</strong>, catching <strong>~91%</strong> of
-              false passes from tests that never actually ran
+              <strong>rollback</strong>, catching <strong>~91%</strong> of false
+              passes from tests that never actually ran
             </li>
             <li>
               <strong>Containerized</strong> it with Docker for an{" "}
@@ -305,8 +304,8 @@ const Resume = () => (
               processing
             </li>
             <li>
-              Iterating on preprocessing, input resolution, and model
-              parameters to balance accuracy with real-time constraints
+              Iterating on preprocessing, input resolution, and model parameters
+              to balance accuracy with real-time constraints
             </li>
             <li>
               Integrating detection outputs with{" "}
@@ -378,9 +377,9 @@ const Resume = () => (
           </div>
           <ul className="resume-bullets">
             <li>
-              Develop a <strong>React Native</strong> + <strong>Firebase</strong>{" "}
-              app centralizing mental, physical, and financial support
-              resources for patients
+              Develop a <strong>React Native</strong> +{" "}
+              <strong>Firebase</strong> app centralizing mental, physical, and
+              financial support resources for patients
             </li>
             <li>
               Implement end-to-end <strong>encryption</strong>, a secure medical
@@ -420,8 +419,7 @@ const Resume = () => (
             </li>
             <li>
               Developed a <strong>TypeScript</strong> dashboard to visualize
-              real-time strain-gauge data and validate loads against
-              simulations
+              real-time strain-gauge data and validate loads against simulations
             </li>
             <li>
               Built tools to <strong>view, record, and trim</strong> telemetry
@@ -536,8 +534,8 @@ const Resume = () => (
             </li>
             <li>
               Utilized <strong>Matplotlib</strong> to visualize model
-              predictions with confidence levels for each digit class,
-              including probabilities
+              predictions with confidence levels for each digit class, including
+              probabilities
             </li>
             <li>
               Integrated <strong>React</strong> & <strong>TailwindCSS</strong>{" "}
@@ -549,8 +547,8 @@ const Resume = () => (
               their impact on convergence and generalization
             </li>
             <li>
-              Used <strong>data augmentation</strong> (shifts, rotations,
-              noise) to test model robustness under domain variation
+              Used <strong>data augmentation</strong> (shifts, rotations, noise)
+              to test model robustness under domain variation
             </li>
           </ul>
         </div>
