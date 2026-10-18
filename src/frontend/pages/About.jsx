@@ -1,4 +1,6 @@
 import { Helmet } from "react-helmet";
+import GoalCard from "../components/about/GoalCard";
+import { GOALS } from "../../data/consts";
 
 const About = () => {
   return (
@@ -67,86 +69,10 @@ const About = () => {
           who you were yesterday.
         </p>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "24px",
-            marginTop: "40px",
-          }}
-        >
-          <div
-            style={{
-              padding: "20px",
-              border: "1px solid var(--line)",
-              borderRadius: "var(--r-md)",
-            }}
-          >
-            <p
-              style={{
-                margin: 0,
-                fontFamily: "var(--font-mono)",
-                fontSize: "11px",
-                textTransform: "uppercase",
-                letterSpacing: "0.08em",
-                color: "var(--ink-muted)",
-              }}
-            >
-              Short-term
-            </p>
-            <p
-              className="display"
-              style={{ fontSize: "22px", marginTop: "10px" }}
-            >
-              Learning piano 🎹
-            </p>
-            <p
-              style={{
-                color: "var(--ink-soft)",
-                fontSize: "14px",
-                marginTop: "8px",
-              }}
-            >
-              Getting past 1600 ELO in chess, attending more hackathons,
-              learning to surf.
-            </p>
-          </div>
-          <div
-            style={{
-              padding: "20px",
-              border: "1px solid var(--line)",
-              borderRadius: "var(--r-md)",
-            }}
-          >
-            <p
-              style={{
-                margin: 0,
-                fontFamily: "var(--font-mono)",
-                fontSize: "11px",
-                textTransform: "uppercase",
-                letterSpacing: "0.08em",
-                color: "var(--ink-muted)",
-              }}
-            >
-              Long-term
-            </p>
-            <p
-              className="display"
-              style={{ fontSize: "22px", marginTop: "10px" }}
-            >
-              Start a company 🧑‍💻
-            </p>
-            <p
-              style={{
-                color: "var(--ink-soft)",
-                fontSize: "14px",
-                marginTop: "8px",
-              }}
-            >
-              Visit every continent, learn more languages, help advance the
-              human civilization.
-            </p>
-          </div>
+        <div className="goals-grid">
+          {GOALS.map((g, i) => (
+            <GoalCard key={g.id} goal={g} offset={i * 1500} />
+          ))}
         </div>
       </div>
 
