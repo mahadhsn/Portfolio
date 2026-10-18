@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowUpRight } from "../Icons";
 import { PROJECTS } from "../../../data/consts";
+import useSwipe from "../../hooks/useSwipe";
 
 const HOLD_MS = 3500;
 const FADE_MS = 250;
@@ -38,6 +39,11 @@ const FeaturedCycle = () => {
     }, FADE_MS);
   };
 
+  const swipe = useSwipe({
+    onSwipeLeft: () => goTo((index + 1) % CYCLE.length),
+    onSwipeRight: () => goTo((index - 1 + CYCLE.length) % CYCLE.length),
+  });
+
   useEffect(() => {
     if (paused || leaving) return;
     const t = setTimeout(() => goTo((index + 1) % CYCLE.length), HOLD_MS);
@@ -45,10 +51,11 @@ const FeaturedCycle = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index, paused, leaving]);
 
-  const open = () =>
-    project.url.startsWith("/")
-      ? navigate(project.url)
-      : window.open(project.url, "_blank", "noopener,noreferrer");
+  const open = () => {
+    if (swipe.consumeSwipe()) return;
+    if (project.url.startsWith("/")) navigate(project.url);
+    else window.open(project.url, "_blank", "noopener,noreferrer");
+  };
 
   return (
     <div
@@ -56,26 +63,37 @@ const FeaturedCycle = () => {
       onClick={open}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
+      {...swipe.handlers}
     >
-      <div className={`featured-body${leaving ? " leaving" : ""}`}>
-        <p className="featured-eyebrow">{eyebrow(project)}</p>
-        <h2 className="featured-title">{project.title}</h2>
-        <p className="featured-sub">{project.desc}</p>
+      {/* Every slide shares one grid cell, so the card is always as tall as
+          the tallest project and never changes shape while cycling. */}
+      <div className="featured-slides">
+        {CYCLE.map((p, i) => (
+          <div
+            key={p.id}
+            className={`featured-slide${i === index && !leaving ? " active" : ""}`}
+            aria-hidden={i !== index}
+          >
+            <div className="featured-body">
+              <p className="featured-eyebrow">{eyebrow(p)}</p>
+              <h2 className="featured-title">{p.title}</h2>
+              <p className="featured-sub">{p.desc}</p>
+            </div>
+            <div className="featured-cta">
+              {cta(p)} <ArrowUpRight size={13} />
+            </div>
+          </div>
+        ))}
       </div>
-      <div className="featured-side">
-        <div className="featured-dots" onClick={(e) => e.stopPropagation()}>
-          {CYCLE.map((p, i) => (
-            <button
-              key={p.id}
-              className={`featured-dot${i === index ? " active" : ""}`}
-              onClick={() => goTo(i)}
-              aria-label={`Show ${p.title}`}
-            />
-          ))}
-        </div>
-        <div className={`featured-cta${leaving ? " leaving" : ""}`}>
-          {cta(project)} <ArrowUpRight size={13} />
-        </div>
+      <div className="featured-dots" onClick={(e) => e.stopPropagation()}>
+        {CYCLE.map((p, i) => (
+          <button
+            key={p.id}
+            className={`featured-dot${i === index ? " active" : ""}`}
+            onClick={() => goTo(i)}
+            aria-label={`Show ${p.title}`}
+          />
+        ))}
       </div>
     </div>
   );

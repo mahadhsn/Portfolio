@@ -778,9 +778,7 @@ img {
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 24px;
+  display: flex;
   align-items: center;
   min-height: 240px;
   transition: transform 0.5s var(--ease-out);
@@ -831,28 +829,45 @@ img {
   max-width: 460px;
   position: relative;
 }
-.featured-body {
+.featured-slides {
+  display: grid;
+  width: 100%;
+  position: relative;
+  touch-action: pan-y;
+}
+.featured-slide {
+  grid-area: 1 / 1;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
   transition:
     opacity 0.25s ease,
-    transform 0.25s ease;
+    transform 0.25s ease,
+    visibility 0s linear 0.25s;
 }
-.featured-body.leaving,
-.featured-cta.leaving {
-  opacity: 0;
-  transform: translateY(-8px);
-}
-.featured-side {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 16px;
-  position: relative;
+.featured-slide.active {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    visibility 0s;
 }
 .featured-dots {
+  position: absolute;
+  right: 36px;
+  bottom: 28px;
   display: flex;
   gap: 6px;
+  z-index: 1;
 }
 .featured-dot {
+  position: relative;
   width: 7px;
   height: 7px;
   padding: 0;
@@ -862,14 +877,14 @@ img {
   cursor: pointer;
   transition: opacity 0.2s;
 }
+.featured-dot::after {
+  content: "";
+  position: absolute;
+  inset: -8px -4px;
+}
 .featured-dot.active {
   background: var(--accent);
   opacity: 1;
-}
-.featured-cta {
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease;
 }
 .featured-cta {
   font-size: 13px;
@@ -881,6 +896,25 @@ img {
   align-items: center;
   gap: 8px;
   position: relative;
+}
+@media (max-width: 700px) {
+  .featured {
+    padding: 24px 24px 56px;
+    min-height: 0;
+  }
+  .featured-slide {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+  .featured-title {
+    font-size: 34px;
+  }
+  .featured-dots {
+    left: 24px;
+    right: auto;
+    bottom: 24px;
+  }
 }
 
 /* Quote block */
@@ -2535,6 +2569,7 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  touch-action: pan-y;
 }
 .goal-card-label {
   margin: 0;
@@ -2544,10 +2579,30 @@ img {
   letter-spacing: 0.08em;
   color: var(--ink-muted);
 }
+.goal-card-items {
+  display: grid;
+  margin-top: 10px;
+}
 .goal-card-item {
-  animation: fade-up 0.5s var(--ease-out);
+  grid-area: 1 / 1;
   font-size: 22px;
-  margin: 10px 0 0;
+  margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s var(--ease-out),
+    visibility 0s linear 0.4s;
+}
+.goal-card-item.active {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s var(--ease-out),
+    visibility 0s;
 }
 .goal-card-dots {
   display: flex;
@@ -2555,6 +2610,7 @@ img {
   margin-top: 16px;
 }
 .goal-card-dot {
+  position: relative;
   width: 8px;
   height: 8px;
   padding: 0;
@@ -2562,6 +2618,11 @@ img {
   background: var(--line);
   cursor: pointer;
   transition: background 0.2s;
+}
+.goal-card-dot::after {
+  content: "";
+  position: absolute;
+  inset: -8px -4px;
 }
 .goal-card-dot.active {
   background: var(--accent);

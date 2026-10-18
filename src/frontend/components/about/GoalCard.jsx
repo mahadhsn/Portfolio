@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import useSwipe from "../../hooks/useSwipe";
 
 const CYCLE_MS = 3500;
 
@@ -23,19 +24,33 @@ const GoalCard = ({ goal, offset = 0 }) => {
     return () => clearTimeout(t);
   }, [index, paused, started, goal.items.length]);
 
-  const item = goal.items[index];
+  const count = goal.items.length;
+  const swipe = useSwipe({
+    onSwipeLeft: () => setIndex((i) => (i + 1) % count),
+    onSwipeRight: () => setIndex((i) => (i - 1 + count) % count),
+  });
 
   return (
     <div
       className="goal-card"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
+      {...swipe.handlers}
     >
       <div>
         <p className="goal-card-label">{goal.label}</p>
-        <p className="display goal-card-item" key={item.text}>
-          {item.text} {item.emoji}
-        </p>
+        {/* Items share one grid cell so the card keeps its height as it cycles. */}
+        <div className="goal-card-items">
+          {goal.items.map((it, i) => (
+            <p
+              key={it.text}
+              className={`display goal-card-item${i === index ? " active" : ""}`}
+              aria-hidden={i !== index}
+            >
+              {it.text} {it.emoji}
+            </p>
+          ))}
+        </div>
       </div>
       <div className="goal-card-dots">
         {goal.items.map((it, i) => (
