@@ -13,6 +13,8 @@ import {
   STATS,
   PROJECTS,
   GREETINGS,
+  SNAPSHOT,
+  NOW_ITEMS,
   HERO_ROLE,
   HERO_ROLE_PREV,
   HERO_DEGREE,
@@ -20,6 +22,19 @@ import {
 
 const im = " I'm";
 const line2 = "Mahad.";
+const SnapshotList = ({ rows }) => (
+  <dl className="snapshot">
+    {rows.map((row) => (
+      <div key={row.label} className="snapshot-row">
+        <dt>{row.label}</dt>
+        <dd>
+          <span className="snapshot-value">{row.value}</span>
+          <span className="snapshot-detail">{row.detail}</span>
+        </dd>
+      </div>
+    ))}
+  </dl>
+);
 
 const GREETING_FADE_MS = 220;
 const GREETING_HOLD_MS = 3200;
@@ -178,16 +193,13 @@ const Home = () => {
       <div className="home-grid stagger">
         <div className="card">
           <div className="card-label">
-            <span className="num">01</span> · ABOUT
+            <span className="num">01</span> · SNAPSHOT
           </div>
-          <h3>A quick snapshot.</h3>
-          <ul>
-            <li>Software Engineering @ McMaster University</li>
-            <li>Software Engineering Intern @ AMD</li>
-            <li>Diverse developer with a love for ML</li>
-            <li>Hackathon winner x 2 (MacEngComp &apos;24 &amp; &apos;25)</li>
-            <li>Always building, always learning</li>
-          </ul>
+          <h3>The short version.</h3>
+          <SnapshotList rows={SNAPSHOT} />
+          <button className="card-link" onClick={() => navigate("/experience")}>
+            Full experience →
+          </button>
         </div>
 
         <div className="card now-card">
@@ -195,27 +207,9 @@ const Home = () => {
             <span className="num">02</span> · NOW
           </div>
           <h3>What I&apos;m focused on.</h3>
-          <ul>
-            <li>Shipping ScleroCare to the App Store</li>
-            <li>Exploring ML / computer vision</li>
-            <li>Traveling more</li>
-          </ul>
-          <button
-            onClick={() => navigate("/about")}
-            style={{
-              marginTop: "18px",
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "6px",
-              fontFamily: "var(--font-mono)",
-              fontSize: "11px",
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              color: "var(--accent)",
-              cursor: "pointer",
-            }}
-          >
-            Read more →
+          <SnapshotList rows={NOW_ITEMS} />
+          <button className="card-link" onClick={() => navigate("/logbook")}>
+            Read the logbook →
           </button>
         </div>
       </div>
