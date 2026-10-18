@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Run from the repo root so the relative paths below work from anywhere.
+cd "$(dirname "$0")/.."
+
 RAW="raw/canon"
 DEST="src/assets/canon"
 

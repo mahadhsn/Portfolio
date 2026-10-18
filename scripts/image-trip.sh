@@ -3,12 +3,15 @@
 # Multiple cameras can point at the same trip slug - outputs land in the
 # same destination day folder so a day's gallery can combine cameras.
 #
-# Usage: ./image-trip.sh <camera> <trip-slug>
-#   e.g. ./image-trip.sh fuji banff-27-6-26
+# Usage: ./scripts/image-trip.sh <camera> <trip-slug>
+#   e.g. ./scripts/image-trip.sh fuji banff-27-6-26
 set -euo pipefail
 
-CAMERA="${1:?Usage: ./image-trip.sh <camera> <trip-slug>}"
-TRIP="${2:?Usage: ./image-trip.sh <camera> <trip-slug>}"
+# Run from the repo root so the relative paths below work from anywhere.
+cd "$(dirname "$0")/.."
+
+CAMERA="${1:?Usage: ./scripts/image-trip.sh <camera> <trip-slug>}"
+TRIP="${2:?Usage: ./scripts/image-trip.sh <camera> <trip-slug>}"
 
 RAW="raw/$CAMERA/$TRIP"
 DEST="src/assets/$TRIP"
