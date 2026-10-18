@@ -527,6 +527,11 @@ export const GOALS = [
   },
 ];
 
+// ── Home snapshot ─────────────────────────────────────────────
+export const HERO_ROLE = "Software Test Automation Engineer Intern @ AMD";
+export const HERO_ROLE_PREV = "Previously Software Engineer Intern @ TD Bank";
+export const HERO_DEGREE = "Software Engineering IV @ McMaster University";
+
 // ── Home stats ────────────────────────────────────────────────
 export const STATS = [
   { num: "10", plus: true, label: "Projects" },
