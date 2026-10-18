@@ -13,7 +13,7 @@ const NotFound = () => {
 
       <p className="eyebrow">?? / NOT FOUND</p>
       <h1 className="display page-title" style={{ marginBottom: 8 }}>
-        404.
+        <em>404.</em>
       </h1>
       <p
         className="subtle"

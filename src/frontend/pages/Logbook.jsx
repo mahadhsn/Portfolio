@@ -49,11 +49,11 @@ const Logbook = () => {
         />
       </Helmet>
 
-      <p className="eyebrow">04 / LOGBOOK</p>
+      <p className="eyebrow">05 / LOGBOOK</p>
       <div className="logbook-head">
         <div>
           <h1 className="display page-title" style={{ marginBottom: 8 }}>
-            Logbook.
+            <em>Logbook.</em>
           </h1>
           <p className="subtle" style={{ fontSize: "18px", maxWidth: "540px" }}>
             Writing, photography, and notes from the journey.
