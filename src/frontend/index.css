@@ -795,12 +795,18 @@ img {
   position: relative;
 }
 .quote-block .mark {
-  font-size: 80px;
-  line-height: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: normal;
+  font-size: 88px;
+  line-height: 1;
+  width: 1em;
+  height: 0.5em;
+  overflow: visible;
   position: absolute;
-  top: 50px;
-  left: 14px;
+  top: 28px;
+  left: 18px;
   opacity: 0.3;
+  pointer-events: none;
 }
 .quote-block cite {
   display: block;
