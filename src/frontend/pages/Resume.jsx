@@ -14,7 +14,9 @@ const Resume = () => (
     <p className="eyebrow">06 / RESUME</p>
 
     <div className="resume-head">
-      <h1 className="display page-title">Resume</h1>
+      <h1 className="display page-title">
+        <em>Resume.</em>
+      </h1>
       <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
         <a
           href="/resume/mahadresume.pdf"
