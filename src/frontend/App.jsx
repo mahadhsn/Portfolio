@@ -3,6 +3,7 @@ import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Layout from "./components/Layout";
+import Experience from "./pages/Experience";
 import Projects from "./pages/Projects";
 import Logbook from "./pages/Logbook";
 import LogEntry from "./pages/LogEntry";
@@ -23,6 +24,7 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
 
           <Route path="/about" element={<About />} />
+          <Route path="/experience" element={<Experience />} />
           <Route path="/projects" element={<Projects />} />
 
           <Route path="/logbook" element={<Logbook />} />

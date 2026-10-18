@@ -16,10 +16,11 @@ export const GREETINGS = [
 export const NAV_ITEMS = [
   { id: "home", label: "Home", path: "/", idx: "01" },
   { id: "about", label: "About", path: "/about", idx: "02" },
-  { id: "projects", label: "Projects", path: "/projects", idx: "03" },
-  { id: "logbook", label: "Logbook", path: "/logbook", idx: "04" },
-  { id: "resume", label: "Resume", path: "/resume", idx: "05" },
-  { id: "contact", label: "Contact", path: "/contact", idx: "06" },
+  { id: "experience", label: "Experience", path: "/experience", idx: "03" },
+  { id: "projects", label: "Projects", path: "/projects", idx: "04" },
+  { id: "logbook", label: "Logbook", path: "/logbook", idx: "05" },
+  { id: "resume", label: "Resume", path: "/resume", idx: "06" },
+  { id: "contact", label: "Contact", path: "/contact", idx: "07" },
 ];
 
 // ── Projects ─────────────────────────────────────────────────
@@ -294,6 +295,211 @@ export const PHOTO_ROLLS = [
     path: t.path,
   })),
   ...PHOTOS.map((p) => ({ kind: "photo", ...p })),
+];
+
+// ── Experience ────────────────────────────────────────────────
+// kind: "work" (internships) | "team" (clubs, societies, side roles) | "volunteer"
+export const EXPERIENCE = [
+  {
+    id: "amd",
+    kind: "work",
+    org: "AMD",
+    role: "Software Test Automation Engineer Intern",
+    location: "Markham, ON",
+    start: "May 2026",
+    end: "Present",
+    summary:
+      "Building autonomous agent pipelines that write and validate hardware tests, and the knowledge layer that lets agents work across the org.",
+    highlights: [
+      "Built the Test Content Agent: requirements to validated tests on real hardware with no human in the loop, cutting generation from ~1 week to hours (~99%).",
+      "Built an MCP server so agents can write, run, and debug tests through Jenkins, with log compression saving 3 hours per run.",
+      "Designed a self-heal loop with rollback that catches ~91% of false passes, then containerized it for an org-wide Kubernetes rollout.",
+      "Building Atlas, a mono-repo that turns engineering knowledge into structured, agent-readable form.",
+    ],
+    stack: [
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "MCP",
+      "Jenkins",
+      "Docker",
+      "Kubernetes",
+    ],
+    link: "https://www.amd.com",
+  },
+  {
+    id: "td",
+    kind: "work",
+    org: "TD Bank",
+    role: "Software Engineer Intern",
+    location: "Toronto, ON",
+    start: "May 2025",
+    end: "Aug 2025",
+    summary:
+      "Backend work on a high-volume microservice, focused on throughput, reliability, and faster deployments.",
+    highlights: [
+      "Developed FRAM, a Java/Spring microservice on Azure using Kafka for asynchronous processing.",
+      "Moved API client processing to non-blocking, concurrent execution, saving $1M/year in infrastructure.",
+      "Cut deployment time 20% across 7 microservices through GitHub Actions improvements.",
+    ],
+    stack: ["Java", "Spring", "Kafka", "Azure", "Terraform", "GitHub Actions"],
+    link: "https://www.linkedin.com/posts/mahad-hassan_as-my-software-engineering-internship-with-activity-7363738067230195712-W4o_/",
+  },
+  {
+    id: "rlpc",
+    kind: "work",
+    org: "Ras Laffan Power Company (RLPC)",
+    role: "Engineering Intern",
+    location: "",
+    start: "Jun 2024",
+    end: "Aug 2024",
+    summary:
+      "Summer internship focused on OT cybersecurity and DCS at a gas and steam turbine power and water desalination plant.",
+    highlights: [
+      "Learned SIEM, network intrusion detection, and vulnerability assessment tooling, and ran anti-virus definition updates.",
+      "Saw Secure by Design in practice: application and device control, whitelisting, and the CIA triad.",
+      "Picked up DCS basics: control logic, graphics, and controller, I/O, and HMI configuration.",
+    ],
+    stack: ["OT Security", "SIEM", "DCS"],
+  },
+  {
+    id: "drones",
+    kind: "team",
+    org: "McMaster Aerial Robotics and Drones Club",
+    role: "Machine Learning Engineer",
+    location: "Hamilton, ON",
+    start: "Oct 2025",
+    end: "Present",
+    summary:
+      "Real-time vision for autonomous landing, running on a Jetson Nano.",
+    highlights: [
+      "Built a TensorFlow + classical CV pipeline with sub-50ms inference on CUDA.",
+      "Used domain randomization and RGB/depth/telemetry fusion to improve sim-to-real landing accuracy at 4-5 m.",
+    ],
+    stack: ["TensorFlow", "OpenCV", "Jetson Nano", "CUDA"],
+    link: "https://www.macdrones.ca",
+  },
+  {
+    id: "rocketry",
+    kind: "team",
+    org: "McMaster Rocketry",
+    role: "Controls Subteam Member",
+    location: "Hamilton, ON",
+    start: "Sep 2025",
+    end: "May 2026",
+    summary: "Simulation, firmware, and tooling for flight control.",
+    highlights: [
+      "Simulated flight dynamics and sensors in MATLAB/Simulink to test control loops.",
+      "Wrote C++ firmware for IMU filtering and telemetry, plus a TypeScript dashboard for live strain-gauge data.",
+    ],
+    stack: ["C++", "MATLAB", "Simulink", "TypeScript"],
+    link: "https://www.macrocketry.ca",
+  },
+  {
+    id: "ses",
+    kind: "team",
+    org: "McMaster Software Engineering Society",
+    role: "VP of Tech",
+    location: "Hamilton, ON",
+    start: "Jul 2025",
+    end: "Present",
+    summary:
+      "Managing tech for the society, including the SES website used by 500+ students.",
+    highlights: [
+      "Build features on Astro + TypeScript through PRs and reviews, improving delivery speed 30%.",
+      "Structured reusable components and docs that cut feature development time 25%.",
+    ],
+    stack: ["Astro", "TypeScript"],
+    link: "https://ses.eng.mcmaster.ca",
+  },
+  {
+    id: "sclerocare",
+    kind: "team",
+    org: "ScleroCare / McMaster iBioMed Society",
+    role: "App Developer",
+    location: "Remote",
+    start: "Jan 2025",
+    end: "Present",
+    summary:
+      "A privacy-first mobile app centralizing support resources for scleroderma patients.",
+    highlights: [
+      "Develop the React Native + Firebase app with end-to-end encryption and a secure medical resume.",
+    ],
+    stack: ["React Native", "Firebase"],
+    link: "/logbook/sclerocare",
+  },
+  {
+    id: "deltahacks",
+    kind: "team",
+    org: "DeltaHacks",
+    role: "Attendee Relations Executive",
+    location: "Hamilton, ON",
+    start: "Aug 2024",
+    end: "Apr 2026",
+    summary:
+      "Managed attendee relations for one of Canada's largest hackathons.",
+    highlights: [
+      "Reviewed 1,700+ applications while improving the participant experience.",
+    ],
+    stack: [],
+    link: "https://www.deltahacks.com",
+  },
+  {
+    id: "voices",
+    kind: "team",
+    org: "VoicesatMac",
+    role: "VP of Operations",
+    location: "Hamilton, ON",
+    start: "Oct 2024",
+    end: "Sep 2025",
+    summary:
+      "Led operations and interview logistics, streamlining workflows to improve event efficiency and content output.",
+    highlights: [],
+    stack: [],
+  },
+  {
+    id: "psa",
+    kind: "team",
+    org: "McMaster Pakistani Students' Association",
+    role: "VP of Events",
+    location: "Hamilton, ON",
+    start: "Nov 2024",
+    end: "Apr 2025",
+    summary:
+      "Spearheaded large-scale cultural events that boosted engagement and helped surpass $6,000 raised for charity.",
+    highlights: [
+      "Started as Events Associate in Jul 2024, organizing high-attendance cultural events before moving into the VP role.",
+    ],
+    stack: [],
+  },
+  {
+    id: "campquality",
+    kind: "volunteer",
+    org: "Camp Quality Canada",
+    role: "Companion",
+    location: "",
+    start: "Aug 2024",
+    end: "",
+    summary:
+      "Supported children with cancer and neurological disorders with safe, inclusive, and engaging daily care.",
+    highlights: [],
+    stack: [],
+    link: "https://www.campquality.org",
+  },
+  {
+    id: "hammerhacks",
+    kind: "volunteer",
+    org: "HammerHacks",
+    role: "Mentor",
+    location: "Hamilton, ON",
+    start: "Nov 2024",
+    end: "",
+    summary:
+      "Mentored a high-school team at Hamilton's first hackathon, which helped raise $12,000 for charity.",
+    highlights: [],
+    stack: [],
+    link: "https://hammerhacks.ca",
+  },
 ];
 
 // ── About tabs ────────────────────────────────────────────────

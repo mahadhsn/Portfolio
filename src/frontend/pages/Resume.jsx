@@ -11,7 +11,7 @@ const Resume = () => (
       />
     </Helmet>
 
-    <p className="eyebrow">05 / RESUME</p>
+    <p className="eyebrow">06 / RESUME</p>
 
     <div className="resume-head">
       <h1 className="display page-title">Resume</h1>
