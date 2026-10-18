@@ -1,4 +1,10 @@
-import { useEffect, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import Button from "../components/Button";
@@ -8,13 +14,50 @@ import { STATS, PROJECTS, GREETINGS } from "../../data/consts";
 const im = " I'm";
 const line2 = "Mahad.";
 
+const GREETING_FADE_MS = 220;
+const GREETING_HOLD_MS = 3200;
+
 const Home = () => {
   const navigate = useNavigate();
   const [quote, setQuote] = useState(null);
   const [greetingIdx, setGreetingIdx] = useState(0);
   const featured = PROJECTS.find((p) => p.featured);
   const greeting = GREETINGS[greetingIdx];
-  const cycleGreeting = () => setGreetingIdx((i) => (i + 1) % GREETINGS.length);
+  const [leaving, setLeaving] = useState(false);
+  const greetingRef = useRef(null);
+  const prevWidth = useRef(null);
+
+  // Fade the current greeting out, then swap it in (see width effect below).
+  const cycleGreeting = useCallback(() => {
+    if (leaving) return;
+    setLeaving(true);
+    setTimeout(() => {
+      prevWidth.current = greetingRef.current?.offsetWidth ?? null;
+      setGreetingIdx((i) => (i + 1) % GREETINGS.length);
+      setLeaving(false);
+    }, GREETING_FADE_MS);
+  }, [leaving]);
+
+  // Animate the greeting's width so " I'm Mahad." glides instead of jumping.
+  useLayoutEffect(() => {
+    const el = greetingRef.current;
+    const from = prevWidth.current;
+    if (!el || from == null) return;
+    prevWidth.current = null;
+    el.style.width = "";
+    const to = el.offsetWidth;
+    el.style.width = `${from}px`;
+    el.offsetWidth; // force reflow so the transition starts from `from`
+    el.style.width = `${to}px`;
+    const done = setTimeout(() => (el.style.width = ""), 450);
+    return () => clearTimeout(done);
+  }, [greetingIdx]);
+
+  // Auto-advance; a click restarts the timer since it changes greetingIdx.
+  useEffect(() => {
+    const t = setTimeout(cycleGreeting, GREETING_HOLD_MS);
+    return () => clearTimeout(t);
+  }, [greetingIdx, cycleGreeting]);
 
   useEffect(() => {
     fetch("/api/quote")
@@ -42,6 +85,7 @@ const Home = () => {
             <h1 className="home-name">
               <div>
                 <span
+                  ref={greetingRef}
                   className="char greeting-text"
                   onClick={cycleGreeting}
                   style={{
@@ -51,11 +95,18 @@ const Home = () => {
                     cursor: "pointer",
                   }}
                 >
-                  {greeting.text}
-                  {greeting.flag && (
-                    <span style={{ margin: "0 0.15em" }}>{greeting.flag}</span>
-                  )}
-                  {","}
+                  <span
+                    key={greetingIdx}
+                    className={`greeting-word${leaving ? " leaving" : ""}`}
+                  >
+                    {greeting.text}
+                    {greeting.flag && (
+                      <span style={{ margin: "0 0.15em" }}>
+                        {greeting.flag}
+                      </span>
+                    )}
+                    {","}
+                  </span>
                   <span className="greeting-cycle-hint">↻</span>
                 </span>
                 {im.split("").map((c, i) => (
