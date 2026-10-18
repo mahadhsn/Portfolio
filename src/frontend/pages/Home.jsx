@@ -191,7 +191,7 @@ const Home = () => {
       {quote && (
         <blockquote className="quote-block">
           <span className="mark">&ldquo;</span>
-          {quote.Quote}
+          {quote.Quote.replace(/'/g, "\u2019")}
           <cite>{quote.Author}</cite>
         </blockquote>
       )}
