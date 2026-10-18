@@ -2309,3 +2309,112 @@ img {
     columns: 1;
   }
 }
+
+/* ========== EXPERIENCE ========== */
+.exp-section-title {
+  font-family: var(--font-display);
+  font-size: 40px;
+  letter-spacing: var(--display-tracking);
+  font-weight: var(--display-weight);
+  margin: 64px 0 8px;
+}
+.exp-list {
+  border-top: 1px solid var(--line);
+}
+.exp-entry {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 32px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+.exp-when {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.exp-now {
+  padding: 3px 10px;
+  border-radius: var(--r-full);
+  background: var(--accent);
+  color: #fff;
+  font-size: 10px;
+}
+.exp-org {
+  font-family: var(--font-display);
+  font-size: 28px;
+  letter-spacing: var(--display-tracking);
+  font-weight: var(--display-weight);
+  margin: 0;
+}
+.exp-entry.current .exp-org {
+  font-size: 34px;
+}
+.exp-role {
+  margin: 6px 0 0;
+  font-size: 15px;
+  color: var(--ink-soft);
+}
+.exp-role a {
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.exp-summary {
+  margin: 16px 0 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink);
+  max-width: 620px;
+}
+.exp-highlights {
+  margin: 14px 0 0;
+  padding-left: 18px;
+  max-width: 620px;
+  color: var(--ink-soft);
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+.exp-highlights li {
+  margin-bottom: 6px;
+}
+.exp-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 16px;
+}
+.exp-tag {
+  padding: 5px 11px;
+  border-radius: var(--r-full);
+  background: var(--bg-sunk);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 700px) {
+  .exp-entry {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .exp-when {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 12px;
+  }
+  .exp-section-title {
+    font-size: 32px;
+  }
+}
+
