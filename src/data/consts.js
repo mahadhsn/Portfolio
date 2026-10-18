@@ -581,7 +581,7 @@ export const NOW_ITEMS = [
 
 // ── Home stats ────────────────────────────────────────────────
 export const STATS = [
-  { num: "$1M", plus: false, label: "Yearly savings @ TD" },
+  { num: "$1M", plus: false, label: "Yearly cost savings @ TD" },
   { num: "~99%", plus: false, label: "Faster test generation @ AMD" },
   { num: "2", plus: false, label: "Hackathon wins" },
   { num: "3", plus: false, label: "Internships" },
