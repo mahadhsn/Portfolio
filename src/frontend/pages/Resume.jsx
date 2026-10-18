@@ -85,7 +85,7 @@ const Resume = () => (
             >
               McMaster University <ArrowUpRight size={11} />
             </a>
-            <span className="resume-entry-date">Expected May 2027</span>
+            <span className="resume-entry-date">Expected May 2028</span>
           </div>
           <div className="resume-entry-role">
             <span className="resume-entry-title">

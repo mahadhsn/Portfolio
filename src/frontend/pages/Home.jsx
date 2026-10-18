@@ -179,7 +179,7 @@ const Home = () => {
               See projects
             </Button>
             <Button variant="ghost" onClick={() => navigate("/resume")}>
-              View Résumé
+              View Resume
             </Button>
             <Button variant="ghost" onClick={() => navigate("/contact")}>
               Get in touch
