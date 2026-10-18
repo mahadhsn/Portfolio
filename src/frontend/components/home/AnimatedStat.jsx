@@ -55,12 +55,16 @@ const AnimatedStat = ({ stat }) => {
     };
   }, [target]);
 
+  // Millions count up through thousands ($0K ... $999K) before landing on $1M.
+  const text =
+    suffix === "M" && value < 1 && value < target
+      ? `${prefix}${Math.floor(value * 1000)}K`
+      : `${prefix}${value.toFixed(decimals)}${suffix}`;
+
   return (
     <div ref={ref} className="stat">
       <div className="stat-num">
-        {prefix}
-        {value.toFixed(decimals)}
-        {suffix}
+        {text}
         {stat.plus && <span className="plus">+</span>}
       </div>
       <div className="stat-label">{stat.label}</div>
