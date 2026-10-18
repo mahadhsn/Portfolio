@@ -9,10 +9,9 @@ import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import Button from "../components/Button";
 import AnimatedStat from "../components/home/AnimatedStat";
-import { ArrowUpRight } from "../components/Icons";
+import FeaturedCycle from "../components/home/FeaturedCycle";
 import {
   STATS,
-  PROJECTS,
   GREETINGS,
   SNAPSHOT,
   NOW_ITEMS,
@@ -44,7 +43,6 @@ const Home = () => {
   const navigate = useNavigate();
   const [quote, setQuote] = useState(null);
   const [greetingIdx, setGreetingIdx] = useState(0);
-  const featured = PROJECTS.find((p) => p.featured);
   const greeting = GREETINGS[greetingIdx];
   const [leaving, setLeaving] = useState(false);
   const greetingRef = useRef(null);
@@ -215,29 +213,15 @@ const Home = () => {
         </div>
       </div>
 
+      {/* ── Featured ── */}
+      <FeaturedCycle />
+
       {/* ── Stats ── */}
       <div className="stats-row stagger">
         {STATS.map((s) => (
           <AnimatedStat key={s.label} stat={s} />
         ))}
       </div>
-
-      {/* ── Featured ── */}
-      {featured && (
-        <div
-          className="featured"
-          onClick={() => window.open(featured.url, "_blank")}
-        >
-          <div>
-            <p className="featured-eyebrow">★ FEATURED · {featured.award}</p>
-            <h2 className="featured-title">{featured.title}</h2>
-            <p className="featured-sub">{featured.desc}</p>
-          </div>
-          <div className="featured-cta">
-            Try it out <ArrowUpRight size={13} />
-          </div>
-        </div>
-      )}
 
       {/* ── Quote ── */}
       {quote && (
