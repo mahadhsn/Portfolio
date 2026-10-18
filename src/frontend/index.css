@@ -2418,3 +2418,55 @@ img {
   }
 }
 
+/* ========== ABOUT GOALS ========== */
+.goals-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 40px;
+}
+.goal-card {
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  min-height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.goal-card-label {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-muted);
+}
+.goal-card-item {
+  animation: fade-up 0.5s var(--ease-out);
+  font-size: 22px;
+  margin: 10px 0 0;
+}
+.goal-card-dots {
+  display: flex;
+  gap: 6px;
+  margin-top: 16px;
+}
+.goal-card-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--line);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.goal-card-dot.active {
+  background: var(--accent);
+}
+@media (max-width: 700px) {
+  .goals-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

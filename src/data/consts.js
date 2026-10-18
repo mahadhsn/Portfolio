@@ -502,6 +502,31 @@ export const EXPERIENCE = [
   },
 ];
 
+// ── About goals ───────────────────────────────────────────────
+// Each category renders as its own card and cycles through its items.
+export const GOALS = [
+  {
+    id: "short-term",
+    label: "Short-term",
+    items: [
+      { emoji: "🎹", text: "Learn piano" },
+      { emoji: "♟️", text: "Get past 1600 ELO in chess" },
+      { emoji: "💻", text: "Attend more hackathons" },
+      { emoji: "🏄", text: "Learn to surf" },
+    ],
+  },
+  {
+    id: "long-term",
+    label: "Long-term",
+    items: [
+      { emoji: "🧑‍💻", text: "Start a company" },
+      { emoji: "🌍", text: "Visit every continent" },
+      { emoji: "🗣️", text: "Learn more languages" },
+      { emoji: "🚀", text: "Help advance human civilization" },
+    ],
+  },
+];
+
 // ── Home stats ────────────────────────────────────────────────
 export const STATS = [
   { num: "10", plus: true, label: "Projects" },
