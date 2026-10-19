@@ -239,7 +239,7 @@ export const PHOTOS = [
     id: "stirling",
     title: "Stirling",
     date: "OCT 11, 2025",
-    location: "Stirling, Scotland",
+    location: "Stirling, ON",
     camera: "Canon R50",
     path: "/logbook/stirling-11-10-25",
     globKey: "stirling",
@@ -282,8 +282,15 @@ export const PHOTOS = [
   },
 ];
 
-// Photography section on the logbook: trips (multi-day, newest first) ahead
-// of single-day rolls. Used for cross-roll prev/next nav on detail pages.
+// Start of a label like "OCT 4, 2026" or "JUN 27 - JUL 4, 2026", for sorting.
+const MONTHS = "JAN FEB MAR APR MAY JUN JUL AUG SEP OCT NOV DEC".split(" ");
+const startOf = (label) => {
+  const [, month, day, year] = label.match(/^([A-Z]{3}) (\d+).*?(\d{4})$/);
+  return Date.UTC(year, MONTHS.indexOf(month), day);
+};
+
+// Photography section on the logbook: trips and single-day rolls interleaved,
+// newest first. Used for cross-roll prev/next nav on detail pages.
 export const PHOTO_ROLLS = [
   ...TRIPS.map((t) => ({
     kind: "trip",
@@ -295,7 +302,7 @@ export const PHOTO_ROLLS = [
     path: t.path,
   })),
   ...PHOTOS.map((p) => ({ kind: "photo", ...p })),
-];
+].sort((a, b) => startOf(b.date) - startOf(a.date));
 
 // ── Experience ────────────────────────────────────────────────
 // kind: "work" (internships) | "team" (clubs, societies, side roles) | "volunteer"
