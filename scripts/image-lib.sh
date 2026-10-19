@@ -91,5 +91,5 @@ optimize_folder() {
     fi
   done
 
-  node scripts/image-meta.mjs "$metakey" "$folder"
+  node scripts/image-meta.mjs "$metakey" "$folder" "$outdir"
 }

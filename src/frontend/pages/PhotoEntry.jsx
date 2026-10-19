@@ -102,7 +102,14 @@ const PhotoEntry = ({ id }) => {
                   "View photo full screen",
                 )}
               >
-                <img src={src} alt={`${photo.title} ${i + 2}`} />
+                <img
+                  src={src}
+                  alt={`${photo.title} ${i + 2}`}
+                  width={metas[i + 1]?.width}
+                  height={metas[i + 1]?.height}
+                  loading="lazy"
+                  decoding="async"
+                />
                 <ShotInfo meta={metas[i + 1]} showCamera={showCamera} />
               </div>
             ))}

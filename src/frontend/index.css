@@ -1894,6 +1894,9 @@ img {
 /* Photo detail */
 .photo-detail {
   padding-top: 24px;
+  /* Multi-column galleries reflow as photos load, which can make Chrome's
+     scroll anchoring jump the page; photo sizes are reserved up front too. */
+  overflow-anchor: none;
 }
 .photo-hero {
   aspect-ratio: 3/2;

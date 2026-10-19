@@ -12,8 +12,12 @@
 // Shot info is read from the original because editors strip EXIF. GPS and
 // other tags are deliberately never read.
 //
-// Usage: node scripts/image-meta.mjs <meta-key> <folder>
-//   e.g. node scripts/image-meta.mjs canon/bronte-4-10-26 raw/canon/bronte-4-10-26
+// If <optimized-folder> is given, the size of each optimized WebP is stored
+// too, so the page can reserve space for photos before they load.
+//
+// Usage: node scripts/image-meta.mjs <meta-key> <folder> [optimized-folder]
+//   e.g. node scripts/image-meta.mjs canon/bronte-4-10-26 raw/canon/bronte-4-10-26 \
+//          src/assets/canon/bronte-4-10-26/optimized
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
@@ -23,9 +27,11 @@ const META_FILE = "src/data/photoMeta.json";
 const IMAGE_RE = /\.(jpe?g|png|heic|heif)$/i;
 const SAMPLE_WIDTH = 320;
 
-const [metaKey, folder] = process.argv.slice(2);
+const [metaKey, folder, optimizedFolder] = process.argv.slice(2);
 if (!metaKey || !folder) {
-  console.error("Usage: node scripts/image-meta.mjs <meta-key> <folder>");
+  console.error(
+    "Usage: node scripts/image-meta.mjs <meta-key> <folder> [optimized-folder]",
+  );
   process.exit(1);
 }
 
@@ -202,6 +208,13 @@ for (const name of names) {
   const edited = edits.get(name);
   // Prefer the original's EXIF; fall back to the edit's if it kept any.
   const entry = shotInfo(exif.get(original) ?? exif.get(edited));
+
+  const webp =
+    optimizedFolder && path.join(optimizedFolder, `${name}-1600.webp`);
+  if (webp && fs.existsSync(webp)) {
+    const { width, height } = await sharp(webp).metadata();
+    Object.assign(entry, { width, height });
+  }
 
   if (edited) {
     const changes = original ? await measureEdit(original, edited) : [];

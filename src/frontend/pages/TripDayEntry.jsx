@@ -138,6 +138,10 @@ const TripDayEntry = ({ tripId }) => {
                 <img
                   src={src}
                   alt={`${trip.title} day ${currentDay.dayNumber} ${i + 2}`}
+                  width={metas[i + 1]?.width}
+                  height={metas[i + 1]?.height}
+                  loading="lazy"
+                  decoding="async"
                 />
                 <ShotInfo meta={metas[i + 1]} showCamera={showCamera} />
               </div>
