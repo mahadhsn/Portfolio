@@ -2,7 +2,7 @@
 
 _July 7, 2025 · 12 min read · career_
 
-![The view from the 46th floor of TD Terrace, May 2025](/images/logs/internship/TD_View.jpg)
+![The view from the 46th floor of TD Terrace, May 2025](/images/logs/internship/TD_View.webp)
 
 Alright, let's get some things straight before you start reading this:
 
@@ -38,7 +38,7 @@ Though I said this list was in no particular order, I'd argue that this point is
 
 Expanding your skillset will likely be your best bet at landing an internship. It's simple: the industry hires skill. You can follow all the tutorials you can find on YouTube about building AIs from scratch, autonomous driving, etc, but if you don't learn anything from them, those projects are not worth much. The second you land that interview and the hiring manager asks you about details about said projects, it's over for you. The same happens if you vibe-code all the time.
 
-![2nd place winning MacEngComp project, Nov 2024](/images/logs/internship/tech.PNG)
+![2nd place winning MacEngComp project, Nov 2024](/images/logs/internship/tech.webp)
 
 The only thing that sets us apart from AI is that we are capable of creative thinking and solving real problems. If we ourselves just start using Chat to code everything for us, sure, we might win a few hackathons and impress a few people, but we aren't gaining anything in the long run. All of this is obviously much easier said than done, so how can you actually get better at coding? (or anything for that matter):
 
@@ -66,7 +66,7 @@ Applying is hard. Nowadays, it's common for people to put in 250+ applications b
 
 ![Bad resume example | Enhancv.com](/images/logs/internship/bad_resume.png)
 
-![Good resume example | Medium.com](/images/logs/internship/good_resume.jpg)
+![Good resume example | Medium.com](/images/logs/internship/good_resume.webp)
 
 - **Overview**
 

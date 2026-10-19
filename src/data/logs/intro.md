@@ -2,7 +2,7 @@
 
 _June 21, 2025 · 3 min read · life_
 
-![Norway's Fjords, August 2018](/images/logs/intro/norway18.jpg)
+![Norway's Fjords, August 2018](/images/logs/intro/norway18.webp)
 
 Hello again :) Not sure how many people will even read this but I appreciate you for doing so! On the logbook section, I will be documenting my life more in depth (i hope). There are a few rules I'll be following:
 

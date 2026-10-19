@@ -43,7 +43,7 @@ export const PROJECTS = [
       "GCP Vision",
       "OpenAI",
     ],
-    image: "/images/projects/preppal.png",
+    image: "/images/projects/preppal.webp",
   },
   {
     id: "sclerocare",
@@ -65,7 +65,7 @@ export const PROJECTS = [
     url: "https://github.com/mahadhsn/A2-Recue-Mission-T11",
     role: "Solo project",
     tech: ["Java", "State Pattern", "Strategy Pattern"],
-    image: "/images/projects/drone.png",
+    image: "/images/projects/drone.webp",
   },
   {
     id: "digit",
@@ -83,7 +83,7 @@ export const PROJECTS = [
       "React",
       "Tailwind CSS",
     ],
-    image: "/images/projects/digit-rec.png",
+    image: "/images/projects/digit-rec.webp",
   },
   {
     id: "cview",
@@ -117,7 +117,7 @@ export const PROJECTS = [
     url: "https://github.com/mahadhsn/MacEngComp24",
     role: "Full-stack · Hackathon team",
     tech: ["Python", "OpenCV", "Flask", "SQL", "Cryptography"],
-    image: "/images/logs/internship/tech.PNG",
+    image: "/images/logs/internship/tech.webp",
   },
   {
     id: "portfolio",
@@ -128,7 +128,7 @@ export const PROJECTS = [
     url: "https://github.com/mahadhsn/Portfolio",
     role: "Solo project",
     tech: ["React", "Vite", "Tailwind CSS", "Node.js", "Vercel"],
-    image: "/landing.png",
+    image: "/landing.webp",
   },
   {
     id: "convertnums",
