@@ -18,6 +18,7 @@ RAW="raw/$CAMERA/$TRIP"
 DEST="src/assets/$TRIP"
 
 require_tool sharp "npm install -g sharp-cli"
+require_tool exiftool "brew install exiftool"
 
 if [ ! -d "$RAW" ]; then
   echo "No raw folder at $RAW"
@@ -32,7 +33,7 @@ for folder in "$RAW"/*/; do
   day=$(basename "$folder")
 
   echo "Processing day: $day"
-  optimize_folder "${folder%/}" "$DEST/$day/optimized"
+  optimize_folder "${folder%/}" "$DEST/$day/optimized" "$TRIP/$day"
 done
 
 echo "Optimization complete."

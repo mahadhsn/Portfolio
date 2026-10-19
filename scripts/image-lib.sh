@@ -58,12 +58,14 @@ optimize_one() {
 # Optimize one flat folder of photos.
 #   $1 = source folder (originals, plus an optional Edited/ subfolder)
 #   $2 = output folder
+#   $3 = key under which shot info is stored in src/data/photoMeta.json
 #
 # A photo that has an export of the same name in Edited/ is published from the
 # edit; everything else is published from the original. The WebP keeps the
-# original's name either way.
+# original's name either way. Shot info (always read from the original, since
+# editors strip EXIF) and a summary of the edits go to photoMeta.json.
 optimize_folder() {
-  local folder="$1" outdir="$2" f base name src
+  local folder="$1" outdir="$2" metakey="$3" f base name src
 
   mkdir -p "$outdir"
 
@@ -88,4 +90,6 @@ optimize_folder() {
       optimize_one "$f" "$outdir/$name-1600.webp" edited
     fi
   done
+
+  node scripts/image-meta.mjs "$metakey" "$folder"
 }

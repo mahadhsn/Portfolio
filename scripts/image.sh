@@ -10,6 +10,7 @@ RAW="raw/canon"
 DEST="src/assets/canon"
 
 require_tool sharp "npm install -g sharp-cli"
+require_tool exiftool "brew install exiftool"
 
 echo "Optimizing images from $RAW → $DEST"
 
@@ -25,7 +26,7 @@ for folder in "$RAW"/*/; do
   fi
 
   echo "Processing folder: $foldername"
-  optimize_folder "${folder%/}" "$DEST/$foldername/optimized"
+  optimize_folder "${folder%/}" "$DEST/$foldername/optimized" "canon/$foldername"
 done
 
 echo "Optimization complete."
