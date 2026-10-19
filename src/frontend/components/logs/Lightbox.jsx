@@ -2,11 +2,27 @@ import { useCallback, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { ArrowLeft, ArrowRight, Close } from "../Icons";
 import useSwipe from "../../hooks/useSwipe";
+import { formatSettings } from "./shotSettings";
 
 // Full-screen photo viewer. Arrow keys / buttons / swipe to move, Esc or a
-// click on the backdrop to close.
-const Lightbox = ({ images, index, alt, onClose, onChange }) => {
+// click on the backdrop to close. `meta` is optional shot info parallel to
+// `images`; `showCamera` adds the camera name when a gallery mixes cameras.
+const Lightbox = ({
+  images,
+  index,
+  alt,
+  meta,
+  showCamera,
+  onClose,
+  onChange,
+}) => {
   const count = images.length;
+  const info = meta?.[index];
+  const settings = formatSettings(info);
+  const gear = [showCamera && info?.camera, info?.lens]
+    .filter(Boolean)
+    .join(" · ");
+  const edit = info?.edit;
   const closeRef = useRef(null);
 
   const prev = useCallback(
@@ -125,8 +141,18 @@ const Lightbox = ({ images, index, alt, onClose, onChange }) => {
         </button>
       )}
 
-      <div className="lightbox-count">
-        {index + 1} / {count}
+      <div className="lightbox-footer">
+        {settings && <div className="lightbox-settings">{settings}</div>}
+        {gear && <div className="lightbox-gear">{gear}</div>}
+        {edit && (
+          <div className="lightbox-edit">
+            <span className="shot-edited">Edited</span>
+            {[...edit.changes, edit.note].filter(Boolean).join(" · ")}
+          </div>
+        )}
+        <div className="lightbox-count">
+          {index + 1} / {count}
+        </div>
       </div>
     </div>,
     document.body,

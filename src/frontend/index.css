@@ -1911,6 +1911,7 @@ img {
 }
 .photo-hero .photo-caption {
   position: absolute;
+  z-index: 2;
   bottom: 20px;
   left: 24px;
   color: #fff;
@@ -1959,6 +1960,63 @@ img {
   height: auto;
   display: block;
   object-fit: unset;
+}
+
+/* Shot info laid over a photo: settings along the bottom, "Edited" top-left. */
+.shot-info,
+.shot-edited {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+}
+.shot-info {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 8px;
+  padding: 28px 12px 10px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.65), transparent);
+}
+.shot-camera {
+  flex-basis: 100%;
+  opacity: 0.75;
+}
+.shot-edited {
+  position: static;
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: var(--accent);
+  letter-spacing: 0.1em;
+}
+.photo-tile > .shot-edited,
+.photo-hero > .shot-edited {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.photo-hero .shot-info {
+  padding: 40px 24px 16px;
+  justify-content: flex-end;
+  text-align: right;
+}
+.photo-hero .shot-camera {
+  text-align: right;
+}
+.lightbox-edit .shot-edited {
+  position: static;
+}
+@media (max-width: 700px) {
+  .photo-hero .shot-info {
+    padding: 40px 24px 40px;
+  }
 }
 
 /* ========== RESUME ========== */
@@ -2711,8 +2769,9 @@ img {
 }
 .lightbox-img {
   width: min(94vw, 1800px);
-  height: 88vh;
-  height: 88dvh;
+  height: 80vh;
+  height: 80dvh;
+  margin-bottom: 40px;
   object-fit: contain;
   border-radius: 4px;
   user-select: none;
@@ -2749,15 +2808,42 @@ img {
 .lightbox-next {
   right: 16px;
 }
-.lightbox-count {
+.lightbox-footer {
   position: absolute;
-  bottom: max(16px, env(safe-area-inset-bottom));
+  bottom: max(12px, env(safe-area-inset-bottom));
   left: 50%;
   transform: translateX(-50%);
+  width: min(94vw, 900px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
   font-family: var(--font-mono);
   font-size: 11px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   color: rgba(255, 255, 255, 0.7);
+  pointer-events: none;
+}
+.lightbox-settings {
+  color: rgba(255, 255, 255, 0.92);
+  text-transform: uppercase;
+}
+.lightbox-gear {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.55);
+}
+.lightbox-edit {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.7);
+}
+.lightbox-count {
+  letter-spacing: 0.1em;
 }
 @keyframes lightbox-in {
   from {
@@ -2780,15 +2866,19 @@ img {
 /* Landscape phones: leave room for the counter under the photo. */
 @media (max-height: 500px) {
   .lightbox-img {
-    height: 78vh;
-    height: 78dvh;
+    height: 70vh;
+    height: 70dvh;
+  }
+  .lightbox-gear,
+  .lightbox-edit {
+    display: none;
   }
 }
 @media (max-width: 700px) {
   .lightbox-img {
     width: 100vw;
-    height: 80vh;
-    height: 80dvh;
+    height: 72vh;
+    height: 72dvh;
     border-radius: 0;
   }
   .lightbox-nav {
