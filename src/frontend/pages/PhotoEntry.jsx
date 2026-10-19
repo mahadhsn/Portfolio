@@ -5,12 +5,16 @@ import { ArrowLeft, ArrowRight } from "../components/Icons";
 import { PHOTOS, PHOTO_ROLLS } from "../../data/consts";
 import Lightbox from "../components/logs/Lightbox";
 import lightboxTrigger from "../components/logs/lightboxTrigger";
-import { galleries } from "./photoGalleries";
+import ShotInfo from "../components/logs/ShotInfo";
+import { usesMultipleCameras } from "../components/logs/shotSettings";
+import { galleries, galleryMeta } from "./photoGalleries";
 
 const PhotoEntry = ({ id }) => {
   const navigate = useNavigate();
   const photo = PHOTOS.find((p) => p.globKey === id);
   const images = galleries[id] || [];
+  const metas = galleryMeta[id] || [];
+  const showCamera = usesMultipleCameras(metas);
   const [hero, ...rest] = images;
   const [viewing, setViewing] = useState(null);
 
@@ -62,6 +66,7 @@ const PhotoEntry = ({ id }) => {
             <span className="photo-caption">
               {photo.location} · {photo.date}
             </span>
+            <ShotInfo meta={metas[0]} showCamera={showCamera} />
           </div>
         )}
 
@@ -97,7 +102,15 @@ const PhotoEntry = ({ id }) => {
                   "View photo full screen",
                 )}
               >
-                <img src={src} alt={`${photo.title} ${i + 2}`} />
+                <img
+                  src={src}
+                  alt={`${photo.title} ${i + 2}`}
+                  width={metas[i + 1]?.width}
+                  height={metas[i + 1]?.height}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <ShotInfo meta={metas[i + 1]} showCamera={showCamera} />
               </div>
             ))}
           </div>
@@ -108,6 +121,8 @@ const PhotoEntry = ({ id }) => {
             images={images}
             index={viewing}
             alt={photo.title}
+            meta={metas}
+            showCamera={showCamera}
             onClose={() => setViewing(null)}
             onChange={setViewing}
           />

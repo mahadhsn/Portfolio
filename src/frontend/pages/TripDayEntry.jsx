@@ -5,7 +5,9 @@ import { ArrowLeft, ArrowRight } from "../components/Icons";
 import { TRIPS } from "../../data/consts";
 import Lightbox from "../components/logs/Lightbox";
 import lightboxTrigger from "../components/logs/lightboxTrigger";
-import { galleries } from "./photoGalleries";
+import ShotInfo from "../components/logs/ShotInfo";
+import { usesMultipleCameras } from "../components/logs/shotSettings";
+import { galleries, galleryMeta } from "./photoGalleries";
 
 const formatDay = (dateStr) => {
   const [y, m, d] = dateStr.split("-");
@@ -34,7 +36,11 @@ const TripDayEntry = ({ tripId }) => {
   const daysWithPhotos = useMemo(() => {
     if (!trip) return [];
     return trip.days
-      .map((d) => ({ ...d, images: galleries[d.globKey] || [] }))
+      .map((d) => ({
+        ...d,
+        images: galleries[d.globKey] || [],
+        metas: galleryMeta[d.globKey] || [],
+      }))
       .filter((d) => d.images.length > 0);
   }, [trip]);
 
@@ -62,6 +68,8 @@ const TripDayEntry = ({ tripId }) => {
   }
 
   const [hero, ...rest] = currentDay.images;
+  const { metas } = currentDay;
+  const showCamera = usesMultipleCameras(metas);
 
   return (
     <>
@@ -93,6 +101,7 @@ const TripDayEntry = ({ tripId }) => {
             <span className="photo-caption">
               {currentDay.place}, {formatDay(currentDay.date)}
             </span>
+            <ShotInfo meta={metas[0]} showCamera={showCamera} />
           </div>
         )}
 
@@ -129,7 +138,12 @@ const TripDayEntry = ({ tripId }) => {
                 <img
                   src={src}
                   alt={`${trip.title} day ${currentDay.dayNumber} ${i + 2}`}
+                  width={metas[i + 1]?.width}
+                  height={metas[i + 1]?.height}
+                  loading="lazy"
+                  decoding="async"
                 />
+                <ShotInfo meta={metas[i + 1]} showCamera={showCamera} />
               </div>
             ))}
           </div>
@@ -140,6 +154,8 @@ const TripDayEntry = ({ tripId }) => {
             images={currentDay.images}
             index={viewing}
             alt={`${trip.title} day ${currentDay.dayNumber}`}
+            meta={metas}
+            showCamera={showCamera}
             onClose={() => setViewing(null)}
             onChange={setViewing}
           />

@@ -1,3 +1,5 @@
+import photoMeta from "../../data/photoMeta.json";
+
 // Static import.meta.glob patterns must be string literals at build time.
 // All gallery patterns are defined here and exported as a lookup map.
 
@@ -60,24 +62,47 @@ const banffDay7 = import.meta.glob(
   { eager: true, as: "url" },
 );
 
-const toSortedUrls = (globResult) =>
-  Object.values(globResult)
-    .filter((v) => typeof v === "string")
-    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+// Shot info and edit summaries written by image-meta.mjs, keyed by
+// "<assets folder>/<day>/<photo>" without the "optimized/" or "-1600.webp".
+const metaKey = (path) =>
+  path
+    .replace("../../assets/", "")
+    .replace("/optimized/", "/")
+    .replace(/-1600\.webp$/, "");
 
-export const galleries = {
-  belfountain: toSortedUrls(belfountain),
-  killbear: toSortedUrls(killbear),
-  toronto: toSortedUrls(toronto),
-  bronte: toSortedUrls(bronte),
-  stirling: toSortedUrls(stirling),
-  mdl: toSortedUrls(mdl),
-  orchard: toSortedUrls(orchard),
-  restoule: toSortedUrls(restoule),
-  banffDay1: toSortedUrls(banffDay1),
-  banffDay2: toSortedUrls(banffDay2),
-  banffDay3: toSortedUrls(banffDay3),
-  banffDay5: toSortedUrls(banffDay5),
-  banffDay6: toSortedUrls(banffDay6),
-  banffDay7: toSortedUrls(banffDay7),
+const sortedEntries = (globResult) =>
+  Object.entries(globResult)
+    .filter(([, v]) => typeof v === "string")
+    .sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true }));
+
+const sources = {
+  belfountain,
+  killbear,
+  toronto,
+  bronte,
+  stirling,
+  mdl,
+  orchard,
+  restoule,
+  banffDay1,
+  banffDay2,
+  banffDay3,
+  banffDay5,
+  banffDay6,
+  banffDay7,
 };
+
+const mapSources = (fn) =>
+  Object.fromEntries(
+    Object.entries(sources).map(([key, glob]) => [
+      key,
+      fn(sortedEntries(glob)),
+    ]),
+  );
+
+export const galleries = mapSources((entries) => entries.map(([, url]) => url));
+
+// Parallel to `galleries`: the shot info for each photo, or null if unknown.
+export const galleryMeta = mapSources((entries) =>
+  entries.map(([path]) => photoMeta[metaKey(path)] ?? null),
+);
