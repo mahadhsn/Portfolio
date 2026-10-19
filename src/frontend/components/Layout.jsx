@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 import Nav from "./Nav";
@@ -36,7 +37,9 @@ const Layout = () => {
 
       <div className="page-shell">
         <main key={pathname} className="page page-enter">
-          <Outlet />
+          <Suspense fallback={null}>
+            <Outlet />
+          </Suspense>
         </main>
         <Footer />
       </div>

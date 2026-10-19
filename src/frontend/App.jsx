@@ -1,18 +1,22 @@
+import { lazy } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
-import About from "./pages/About";
 import Layout from "./components/Layout";
-import Experience from "./pages/Experience";
-import Projects from "./pages/Projects";
-import Logbook from "./pages/Logbook";
-import LogEntry from "./pages/LogEntry";
-import PhotoEntry from "./pages/PhotoEntry";
-import TripEntry from "./pages/TripEntry";
-import TripDayEntry from "./pages/TripDayEntry";
-import Resume from "./pages/Resume";
-import Contact from "./pages/Contact";
 import ScrollToTop from "./components/layout/ScrollToTop";
+
+// Every page but Home loads its code on first visit, so the markdown renderer,
+// photo galleries and the rest stay out of the first download.
+const NotFound = lazy(() => import("./pages/NotFound"));
+const About = lazy(() => import("./pages/About"));
+const Experience = lazy(() => import("./pages/Experience"));
+const Projects = lazy(() => import("./pages/Projects"));
+const Logbook = lazy(() => import("./pages/Logbook"));
+const LogEntry = lazy(() => import("./pages/LogEntry"));
+const PhotoEntry = lazy(() => import("./pages/PhotoEntry"));
+const TripEntry = lazy(() => import("./pages/TripEntry"));
+const TripDayEntry = lazy(() => import("./pages/TripDayEntry"));
+const Resume = lazy(() => import("./pages/Resume"));
+const Contact = lazy(() => import("./pages/Contact"));
 
 export default function App() {
   return (
