@@ -64,6 +64,20 @@ export default function App() {
           />
 
           <Route
+            path="/logbook/bronte-4-10-26"
+            element={<PhotoEntry id="bronte26" />}
+          />
+
+          <Route
+            path="/logbook/campbellford-11-10-26"
+            element={<TripEntry tripId="campbellford" />}
+          />
+          <Route
+            path="/logbook/campbellford-11-10-26/:day"
+            element={<TripDayEntry tripId="campbellford" />}
+          />
+
+          <Route
             path="/logbook/banff-27-6-26"
             element={<TripEntry tripId="banff" />}
           />

@@ -35,6 +35,10 @@ const restoule = import.meta.glob(
   "../../assets/canon/restoule-16-5-26/optimized/*-1600.webp",
   { eager: true, as: "url" },
 );
+const bronte26 = import.meta.glob(
+  "../../assets/canon/bronte-4-10-26/optimized/*-1600.webp",
+  { eager: true, as: "url" },
+);
 
 // Banff trip - one glob per shot day, shared across cameras.
 const banffDay1 = import.meta.glob(
@@ -62,6 +66,16 @@ const banffDay7 = import.meta.glob(
   { eager: true, as: "url" },
 );
 
+// Campbellford trip - one glob per shot day.
+const campbellfordDay1 = import.meta.glob(
+  "../../assets/campbellford-11-10-26/2026-10-11/optimized/*-1600.webp",
+  { eager: true, as: "url" },
+);
+const campbellfordDay2 = import.meta.glob(
+  "../../assets/campbellford-11-10-26/2026-10-12/optimized/*-1600.webp",
+  { eager: true, as: "url" },
+);
+
 // Shot info and edit summaries written by image-meta.mjs, keyed by
 // "<assets folder>/<day>/<photo>" without the "optimized/" or "-1600.webp".
 const metaKey = (path) =>
@@ -84,12 +98,15 @@ const sources = {
   mdl,
   orchard,
   restoule,
+  bronte26,
   banffDay1,
   banffDay2,
   banffDay3,
   banffDay5,
   banffDay6,
   banffDay7,
+  campbellfordDay1,
+  campbellfordDay2,
 };
 
 const mapSources = (fn) =>
