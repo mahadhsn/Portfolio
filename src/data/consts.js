@@ -157,6 +157,29 @@ export const PROJECTS = [
 // ── Trips (multi-day photo shoots, one page per day) ─────────
 export const TRIPS = [
   {
+    id: "campbellford",
+    title: "Campbellford",
+    slug: "campbellford-11-10-26",
+    location: "Campbellford, ON",
+    dateRange: "OCT 11-12, 2026",
+    camera: "Canon EOS Rebel T2i",
+    path: "/logbook/campbellford-11-10-26",
+    days: [
+      {
+        date: "2026-10-11",
+        dayNumber: 1,
+        place: "Campbellford, ON",
+        globKey: "campbellfordDay1",
+      },
+      {
+        date: "2026-10-12",
+        dayNumber: 2,
+        place: "Campbellford, ON",
+        globKey: "campbellfordDay2",
+      },
+    ],
+  },
+  {
     id: "banff",
     title: "Banff",
     slug: "banff-27-6-26",
@@ -207,6 +230,15 @@ export const TRIPS = [
 
 // ── Photos ────────────────────────────────────────────────────
 export const PHOTOS = [
+  {
+    id: "bronte26",
+    title: "Bronte Creek",
+    date: "OCT 4, 2026",
+    location: "Oakville, ON",
+    camera: "Canon EOS Rebel T2i",
+    path: "/logbook/bronte-4-10-26",
+    globKey: "bronte26",
+  },
   {
     id: "restoule",
     title: "Restoule",
