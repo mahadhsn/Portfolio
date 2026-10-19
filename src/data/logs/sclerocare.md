@@ -4,8 +4,8 @@ _July 24, 2025 · 4 min read · school_
 
 ![Splash Page](/images/logs/sclerocare/sclero-splash.png)
 ![Home Page](/images/logs/sclerocare/sclero-home.png)
-![Research Page](/images/logs/sclerocare/sclero-research.png)
-![Profile Page](/images/logs/sclerocare/sclero-profile.png)
+![Research Page](/images/logs/sclerocare/sclero-research.webp)
+![Profile Page](/images/logs/sclerocare/sclero-profile.webp)
 
 ## Background
 

@@ -2,8 +2,8 @@
 
 _April 24, 2026 · 10 min read · career_
 
-![My desk (with the old laptop), May 7th 2025](/images/logs/TD/TD_Table.jpg)
-![PS5 on the Arcade floor, May 7th 2025](/images/logs/TD/TD_PS5.jpg)
+![My desk (with the old laptop), May 7th 2025](/images/logs/TD/TD_Table.webp)
+![PS5 on the Arcade floor, May 7th 2025](/images/logs/TD/TD_PS5.webp)
 
 It's about time I give an in-depth review of how my internship with TD went. It's now been more than 5 months since I finished and I still think about how nice my time there was. From playing on the PS5, to playing poker with the interns, to even exploring the Sky Garden, TD Terrace's amenities were unmatched. This makes it sound like I did no work there but I promise I did!!
 
@@ -69,7 +69,7 @@ My internship was split into two main learning opportunities in the first and se
 
    I have not had much other work experience in the past but most interns around us would also side with us on that. From playing Poker at 1PM on a Monday
 
-   ![Playing poker with the interns, May 12th 2025](/images/logs/TD/Poker.JPG)
+   ![Playing poker with the interns, May 12th 2025](/images/logs/TD/Poker.webp)
 
    To randomly running FIFA tournaments, one of the defining qualities of TD is their amazing worklife balance, and by a huge factor. The arrival and departure hours were not monitored, only work (and tasks) were. If you got the job done, you could show up and leave whenever.
 
@@ -97,7 +97,7 @@ My internship was split into two main learning opportunities in the first and se
 
 5. **The Team** - Honourable Mention
 
-   ![Farewell lunch for our Dev Lead, Aug 6th 2025](/images/logs/TD/Team.JPG)
+   ![Farewell lunch for our Dev Lead, Aug 6th 2025](/images/logs/TD/Team.webp)
 
    This is an honourable mention since it's not related to TD itself but would be unfair if I were to not give credit.
 
