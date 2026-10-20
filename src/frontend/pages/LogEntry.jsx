@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import ReactMarkdown from "react-markdown";
 import { ArrowLeft, ArrowRight } from "../components/Icons";
@@ -118,22 +118,32 @@ const LogEntry = () => {
                 )}
               </figure>
             ),
-            a: ({ href, children }) => (
-              <a
-                href={href}
-                style={{
-                  color: "var(--accent)",
-                  textDecoration: "underline",
-                  textUnderlineOffset: "3px",
-                }}
-                target={href?.startsWith("http") ? "_blank" : undefined}
-                rel={
-                  href?.startsWith("http") ? "noopener noreferrer" : undefined
-                }
-              >
-                {children}
-              </a>
-            ),
+            a: ({ href, children }) => {
+              const style = {
+                color: "var(--accent)",
+                textDecoration: "underline",
+                textUnderlineOffset: "3px",
+              };
+              // internal paths use client-side routing (no full reload)
+              if (href?.startsWith("/")) {
+                return (
+                  <Link to={href} style={style}>
+                    {children}
+                  </Link>
+                );
+              }
+              const external = href?.startsWith("http");
+              return (
+                <a
+                  href={href}
+                  style={style}
+                  target={external ? "_blank" : undefined}
+                  rel={external ? "noopener noreferrer" : undefined}
+                >
+                  {children}
+                </a>
+              );
+            },
           }}
         >
           {content}
