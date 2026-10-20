@@ -21,7 +21,17 @@ const LogEntry = () => {
       setNotFound(true);
       return;
     }
-    loader().then((mod) => setContent(mod.default));
+    const load = () => loader().then((mod) => setContent(mod.default));
+    load();
+    // dev: refetch on save without a full reload (keeps scroll position)
+    if (import.meta.hot) {
+      const onUpdate = () => {
+        const url = `../../data/logs/${id}.md?raw&t=${Date.now()}`;
+        import(/* @vite-ignore */ url).then((m) => setContent(m.default));
+      };
+      import.meta.hot.on("log-updated", onUpdate);
+      return () => import.meta.hot.off("log-updated", onUpdate);
+    }
   }, [id]);
 
   const currentIndex = LOGS.findIndex((l) => l.id === id);
