@@ -2442,6 +2442,17 @@ img {
     overflow-x: hidden;
   }
 
+  /* Logs and photo pages: the nav + song bar already sit above, so start closer to the top */
+  .log-article {
+    padding-top: 0;
+  }
+  .photo-detail {
+    padding-top: 0;
+  }
+  .log-back {
+    margin-bottom: 20px;
+  }
+
   /* ── Home hero ── */
   .home-hero {
     min-height: auto;
