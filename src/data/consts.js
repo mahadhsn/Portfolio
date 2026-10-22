@@ -208,19 +208,19 @@ export const TRIPS = [
       },
       {
         date: "2026-07-01",
-        dayNumber: 4,
+        dayNumber: 5,
         place: "Icefields Parkway to Jasper, AB",
         globKey: "banffDay5",
       },
       {
         date: "2026-07-02",
-        dayNumber: 5,
+        dayNumber: 6,
         place: "Banff, AB",
         globKey: "banffDay6",
       },
       {
         date: "2026-07-03",
-        dayNumber: 6,
+        dayNumber: 7,
         place: "Golden, BC (Kicking Horse Resort)",
         globKey: "banffDay7",
       },

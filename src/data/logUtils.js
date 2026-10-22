@@ -1,7 +1,7 @@
 const modules = import.meta.glob("./logs/*.md", { query: "?raw", eager: true });
 
 function parseLog(slug, raw) {
-  const lines = raw.split("\n").filter((l) => l.trim());
+  const lines = raw.split(/\r?\n/).filter((l) => l.trim());
   const title = lines[0]?.replace(/^#\s+/, "") ?? slug;
   const metaMatch = lines[1]?.match(/^_(.+)_$/);
   const [datePart, readPart, tagPart] = metaMatch
