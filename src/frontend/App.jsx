@@ -1,24 +1,53 @@
-import { lazy } from "react";
+import { lazy, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Layout from "./components/Layout";
 import ScrollToTop from "./components/layout/ScrollToTop";
 
 // Every page but Home loads its code on first visit, so the markdown renderer,
-// photo galleries and the rest stay out of the first download.
-const NotFound = lazy(() => import("./pages/NotFound"));
-const About = lazy(() => import("./pages/About"));
-const Experience = lazy(() => import("./pages/Experience"));
-const Projects = lazy(() => import("./pages/Projects"));
-const Logbook = lazy(() => import("./pages/Logbook"));
-const LogEntry = lazy(() => import("./pages/LogEntry"));
-const PhotoEntry = lazy(() => import("./pages/PhotoEntry"));
-const TripEntry = lazy(() => import("./pages/TripEntry"));
-const TripDayEntry = lazy(() => import("./pages/TripDayEntry"));
-const Resume = lazy(() => import("./pages/Resume"));
-const Contact = lazy(() => import("./pages/Contact"));
+// photo galleries and the rest stay out of the first download. Once the site is
+// idle they are all fetched in the background (see App), so switching pages
+// doesn't wait on the network and flash an empty page.
+const pageLoaders = {
+  NotFound: () => import("./pages/NotFound"),
+  About: () => import("./pages/About"),
+  Experience: () => import("./pages/Experience"),
+  Projects: () => import("./pages/Projects"),
+  Logbook: () => import("./pages/Logbook"),
+  LogEntry: () => import("./pages/LogEntry"),
+  PhotoEntry: () => import("./pages/PhotoEntry"),
+  TripEntry: () => import("./pages/TripEntry"),
+  TripDayEntry: () => import("./pages/TripDayEntry"),
+  Resume: () => import("./pages/Resume"),
+  Contact: () => import("./pages/Contact"),
+};
+
+const NotFound = lazy(pageLoaders.NotFound);
+const About = lazy(pageLoaders.About);
+const Experience = lazy(pageLoaders.Experience);
+const Projects = lazy(pageLoaders.Projects);
+const Logbook = lazy(pageLoaders.Logbook);
+const LogEntry = lazy(pageLoaders.LogEntry);
+const PhotoEntry = lazy(pageLoaders.PhotoEntry);
+const TripEntry = lazy(pageLoaders.TripEntry);
+const TripDayEntry = lazy(pageLoaders.TripDayEntry);
+const Resume = lazy(pageLoaders.Resume);
+const Contact = lazy(pageLoaders.Contact);
+
+const prefetchPages = () => {
+  Object.values(pageLoaders).forEach((load) => load().catch(() => {}));
+};
 
 export default function App() {
+  useEffect(() => {
+    if ("requestIdleCallback" in window) {
+      const id = requestIdleCallback(prefetchPages, { timeout: 3000 });
+      return () => cancelIdleCallback(id);
+    }
+    const id = setTimeout(prefetchPages, 1500);
+    return () => clearTimeout(id);
+  }, []);
+
   return (
     <Router>
       <ScrollToTop />
