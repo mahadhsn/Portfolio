@@ -2919,8 +2919,11 @@ img {
     padding: 8px;
     gap: 4px;
   }
+  .nav-item {
+    flex: 1 1 auto;
+  }
   .nav-link {
-    font-size: 10.5px;
-    letter-spacing: -0.02em;
+    font-size: clamp(9px, 2.6vw, 11px);
+    padding: 8px 5px;
   }
 }
